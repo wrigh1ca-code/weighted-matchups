@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Weighted Matchups: this week's college football games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<main class="wrap">
+  <div class="topbar">
+    <a class="brand" href="./">Weighted <span>Matchups</span></a>
+    <span class="small" id="gen"></span>
+  </div>
+  <div>
+    <div class="eyebrow" id="weeklbl">This week</div>
+    <h1 class="title">Matchups</h1>
+    <p class="small" style="max-width:760px">Every team's advanced-stat profile is weighted toward the games that look most like this one: similar opponents, recent weeks, the same setting and the expected starting QB. Projections come from those weighted profiles.</p>
+  </div>
+  <div class="search"><label class="small" for="q">Find a team</label><input id="q" type="search" placeholder="e.g. BYU"></div>
+  <div class="gamelist" id="list"></div>
+  <footer>Data: <a href="https://collegefootballdata.com">CollegeFootballData.com</a>. EPA is CFBD's PPA. Not affiliated with any team or sportsbook.</footer>
+</main>
+<script src="index.js"></script>
+</body>
+</html>

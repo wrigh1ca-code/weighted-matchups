@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matchup · Weighted Matchups</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<main class="wrap" id="app">
+  <div class="topbar">
+    <a class="brand" href="./">Weighted <span>Matchups</span></a>
+    <a href="./" class="small">← All games this week</a>
+  </div>
+
+  <div class="row" style="justify-content:space-between;align-items:flex-end">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 class="title" id="title"></h1>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="seg" role="group" aria-label="Radar view" id="viewseg">
+      <button data-v="overlay" aria-pressed="true">Weighted + season</button>
+      <button data-v="weighted" aria-pressed="false">Weighted</button>
+      <button data-v="season" aria-pressed="false">Season only</button>
+    </div>
+  </div>
+
+  <section class="proj" aria-label="Score projection">
+    <div class="col">
+      <div class="lbl">Weighted model projection</div>
+      <div class="score">
+        <div style="display:flex;flex-direction:column"><span class="t away" id="pAwayName"></span><span class="n" id="pAway"></span></div>
+        <span class="n" style="font-size:32px;color:#64748b">–</span>
+        <div style="display:flex;flex-direction:column"><span class="t home" id="pHomeName"></span><span class="n" id="pHome"></span></div>
+      </div>
+      <div style="font-size:14px;color:#e2e8f0" id="pMargin"></div>
+    </div>
+    <div class="col">
+      <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600">
+        <span style="color:#9db8ee" id="wpAway"></span><span style="color:#fdba8c" id="wpHome"></span>
+      </div>
+      <div class="wpbar" role="img" id="wpbar"><div class="a" id="wpA"></div><div class="h"></div></div>
+      <div style="font-size:12px;color:#cbd5e1">Win probability</div>
+    </div>
+    <div class="col" style="flex-basis:260px">
+      <div class="kv"><span>Equal-weight season model</span><span id="pEqual"></span></div>
+      <div class="kv"><span>Market line (consensus)</span><span id="pMarket"></span></div>
+      <div class="kv" style="border:0"><span>Projected plays</span><span id="pPlays"></span></div>
+    </div>
+    <div class="foot">
+      <button class="btn dark" id="methodBtn" aria-expanded="false" aria-controls="method" style="align-self:flex-start">How this projection works</button>
+      <div class="method" id="method" hidden></div>
+    </div>
+  </section>
+
+  <div class="row">
+    <div class="grow card" style="display:flex;flex-direction:column;gap:16px">
+      <div class="legend" id="legend"></div>
+      <div class="radars" id="radars"></div>
+      <div class="small" style="text-align:center">Percentile vs. FBS this season; higher is better for that unit. Solid = weighted and confidence-blended; dashed = plain season average.</div>
+    </div>
+    <div class="side">
+      <div class="card" style="display:flex;flex-direction:column;gap:16px">
+        <h2 style="font-size:18px">Weighting</h2>
+        <div id="sliders" style="display:flex;flex-direction:column;gap:16px"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn" id="reset">Reset to default</button>
+          <button class="btn" id="best">Backtest-best</button>
+          <button class="btn" id="equal">Equal weight</button>
+        </div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="font-size:18px">Starting QB</h2>
+        <div class="small">Pick who you expect to start. Games he started count more for that offense.</div>
+        <div id="qbs" style="display:flex;flex-direction:column;gap:10px"></div>
+      </div>
+      <div class="card conf" style="display:flex;flex-direction:column;gap:10px">
+        <h2 style="font-size:18px">Confidence</h2>
+        <div id="confRows" style="display:flex;flex-direction:column;gap:10px"></div>
+        <div class="small">Effective games = (Σw)² ÷ Σw². Fewer effective games pulls a unit toward its prior-season average.</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="card" style="display:flex;flex-direction:column;gap:12px">
+    <div class="row" style="justify-content:space-between;align-items:center;gap:12px">
+      <h2 style="font-size:20px" id="gamesTitle">Games driving the profile</h2>
+      <div class="seg" role="group" aria-label="Unit" id="unitseg"></div>
+    </div>
+    <div class="scroll"><table class="games" id="gamesTable"></table></div>
+    <div class="small">Share = game weight × plays, as % of total. Weight = similarity^a × recency^a × setting^a × roster^a.</div>
+  </section>
+
+  <section class="card" style="display:flex;flex-direction:column;gap:12px">
+    <h2 style="font-size:20px" id="shiftTitle">What the weighting changes</h2>
+    <div class="shifts" id="shifts"></div>
+    <div class="small">Percentile points: season average → weighted. Orange = this unit looks weaker for this matchup than its season numbers suggest.</div>
+  </section>
+
+  <section class="card row" style="gap:24px">
+    <div style="flex:1 1 300px"><div class="eyebrow" id="formAwayLbl"></div><div class="form" id="formAway"></div></div>
+    <div style="flex:1 1 300px"><div class="eyebrow" id="formHomeLbl"></div><div class="form" id="formHome"></div></div>
+  </section>
+
+  <footer>Data: <a href="https://collegefootballdata.com">CollegeFootballData.com</a>. EPA is CFBD's PPA (expected points added); garbage time removed. Not affiliated with any team or sportsbook.</footer>
+</main>
+<script src="game.js"></script>
+</body>
+</html>

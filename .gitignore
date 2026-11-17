@@ -11,3 +11,6 @@ __pycache__/
 *.pyc
 .venv/
 .pytest_cache/
+
+# Backtest working files (large); results.json is kept
+data/backtest/ingredients.pkl

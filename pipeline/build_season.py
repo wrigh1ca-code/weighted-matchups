@@ -101,7 +101,9 @@ def build(client: CFBDClient, year: int) -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def main(argv: list[str]) -> int:
-    years = [int(a) for a in argv] or [2026]
+    now = pd.Timestamp.now("UTC")
+    current = now.year if now.month >= 7 else now.year - 1   # season year (Jan bowls belong to prior year)
+    years = [int(a) for a in argv] or [current]
     client = CFBDClient()
     info = client.get("/info", refresh=True)
     print(f"CFBD tier: {info.get('tierName')} (limit {info.get('monthlyLimit')}, remaining {info.get('remainingCalls')})")
