@@ -44,8 +44,8 @@ def week_player_passing(client: CFBDClient, year: int, week: int, season_type: s
                 for typ in cat.get("types", []):
                     tname = typ.get("name")
                     for a in typ.get("athletes", []):
-                        nm = a.get("name")
-                        if not nm or nm.lower().startswith("team"):
+                        nm = (a.get("name") or "").strip()
+                        if not nm or nm.lower() == "team":
                             continue
                         d = stats.setdefault(nm, {"id": a.get("id")})
                         stat = a.get("stat", "0")

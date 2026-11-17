@@ -72,9 +72,10 @@ class Params:
     k: float = 3.0              # confidence shrinkage constant
     qb_miss: float = 0.35       # roster base factor when a different QB started
     adj: float = 1.0            # opponent adjustment strength for EPA used in projections
+    skill_miss: float = 0.7     # roster base factor per key RB/WR whose status differs
 
     def equal(self) -> "Params":
-        return Params(0, 0, 0, 0, self.half_life, self.sim_bw, self.k, self.qb_miss, self.adj)
+        return Params(0, 0, 0, 0, self.half_life, self.sim_bw, self.k, self.qb_miss, self.adj, self.skill_miss)
 
 
 # ---------------------------------------------------------------- data
@@ -197,8 +198,50 @@ def _wx_dist2(t, gw) -> float | None:
     return ((a[0] - b[0]) / 25) ** 2 + ((a[1] - b[1]) / 12) ** 2 + 0.5 * float((a[2] > 0) != (b[2] > 0))
 
 
+def parse_list(s) -> dict[str, list[int]]:
+    """'Name:a:b|Name2:a' -> {'Name': [a, b], ...}"""
+    out = {}
+    if not isinstance(s, str) or not s:
+        return out
+    for part in s.split("|"):
+        bits = part.split(":")
+        name = bits[0].strip()
+        if not name or name.lower() == "team":
+            continue
+        try:
+            out[name] = [int(x) for x in bits[1:]]
+        except ValueError:
+            continue
+    return out
+
+
+def key_players(team: str, season: int, date: pd.Timestamp) -> dict:
+    """Season-to-date top RB (carries, non-QB) and top WR (receiving yards) and whether each
+    appeared in the team's most recent game (the default expectation for this week)."""
+    u, _ = load()
+    r = u[(u.team == team) & (u.side == "offense") & (u.season == season) & (u.date < date)].sort_values("date")
+    if r.empty or "rush_list" not in r:
+        return {"rb": None, "wr": None, "rb_expected": True, "wr_expected": True}
+    qbs = set(r.qb.dropna())
+    car, yds = {}, {}
+    for rl, cl in zip(r.rush_list, r.rec_list):
+        for n, v in parse_list(rl).items():
+            if n not in qbs:
+                car[n] = car.get(n, 0) + v[0]
+        for n, v in parse_list(cl).items():
+            yds[n] = yds.get(n, 0) + (v[1] if len(v) > 1 else 0)
+    rb = max(car, key=car.get) if car else None
+    wr = max(yds, key=yds.get) if yds else None
+    last = r.iloc[-1]
+    on_field = set(parse_list(last.rush_list)) | set(parse_list(last.rec_list))
+    return {"rb": rb, "wr": wr, "rb_expected": rb in on_field if rb else True,
+            "wr_expected": wr in on_field if wr else True,
+            "rb_carries": car.get(rb, 0), "wr_yards": yds.get(wr, 0)}
+
+
 def unit_ingredients(team: str, side: str, season: int, date: pd.Timestamp, opponent: str,
-                     site: str, weather: dict | None, expected_qb: str | None) -> pd.DataFrame:
+                     site: str, weather: dict | None, expected_qb: str | None,
+                     key: dict | None = None) -> pd.DataFrame:
     """Past games this season for (team, side) with the raw weighting ingredients."""
     u, _ = load()
     rows = u[(u.team == team) & (u.side == side) & (u.season == season) & (u.date < date)].copy()
@@ -234,6 +277,17 @@ def unit_ingredients(team: str, side: str, season: int, date: pd.Timestamp, oppo
         rows["qb_match"] = (rows.qb == expected_qb).astype(float)
     else:
         rows["qb_match"] = 1.0
+    # Key skill players: did each play in game g, and does that match this week's expectation?
+    rows["rb_played"], rows["wr_played"] = True, True
+    rows["rb_match"], rows["wr_match"] = 1.0, 1.0
+    if side == "offense" and key and "rush_list" in rows:
+        present = [set(parse_list(a)) | set(parse_list(b)) for a, b in zip(rows.rush_list, rows.rec_list)]
+        for pos in ("rb", "wr"):
+            name = key.get(pos)
+            if name:
+                played = np.array([name in ps for ps in present])
+                rows[f"{pos}_played"] = played
+                rows[f"{pos}_match"] = (played == bool(key.get(f"{pos}_expected", True))).astype(float)
     rows["opp_fbs"] = rows.opponent.isin(fbs_teams(season))
     # Opponent strength as of now: the opposite unit's season-to-date EPA/play (league avg if thin)
     lg = prof.attrs.get("lg_epa", 0.0)
@@ -249,7 +303,9 @@ def base_factors(rows: pd.DataFrame, p: Params) -> pd.DataFrame:
     f["rec"] = np.power(0.5, rows["weeks_ago"] / p.half_life).clip(1e-4, 1)
     wx = rows["wx_d2"].apply(lambda d: 1.0 if d is None or pd.isna(d) else math.exp(-d / 2))
     f["set"] = (rows["site_base"] * wx).clip(1e-4, 1)
-    f["ros"] = np.where(rows["qb_match"] >= 1, 1.0, p.qb_miss)
+    f["ros"] = (np.where(rows["qb_match"] >= 1, 1.0, p.qb_miss)
+                * np.where(rows["rb_match"] >= 1, 1.0, p.skill_miss)
+                * np.where(rows["wr_match"] >= 1, 1.0, p.skill_miss))
     return f
 
 
@@ -323,11 +379,13 @@ def matchup_units(m: Matchup) -> dict:
     prof = profiles_asof(m.season, m.date.isoformat())
     for team, opp in ((m.home, m.away), (m.away, m.home)):
         qb = m.expected_qb.get(team) or last_qb(team, m.season, m.date)
+        key = key_players(team, m.season, m.date)
         for side in ("offense", "defense"):
+            off = side == "offense"
             rows = unit_ingredients(team, side, m.season, m.date, opp, m.site(team), m.weather,
-                                    qb if side == "offense" else None)
+                                    qb if off else None, key if off else None)
             out[(team, side)] = {"rows": rows, "baseline": baseline_for(team, side, m.season, prof),
-                                 "expected_qb": qb if side == "offense" else None}
+                                 "expected_qb": qb if off else None, "key": key if off else None}
     return out
 
 

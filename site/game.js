@@ -17,8 +17,14 @@
     view: 'overlay',
     unit: `${HOME}|defense`,
     qb: { [HOME]: G.units[`${HOME}|offense`].expected_qb, [AWAY]: G.units[`${AWAY}|offense`].expected_qb },
+    plays: {},   // team -> { rb: bool expected to play, wr: bool }
     method: false,
   };
+
+  for (const t of [HOME, AWAY]) {
+    const k = G.units[`${t}|offense`].key || {};
+    state.plays[t] = { rb: k.rb_expected !== false, wr: k.wr_expected !== false };
+  }
 
   // ---------- math (mirror of engine/model.py)
   const clamp = (x, lo, hi) => Math.min(hi, Math.max(lo, x));
@@ -27,9 +33,14 @@
     const rec = clamp(Math.pow(0.5, g.weeks_ago / TUNED.half_life), 1e-4, 1);
     const wx = g.wx_d2 == null ? 1 : Math.exp(-g.wx_d2 / 2);
     const set = clamp(g.site_base * wx, 1e-4, 1);
-    let match = g.qb_match;
-    if (side === 'offense') match = (state.qb[team] && g.qb === state.qb[team]) ? 1 : 0;
-    const ros = match >= 1 ? 1 : TUNED.qb_miss;
+    let ros = 1;
+    if (side === 'offense') {
+      const key = G.units[`${team}|offense`].key || {};
+      const qbm = state.qb[team] && g.qb === state.qb[team];
+      const rbm = !key.rb || g.rb_played === state.plays[team].rb;
+      const wrm = !key.wr || g.wr_played === state.plays[team].wr;
+      ros = (qbm ? 1 : TUNED.qb_miss) * (rbm ? 1 : TUNED.skill_miss) * (wrm ? 1 : TUNED.skill_miss);
+    }
     return { sim, rec, set, ros };
   }
   function unitProfile(key, a) {
@@ -127,12 +138,12 @@
         <tr><td>Market spread (same games)</td><td>${mk.test.games}</td><td>${r(mk.test.mae, 1)}</td><td>–</td><td>–</td></tr>
         <tr><td>Backtest-best (same games)</td><td>${mk.ours_same_games.games}</td><td>${r(mk.ours_same_games.mae, 1)}</td><td>${r(mk.ours_same_games.winner_acc * 100, 0)}%</td><td>${r(mk.ours_same_games.brier, 3)}</td></tr>
       </tbody></table>
-      <div style="font-size:13px;color:#e2e8f0"><b style="display:inline">What the backtest says:</b> once each game's EPA is opponent-adjusted, extra weight on similar opponents, recency or setting has not measurably improved margin predictions on past games; the starting-QB factor helped slightly. Backtest-best strengths: similar opponents ${BEST.a_opp}, recency ${BEST.a_rec}, setting ${BEST.a_set}, QB ${BEST.a_ros}. The sliders start at Normal so you can see the weighted view; use “Backtest-best” for the most accurate projection so far.</div>
+      <div style="font-size:13px;color:#e2e8f0"><b style="display:inline">What the backtest says:</b> once each game's EPA is opponent-adjusted, extra weight on similar opponents, recency or setting has not measurably improved margin predictions on past games; the key-player (roster) factor helped slightly. Backtest-best strengths: similar opponents ${BEST.a_opp}, recency ${BEST.a_rec}, setting ${BEST.a_set}, QB ${BEST.a_ros}. The sliders start at Normal so you can see the weighted view; use “Backtest-best” for the most accurate projection so far.</div>
       <div style="font-size:12px;color:#cbd5e1">Tuned on ${bt.train_seasons.join(' and ')} only; ${bt.test_seasons.join(', ')} was never used for tuning. Avg miss = mean absolute error of the predicted margin. Brier = mean squared error of win probability (lower is better; 0.25 = coin flip).</div>`;
     }
     return `<h3>How the projection works</h3>
       <div class="grid">
-        <div><b>1. Weight every past game</b>Each of a unit's games this season gets a weight from four factors multiplied together: how similar the opponent unit was to this week's opponent unit (opponent-adjusted EPA, success rate, pass rate, explosiveness, rush and pass EPA), how recent it was (half-life ${TUNED.half_life} weeks), whether the setting matches (home/away/neutral and forecast weather), and whether the expected starting QB played.</div>
+        <div><b>1. Weight every past game</b>Each of a unit's games this season gets a weight from four factors multiplied together: how similar the opponent unit was to this week's opponent unit (opponent-adjusted EPA, success rate, pass rate, explosiveness, rush and pass EPA), how recent it was (half-life ${TUNED.half_life} weeks), whether the setting matches (home/away/neutral and forecast weather), and whether the expected QB, top RB and top WR played (a different QB counts ×${TUNED.qb_miss}, each RB/WR mismatch ×${TUNED.skill_miss}, before the Roster slider). RB/WR status comes from box scores: a player with no carries or catches is treated as not playing.</div>
         <div><b>2. Unit-on-unit</b>A defense is judged mostly on games against offenses like the one it faces this week, and an offense on games against similar defenses.</div>
         <div><b>3. Weighted profiles</b>Per-play stats (EPA, success rate, explosiveness, havoc…) are averaged across games using weight × plays. Garbage time is removed.</div>
         <div><b>4. Confidence blend</b>Effective games = (Σw)² ÷ Σw². The profile = λ × weighted + (1 − λ) × prior-season average, with λ = n ÷ (n + ${TUNED.k}). Early in the season, or when weight piles onto a few games, the prior dominates.</div>
@@ -167,14 +178,26 @@
   $('equal').addEventListener('click', () => { Object.assign(state.a, { a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 }); render(); });
 
   $('qbs').innerHTML = [AWAY, HOME].map(t => {
-    const U = G.units[`${t}|offense`];
+    const U = G.units[`${t}|offense`], k = U.key || {};
     const opts = U.qbs.map(q => `<option value="${esc(q)}">${esc(q)}${q === U.expected_qb ? ' (most recent starter)' : ''}</option>`).join('');
-    return `<div><label class="small" for="qb_${esc(t)}" style="font-weight:600;color:#374151">${esc(t)}</label>
-      <select id="qb_${esc(t)}" data-team="${esc(t)}">${opts}<option value="__other">Someone else (new starter)</option></select></div>`;
+    const status = (pos, name, detail) => !name ? '' : `<div class="row2"><span><b>${pos}</b> ${esc(name)} <span class="small">${detail}</span></span>
+      <select data-team="${esc(t)}" data-pos="${pos.toLowerCase()}" aria-label="${esc(t)} ${pos} ${esc(name)} status">
+        <option value="1">Expected to play</option><option value="0">Out</option></select></div>`;
+    return `<div class="kp"><div style="font-weight:700;color:${t === HOME ? 'var(--home)' : 'var(--away)'}">${esc(t)}</div>
+      <div class="row2"><label for="qb_${esc(t)}"><b>QB</b></label>
+      <select id="qb_${esc(t)}" data-team="${esc(t)}" data-pos="qb">${opts}<option value="__other">Someone else</option></select></div>
+      ${status('RB', k.rb, k.rb_carries ? `(${k.rb_carries} carries)` : '')}
+      ${status('WR', k.wr, k.wr_yards ? `(${k.wr_yards} rec yds)` : '')}</div>`;
   }).join('');
   document.querySelectorAll('#qbs select').forEach(s => {
-    const t = s.dataset.team; s.value = state.qb[t] || '__other';
-    s.addEventListener('change', () => { state.qb[t] = s.value === '__other' ? '__none__' : s.value; render(); });
+    const t = s.dataset.team, pos = s.dataset.pos;
+    if (pos === 'qb') {
+      s.value = state.qb[t] || '__other';
+      s.addEventListener('change', () => { state.qb[t] = s.value === '__other' ? '__none__' : s.value; render(); });
+    } else {
+      s.value = state.plays[t][pos] ? '1' : '0';
+      s.addEventListener('change', () => { state.plays[t][pos] = s.value === '1'; render(); });
+    }
   });
 
   document.querySelectorAll('#viewseg button').forEach(b => b.addEventListener('click', () => { state.view = b.dataset.v; render(); }));
@@ -196,8 +219,8 @@
     for (let i = 0; i < N; i++) { const [x, y] = pt(100, i); s += `<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" style="stroke:#e5e7eb;stroke-width:1"/>`; }
     [50, 75, 100].forEach(r => { const [x, y] = pt(r, 0); s += `<text x="${x + 4}" y="${y + 12}" style="font:10px Inter,sans-serif;fill:#6b7280">${r}</text>`; });
     if (state.view !== 'weighted') {
-      s += `<polygon points="${poly(vals(defKey, 'defense', 'season'))}" style="fill:${state.view === 'season' ? fDef : 'none'};stroke:${cDef};stroke-width:2;stroke-dasharray:6 5;opacity:.85"/>`;
-      s += `<polygon points="${poly(vals(offKey, 'offense', 'season'))}" style="fill:${state.view === 'season' ? fOff : 'none'};stroke:${cOff};stroke-width:2;stroke-dasharray:6 5;opacity:.85"/>`;
+      s += `<polygon points="${poly(vals(defKey, 'defense', 'season'))}" style="fill:none;stroke:${cDef};stroke-width:2.5;stroke-dasharray:6 5"/>`;
+      s += `<polygon points="${poly(vals(offKey, 'offense', 'season'))}" style="fill:none;stroke:${cOff};stroke-width:2.5;stroke-dasharray:6 5"/>`;
     }
     if (state.view !== 'season') {
       s += `<polygon points="${poly(vals(defKey, 'defense', 'final'))}" style="fill:${fDef};stroke:${cDef};stroke-width:2.5"/>`;
@@ -210,8 +233,43 @@
     return s + '</svg>';
   }
 
-  // ---------- render
+  // ---------- per-unit games table
   const r0 = x => Math.round(x);
+  function unitTable(key, P) {
+    const [t, side] = key.split('|');
+    const U = G.units[key], k = U.key || {};
+    const color = t === HOME ? 'var(--home)' : 'var(--away)';
+    const maxS = Math.max(...P.share, 1e-9);
+    const rows = U.games.map((g, i) => ({ g, i })).sort((a, b) => b.g.week - a.g.week);
+    const body = rows.map(({ g, i }) => {
+      const f = P.f[i], tags = [];
+      if (g.common) tags.push(['Common opponent', 'good']);
+      if (f.sim >= 0.7) tags.push([side === 'defense' ? 'Similar offense' : 'Similar defense', 'good']);
+      else if (f.sim < 0.3) tags.push([side === 'defense' ? 'Different offense' : 'Different defense', 'warn']);
+      if (f.rec >= 0.75) tags.push(['Recent', 'good']); else if (f.rec < 0.35) tags.push(['Older', 'warn']);
+      if (g.site_base >= 1) tags.push([`Same site (${g.site})`, 'good']); else tags.push([`${g.site[0].toUpperCase()}${g.site.slice(1)}`, '']);
+      if (g.wx_d2 != null && g.wx_d2 > 1) tags.push(['Different weather', 'warn']);
+      if (side === 'offense') {
+        if (!(state.qb[t] && g.qb === state.qb[t])) tags.push(['Different QB', 'warn']);
+        if (k.rb && g.rb_played !== state.plays[t].rb) tags.push([g.rb_played ? `${k.rb} played` : `No ${k.rb}`, 'warn']);
+        if (k.wr && g.wr_played !== state.plays[t].wr) tags.push([g.wr_played ? `${k.wr} played` : `No ${k.wr}`, 'warn']);
+      }
+      if (g.fcs) tags.push(['FCS opponent', 'warn']);
+      const res = g.pts > g.opp_pts ? 'W' : (g.pts < g.opp_pts ? 'L' : 'T');
+      return `<tr><td>${g.week}</td><td style="font-weight:600">${esc(g.opponent)}</td>
+        <td class="${res === 'W' ? 'res-w' : 'res-l'}">${res} ${g.pts}–${g.opp_pts}</td><td>${esc(g.site)}</td><td>${esc((side === 'offense' ? g.qb : g.opp_qb) || '')}</td>
+        <td><div class="wbar"><div class="track"><div class="fill" style="width:${(P.share[i] / maxS * 100).toFixed(1)}%;background:${color}"></div></div><span class="pct">${r0(P.share[i] * 100)}%</span></div></td>
+        <td>${tags.map(([x, c]) => `<span class="tag ${c}">${esc(x)}</span>`).join('')}</td></tr>`;
+    }).join('');
+    const facing = side === 'offense' ? `vs ${t === HOME ? AWAY : HOME} defense` : `vs ${t === HOME ? AWAY : HOME} offense`;
+    return `<div class="card unitcard" style="display:flex;flex-direction:column;gap:10px;border-top:4px solid ${color}">
+      <div class="row" style="justify-content:space-between;align-items:baseline;gap:8px">
+        <h3>Games driving ${esc(t)}'s ${side === 'offense' ? 'offensive' : 'defensive'} profile <span class="small" style="font-weight:500">(${esc(facing)})</span></h3>
+        <span class="small">${P.n_eff.toFixed(1)} effective games · ${r0(P.lam * 100)}% weighted</span></div>
+      <div class="scroll"><table class="games"><thead><tr><th>Wk</th><th>Opponent</th><th>Result</th><th>Site</th><th>${side === 'offense' ? 'QB' : 'Opp QB'}</th><th>Weight share</th><th>Why</th></tr></thead><tbody>${body}</tbody></table></div></div>`;
+  }
+
+  // ---------- render
   function render() {
     SL.forEach(([k]) => { $(`s_${k}`).value = state.a[k]; $(`v_${k}`).textContent = lvl(state.a[k]) + (state.a[k] === BEST[k] ? ' · backtest-best' : ''); });
     document.querySelectorAll('#viewseg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === state.view)));
@@ -231,9 +289,15 @@
     $('pEqual').textContent = `${AWAY} ${r0(eq.away)} – ${HOME} ${r0(eq.home)}`;
     $('pPlays').textContent = `${AWAY} ${r0(G.plays[AWAY])} · ${HOME} ${r0(G.plays[HOME])}`;
 
-    $('legend').innerHTML = `<span><i style="background:var(--away-fill);border:2px solid var(--away)"></i>${esc(AWAY)}</span>
-      <span><i style="background:var(--home-fill);border:2px solid var(--home)"></i>${esc(HOME)}</span>
-      <span><i class="dash"></i>Season average</span>`;
+    const sw = (team, solid) => {
+      const c = team === HOME ? 'var(--home)' : 'var(--away)', f = team === HOME ? 'var(--home-fill)' : 'var(--away-fill)';
+      return `<svg width="34" height="18" aria-hidden="true"><polygon points="3,15 10,3 24,3 31,15" style="fill:${solid ? f : 'none'};stroke:${c};stroke-width:${solid ? 2.5 : 2};${solid ? '' : 'stroke-dasharray:5 4'}"/></svg>`;
+    };
+    $('legend').innerHTML = `<div class="rlegend" role="list">
+      <div class="k ${state.view === 'season' ? 'off' : ''}">Weighted<small>Solid, filled · for this matchup</small></div>
+      <div class="items ${state.view === 'season' ? 'off' : ''}"><span>${sw(AWAY, true)}${esc(AWAY)}</span><span>${sw(HOME, true)}${esc(HOME)}</span></div>
+      <div class="k ${state.view === 'weighted' ? 'off' : ''}">Unweighted<small>Dashed outline · plain season average</small></div>
+      <div class="items ${state.view === 'weighted' ? 'off' : ''}"><span>${sw(AWAY, false)}${esc(AWAY)}</span><span>${sw(HOME, false)}${esc(HOME)}</span></div></div>`;
     $('radars').innerHTML = `
       <div class="radar"><h2 style="font-size:18px">${esc(AWAY)} Offense vs ${esc(HOME)} Defense</h2>${radarSVG(`${AWAY} offense vs ${HOME} defense`, `${AWAY}|offense`, `${HOME}|defense`, pr.P)}</div>
       <div class="radar"><h2 style="font-size:18px">${esc(AWAY)} Defense vs ${esc(HOME)} Offense</h2>${radarSVG(`${AWAY} defense vs ${HOME} offense`, `${HOME}|offense`, `${AWAY}|defense`, pr.P)}</div>`;
@@ -242,31 +306,11 @@
       return `<div><div style="display:flex;justify-content:space-between;font-size:13px"><span><b>${esc(t)}</b> ${s}</span><span>${p.n_eff.toFixed(1)} eff. games · ${r0(p.lam * 100)}% weighted</span></div>
       <div class="bar"><div style="width:${r0(p.lam * 100)}%;background:${t === HOME ? 'var(--home)' : 'var(--away)'}"></div></div></div>`; }).join('');
 
-    // games table
+    // games tables: one per unit, ordered like the radars
     const [ut, us] = state.unit.split('|');
-    const U = G.units[state.unit], P = pr.P[state.unit];
-    $('gamesTitle').textContent = `Games driving ${ut}'s ${us === 'offense' ? 'offensive' : 'defensive'} profile`;
-    const maxS = Math.max(...P.share, 1e-9);
-    const color = ut === HOME ? 'var(--home)' : 'var(--away)';
-    const rows = U.games.map((g, i) => ({ g, i })).sort((a, b) => b.g.week - a.g.week);
-    $('gamesTable').innerHTML = `<thead><tr><th>Wk</th><th>Opponent</th><th>Result</th><th>Site</th><th>${us === 'offense' ? 'QB' : 'Opp QB'}</th><th>Weight share</th><th>Why</th></tr></thead><tbody>` +
-      rows.map(({ g, i }) => {
-        const f = P.f[i], tags = [];
-        if (g.common) tags.push(['Common opponent', 'good']);
-        if (f.sim >= 0.7) tags.push([us === 'defense' ? 'Similar offense' : 'Similar defense', 'good']);
-        else if (f.sim < 0.3) tags.push([us === 'defense' ? 'Different offense' : 'Different defense', 'warn']);
-        if (f.rec >= 0.75) tags.push(['Recent', 'good']); else if (f.rec < 0.35) tags.push(['Older', 'warn']);
-        if (g.site_base >= 1) tags.push([`Same site (${g.site})`, 'good']); else tags.push([`${g.site[0].toUpperCase()}${g.site.slice(1)}`, '']);
-        if (g.wx_d2 != null && g.wx_d2 > 1) tags.push(['Different weather', 'warn']);
-        if (us === 'offense' && f.ros < 1) tags.push(['Different QB', 'warn']);
-        if (g.fcs) tags.push(['FCS opponent', 'warn']);
-        const res = g.pts > g.opp_pts ? 'W' : (g.pts < g.opp_pts ? 'L' : 'T');
-        return `<tr><td>${g.week}</td><td style="font-weight:600">${esc(g.opponent)}</td>
-          <td class="${res === 'W' ? 'res-w' : 'res-l'}">${res} ${g.pts}–${g.opp_pts}</td><td>${esc(g.site)}</td><td>${esc((us === 'offense' ? g.qb : g.opp_qb) || '')}</td>
-          <td><div class="wbar"><div class="track"><div class="fill" style="width:${(P.share[i] / maxS * 100).toFixed(1)}%;background:${color}"></div></div><span class="pct">${r0(P.share[i] * 100)}%</span></div></td>
-          <td>${tags.map(([t, c]) => `<span class="tag ${c}">${esc(t)}</span>`).join('')}</td></tr>`;
-      }).join('') + '</tbody>';
-
+    const P = pr.P[state.unit];
+    const ORDER = [`${AWAY}|offense`, `${HOME}|defense`, `${HOME}|offense`, `${AWAY}|defense`];
+    $('unitTables').innerHTML = ORDER.map(key => unitTable(key, pr.P[key])).join('');
     $('shiftTitle').textContent = `What the weighting changes: ${ut} ${us}`;
     $('shifts').innerHTML = METRICS.map(m => {
       const s = pct(P.season[m], us, m), f = pct(P.final[m], us, m);

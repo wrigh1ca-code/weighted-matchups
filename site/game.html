@@ -22,9 +22,9 @@
       <div class="chips" id="chips"></div>
     </div>
     <div class="seg" role="group" aria-label="Radar view" id="viewseg">
-      <button data-v="overlay" aria-pressed="true">Weighted + season</button>
-      <button data-v="weighted" aria-pressed="false">Weighted</button>
-      <button data-v="season" aria-pressed="false">Season only</button>
+      <button data-v="overlay" aria-pressed="true">Both</button>
+      <button data-v="weighted" aria-pressed="false">Weighted only</button>
+      <button data-v="season" aria-pressed="false">Unweighted only</button>
     </div>
   </div>
 
@@ -60,7 +60,7 @@
     <div class="grow card" style="display:flex;flex-direction:column;gap:16px">
       <div class="legend" id="legend"></div>
       <div class="radars" id="radars"></div>
-      <div class="small" style="text-align:center">Percentile vs. FBS this season; higher is better for that unit. Solid = weighted and confidence-blended; dashed = plain season average.</div>
+      <div class="small" style="text-align:center">Percentile vs. FBS this season (0–100); farther out is better for that unit.</div>
     </div>
     <div class="side">
       <div class="card" style="display:flex;flex-direction:column;gap:16px">
@@ -73,9 +73,9 @@
         </div>
       </div>
       <div class="card" style="display:flex;flex-direction:column;gap:12px">
-        <h2 style="font-size:18px">Starting QB</h2>
-        <div class="small">Pick who you expect to start. Games he started count more for that offense.</div>
-        <div id="qbs" style="display:flex;flex-direction:column;gap:10px"></div>
+        <h2 style="font-size:18px">Key players</h2>
+        <div class="small">Set who you expect to play. Past games played with the same QB, top RB and top WR count more for that offense (Roster slider).</div>
+        <div id="qbs" style="display:flex;flex-direction:column;gap:16px"></div>
       </div>
       <div class="card conf" style="display:flex;flex-direction:column;gap:10px">
         <h2 style="font-size:18px">Confidence</h2>
@@ -85,17 +85,17 @@
     </div>
   </div>
 
-  <section class="card" style="display:flex;flex-direction:column;gap:12px">
-    <div class="row" style="justify-content:space-between;align-items:center;gap:12px">
-      <h2 style="font-size:20px" id="gamesTitle">Games driving the profile</h2>
-      <div class="seg" role="group" aria-label="Unit" id="unitseg"></div>
-    </div>
-    <div class="scroll"><table class="games" id="gamesTable"></table></div>
-    <div class="small">Share = game weight × plays, as % of total. Weight = similarity^a × recency^a × setting^a × roster^a.</div>
+  <section style="display:flex;flex-direction:column;gap:12px">
+    <h2 style="font-size:22px">Games driving each profile</h2>
+    <div class="small">Share = game weight × plays, as % of that unit's total. Weight = similarity × recency × setting × roster, each raised to its slider strength.</div>
+    <div id="unitTables" style="display:flex;flex-direction:column;gap:20px"></div>
   </section>
 
   <section class="card" style="display:flex;flex-direction:column;gap:12px">
-    <h2 style="font-size:20px" id="shiftTitle">What the weighting changes</h2>
+    <div class="row" style="justify-content:space-between;align-items:center;gap:12px">
+      <h2 style="font-size:20px" id="shiftTitle">What the weighting changes</h2>
+      <div class="seg" role="group" aria-label="Unit" id="unitseg"></div>
+    </div>
     <div class="shifts" id="shifts"></div>
     <div class="small">Percentile points: season average → weighted. Orange = this unit looks weaker for this matchup than its season numbers suggest.</div>
   </section>

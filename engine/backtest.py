@@ -21,7 +21,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from engine.model import (Matchup, Params, PointsModel, baseline_for, fbs_teams, last_qb, load,
+from engine.model import (Matchup, Params, PointsModel, baseline_for, fbs_teams, key_players, last_qb, load,
                           profiles_asof, unit_ingredients)
 
 OUT = Path(__file__).resolve().parents[1] / "data" / "backtest"
@@ -53,15 +53,18 @@ def collect() -> list[dict]:
                    "units": {}}
             for team, opp in ((row.homeTeam, row.awayTeam), (row.awayTeam, row.homeTeam)):
                 qb = last_qb(team, season, date)
+                key = key_players(team, season, date)
                 for side in ("offense", "defense"):
+                    off = side == "offense"
                     r = unit_ingredients(team, side, season, date, opp, m.site(team), m.weather,
-                                         qb if side == "offense" else None)
+                                         qb if off else None, key if off else None)
                     base = baseline_for(team, side, season, prof)
                     rec["units"][f"{team}|{side}"] = {
                         "dist": r.dist.to_numpy(), "weeks_ago": r.weeks_ago.to_numpy(),
                         "site_base": r.site_base.to_numpy(),
                         "wx_d2": np.array([np.nan if v is None else v for v in r.wx_d2], dtype=float),
                         "qb_match": r.qb_match.to_numpy(dtype=float), "epa": r.epa_play.to_numpy(dtype=float),
+                        "rb_match": r.rb_match.to_numpy(dtype=float), "wr_match": r.wr_match.to_numpy(dtype=float),
                         "plays": r.plays.to_numpy(dtype=float), "base_epa": float(base["epa_play"]),
                         "opp_level": r.opp_level.to_numpy(dtype=float), "lg": float(prof.attrs["lg_epa"]),
                     }
@@ -80,7 +83,9 @@ def unit_epa(d: dict, p: Params) -> tuple[float, float, float]:
     rec = np.clip(np.power(0.5, d["weeks_ago"] / p.half_life), 1e-4, 1)
     wx = np.where(np.isnan(d["wx_d2"]), 1.0, np.exp(-np.nan_to_num(d["wx_d2"]) / 2))
     st = np.clip(d["site_base"] * wx, 1e-4, 1)
-    ros = np.where(d["qb_match"] >= 1, 1.0, p.qb_miss)
+    ros = (np.where(d["qb_match"] >= 1, 1.0, p.qb_miss)
+           * np.where(d.get("rb_match", 1) >= 1, 1.0, p.skill_miss)
+           * np.where(d.get("wr_match", 1) >= 1, 1.0, p.skill_miss))
     w = sim ** p.a_opp * rec ** p.a_rec * st ** p.a_set * ros ** p.a_ros
     n = d["plays"]
     x = d["epa"] - p.adj * (d["opp_level"] - d["lg"])
@@ -170,6 +175,7 @@ GRID = {
     "k": [1, 2, 3, 5, 8],
     "qb_miss": [0.2, 0.35, 0.5, 0.75],
     "adj": [0, 0.5, 0.75, 1.0, 1.25],
+    "skill_miss": [0.4, 0.55, 0.7, 0.85, 1.0],
 }
 
 

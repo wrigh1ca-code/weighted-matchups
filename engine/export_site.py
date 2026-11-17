@@ -90,11 +90,13 @@ def unit_payload(info: dict, season_opps: set[str], common: set[str]) -> dict:
             "dist": row.dist, "weeks_ago": row.weeks_ago, "site_base": row.site_base,
             "wx_d2": None if row.wx_d2 is None or (isinstance(row.wx_d2, float) and math.isnan(row.wx_d2)) else row.wx_d2,
             "qb_match": row.qb_match, "fcs": not bool(row.opp_fbs), "common": row.opponent in common,
+            "rb_played": bool(row.rb_played), "wr_played": bool(row.wr_played),
             "plays": row.plays, "rushes": row.rushes, "dropbacks": row.dropbacks, "opp_level": row.opp_level,
             "m": {m: getattr(row, m) for m in METRICS},
         })
     qbs = sorted({g["qb"] for g in games if g["qb"]})
-    return {"expected_qb": info["expected_qb"], "qbs": qbs, "baseline": info["baseline"].to_dict(), "games": games}
+    return {"expected_qb": info["expected_qb"], "qbs": qbs, "key": info.get("key"),
+            "baseline": info["baseline"].to_dict(), "games": games}
 
 
 def export_game(row, p: Params, pm: PointsModel) -> dict:
