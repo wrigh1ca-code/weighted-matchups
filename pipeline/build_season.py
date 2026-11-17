@@ -93,7 +93,10 @@ def build(client: CFBDClient, year: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     units = units.merge(ctx, on=["gameId", "team"], how="left")
 
     qb = pd.concat(qbs, ignore_index=True) if qbs else pd.DataFrame(columns=["gameId", "team", "qb", "qb_id"])
-    units = units.merge(qb[["gameId", "team", "qb", "qb_id"]], on=["gameId", "team"], how="left")
+    for col in ("rush_list", "rec_list"):
+        if col not in qb:
+            qb[col] = ""
+    units = units.merge(qb[["gameId", "team", "qb", "qb_id", "rush_list", "rec_list"]], on=["gameId", "team"], how="left")
     opp_qb = qb.rename(columns={"team": "opponent", "qb": "opp_qb", "qb_id": "opp_qb_id"})
     units = units.merge(opp_qb[["gameId", "opponent", "opp_qb", "opp_qb_id"]], on=["gameId", "opponent"], how="left")
     units = units.sort_values(["team", "side", "startDate"]).reset_index(drop=True)

@@ -21,27 +21,54 @@ def week_plays(client: CFBDClient, year: int, week: int, season_type: str = "reg
     return client.get("/plays", year=year, week=week, seasonType=season_type)
 
 
+def _num(x) -> float:
+    try:
+        return float(str(x).split("/")[0])
+    except (TypeError, ValueError):
+        return 0.0
+
+
 def week_player_passing(client: CFBDClient, year: int, week: int, season_type: str = "regular") -> pd.DataFrame:
-    """Passer with the most attempts for each team-game (our 'starting QB' tag)."""
+    """Per team-game: starting QB (most attempts) plus every rusher and receiver with their volume.
+
+    rush_list = "Name:carries|..."  rec_list = "Name:receptions:yards|..."
+    (Box scores list only players who recorded a stat, so absence ~ did not play or no touches.)
+    """
     data = client.get("/games/players", year=year, week=week, seasonType=season_type)
     rows = []
     for game in data:
         for team in game.get("teams", []):
+            stats: dict[str, dict] = {}
             for cat in team.get("categories", []):
-                if cat.get("name") != "passing":
-                    continue
-                atts: dict[str, dict] = {}
+                cname = cat.get("name")
                 for typ in cat.get("types", []):
-                    if typ.get("name") != "C/ATT":
-                        continue
+                    tname = typ.get("name")
                     for a in typ.get("athletes", []):
-                        try:
-                            att = int(str(a.get("stat", "0/0")).split("/")[1])
-                        except (IndexError, ValueError):
-                            att = 0
-                        atts[a.get("name")] = {"id": a.get("id"), "att": att}
-                if atts:
-                    name, best = max(atts.items(), key=lambda kv: kv[1]["att"])
-                    rows.append({"gameId": game.get("id"), "team": team.get("team"),
-                                 "qb": name, "qb_id": best["id"], "qb_att": best["att"]})
+                        nm = a.get("name")
+                        if not nm or nm.lower().startswith("team"):
+                            continue
+                        d = stats.setdefault(nm, {"id": a.get("id")})
+                        stat = a.get("stat", "0")
+                        if cname == "passing" and tname == "C/ATT":
+                            try:
+                                d["att"] = int(str(stat).split("/")[1])
+                            except (IndexError, ValueError):
+                                d["att"] = 0
+                        elif cname == "rushing" and tname == "CAR":
+                            d["car"] = _num(stat)
+                        elif cname == "receiving" and tname == "REC":
+                            d["rec"] = _num(stat)
+                        elif cname == "receiving" and tname == "YDS":
+                            d["rec_yds"] = _num(stat)
+            passers = {k: v for k, v in stats.items() if v.get("att", 0) > 0}
+            qb, qb_id, qb_att = None, None, 0
+            if passers:
+                qb, best = max(passers.items(), key=lambda kv: kv[1]["att"])
+                qb_id, qb_att = best["id"], best["att"]
+            rush = "|".join(f"{k.replace('|', ' ').replace(':', ' ')}:{int(v['car'])}"
+                            for k, v in stats.items() if v.get("car", 0) > 0)
+            rec = "|".join(f"{k.replace('|', ' ').replace(':', ' ')}:{int(v.get('rec', 0))}:{int(v.get('rec_yds', 0))}"
+                           for k, v in stats.items() if v.get("rec", 0) > 0)
+            rows.append({"gameId": game.get("id"), "team": team.get("team"), "qb": qb, "qb_id": qb_id,
+                         "qb_att": qb_att, "rush_list": rush, "rec_list": rec})
     return pd.DataFrame(rows)
