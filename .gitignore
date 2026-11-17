@@ -1,0 +1,13 @@
+# Raw CFBD API responses must never be committed (CFBD terms: no redistribution of raw responses)
+data/raw/
+data/cache/
+
+# Secrets
+.env
+*.key
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
