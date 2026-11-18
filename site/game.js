@@ -114,7 +114,6 @@
   if (game.weather) chips.push(game.weather.indoors ? 'Indoors' : `Forecast: ${Math.round(game.weather.temp)}°F, wind ${Math.round(game.weather.wind || 0)} mph${game.weather.precip > 0 ? ', precip' : ''}`);
   $('chips').innerHTML = chips.map(c => `<span class="chip">${esc(c)}</span>`).join('') +
     (G.common_opponents.length ? `<span class="chip info">Common opponents: ${esc(G.common_opponents.join(', '))}</span>` : '');
-  $('pAwayName').textContent = AWAY; $('pHomeName').textContent = HOME;
   const sp = game.spread_home;
   $('pMarket').textContent = sp == null ? 'n/a' : (Math.abs(sp) < 0.25 ? 'Pick ’em' : (sp < 0 ? `${HOME} ${sp}` : `${AWAY} −${sp}`));
 
@@ -205,19 +204,33 @@
   $('unitseg').innerHTML = UNITS.map(u => { const [t, s] = u.split('|'); return `<button data-u="${esc(u)}">${esc(t)} ${s === 'offense' ? 'O' : 'D'}</button>`; }).join('');
   document.querySelectorAll('#unitseg button').forEach(b => b.addEventListener('click', () => { state.unit = b.dataset.u; render(); }));
 
-  // ---------- radar
-  const N = METRICS.length, CX = 300, CY = 275, R = 175;
-  const pt = (v, i) => { const a = (-90 + 360 / N * i) * Math.PI / 180; return [CX + R * v / 100 * Math.cos(a), CY + R * v / 100 * Math.sin(a)]; };
+  $('viewInfoBtn').addEventListener('click', () => {
+    const open = $('viewInfo').hidden;
+    $('viewInfo').hidden = !open;
+    $('viewInfoBtn').setAttribute('aria-expanded', String(open));
+  });
+
+  // ---------- radar (grouped: overall across the top, run on the right, pass on the left)
+  const ORDER = ['epa_play', 'explosive', 'non_expl_epa', 'havoc', 'rush_epa', 'opportunity', 'line_yards', 'stuff',
+    'rush_expl', 'pass_expl', 'yds_db', 'pass_sr', 'pass_epa', 'late_sr', 'early_epa', 'sr'].filter(m => METRICS.includes(m));
+  const GROUPS = [['OVERALL', 12.5, 19.5, '#e4e7eb', '#374151'], ['RUN', 3.5, 8.5, '#d9eedb', '#1f5130'], ['PASS', 8.5, 12.5, '#e9dcf6', '#4c2a72']];
+  const N = ORDER.length, CX = 300, CY = 285, R = 175;
+  const ptA = (r, i) => { const a = (-90 + 360 / N * i) * Math.PI / 180; return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; };
+  const pt = (v, i) => ptA(R * v / 100, i);
   const poly = vals => vals.map((v, i) => pt(v == null ? 0 : v, i).map(x => x.toFixed(1)).join(',')).join(' ');
+  const sector = (a1, a2, r) => { const [x1, y1] = ptA(r, a1), [x2, y2] = ptA(r, a2);
+    return `M${CX},${CY} L${x1.toFixed(1)},${y1.toFixed(1)} A${r},${r} 0 ${(a2 - a1) * 360 / N > 180 ? 1 : 0} 1 ${x2.toFixed(1)},${y2.toFixed(1)} Z`; };
   function radarSVG(title, offKey, defKey, P) {
     const [ot] = offKey.split('|'), [dt] = defKey.split('|');
     const cOff = ot === HOME ? 'var(--home)' : 'var(--away)', fOff = ot === HOME ? 'var(--home-fill)' : 'var(--away-fill)';
     const cDef = dt === HOME ? 'var(--home)' : 'var(--away)', fDef = dt === HOME ? 'var(--home-fill)' : 'var(--away-fill)';
-    const vals = (key, side, which) => METRICS.map(m => pct(P[key][which][m], side, m));
-    let s = `<svg viewBox="0 0 600 560" role="img" aria-label="${esc(title)} percentile radar">`;
-    [100, 75, 50, 25].forEach((r, i) => s += `<polygon points="${poly(Array(N).fill(r))}" style="fill:${i === 0 ? '#fafafa' : 'none'};stroke:${r === 50 ? '#d1d5db' : '#e5e7eb'};stroke-width:1"/>`);
-    for (let i = 0; i < N; i++) { const [x, y] = pt(100, i); s += `<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" style="stroke:#e5e7eb;stroke-width:1"/>`; }
-    [50, 75, 100].forEach(r => { const [x, y] = pt(r, 0); s += `<text x="${x + 4}" y="${y + 12}" style="font:10px Inter,sans-serif;fill:#6b7280">${r}</text>`; });
+    const vals = (key, side, which) => ORDER.map(m => pct(P[key][which][m], side, m));
+    let s = `<svg viewBox="0 0 600 580" role="img" aria-label="${esc(title)} percentile radar, grouped into overall, run and pass metrics">`;
+    GROUPS.forEach(([, a1, a2, fill]) => s += `<path d="${sector(a1, a2, R + 14)}" style="fill:${fill};stroke:none"/>`);
+    [100, 75, 50, 25].forEach(r => s += `<polygon points="${poly(Array(N).fill(r))}" style="fill:none;stroke:${r % 50 === 0 ? '#c9ced5' : '#dde1e6'};stroke-width:1"/>`);
+    for (let i = 0; i < N; i++) { const [x, y] = pt(100, i); s += `<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" style="stroke:#dde1e6;stroke-width:1"/>`; }
+    GROUPS.forEach(([, a1]) => { const [x, y] = ptA(R + 14, a1); s += `<line x1="${CX}" y1="${CY}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" style="stroke:#9aa3ad;stroke-width:1.5;stroke-dasharray:2 3"/>`; });
+    [50, 100].forEach(r => { const [x, y] = pt(r, 0); s += `<text x="${(x + 4).toFixed(1)}" y="${(y + 12).toFixed(1)}" style="font:10px Inter,sans-serif;fill:#4b5563">${r}</text>`; });
     if (state.view !== 'weighted') {
       s += `<polygon points="${poly(vals(defKey, 'defense', 'season'))}" style="fill:none;stroke:${cDef};stroke-width:2.5;stroke-dasharray:6 5"/>`;
       s += `<polygon points="${poly(vals(offKey, 'offense', 'season'))}" style="fill:none;stroke:${cOff};stroke-width:2.5;stroke-dasharray:6 5"/>`;
@@ -226,9 +239,15 @@
       s += `<polygon points="${poly(vals(defKey, 'defense', 'final'))}" style="fill:${fDef};stroke:${cDef};stroke-width:2.5"/>`;
       s += `<polygon points="${poly(vals(offKey, 'offense', 'final'))}" style="fill:${fOff};stroke:${cOff};stroke-width:2.5"/>`;
     }
-    METRICS.forEach((m, i) => {
-      const [x, y] = pt(118, i); const anchor = Math.abs(x - CX) < 8 ? 'middle' : (x > CX ? 'start' : 'end');
+    ORDER.forEach((m, i) => {
+      const [x, y] = ptA(R + 30, i); const anchor = Math.abs(x - CX) < 8 ? 'middle' : (x > CX ? 'start' : 'end');
       s += `<text x="${x.toFixed(1)}" y="${(y + 4).toFixed(1)}" text-anchor="${anchor}" style="font:600 12px Inter,sans-serif;fill:#374151">${esc(LABELS[m])}</text>`;
+    });
+    GROUPS.forEach(([name, a1, a2, , ink]) => {
+      let [x, y] = ptA(R + 100, (a1 + a2) / 2);
+      const anchor = Math.abs(x - CX) < 40 ? 'middle' : (x > CX ? 'start' : 'end');
+      if (name === 'OVERALL') y = CY - R - 62;
+      s += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}" style="font:800 19px Inter,sans-serif;letter-spacing:.1em;fill:${ink}">${name}</text>`;
     });
     return s + '</svg>';
   }
@@ -277,16 +296,26 @@
 
     const pr = projection(state.a);
     const eq = projection({ a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 });
-    $('pAway').textContent = r0(pr.away); $('pHome').textContent = r0(pr.home);
-    const mg = pr.home - pr.away, rm = r0(mg);
-    const lo = mg - 1.2816 * pr.sd, hi = mg + 1.2816 * pr.sd;
-    const side = v => { const x = r0(v); return x === 0 ? 'even' : (x > 0 ? `${HOME} +${x}` : `${AWAY} +${-x}`); };
-    $('pMargin').textContent = `${rm === 0 ? 'Pick ’em' : (rm > 0 ? `${HOME} by ${rm}` : `${AWAY} by ${-rm}`)} · 80% range: ${side(lo)} to ${side(hi)}`;
-    const wa = r0((1 - pr.wp) * 100);
-    $('wpAway').textContent = `${AWAY} ${wa}%`; $('wpHome').textContent = `${HOME} ${100 - wa}%`;
-    $('wpA').style.width = `${wa}%`;
-    $('wpbar').setAttribute('aria-label', `Win probability: ${AWAY} ${wa} percent, ${HOME} ${100 - wa} percent`);
-    $('pEqual').textContent = `${AWAY} ${r0(eq.away)} – ${HOME} ${r0(eq.home)}`;
+    const block = (p, kind) => {
+      const mg = p.home - p.away, rm = r0(mg);
+      const lo = mg - 1.2816 * p.sd, hi = mg + 1.2816 * p.sd;
+      const side = v => { const x = r0(v); return x === 0 ? 'even' : (x > 0 ? `${HOME} +${x}` : `${AWAY} +${-x}`); };
+      const wa = r0((1 - p.wp) * 100);
+      const title = kind === 'w' ? '<b>Weighted</b> projection' : '<b>Unweighted</b> projection (equal weight)';
+      const note = kind === 'w' ? 'Uses your Weighting sliders and key players' : 'Every game counts the same';
+      return `<div class="pblock ${kind === 'u' ? 'dashed' : ''}">
+        <div class="lbl">${title}</div>
+        <div class="score">
+          <div style="display:flex;flex-direction:column"><span class="t away">${esc(AWAY)}</span><span class="n">${r0(p.away)}</span></div>
+          <span class="n" style="font-size:28px;color:#64748b">–</span>
+          <div style="display:flex;flex-direction:column"><span class="t home">${esc(HOME)}</span><span class="n">${r0(p.home)}</span></div>
+        </div>
+        <div style="font-size:14px;color:#e2e8f0">${rm === 0 ? 'Pick ’em' : (rm > 0 ? `${esc(HOME)} by ${rm}` : `${esc(AWAY)} by ${-rm}`)} · 80% range: ${esc(side(lo))} to ${esc(side(hi))}</div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span style="color:#9db8ee">${esc(AWAY)} ${wa}%</span><span style="color:#fdba8c">${esc(HOME)} ${100 - wa}%</span></div>
+        <div class="wpbar" role="img" aria-label="${kind === 'w' ? 'Weighted' : 'Unweighted'} win probability: ${esc(AWAY)} ${wa} percent, ${esc(HOME)} ${100 - wa} percent"><div class="a" style="width:${wa}%"></div><div class="h"></div></div>
+        <div style="font-size:12px;color:#cbd5e1">Win probability · ${note}</div></div>`;
+    };
+    $('projBlocks').innerHTML = (state.view !== 'season' ? block(pr, 'w') : '') + (state.view !== 'weighted' ? block(eq, 'u') : '');
     $('pPlays').textContent = `${AWAY} ${r0(G.plays[AWAY])} · ${HOME} ${r0(G.plays[HOME])}`;
 
     const sw = (team, solid) => {
