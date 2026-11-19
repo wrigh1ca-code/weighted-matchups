@@ -1,0 +1,2141 @@
+gameId,team,player,n,epa_sum,succ_sum,yds,kind
+401856634,Alabama,Daniel Hill,9,3.5719,8.0,47,rush
+401856634,Alabama,EJ Crowell,5,1.9044,3.0,18,rush
+401856634,Alabama,Keelon Russell,9,11.0831,6.0,75,rush
+401856634,Alabama,Kevin Riley,3,-0.0443,2.0,12,rush
+401856634,Alabama,Lotzeir Brooks,1,-1.1143,0.0,0,rush
+401856634,Alabama,Ryan Coleman-Williams,1,0.4147,1.0,9,rush
+401856634,Alabama,Trae'shawn Brown,5,-2.12,2.0,4,rush
+401856634,East Carolina,Ashton Gray,6,-1.6914,1.0,17,rush
+401856634,East Carolina,Mitch Griffis,2,-0.6512,0.0,5,rush
+401856634,East Carolina,TEAM,2,-2.094,0.0,-27,rush
+401856634,East Carolina,TJ Engleman Jr.,1,-0.7326,0.0,-2,rush
+401856661,Louisville,Lincoln Kienholz,1,2.6071,1.0,7,rush
+401856661,Louisville,Louisville,1,-4.5717,0.0,-29,rush
+401856661,Ole Miss,Shotgun Ole Miss,1,-2.5513,0.0,-21,rush
+401856661,Ole Miss,Trinidad Chambliss,1,2.6464,1.0,5,rush
+401856663,Missouri,J. Roberts,1,1.9004,1.0,1,rush
+401856668,Texas A&M,Terry Bussey,1,2.5138,1.0,10,rush
+401856669,Vanderbilt,Blaze Berlowitz,1,2.1968,1.0,7,rush
+401856684,Vanderbilt,Jared Curtis,1,2.454,1.0,1,rush
+401856684,Vanderbilt,Sedrick Alexander,1,2.4242,1.0,9,rush
+401856695,Vanderbilt,Makhilyn Young,1,2.1968,1.0,7,rush
+401856700,Georgia,Chauncey Bowens,1,2.4467,1.0,6,rush
+401856712,Alabama,EJ Crowell,1,2.454,1.0,1,rush
+401856715,Kentucky,Kenny Minchey,1,2.7858,1.0,1,rush
+401856716,Missouri,Jamal Roberts,2,6.9642,2.0,56,rush
+401856729,Kentucky,Kenny Minchey,1,1.9004,1.0,1,rush
+401856739,Florida,Jadan Baugh,1,2.5435,1.0,15,rush
+401856770,Texas Tech,J. Williams,1,2.4386,1.0,5,rush
+401856770,Texas Tech,Quinten Joyner,1,2.6149,1.0,14,rush
+401856778,Houston,Conner Weigman,1,1.9004,1.0,1,rush
+401856790,Pittsburgh,Damon Ferguson Jr.,1,2.5389,1.0,13,rush
+401856806,Houston,C. Weigman,1,2.454,1.0,1,rush
+401856816,Iowa State,Jaylen Raynor,1,2.7487,1.0,8,rush
+401856816,Utah,W. Parker,2,5.1229,2.0,55,rush
+401856847,Oklahoma State,C. Hawkins,1,0.938,1.0,1,rush
+401856854,Oklahoma State,Caleb Hawkins,1,2.7358,1.0,21,rush
+401856856,Texas Tech,J. Williams,1,6.0778,1.0,75,rush
+401856856,Texas Tech,Quinten Joyner,1,0.938,1.0,1,rush
+401856856,West Virginia,A. Latimer,1,2.6246,1.0,3,rush
+401856856,West Virginia,C. Cook,1,2.0679,1.0,2,rush
+401856856,West Virginia,Mi. Hawkins Jr.,3,6.4624,3.0,8,rush
+401856861,Kansas,Chase Belcher,1,2.801,1.0,2,rush
+401856863,Oklahoma State,D. Mestemaker,1,2.5389,1.0,13,rush
+401856863,Texas Tech,J. Williams,1,2.9367,1.0,34,rush
+401858201,Hawai'i,S. Mikaele,1,2.8536,1.0,5,rush
+401858201,Stanford,Micah Ford,1,2.8514,1.0,2,rush
+401858206,Miami,CharMar Brown,1,1.9345,1.0,5,rush
+401858208,Syracuse,S. Anderson Jr.,1,2.5582,1.0,15,rush
+401858212,Florida State,Ashton Daniels,12,7.8011,6.0,89,rush
+401858212,Florida State,Ousmane Kromah,22,-4.1481,8.0,109,rush
+401858212,Florida State,Samuel Singleton Jr.,7,-0.6712,3.0,24,rush
+401858212,SMU,Dramekco Green,13,1.2986,8.0,43,rush
+401858212,SMU,Jalen Hale,1,-0.0876,0.0,4,rush
+401858212,SMU,Kendrick Raphael,12,0.8486,4.0,75,rush
+401858212,SMU,Kevin Jennings,5,1.897,3.0,33,rush
+401858224,Purdue,Fame Ijeboi,2,4.4557,2.0,10,rush
+401858224,Wake Forest,Gio Lopez,2,4.6654,2.0,4,rush
+401858228,Georgia Tech,Justice Haynes,2,5.6277,2.0,32,rush
+401858230,Louisville,I. Brown,1,2.9873,1.0,27,rush
+401858230,Louisville,Shotgun Louisville,1,-3.1815,0.0,-17,rush
+401858234,Clemson,G. Davidson,1,7.0567,1.0,75,rush
+401858243,Louisville,Lincoln Kienholz,1,2.6584,1.0,6,rush
+401858243,Wake Forest,Ty Clark III,1,2.5287,1.0,6,rush
+401858249,Miami,Darian Mensah,1,2.9367,1.0,34,rush
+401858257,Notre Dame,J. Walton,1,7.1467,1.0,97,rush
+401858259,California,Ashten Emory,2,3.4405,2.0,7,rush
+401858259,Virginia Tech,Ethan Grunkemeyer,1,0.938,1.0,1,rush
+401858259,Virginia Tech,Marcellous Hawkins Jr.,1,2.0759,1.0,3,rush
+401858278,SMU,Kendrick Raphael,1,2.4565,1.0,13,rush
+401858279,Duke,Nate Sheppard,1,2.0679,1.0,2,rush
+401858283,Louisville,I. Brown,1,2.664,1.0,23,rush
+401858423,Massachusetts,Shotgun Massachusetts,1,-1.5558,0.0,-4,rush
+401858424,UAB,Ryder Burton,1,2.7616,1.0,5,rush
+401858436,USC,W. Jordan,1,1.2132,1.0,2,rush
+401858464,Nebraska,V. Genatone,1,1.9004,1.0,1,rush
+401858476,Northwestern,J. Himon II,1,2.5217,1.0,11,rush
+401858476,Northwestern,Joseph Himon II,1,3.7619,1.0,38,rush
+401858476,Penn State,C. Hansen,1,2.5276,1.0,8,rush
+401858489,Rutgers,C. Thevenin,1,2.5373,1.0,7,rush
+401858512,Minnesota,Darius Taylor,1,2.6246,1.0,3,rush
+401858514,Ohio State,Shotgun Ohio St.,1,-0.174,0.0,-17,rush
+401858514,Oregon,No Huddle-Shotgun Oregon,1,-0.8439,0.0,-4,rush
+401858521,Michigan State,Shotgun Michigan St.,1,-1.0964,0.0,-3,rush
+401860881,Boise State,Maddux Madsen,1,0.938,1.0,1,rush
+401860881,Boise State,Rasean Jones,1,2.6044,1.0,19,rush
+401860881,Boise State,Sire Gaines,1,2.8564,1.0,11,rush
+401860881,Memphis,Jaylin Carter,1,6.3861,1.0,80,rush
+401860884,Texas State,B. Jackson,1,2.101,1.0,6,rush
+401860884,Texas State,D. Jackson,1,2.5687,1.0,16,rush
+401860884,UTSA,Brandon High Jr.,1,2.7001,1.0,25,rush
+401860889,North Texas,Jahiem White,1,1.9004,1.0,1,rush
+401860889,Texas State,Davian Jackson,1,2.7858,1.0,1,rush
+401860890,Washington State,Kirby Vorhees,1,4.5346,1.0,58,rush
+401860899,Colorado State,K'saan Farrar,1,2.7858,1.0,1,rush
+401860899,Colorado State,Mel Brown,1,2.5799,1.0,17,rush
+401860899,Oregon State,Aaron Butler,1,2.8142,1.0,30,rush
+401860900,San Diego State,Josiah Lucas,2,3.41,2.0,9,rush
+401860907,Washington State,Kirby Vorhees,1,0.938,1.0,1,rush
+401861966,Air Force,Gage LaDue,1,1.6882,1.0,4,rush
+401861966,Air Force,K. Hodges,1,5.3222,1.0,62,rush
+401861966,Air Force,Kemper Hodges,2,4.9972,2.0,4,rush
+401861966,UConn,Kenji Christian,1,4.5684,1.0,46,rush
+401861966,UConn,Trey Cornist,1,0.938,1.0,1,rush
+401862694,Charlotte,Cole Gonzales,1,2.3196,1.0,8,rush
+401862694,The Citadel,Gavin Garcia,1,3.1524,1.0,25,rush
+401862694,The Citadel,Nick Billoups,1,2.0679,1.0,2,rush
+401862702,Army,Godspower Nwawuihe,1,2.7809,1.0,10,rush
+401862702,South Florida,M. Van Buren Jr.,2,5.2732,2.0,42,rush
+401862703,Navy,Jackson Gutierrez,1,4.9955,1.0,49,rush
+401862710,Old Dominion,No Huddle Old Dominion,1,-4.9184,0.0,-19,rush
+401862776,Louisiana,Steven Blanco,1,2.4628,1.0,1,rush
+401862777,South Florida,Luke Kromenhoek,1,2.454,1.0,1,rush
+401862794,UTSA,A'Marion Peterson,2,3.0139,2.0,4,rush
+401862796,North Texas,Jahiem White,1,5.9628,1.0,61,rush
+401862797,Rice,Tyvonn Byars,1,2.8665,1.0,23,rush
+401862807,East Carolina,Ashton Gray,1,1.9004,1.0,1,rush
+401862814,Memphis,Marcus Stokes,1,1.9004,1.0,1,rush
+401862821,North Texas,Tayven Jackson,1,2.5867,1.0,6,rush
+401864443,Middle Tennessee,Antonio Martin,1,1.4645,1.0,3,rush
+401864443,Nevada,Carter Jones,1,0.938,1.0,1,rush
+401864494,San José State,Luke Weaver,1,2.6071,1.0,7,rush
+401864505,UTEP,EJ Colson Jr.,1,2.5544,1.0,3,rush
+401864509,Air Force,Liam Szarka,1,2.7858,1.0,1,rush
+401864537,North Dakota State,DJ Scott,1,2.454,1.0,1,rush
+401866415,Central Michigan,Angel Flores,1,5.8733,1.0,50,rush
+401866418,Jacksonville State,Khristian Lando,1,2.3339,1.0,4,rush
+401866418,Ohio,Victor Rosa,1,2.454,1.0,1,rush
+401866419,Toledo,Autavius Ison,1,1.4645,1.0,3,rush
+401866419,Toledo,CJ Miller,1,2.7892,1.0,14,rush
+401866431,Toledo,CJ Miller,2,6.7325,2.0,70,rush
+401866446,Akron,Jordan Gant,1,2.8238,1.0,6,rush
+401866449,Ohio,N. Poulos,1,0.938,1.0,1,rush
+401866449,Ohio,No Huddle-Shotgun Ohio,1,-2.9655,0.0,-11,rush
+401866454,Buffalo,J. Wright,1,2.454,1.0,1,rush
+401866454,Buffalo,Jason Wright,1,2.5448,1.0,2,rush
+401866454,Miami (OH),Scoop Smith,1,2.0525,1.0,6,rush
+401866461,Buffalo,M. Burch,1,1.2132,1.0,2,rush
+401866461,Buffalo,Messiah Burch,1,6.3859,1.0,67,rush
+401866461,Buffalo,Terrance Shelton Jr.,1,2.7883,1.0,29,rush
+401866618,Morgan State,No Huddle-Shotgun Morgan St.,1,-1.2041,0.0,-10,rush
+401866620,Campbell,D. Thomas,2,3.006,2.0,3,rush
+401866620,Campbell,K. Sixkiller,1,2.6149,1.0,14,rush
+401866620,East Tennessee State,D. Rucker,1,1.6882,1.0,4,rush
+401866623,Georgia State,Lanear McCrary Jr.,1,2.3674,1.0,8,rush
+401866629,Bryant,Brennan Myer,1,2.8238,1.0,6,rush
+401866631,New Hampshire,Joquez Smith,3,9.1364,3.0,63,rush
+401866631,Stonehill,Shane Eason,1,2.2114,1.0,3,rush
+401866633,North Carolina Central,No Huddle-Shotgun N.C. Central,1,-0.0296,0.0,-6,rush
+401866635,Monmouth,Nazir Treadwell,1,2.454,1.0,1,rush
+401866635,UAlbany,Joey Koch,1,2.5138,1.0,10,rush
+401866635,UAlbany,Rahshan La Mons,1,1.2132,1.0,2,rush
+401866641,Hampton,A. Pryear,1,2.8858,1.0,21,rush
+401866641,Norfolk State,Ravon Moore,1,0.938,1.0,1,rush
+401866646,Princeton,Kai Honda,1,2.454,1.0,1,rush
+401866648,Stony Brook,CJ Hester,1,2.8589,1.0,11,rush
+401866649,Delaware State,Sean Weston Jr.,1,2.6246,1.0,3,rush
+401866649,Delaware State,Ui Ale,1,2.0525,1.0,6,rush
+401866649,Towson,Xavier Pugh,1,1.9004,1.0,1,rush
+401866657,Campbell,De'Von Thomas,1,1.6882,1.0,4,rush
+401866657,Campbell,JJ Cowan,1,1.4645,1.0,3,rush
+401866657,North Carolina Central,Zion Dobson,1,4.953,1.0,62,rush
+401866670,Rhode Island,No Huddle-Shotgun Rhode Island,1,-0.8015,0.0,-1,rush
+401866670,UAlbany,No Huddle-Shotgun UAlbany,1,-0.8381,0.0,-1,rush
+401866675,UAlbany,Rahshan La Mons,1,5.4136,1.0,63,rush
+401866682,Sacred Heart,P. Snyder,1,2.397,1.0,11,rush
+401866685,Elon,Elijah Guttman,1,1.4645,1.0,3,rush
+401866685,Elon,Kamerin McDowell-Moore,1,2.6814,1.0,24,rush
+401866689,Rhode Island,No Huddle-Shotgun Rhode Island,1,-0.5233,0.0,-1,rush
+401866689,Towson,Jacob Davis,1,2.6464,1.0,5,rush
+401867687,Chicago State,Ashton Pannell,1,2.6071,1.0,7,rush
+401867687,Norfolk State,Jalyn Daniels,1,0.938,1.0,1,rush
+401867687,Norfolk State,Jason Wonodi,1,6.1456,1.0,76,rush
+401867690,Chicago State,Ashton Pannell,1,2.7896,1.0,7,rush
+401867690,Chicago State,Calvin Lee,2,3.805,2.0,20,rush
+401867690,Chicago State,Tre' Hartwell,2,2.6262,2.0,5,rush
+401867692,William & Mary,Andrew King,1,2.2114,1.0,3,rush
+401867805,Brown,M. Childs,2,3.6759,2.0,6,rush
+401867817,Columbia,Griffin Johnson,1,0.938,1.0,1,rush
+401867817,Columbia,Xander Menapace,1,1.9004,1.0,1,rush
+401867817,Lafayette,Jakyre Henley,1,2.6814,1.0,24,rush
+401867821,Pennsylvania,Tommy Lafayette,1,2.0525,1.0,6,rush
+401867830,Lehigh,No Huddle-Shotgun Lehigh,1,-3.4579,0.0,-15,rush
+401867841,Harvard,K. Flannery,1,1.9004,1.0,1,rush
+401867860,Indiana State,Max McCool,1,3.0514,1.0,37,rush
+401867860,Youngstown State,Beau Brungard,1,1.9004,1.0,1,rush
+401867863,Indiana State,Z. Prince,1,5.9327,1.0,73,rush
+401867863,Murray State,D. Howard,1,2.5138,1.0,10,rush
+401867863,Murray State,Jawaun Northington,1,1.2132,1.0,2,rush
+401867869,North Dakota,C. Langama,1,2.72,1.0,26,rush
+401867890,Southern Illinois,Shotgun,1,-0.4479,0.0,-2,rush
+401867898,Montana State,No Huddle-Shotgun Montana St.,1,-0.8086,0.0,-1,rush
+401867911,Duquesne,N. Davis,1,2.4386,1.0,5,rush
+401867914,Long Island University,No Huddle-Shotgun LIU,1,-5.4242,0.0,0,rush
+401867917,Robert Morris,Carson Haggard,1,2.877,1.0,18,rush
+401867919,Robert Morris,Shotgun Robert Morris,1,-2.962,0.0,-11,rush
+401867922,Robert Morris,Shotgun,1,-0.3624,0.0,2,rush
+401867932,Merrimack,No Huddle-Shotgun,1,-1.1619,0.0,0,rush
+401867934,Wagner,Uriah Moats-Maynard,1,5.8883,1.0,61,rush
+401867953,Delaware State,No Huddle-Shotgun Delaware St.,1,-0.3907,0.0,-1,rush
+401867955,Delaware State,Marqui Adams,1,2.5138,1.0,10,rush
+401867956,Delaware State,No Huddle-Shotgun Delaware St.,1,-4.6318,0.0,-18,rush
+401867957,Delaware State,No Huddle-Shotgun Delaware St.,1,-1.0152,0.0,-1,rush
+401867957,Morgan State,No Huddle-Shotgun Morgan St.,1,-1.2405,0.0,-11,rush
+401867958,Howard,Billy Roberson II,1,1.8838,1.0,5,rush
+401867961,Howard,Shotgun,1,-0.5344,0.0,0,rush
+401867961,Morehouse,M. Scott,1,2.3768,1.0,9,rush
+401867964,South Carolina State,No Huddle-Shotgun,1,0.0884,0.0,7,rush
+401867977,North Carolina Central,No Huddle-Shotgun N.C. Central,1,-3.2856,0.0,-18,rush
+401867977,Texas Southern,No Huddle Texas Southern,1,-0.208,0.0,-1,rush
+401867978,Elizabeth City State,No Huddle Elizabeth City State,1,-5.2511,0.0,-33,rush
+401867978,North Carolina Central,No Huddle N.C. Central,1,-5.0613,0.0,-22,rush
+401867978,North Carolina Central,No Huddle-Shotgun N.C. Central,1,-1.9243,0.0,-7,rush
+401867980,North Carolina Central,No Huddle-Shotgun N.C. Central,1,-2.1614,0.0,-15,rush
+401867983,Virginia State,No Huddle-Shotgun,1,0.9676,1.0,12,rush
+401867986,South Carolina State,No Huddle-Shotgun,1,-0.2513,0.0,1,rush
+401867986,The Citadel,Gavin Garcia,1,2.454,1.0,1,rush
+401867986,The Citadel,No Huddle-Shotgun,2,-0.0058,1.0,7,rush
+401867989,Villanova,No Huddle-Shotgun Villanova,2,-1.7852,0.0,-16,rush
+401867989,Villanova,Villanova,1,-1.1259,0.0,-1,rush
+401867994,Bucknell,Bucknell,1,-4.3569,0.0,-21,rush
+401868000,Holy Cross,J. Williams,1,2.6071,1.0,7,rush
+401868007,Colgate,Danny Shaban,1,3.152,1.0,29,rush
+401868007,Colgate,Jake Stearney,1,2.856,1.0,8,rush
+401868011,Fordham,Gunnar Smith,1,2.7616,1.0,5,rush
+401868014,Fordham,Jacob Rodriguez,1,3.4129,1.0,44,rush
+401868014,Fordham,Jamell James,1,1.9004,1.0,1,rush
+401868014,Fordham,Yohan-Li Louis,1,5.8733,1.0,50,rush
+401868014,Georgetown,Clay Ash,1,0.938,1.0,1,rush
+401868014,Georgetown,Udechukwu Enyeribe,1,2.5687,1.0,16,rush
+401868024,Holy Cross,Shotgun Holy Cross,1,-2.895,0.0,-10,rush
+401868024,Lafayette,No Huddle-Shotgun Lafayette,1,-0.5986,0.0,-4,rush
+401868028,Marist,Shotgun Marist,1,-1.2123,0.0,-5,rush
+401868034,Lehigh,Derek Morgan,1,2.649,1.0,11,rush
+401868034,Pennsylvania,Tommy Lafayette,1,1.9004,1.0,1,rush
+401868035,Villanova,No Huddle-Shotgun Villanova,1,-0.5452,0.0,-6,rush
+401868036,Lehigh,Joseph Marranca,1,2.2114,1.0,3,rush
+401868049,Lamar,Lamar University,1,-0.3354,0.0,-2,rush
+401868070,Central Arkansas,Jalen Washington,1,3.2229,1.0,27,rush
+401868070,Central Arkansas,Que Tillman,1,2.2114,1.0,3,rush
+401868070,UT Martin,Tommy Ansley,2,5.3128,2.0,31,rush
+401868071,Central Arkansas,Donovyn Omolo,1,4.5135,1.0,44,rush
+401868071,West Florida,TJ Lane,1,1.4645,1.0,3,rush
+401868071,West Florida,Ty'ray Davis,1,2.1968,1.0,7,rush
+401868072,Central Arkansas,No Huddle-Shotgun,1,-0.7944,0.0,0,rush
+401868086,UC Davis,Jordan Fisher,1,3.8033,1.0,37,rush
+401868090,Idaho,Israel Carter,1,1.2132,1.0,2,rush
+401868095,Idaho,No Huddle-Shotgun Idaho,1,-1.8874,0.0,-11,rush
+401868110,Southern Utah,Floyd Chalk,1,2.3499,1.0,6,rush
+401868115,Montana,Eli Gillman,1,1.9004,1.0,1,rush
+401868129,Northern Colorado,Mathias Price,1,3.5582,1.0,31,rush
+401868131,Northern Colorado,Brayten Silbor,1,0.938,1.0,1,rush
+401868131,Northern Colorado,Jordan Herron,1,2.6044,1.0,19,rush
+401868131,Utah Tech,Ace Chatman,1,1.2132,1.0,2,rush
+401868137,Central Arkansas,Jalen Washington,1,0.938,1.0,1,rush
+401868137,West Georgia,No Huddle-Shotgun West Ga.,1,-6.7617,0.0,0,rush
+401868138,Eastern Kentucky,Joe Schlarman,1,1.9004,0.0,0,rush
+401868144,Eastern Kentucky,B. Hensley,1,2.5175,1.0,13,rush
+401868144,Eastern Kentucky,J. Potts,1,1.9004,1.0,1,rush
+401868147,Eastern Kentucky,Brady Hensley,1,2.0679,1.0,2,rush
+401868154,Portland State,Shotgun Portland St.,1,-1.6243,0.0,-13,rush
+401868158,Southern Utah,Floyd Chalk,1,2.1435,1.0,22,rush
+401868159,Southern Utah,Will Burns,1,2.4242,1.0,9,rush
+401868159,St. Thomas (MN),Gabriel Abel,1,6.7484,1.0,78,rush
+401868159,St. Thomas (MN),Joseph Koch,1,0.938,1.0,1,rush
+401868159,St. Thomas (MN),Nick Peipert,1,2.7858,1.0,1,rush
+401868164,UC Davis,No Huddle-Shotgun,1,-0.9292,0.0,0,rush
+401868170,Georgia Southern,Jamarian Samuel,1,2.1968,1.0,7,rush
+401868170,Georgia Southern,Weston Bryan,1,0.938,1.0,1,rush
+401868175,Western Illinois,Ihson Jackson-Anderson,1,2.5483,1.0,14,rush
+401868179,Eastern Illinois,Cole LaCrue,1,3.0101,1.0,9,rush
+401868179,South Dakota State,Corey Blair Jr.,1,4.855,1.0,61,rush
+401868179,South Dakota State,James Basinger,2,6.8267,2.0,87,rush
+401868179,South Dakota State,Josiah Johnson,1,6.2462,1.0,55,rush
+401868180,Eastern Illinois,Charles Kellom,2,3.2719,2.0,5,rush
+401868180,Eastern Illinois,Cole LaCrue,1,1.6882,1.0,4,rush
+401868180,Eastern Illinois,Shotgun,3,-0.2993,0.0,5,rush
+401868180,Gardner-Webb,No Huddle-Shotgun,5,0.9709,2.0,19,rush
+401868184,Western Illinois,K. McGill,1,-0.969,0.0,0,rush
+401868200,Southeast Missouri State,Chance Wilson,1,2.664,1.0,23,rush
+401868219,Drake,Adrien Robbins,1,5.4932,1.0,62,rush
+401868219,Drake,Cody Blicharz,1,1.6882,1.0,4,rush
+401868219,Drake,Kavaughn Clark,1,2.482,1.0,4,rush
+401868220,Davidson,Casey Bullock,1,2.454,1.0,1,rush
+401868222,Morehead State,No Huddle Morehead St.,1,-4.0541,0.0,-13,rush
+401868227,Dayton,Luke Hansen,1,3.0592,1.0,28,rush
+401868227,Thomas More,Ben Chesser,1,2.004,1.0,12,rush
+401868227,Thomas More,Shotgun Thomas More,1,-0.6316,0.0,-5,rush
+401868231,Dayton,Mason Hackett,1,2.5799,1.0,17,rush
+401868232,Dayton,No Huddle-Shotgun Dayton,1,-0.4785,0.0,-2,rush
+401868235,Prairie View A&M,Tevin Carter,1,1.6882,1.0,4,rush
+401868235,Tarleton State,Kaden Anderson,1,1.2132,1.0,2,rush
+401868235,Tarleton State,Tylan Hines,1,6.1162,1.0,63,rush
+401868236,Tarleton State,Tylan Hines,1,5.5249,1.0,46,rush
+401868254,South Dakota Mines,No Huddle-Shotgun South Dakota Mines,1,-0.8459,0.0,-11,rush
+401868262,Marist,Marist,1,-4.7095,0.0,-21,rush
+401868262,Marist,S. Mannino,1,2.72,1.0,26,rush
+401868265,Columbia,G. Johnson,1,1.9004,1.0,1,rush
+401868265,Marist,Sonny Mannino,1,2.7858,1.0,1,rush
+401868267,Marist,Isaiah Simmons,1,3.6645,1.0,35,rush
+401868270,Morehead State,No Huddle Morehead State,1,-0.8015,0.0,-1,rush
+401868272,Morehead State,No Huddle Morehead State,2,-0.8318,0.0,-2,rush
+401868273,UVA Wise,No Huddle-Shotgun UVA Wise,1,-1.6713,0.0,-17,rush
+401868276,Presbyterian,Damion Moate,1,2.6246,1.0,3,rush
+401868276,Presbyterian,Jackson Burleson,1,1.8838,1.0,5,rush
+401868276,Presbyterian,Landon Sharpe,1,0.938,1.0,1,rush
+401868276,St. Thomas (MN),Gabriel Abel,1,1.8838,1.0,5,rush
+401868281,San Diego,Dom Nankil,1,2.2083,1.0,16,rush
+401868281,St. Thomas (MN),Gabriel Abel,1,4.4653,1.0,57,rush
+401868281,St. Thomas (MN),Nick Peipert,1,3.4965,1.0,25,rush
+401868286,Valparaiso,Cedric Benning III,1,2.2114,1.0,3,rush
+401868299,Alabama A&M,Byron Perrilliat,2,5.5134,2.0,37,rush
+401868301,Alabama A&M,Kolton Nero,1,2.5301,1.0,14,rush
+401868309,Stephen F. Austin,No Huddle-Shotgun SFA,1,-1.3093,0.0,-1,rush
+401868316,South Alabama,Bishop Davenport,1,2.8514,1.0,2,rush
+401868316,South Alabama,Trae'von Dunbar,1,1.9004,1.0,1,rush
+401868321,Incarnate Word,Emmett Brown,1,2.6464,1.0,5,rush
+401868321,Incarnate Word,Jayden Hibbler,1,2.084,1.0,4,rush
+401868321,Incarnate Word,Lontrell Turner,2,4.8308,2.0,10,rush
+401868322,SE Louisiana,Calvin Smith Jr.,1,2.2114,1.0,3,rush
+401868340,Chattanooga,Shotgun Chattanooga,1,-0.8085,0.0,-3,rush
+401868342,VMI,VMI,1,-0.703,0.0,0,rush
+401868358,Alcorn State,Carl McDonald Jr.,1,1.2132,1.0,2,rush
+401868358,Alcorn State,Fredrick Robertson,3,3.3645,3.0,5,rush
+401868358,Texas Southern,Cam'Ron McCoy,2,6.1509,2.0,39,rush
+401868373,Furman,Ben Croasdale,1,1.9004,1.0,1,rush
+401868375,Furman,C.J. Stokes,1,2.6071,1.0,7,rush
+401868378,Furman,T. Smith,1,-7.9222,1.0,15,rush
+401868384,Mercer,No Huddle Mercer,1,-1.11,0.0,-1,rush
+401868397,Davidson,Shotgun Davidson,1,-1.2945,0.0,-16,rush
+401868944,Jackson State,No Huddle-Shotgun Jackson State,1,-1.4464,0.0,-8,rush
+401868948,Florida A&M,Chase Gillespie,1,2.4242,1.0,9,rush
+401868950,Southern,Trey Holly,1,5.2427,1.0,65,rush
+401868954,Prairie View A&M,Jahbari Kuykendall,1,2.573,1.0,17,rush
+401868969,Prairie View A&M,Chase Bingmon,1,4.166,1.0,52,rush
+401868970,Southern,Trey Holly,2,5.8624,2.0,28,rush
+401869127,Howard,Billy Roberson II,1,2.454,1.0,1,rush
+401869128,Louisiana Christian,Datlan Cunningham,2,4.9311,2.0,39,rush
+401869128,Louisiana Christian,Jaterrius Johnson,1,1.2132,1.0,2,rush
+401869139,Nicholls,No Huddle-Shotgun Nicholls,1,-4.0838,0.0,0,rush
+401869143,Lamar,L. McDowell,1,2.5217,1.0,11,rush
+401869143,Lamar,P. Jenkins,1,1.9004,1.0,1,rush
+401869144,Lamar,No Huddle-Shotgun Lamar University,1,-0.8015,0.0,-1,rush
+401869145,Lamar,No Huddle-Shotgun Lamar University,1,-0.2347,0.0,2,rush
+401869147,Incarnate Word,Emmett Brown,1,2.7992,1.0,10,rush
+401869150,Arkansas Baptist,No Huddle-Shotgun,1,0.6474,1.0,7,rush
+401869150,Houston Christian,No Huddle-Shotgun,1,-1.5959,0.0,-4,rush
+401869933,South Alabama,J. Hollins,1,1.4645,1.0,3,rush
+401869933,South Alabama,Jared Hollins,1,1.9171,1.0,3,rush
+401869933,South Alabama,K. Phillips,1,4.0745,1.0,42,rush
+401869933,South Alabama,Keenan Phillips,1,2.664,1.0,23,rush
+401869934,Southern Miss,Southern Miss.,1,-6.1309,0.0,-14,rush
+401869940,Delaware,Jo Silver,1,2.0679,1.0,2,rush
+401869951,Marshall,Jo'Shon Barbie,1,3.4765,1.0,45,rush
+401869960,Liberty,Shotgun Liberty,1,-1.6606,0.0,-11,rush
+401869961,Old Dominion,Maurki James,1,2.454,1.0,1,rush
+401870822,Dickinson,No Huddle Dickinson,1,-0.3539,0.0,-9,rush
+401870840,Yale,Hugo Djeumeni Kemeni,1,2.74,1.0,9,rush
+401871045,Marshall,Xayvion Turner-Bradshaw,1,2.454,0.0,0,rush
+401871074,Florida International,D. Lyons,1,2.0525,1.0,6,rush
+401871091,UL Monroe,No Huddle-Shotgun ULM,1,-4.3421,0.0,-7,rush
+401874035,Southern Illinois,Jake Curry,1,2.8441,1.0,19,rush
+401874042,East Texas A&M,Quay Middlebrooks,1,2.454,1.0,1,rush
+401896383,Morehead State,No Huddle-Shotgun Morehead State,1,-3.1376,0.0,-12,rush
+401896384,Davidson,Shotgun Davidson,1,-2.0487,0.0,-8,rush
+401915931,Chicago State,Tre' Hartwell,1,2.5217,1.0,11,rush
+401856634,Alabama,Daniel Hill,1,0.457,0.0,7,target
+401856634,Alabama,Derek Meadows,2,2.62,2.0,37,target
+401856634,Alabama,EJ Crowell,1,0.2196,1.0,13,target
+401856634,Alabama,Kaleb Edwards,3,0.8843,1.0,21,target
+401856634,Alabama,Keelon Russell,1,-1.6546,0.0,-10,target
+401856634,Alabama,Lotzeir Brooks,1,0.0463,0.0,5,target
+401856634,Alabama,Marshall Pritchett,2,-2.1359,0.0,0,target
+401856634,Alabama,Rico Scott,3,1.7234,2.0,21,target
+401856634,Alabama,Ryan Coleman-Williams,7,10.7298,4.0,130,target
+401856634,Alabama,Ryan Coleman-Williams Alabama Penalty,1,-2.0809,0.0,-5,target
+401856634,East Carolina,Ismael Smith Flores,1,0.0219,0.0,5,target
+401856634,East Carolina,Jason Dickerson,1,-0.4614,0.0,0,target
+401856634,East Carolina,Jeremiah Melvin,3,3.8795,3.0,37,target
+401856634,East Carolina,Ray Ray Joseph Jr.,3,1.3432,1.0,23,target
+401856634,East Carolina,Tyler Johnson,1,4.8064,1.0,68,target
+401856658,Georgia,Jaden Reddell,1,2.9939,1.0,14,target
+401856659,Kentucky,Willie Rodriguez,1,2.8514,1.0,2,target
+401856661,Louisville,Lawayne McCoy,1,5.857,1.0,54,target
+401856661,Louisville,Tre Richardson,1,4.953,1.0,62,target
+401856661,Ole Miss,Caleb Odom,1,3.1018,1.0,35,target
+401856661,Ole Miss,Deuce Alexander,2,10.994,2.0,124,target
+401856668,Texas A&M,Mario Craver,1,2.5301,1.0,12,target
+401856671,Auburn,Byrum Brown,1,3.0063,1.0,5,target
+401856684,Vanderbilt,Walter Taylor,1,2.6044,1.0,19,target
+401856695,Vanderbilt,Junior Sherrill,1,4.2915,1.0,43,target
+401856696,Alabama,Ryan Coleman-Williams,1,3.5723,1.0,32,target
+401856700,Georgia,Talyn Taylor,1,2.822,1.0,35,target
+401856700,Oklahoma,Rocky Beers,1,3.0727,1.0,17,target
+401856716,Missouri,Cayden Lee,1,3.6241,1.0,32,target
+401856720,LSU,Jackson Harris,1,3.0208,1.0,17,target
+401856729,Vanderbilt,Ja'Cory Thomas,1,4.6461,1.0,34,target
+401856730,Oklahoma,Isaiah Sategna III,1,3.0108,1.0,36,target
+401856740,Alabama,Kaleb Edwards,1,1.6882,1.0,4,target
+401856781,Kansas State,Josh Manning,1,2.8238,1.0,6,target
+401856783,Oregon State,Braden Atkinson,1,2.3339,1.0,4,target
+401856783,Texas Tech,Coy Eakin,1,3.2894,1.0,32,target
+401856789,Grambling,Byron Eaton Jr.,1,2.6071,1.0,7,target
+401856790,UCF,Waden Charles,1,4.1354,1.0,19,target
+401856793,Arizona,Chris Hunter III,1,4.4856,1.0,38,target
+401856793,Arizona,Isaiah Mizell,1,2.8603,1.0,14,target
+401856793,Arizona,Tre Spivey,1,2.2725,1.0,10,target
+401856793,Arizona,Tyler Powell,1,2.9163,1.0,3,target
+401856793,Northern Illinois,Cam Thompson,1,4.0081,1.0,52,target
+401856800,Georgia State,Rodshaun Dorsey,1,2.5056,1.0,12,target
+401856800,UCF,Waden Charles,1,2.8142,1.0,30,target
+401856802,Virginia,John Rogers,1,1.2132,1.0,2,target
+401856803,Oklahoma State,Miles Coleman,1,2.0679,1.0,2,target
+401856806,Georgia Southern,River Helms,1,2.9585,1.0,5,target
+401856806,Houston,Traville Frederick Jr.,1,2.0679,1.0,2,target
+401856811,Houston,Amare Thomas,1,3.0135,1.0,11,target
+401856814,Kansas State,Derrick Salley Jr.,1,2.696,1.0,4,target
+401856816,Utah,Wayshawn Parker,1,2.6023,1.0,13,target
+401856829,Cincinnati,Cole Tabb,1,2.813,1.0,11,target
+401856831,Oklahoma State,Caleb Hawkins,1,5.3368,1.0,66,target
+401856839,Kansas State,Jaron Tibbs,1,2.6071,1.0,7,target
+401856840,Cincinnati,Lyviel Waters,1,2.0679,1.0,2,target
+401856845,Kansas,Cam Pickett,1,2.7883,1.0,29,target
+401856846,Kansas State,Garrett Oakley,1,2.9461,1.0,8,target
+401856847,Iowa State,Jamal Polite Jr.,1,4.0522,1.0,43,target
+401856850,UCF,Caden Piening,1,2.0525,1.0,6,target
+401856852,Arizona State,Jake Fette,1,2.7858,1.0,1,target
+401856852,Colorado,Joseph Williams,1,2.1968,1.0,7,target
+401856853,Iowa State,Vince Benetti,1,2.4242,1.0,9,target
+401856855,Arizona,Quincy Craig,1,3.5428,1.0,15,target
+401856885,Texas,Raleek Brown,1,2.3339,1.0,4,target
+401858201,Stanford,Atticus Joseph,1,2.4467,1.0,6,target
+401858202,Virginia,Xavier Brown,1,3.3887,1.0,45,target
+401858206,Miami,Daylyn Upshaw,1,2.4386,1.0,5,target
+401858206,Miami,Malachi Toney,2,4.3534,2.0,25,target
+401858207,Pittsburgh,Elijah Lagg,1,1.8838,1.0,5,target
+401858212,Florida State,Desirrio Riles,3,0.6794,1.0,8,target
+401858212,Florida State,Duce Robinson,5,1.3628,2.0,26,target
+401858212,Florida State,Jayvan Boggs,3,3.7883,2.0,23,target
+401858212,Florida State,Landen Thomas,2,-0.5135,0.0,0,target
+401858212,Florida State,Micahi Danzy,3,-0.0915,1.0,18,target
+401858212,Florida State,Ousmane Kromah,1,0.7951,1.0,8,target
+401858212,Florida State,Samuel Singleton Jr.,2,4.0066,1.0,40,target
+401858212,SMU,Derrick McFall,1,1.0272,1.0,12,target
+401858212,SMU,Dramekco Green,2,4.2153,2.0,35,target
+401858212,SMU,Jalen Cooper,4,4.9045,4.0,83,target
+401858212,SMU,Jalen Hale,2,2.2559,1.0,60,target
+401858212,SMU,Kendrick Raphael,2,0.0972,1.0,11,target
+401858212,SMU,Randy Pittman Jr.,5,10.5394,5.0,75,target
+401858212,SMU,Yamir Knight,8,-0.8768,4.0,49,target
+401858212,SMU,Yannick Smith,5,9.534,4.0,107,target
+401858224,Purdue,De'Nylon Morrissette,1,3.4012,1.0,9,target
+401858224,Wake Forest,Bryce Kania,1,3.0465,1.0,24,target
+401858226,Miami,Malachi Toney,1,1.2132,1.0,2,target
+401858226,Wake Forest,Carlos Hernandez,1,2.5799,1.0,17,target
+401858226,Wake Forest,Jack Foley,1,3.6326,1.0,23,target
+401858227,Boston College,Johnathan Montague Jr.,1,2.8419,1.0,31,target
+401858227,Maine,Nick Laughlin,2,5.6009,2.0,12,target
+401858228,Georgia Tech,Debron Gatling,1,2.5858,1.0,33,target
+401858228,Georgia Tech,Jaiven Plummer,1,3.0514,1.0,37,target
+401858228,Georgia Tech,Justice Haynes,1,1.9004,1.0,1,target
+401858229,Clemson,Christian Bentancur,1,3.1545,1.0,27,target
+401858232,Maryland,Chris Durr Jr.,1,2.5892,1.0,12,target
+401858233,California,Adam Mohammed,1,5.5899,1.0,65,target
+401858238,Miami,Daylyn Upshaw,1,1.9344,1.0,11,target
+401858240,Stanford,Caden High,1,3.6998,1.0,49,target
+401858241,SMU,Yamir Knight,1,3.778,1.0,28,target
+401858247,California,Ian Strong,1,2.5138,1.0,10,target
+401858247,UNLV,Keyan Burnett,1,2.9894,1.0,10,target
+401858250,Notre Dame,Nolan James Jr.,1,2.0525,1.0,6,target
+401858252,Syracuse,Daunte Bacheyie,1,6.6547,1.0,34,target
+401858252,Syracuse,Umari Hatcher,1,3.2405,1.0,41,target
+401858252,UConn,Cam Abshire,1,2.3196,1.0,8,target
+401858259,California,Carson Perry-Smith,1,2.6246,1.0,3,target
+401858259,Virginia Tech,Ayden Greene,1,2.8142,1.0,30,target
+401858263,Miami,Elija Lofton,1,2.6246,1.0,3,target
+401858264,Georgia Tech,Jaiven Plummer,1,2.0525,1.0,6,target
+401858274,Pittsburgh,Cataurus Hicks,1,3.0108,1.0,36,target
+401858278,SMU,Yamir Knight,1,3.0419,1.0,14,target
+401858278,Syracuse,Noah Meyers,1,2.0679,1.0,2,target
+401858287,Georgia Tech,Isaiah Fuhrmann,1,2.7992,1.0,10,target
+401858287,Louisville,TreyShun Hurry,1,2.6351,1.0,4,target
+401858424,Illinois,Ty Robinson,1,5.3439,1.0,54,target
+401858428,Michigan,JJ Buchanan,1,5.7237,1.0,47,target
+401858429,Toledo,Adjatay Dabbs,1,2.5287,1.0,6,target
+401858432,Ohio State,Devin McCuin,1,2.5799,1.0,17,target
+401858432,Ohio State,Jeremiah Smith,1,2.2114,1.0,3,target
+401858433,Boise State,Cam Bates,1,2.6743,1.0,13,target
+401858433,Oregon,Jamari Johnson,1,2.7413,1.0,27,target
+401858434,Penn State,Benjamin Brahmer,1,2.9026,1.0,8,target
+401858440,Michigan State,Charles Taplin,1,3.0946,1.0,38,target
+401858440,Michigan State,Fredrick Moore,1,2.9645,1.0,18,target
+401858449,Indiana,Davion Chandler,1,3.8331,1.0,26,target
+401858454,Ohio State,Brandon Inniss,1,3.7623,1.0,49,target
+401858456,Penn State,Andrew Rappleyea,1,2.6246,1.0,3,target
+401858456,Penn State,Koby Howard,1,5.6928,1.0,70,target
+401858463,Iowa,Reece Vander Zee,1,2.5687,1.0,16,target
+401858465,Illinois,Ty Robinson,1,2.7413,1.0,27,target
+401858465,Ohio State,Jeremiah Smith,3,11.0309,3.0,105,target
+401858469,Oregon,Evan Stewart,1,2.2114,1.0,3,target
+401858470,Minnesota,Jalen Smith,1,2.4242,1.0,9,target
+401858476,Penn State,Chase Sowell,1,2.8448,1.0,16,target
+401858478,USC,Tanook Hines,1,2.7521,1.0,10,target
+401858480,Michigan State,Fredrick Moore,1,2.6814,1.0,24,target
+401858482,Northwestern,Griffin Wilde,1,2.6044,1.0,19,target
+401858483,Ohio State,Jeremiah Smith,1,3.237,1.0,33,target
+401858483,Ohio State,Nate Roberts,1,6.1203,1.0,68,target
+401858487,Washington,Mason James,1,1.4645,1.0,3,target
+401858508,UCLA,Wayne Knight,1,2.7788,1.0,12,target
+401858510,Illinois,Collin Dixon,1,2.2114,1.0,3,target
+401858512,UCLA,Aidan Mizell,1,6.0778,1.0,75,target
+401858514,Ohio State,Jeremiah Smith,1,2.5389,1.0,13,target
+401858514,Ohio State,Nate Roberts,1,2.5582,1.0,15,target
+401858514,Oregon,Dakorien Moore,1,2.813,1.0,11,target
+401858515,Maryland,Na'eem Abdul-Rahim Gladding,1,5.064,1.0,44,target
+401858521,Michigan State,Bryson Williams,1,2.8514,1.0,2,target
+401858521,Washington,Chris Lawson,2,9.1853,2.0,75,target
+401858522,Northwestern,Luke Dehnicke,1,3.9581,1.0,17,target
+401858522,Ohio State,Devin McCuin,1,2.9183,1.0,8,target
+401858522,Ohio State,Jeremiah Smith,1,3.0785,1.0,10,target
+401858524,Penn State,Cam Wallace,1,2.454,1.0,1,target
+401860880,Utah State,Eli Wood,1,2.9733,1.0,15,target
+401860881,Boise State,Akeem Wright,1,5.3236,1.0,37,target
+401860881,Memphis,Hunter Tipton,1,7.3408,1.0,87,target
+401860883,Fresno State,Ezekiel Avit,1,5.9327,1.0,73,target
+401860883,Fresno State,Rayshon Luke,1,2.9645,1.0,18,target
+401860884,Texas State,Chris Dawn Jr.,1,2.7688,1.0,13,target
+401860888,Fresno State,Josiah Freeman,1,3.1461,1.0,18,target
+401860889,North Texas,Kyle Koch,1,2.7936,1.0,13,target
+401860896,UTSA,DJ Allen Jr.,1,5.7935,1.0,58,target
+401860896,UTSA,David Amador II,1,3.3828,1.0,27,target
+401860899,Colorado State,Nader Chirchi,1,2.2442,1.0,7,target
+401860899,Oregon State,Eric Olsen,1,1.8838,1.0,5,target
+401860899,Oregon State,Jesse Legree,1,2.764,1.0,28,target
+401860900,Texas State,Beau Sparks,1,3.189,1.0,40,target
+401860901,Fresno State,Gavin Correia,1,3.5428,1.0,15,target
+401860905,San Diego State,Jordan Napier,1,2.9894,1.0,24,target
+401860908,Boise State,Akeem Wright,1,2.9425,1.0,18,target
+401860914,Boise State,Matt Wagner,1,2.6268,1.0,9,target
+401860916,Texas State,Zechariah Sample,1,2.8142,1.0,30,target
+401861966,UConn,Alex Godavitarne,1,4.2766,1.0,55,target
+401861966,UConn,Ryder Treadway,1,2.5448,1.0,2,target
+401862699,Florida International,James Resar,1,2.9336,1.0,21,target
+401862702,South Florida,Joshua Porter,1,5.4192,1.0,38,target
+401862703,Florida Atlantic,Dominique Henry,1,2.932,1.0,13,target
+401862703,Navy,Charles Robinson,1,2.6768,1.0,8,target
+401862703,Navy,Jordan Collins,1,5.1472,1.0,64,target
+401862705,North Texas,Max Reese,1,3.1765,1.0,16,target
+401862708,UAB,EJ Reid,1,3.3524,1.0,43,target
+401862710,East Carolina,Ja'Keith Hamilton,1,2.9229,1.0,25,target
+401862777,Delaware State,Jaylin Terzado,1,2.6179,1.0,20,target
+401862784,Southern Miss,Mario Sanders,1,3.1863,1.0,22,target
+401862787,Memphis,Stonka Burnside,1,3.8768,1.0,28,target
+401862790,Florida Atlantic,Kelby Valsin,1,2.0946,1.0,19,target
+401862792,Temple,JoJo Bermudez,1,2.6814,1.0,24,target
+401862793,Samford,Marquise Henderson,1,2.696,1.0,4,target
+401862794,South Florida,Bryson Rodgers,1,3.2949,1.0,42,target
+401862795,Tulane,Jaylin Lucas,1,4.5794,1.0,39,target
+401862796,North Texas,Max Reese,1,3.3553,1.0,20,target
+401862799,Navy,Truman Brasfield,1,6.1672,1.0,58,target
+401862800,East Carolina,Dawson Quarterman,1,3.1027,1.0,16,target
+401862800,UAB,Bam McReynolds,1,2.9199,1.0,17,target
+401862800,UAB,Rod Robinson II,1,2.8238,1.0,6,target
+401862817,UTSA,Mekhi Anderson,1,4.1968,1.0,45,target
+401862824,Memphis,Jemyri Davis,1,6.8792,1.0,76,target
+401862824,South Florida,Mudia Reuben,1,2.9163,1.0,3,target
+401864443,Middle Tennessee,Cam'ron Lacy,1,3.0934,1.0,10,target
+401864503,Northern Illinois,DeAree Rogers,1,2.8514,1.0,2,target
+401864506,Wyoming,Charlie Coenen,1,2.9277,1.0,15,target
+401864525,Air Force,Grant Wayne,1,2.4386,1.0,5,target
+401864525,Wyoming,Jake Wilson,1,2.3339,1.0,4,target
+401864526,Hawai'i,Frank Abreu,1,2.5301,1.0,12,target
+401864527,North Dakota State,Mekhi Collins,1,2.3339,1.0,4,target
+401864534,San José State,Dominique McKenzie,1,2.7883,1.0,29,target
+401864570,New Mexico State,TK King,1,3.5045,1.0,34,target
+401866412,Akron,Miles Burris,1,2.8238,1.0,6,target
+401866412,Akron,Sean Patrick,1,4.3184,1.0,41,target
+401866418,Jacksonville State,Luke Gilbert,1,6.4883,1.0,82,target
+401866418,Ohio,Riley Neer,1,2.9461,1.0,8,target
+401866419,Toledo,Rico Bond,1,6.621,1.0,85,target
+401866421,Western Michigan,Baylin Brooks,1,2.5389,1.0,13,target
+401866423,Ohio,Dom Dorwart,1,3.517,1.0,21,target
+401866431,Ball State,Jabari Smith,1,2.9031,1.0,33,target
+401866431,Toledo,Daryl Barnett Jr.,1,2.4944,1.0,11,target
+401866441,Ball State,Eli Hohlt,1,2.9927,1.0,20,target
+401866443,Central Michigan,Jaden Allen,1,3.0823,1.0,32,target
+401866443,Western Michigan,Nate Levicki,1,2.9696,1.0,10,target
+401866448,Bowling Green,Trey Johnson,1,4.2597,1.0,40,target
+401866449,Eastern Michigan,Joey Mattord,1,2.6814,1.0,24,target
+401866454,Buffalo,Chance Morrow,2,2.9014,2.0,6,target
+401866532,Maine,Malik McNeely,1,3.3394,1.0,16,target
+401866614,Elon,Jamarien Dalton,1,2.9163,1.0,3,target
+401866616,New Hampshire,Ja'Carree Kelly,1,3.4765,1.0,45,target
+401866616,New Hampshire,Myles Thomason,1,2.696,1.0,4,target
+401866618,Morgan State,Joseph Towler,1,5.5193,1.0,68,target
+401866620,Campbell,Evan Austin,1,2.8142,1.0,30,target
+401866620,East Tennessee State,Trey Weary,1,2.5918,1.0,18,target
+401866624,Monmouth,Kenny Smith Jr.,1,2.6071,1.0,7,target
+401866624,Sacred Heart,Jason Palmieri,1,2.0525,1.0,6,target
+401866628,Elon,Zimere Winston,1,2.9726,1.0,35,target
+401866628,Rhode Island,Marquis Buchanan,1,2.6071,1.0,7,target
+401866629,Bryant,Sean Wilson Jr.,1,2.5389,1.0,13,target
+401866629,Bryant,Shamar Fowles,1,5.8817,1.0,60,target
+401866631,New Hampshire,Ty Carlson,1,2.7616,1.0,5,target
+401866631,Stonehill,Cole Clarke,1,2.8238,1.0,6,target
+401866631,Stonehill,Jaylin Baker,2,5.967,2.0,27,target
+401866631,Stonehill,Kevin Sheridan,1,2.5687,1.0,16,target
+401866632,UAlbany,Joey Koch,1,2.2114,1.0,3,target
+401866632,UAlbany,Mitchell Viviano,1,2.1968,1.0,7,target
+401866635,Monmouth,Tra Neal,1,4.7569,1.0,60,target
+401866635,UAlbany,Matthew Iuvara,1,3.063,1.0,21,target
+401866638,Princeton,Josh Smith,1,3.3264,1.0,13,target
+401866640,Morgan State,Marquez Spells,1,2.7206,1.0,6,target
+401866640,Towson,CJ Schaeffer,1,2.5448,1.0,2,target
+401866641,Hampton,Sejhe Jackson,1,3.8721,1.0,51,target
+401866643,Elon,Dylan Magazu,1,4.4653,1.0,57,target
+401866646,Princeton,Joey Wassler,1,2.7616,1.0,5,target
+401866647,Monmouth,Christian Harrison,1,2.5799,1.0,17,target
+401866647,Monmouth,Tra Neal,1,2.664,1.0,23,target
+401866649,Delaware State,Nathan Stewart,1,2.939,1.0,17,target
+401866649,Towson,Aaron Enterline,2,8.9291,2.0,77,target
+401866649,Towson,Cleveland Charlton,1,2.696,1.0,4,target
+401866651,Towson,Cleveland Charlton,2,6.0251,2.0,15,target
+401866651,Towson,Xavier Pugh,1,2.8238,1.0,6,target
+401866652,Sacred Heart,Jason Palmieri,1,2.813,1.0,11,target
+401866653,Bryant,Kendrick Agenor,1,3.0526,1.0,5,target
+401866653,North Carolina A&T,Michael Carlock-Williams,1,2.7616,1.0,5,target
+401866656,Hampton,Nare Means,1,2.8715,1.0,32,target
+401866657,Campbell,Jyron Waiters,1,2.74,1.0,9,target
+401866657,North Carolina Central,Tristan Stitt,1,2.3208,1.0,23,target
+401866658,New Hampshire,Logan Perez,1,2.6323,1.0,21,target
+401866658,North Carolina A&T,Amonte Jones,1,2.4242,1.0,9,target
+401866658,North Carolina A&T,Elijah Kennedy,1,4.1132,1.0,19,target
+401866658,North Carolina A&T,Michael Carlock-Williams,1,5.342,1.0,32,target
+401866659,Stony Brook,Seth Sweitzer,1,3.3354,1.0,26,target
+401866659,Towson,Aaron Enterline,1,3.7407,1.0,19,target
+401866660,Sacred Heart,Dean Hangey,1,2.9828,1.0,4,target
+401866660,Stonehill,Jaylin Baker,1,2.6323,1.0,21,target
+401866661,Wofford,Anjuan Coleman Jr.,1,2.0525,1.0,6,target
+401866663,Hampton,Isaiah Smith,1,4.8973,1.0,38,target
+401866663,Hampton,Sejhe Jackson,1,2.7858,1.0,1,target
+401866663,Sacred Heart,Nick Gentilella,1,2.7616,1.0,5,target
+401866664,Bryant,Jose Leon,1,2.8142,1.0,30,target
+401866664,Maine,Rashawn Marshall,1,3.1529,1.0,11,target
+401866668,Chicago State,Develle Barksdale,1,3.0101,1.0,9,target
+401866668,North Carolina A&T,Michael Carlock-Williams,1,3.0042,1.0,25,target
+401866669,Rhode Island,Marquis Buchanan,1,6.7034,1.0,79,target
+401866669,Yale,Jaxton Santiago,1,2.9828,1.0,4,target
+401866672,Bryant,Shamar Fowles,1,2.7992,1.0,10,target
+401866673,Monmouth,Shane Garrett,1,2.4386,1.0,5,target
+401866675,Campbell,Chinua Ezeigbo,1,4.0238,1.0,27,target
+401866675,UAlbany,BJ Norman,1,2.5687,1.0,16,target
+401866678,Bryant,Shamar Fowles,1,2.4212,1.0,21,target
+401866680,Towson,Jacob Zollar,1,2.696,1.0,4,target
+401866681,Monmouth,Christian Harrison,1,5.6065,1.0,47,target
+401866681,Monmouth,Frankie Weaver,1,2.696,1.0,4,target
+401866683,Bryant,Shamar Fowles,1,5.1111,1.0,38,target
+401866684,Campbell,JJ Cowan,1,2.3339,1.0,4,target
+401866685,Hampton,Chaz Portis,1,3.1144,1.0,27,target
+401866691,New Hampshire,Ryan Ricketti,1,2.3619,1.0,25,target
+401867687,Norfolk State,Brevin Caldwell,1,5.2015,1.0,55,target
+401867687,Norfolk State,Rocco Ciocca,1,2.6476,1.0,22,target
+401867688,Tarleton State,Bryce Parker,1,2.3208,1.0,23,target
+401867688,Tarleton State,Danny Joiner,1,2.3196,1.0,8,target
+401867689,Lindenwood,Jalen Smith,1,2.8142,1.0,30,target
+401867690,Chicago State,DeArmond Mathews,1,2.5301,1.0,12,target
+401867806,Harvard,Teigan Pelletier,1,2.9367,1.0,4,target
+401867808,Brown,Matt Childs,1,3.4012,1.0,9,target
+401867810,Brown,Trevor Foley,1,6.5304,1.0,73,target
+401867817,Columbia,Beckett Robinson,1,2.7001,1.0,25,target
+401867817,Columbia,Bryce Coleman,1,3.0713,1.0,15,target
+401867817,Lafayette,Carson Persing,1,3.0347,1.0,14,target
+401867817,Lafayette,Zane Wooldridge,1,2.7855,1.0,16,target
+401867818,Columbia,Bryce Coleman,1,1.2132,1.0,2,target
+401867818,Georgetown,Burke Carroll,1,2.72,1.0,26,target
+401867821,Columbia,Bryce Coleman,1,2.4242,1.0,9,target
+401867821,Pennsylvania,Dante Barone,1,2.6179,1.0,20,target
+401867824,Harvard,Ryan Tattersall,1,3.3524,1.0,43,target
+401867826,Colgate,Matt Fogler,1,6.724,1.0,85,target
+401867827,Yale,Graham Smith,1,3.0526,1.0,5,target
+401867829,Cornell,Samuel Musungu,1,2.9163,1.0,3,target
+401867829,Harvard,Tafari Moe,1,3.0108,1.0,36,target
+401867831,Princeton,Josh Smith,1,6.0065,1.0,53,target
+401867836,Dartmouth,Ky'Dric Fisher,1,4.6449,1.0,30,target
+401867836,Yale,Jaxton Santiago,1,1.2132,1.0,2,target
+401867838,Dartmouth,Dylan Elder,1,2.8514,1.0,2,target
+401867838,Harvard,Nate Bailey,1,2.5389,1.0,13,target
+401867838,Harvard,Ryan Tattersall,1,3.0946,1.0,38,target
+401867840,Harvard,Nate Bailey,1,4.0154,1.0,8,target
+401867841,Harvard,Henry Shoemaker,1,5.4291,1.0,67,target
+401867841,Holy Cross,Joseph Williams,1,4.8141,1.0,51,target
+401867842,Harvard,Henry Shoemaker,1,2.72,1.0,26,target
+401867842,Princeton,Aidan Besselman,1,2.6849,1.0,8,target
+401867845,Illinois State,Alex Herrera,1,3.7518,1.0,23,target
+401867845,Illinois State,Stevan Gavric,1,4.1777,1.0,36,target
+401867847,Illinois State,Dylan Lord,1,2.5483,1.0,14,target
+401867847,Northern Iowa,Kai Black,1,2.1968,1.0,7,target
+401867849,Southern Illinois,Kyle Thomas,1,4.3108,1.0,29,target
+401867851,Illinois State,Dylan Lord,1,2.7616,1.0,5,target
+401867851,Illinois State,Ethan Loss,1,3.8414,1.0,50,target
+401867855,Indiana State,Keshon Singleton,1,2.3339,1.0,4,target
+401867857,Indiana State,Jaylan Johnson,1,3.1416,1.0,19,target
+401867857,Indiana State,Keshon Singleton,1,2.9962,1.0,16,target
+401867858,North Dakota,Mason South,1,2.5287,1.0,6,target
+401867860,Indiana State,Torey French,1,2.7001,1.0,25,target
+401867860,Youngstown State,Jeremiah Sanders,1,3.1027,1.0,16,target
+401867861,Indiana State,Keshon Singleton,1,3.9665,1.0,18,target
+401867861,Northern Iowa,Taj Hughes,1,2.8795,1.0,12,target
+401867862,Indiana State,Torey French,1,2.7883,1.0,29,target
+401867863,Murray State,Trey Firestone,1,1.9345,1.0,5,target
+401867865,Murray State,Trey Firestone,1,2.1968,1.0,7,target
+401867868,Murray State,Jaxon Potter,1,2.2114,1.0,3,target
+401867868,Southern Illinois,Edward Robinson,1,2.0525,1.0,6,target
+401867869,North Dakota,Cameron Weir,1,2.5799,1.0,17,target
+401867869,North Dakota,Tray Kuntz,1,2.2114,1.0,3,target
+401867870,Murray State,Dimitri Howard,1,3.0135,1.0,11,target
+401867870,Murray State,Trey Firestone,1,5.2955,1.0,20,target
+401867870,South Dakota,Brayden White,1,2.696,1.0,4,target
+401867872,Youngstown State,Fresh Walters,1,2.764,1.0,28,target
+401867874,North Dakota,Caleb Goodloe,1,2.764,1.0,28,target
+401867874,North Dakota,Korey Tai,1,2.5483,1.0,14,target
+401867875,North Dakota,Deng Deng,1,1.8918,1.0,6,target
+401867875,North Dakota,Korey Tai,1,2.5465,1.0,8,target
+401867875,North Dakota,Sam Strandell,1,2.0525,1.0,6,target
+401867880,Youngstown State,Lynn Wyche-El,1,2.9187,1.0,15,target
+401867887,South Dakota,Bryce Cohoon,1,4.4006,1.0,59,target
+401867887,South Dakota State,Brayden Delahoyde,1,2.5217,1.0,11,target
+401867892,Northern Iowa,Cyrus Courtney,2,5.9963,2.0,9,target
+401867893,South Dakota State,Brayden Delahoyde,1,2.3339,1.0,4,target
+401867893,South Dakota State,Lofton O'Groske,1,6.7636,1.0,89,target
+401867893,Southern Illinois,Tae Marrero Jr.,1,2.7001,1.0,25,target
+401867895,Youngstown State,Dorian Williams,1,2.0525,1.0,6,target
+401867896,Youngstown State,Lynn Wyche-El,1,2.5217,1.0,11,target
+401867898,Central Connecticut,Elijah Daniels,1,3.5158,1.0,42,target
+401867898,Montana State,Dane Steel,1,2.8419,1.0,31,target
+401867901,Central Connecticut,Ryan Turley,1,2.454,1.0,1,target
+401867901,Mercyhurst,Dylan Evans,1,2.6768,1.0,8,target
+401867901,Mercyhurst,Sha'lik Hampton,1,2.4242,1.0,9,target
+401867902,Central Connecticut,Michael Trovarelli,1,2.6071,1.0,7,target
+401867902,New Haven,D'Arious Reed,1,2.5582,1.0,15,target
+401867903,Robert Morris,Noah Schaerli,1,2.8932,1.0,10,target
+401867904,Central Connecticut,David Pardo,1,2.9952,1.0,19,target
+401867904,Central Connecticut,Michael Trovarelli,1,3.0605,1.0,29,target
+401867907,American International,Ronjai Francis,1,2.3339,1.0,4,target
+401867907,Central Connecticut,Gabriel Wiggins,1,3.2962,1.0,25,target
+401867909,Florida International,Tyson Carter,1,3.9895,1.0,48,target
+401867910,Mercyhurst,Amare Lattimore,1,2.3196,1.0,8,target
+401867912,Wagner,Christopher Harris,1,2.4737,1.0,9,target
+401867913,Long Island University,Gianni Marino,1,3.0799,1.0,6,target
+401867913,Stonehill,Alijah Turner,1,3.4999,1.0,18,target
+401867913,Stonehill,Jaylin Baker,1,3.4798,1.0,32,target
+401867916,Robert Morris,Galen Combs,2,8.5624,2.0,79,target
+401867917,Robert Morris,Galen Combs,2,8.2402,2.0,84,target
+401867917,Robert Morris,Jaqai Carter,1,3.3984,1.0,23,target
+401867917,West Virginia State,Amare Ary,1,3.0877,1.0,8,target
+401867918,Norfolk State,Da'Jean Golmond,1,2.5287,1.0,6,target
+401867918,Norfolk State,Kiron Benjamin,1,2.5448,1.0,2,target
+401867918,Norfolk State,Paul Billups II,1,2.6246,1.0,3,target
+401867918,Robert Morris,Jaqai Carter,2,5.3246,2.0,32,target
+401867919,Morgan State,Joseph Towler,1,4.9244,1.0,56,target
+401867919,Robert Morris,Eyasu Palmore,1,3.0101,1.0,9,target
+401867920,Robert Morris,Jaqai Carter,1,6.527,1.0,55,target
+401867921,Robert Morris,Jaqai Carter,1,2.5687,1.0,16,target
+401867925,Duquesne,Myles Walker,1,3.2513,1.0,20,target
+401867931,Duquesne,Antwon Thomas,1,2.696,1.0,4,target
+401867931,Duquesne,Myles Walker,1,3.0802,1.0,25,target
+401867931,Wagner,Jeremiah Colclough,1,4.419,1.0,33,target
+401867932,Wagner,Johans Bars,1,3.3455,1.0,19,target
+401867933,Mercyhurst,Dylan Evans,1,5.4291,1.0,67,target
+401867933,Wagner,Teree McDonald,1,3.0503,1.0,22,target
+401867956,Delaware State,Kyree Benton,1,3.269,1.0,20,target
+401867960,Pennsylvania,Jack Donnelly,1,2.5855,1.0,12,target
+401867962,Morgan State,Alex Simmons,1,2.8609,1.0,14,target
+401867963,North Carolina Central,Mehki Wall,1,6.8074,1.0,88,target
+401867964,Howard,Antonio Hunter,2,5.6974,2.0,37,target
+401867964,Howard,CJ Neely,1,3.9234,1.0,51,target
+401867964,South Carolina State,Jahzae Kimbrough,1,3.4286,1.0,14,target
+401867966,Morgan State,Alex Simmons,1,2.7992,1.0,10,target
+401867966,Morgan State,Justin Perry,1,3.199,1.0,13,target
+401867966,Morgan State,Malachi Bryant,1,2.5582,1.0,15,target
+401867967,Morgan State,Joseph Towler,1,5.1472,1.0,64,target
+401867967,Morgan State,Malachi Bryant,1,3.0572,1.0,19,target
+401867968,Tennessee State,Brock Montgomery,1,2.0162,1.0,19,target
+401867968,Tennessee State,Francisco Pratts III,1,3.0635,1.0,11,target
+401867969,South Carolina State,DJ Maultsby,1,2.7992,1.0,10,target
+401867969,South Carolina State,Troy Hillman,1,2.6179,1.0,20,target
+401867972,Norfolk State,Elyjah Mitchell,1,2.6987,1.0,10,target
+401867976,North Carolina Central,Mehki Wall,1,3.191,1.0,26,target
+401867977,Texas Southern,Roriyon Richardson,1,4.0511,1.0,45,target
+401867978,North Carolina Central,Brendon Wyatt,1,2.397,1.0,11,target
+401867981,North Carolina Central,RJ Lancaster,1,3.4286,1.0,14,target
+401867981,South Carolina State,Malaqhi Jones,1,4.5617,1.0,58,target
+401867981,South Carolina State,Troy Hillman,1,2.8142,1.0,30,target
+401867982,South Carolina State,Malaqhi Jones,1,2.9785,1.0,23,target
+401867983,South Carolina State,Malik Brightwell,1,2.8142,1.0,30,target
+401867983,South Carolina State,Mason Pickett-Hicks,1,3.0205,1.0,21,target
+401867985,South Carolina State,Troy Hillman,1,2.8854,1.0,18,target
+401867986,South Carolina State,DJ Maultsby,1,3.2405,1.0,41,target
+401867986,The Citadel,Damir Abdullah,1,6.4325,1.0,55,target
+401867986,The Citadel,Gavin Garcia,1,2.9461,1.0,8,target
+401867987,Charleston Southern,Maxwell Warren,1,2.5582,1.0,15,target
+401867987,Charleston Southern,Mekhi Campfield,1,2.8438,1.0,13,target
+401867988,Bucknell,Michael Cadden,1,3.6542,1.0,51,target
+401867988,Richmond,Carson Derey,1,2.3196,1.0,8,target
+401867989,Villanova,Braden Reed,1,3.9449,1.0,26,target
+401867990,Bucknell,Jackson Nowinski,1,2.5521,1.0,27,target
+401867991,Pennsylvania,Dante Barone,1,3.0785,1.0,10,target
+401867992,Bucknell,Chad Martin,1,2.2114,1.0,3,target
+401867994,Holy Cross,Ty Curran,1,2.3196,1.0,8,target
+401867995,Bucknell,Jackson Nowinski,1,2.764,1.0,28,target
+401867997,Bucknell,Sam Milligan,1,2.8846,1.0,7,target
+401867997,William & Mary,Jackson Blee,1,1.9625,1.0,8,target
+401868000,Colgate,Matt Fogler,3,10.9357,3.0,115,target
+401868001,Colgate,Chief Montalvo,1,2.8795,1.0,12,target
+401868001,Colgate,Peyton Way,1,2.4386,1.0,5,target
+401868001,Villanova,Braden Reed,1,2.9199,1.0,17,target
+401868001,Villanova,Ja'briel Mace,1,2.7001,1.0,25,target
+401868004,Colgate,Peyton Way,1,2.3196,1.0,8,target
+401868006,Colgate,Winston Moore,1,4.1342,1.0,37,target
+401868007,Fordham,Ricky Gonzalez II,1,3.6097,1.0,24,target
+401868011,Fordham,Ricky Gonzalez II,1,2.5138,1.0,10,target
+401868012,Villanova,Julian Glantz,1,0.938,1.0,1,target
+401868014,Fordham,Ricky Gonzalez II,1,2.5776,1.0,11,target
+401868017,Lehigh,Luke Yoder,1,2.8846,1.0,7,target
+401868018,Georgetown,Hassan Mahasin,1,5.8947,1.0,71,target
+401868018,Georgetown,Isaiah Grimes,1,2.0679,1.0,2,target
+401868019,Georgetown,Hassan Mahasin,1,3.5136,1.0,10,target
+401868020,Holy Cross,Lincoln Fisher,1,2.5799,1.0,17,target
+401868022,Lehigh,Nick Palumbo,1,3.0347,1.0,14,target
+401868023,Holy Cross,Lincoln Fisher,2,8.9436,2.0,59,target
+401868023,Yale,Jaxton Santiago,2,9.9917,2.0,93,target
+401868023,Yale,Lucius Anderson,2,6.4366,2.0,48,target
+401868024,Holy Cross,Mason McSweeney,1,2.6044,1.0,19,target
+401868024,Holy Cross,Ty Curran,2,5.7853,2.0,47,target
+401868024,Lafayette,Mason Kuehner,2,5.2542,2.0,19,target
+401868027,Holy Cross,Ty Curran,1,3.1824,1.0,24,target
+401868028,Marist,Zach Garmont,1,2.7616,1.0,5,target
+401868029,Richmond,Sean Clarke,1,2.2114,1.0,3,target
+401868034,Lehigh,Jamaire Harden,1,3.5365,1.0,20,target
+401868037,Richmond,Carson Derey,1,2.9819,1.0,6,target
+401868040,Villanova,Brandon Binkowski,1,2.6768,1.0,8,target
+401868040,William & Mary,Kai Austin,1,4.5202,1.0,37,target
+401868049,Abilene Christian,Cristian Driver,1,2.3339,1.0,4,target
+401868049,Abilene Christian,Romelo Boykin,1,2.9026,1.0,8,target
+401868049,Lamar,Davin Driskell,1,2.4386,1.0,5,target
+401868051,Abilene Christian,Raydrian Baltrip,1,2.8514,1.0,2,target
+401868052,Mercer,Brayden Smith,1,4.741,1.0,38,target
+401868055,Abilene Christian,Cristian Driver,1,6.1456,1.0,76,target
+401868055,Abilene Christian,Jayden York,1,2.8715,1.0,32,target
+401868057,Tarleton State,Marquis Willis,1,6.0778,1.0,75,target
+401868058,Abilene Christian,Seth Weller,1,2.7883,1.0,29,target
+401868058,Austin Peay,Courtland Simmons,1,6.0778,1.0,75,target
+401868060,Austin Peay,Denver Harper,1,3.7623,1.0,49,target
+401868060,Gardner-Webb,Jalile Bost,1,3.74,1.0,43,target
+401868061,Austin Peay,Denver Harper,1,2.3491,1.0,31,target
+401868061,Morehead State,Riley Purcell,1,2.3427,1.0,16,target
+401868062,Austin Peay,Jaden Robinson,1,6.6885,1.0,61,target
+401868065,Tarleton State,Marquis Willis,1,2.7616,1.0,5,target
+401868068,Eastern Kentucky,Caeleb Schlachter,1,2.9079,1.0,19,target
+401868070,Central Arkansas,Arlie Lee,2,8.7811,2.0,70,target
+401868070,Central Arkansas,Kealen Juniel,1,2.6768,1.0,8,target
+401868071,Central Arkansas,James Jointer,1,3.5255,1.0,24,target
+401868071,West Florida,Brite Cannon,1,2.9726,1.0,35,target
+401868071,West Florida,Tyler Dostin,1,2.6768,1.0,8,target
+401868075,Cal Poly,Tayvion McCoy,1,2.5301,1.0,12,target
+401868081,Montana State,Luvens Valcin,1,2.0679,1.0,2,target
+401868085,Eastern Washington,Jamai East,1,3.1844,1.0,15,target
+401868086,Eastern Washington,Drew Carlson,1,3.0465,1.0,24,target
+401868086,Eastern Washington,Will McKissick,1,2.8846,1.0,7,target
+401868086,UC Davis,Xzavior Guess,1,4.3702,1.0,56,target
+401868086,UC Davis,Zach Jones,2,6.2921,2.0,60,target
+401868087,Eastern Washington,Kevin Allen III,1,2.9528,1.0,7,target
+401868087,Eastern Washington,Rylin Lang,1,2.8398,1.0,10,target
+401868089,Eastern Washington,Wesley Garrett,1,3.4358,1.0,29,target
+401868089,Montana,Brooks Davis,2,9.6295,2.0,112,target
+401868090,Eastern Washington,Jaxon Bell,1,3.4965,1.0,25,target
+401868090,Idaho,Lonyatta Alexander Jr.,1,2.7001,1.0,25,target
+401868091,Eastern Washington,Jaxon Branch,1,2.813,1.0,11,target
+401868094,Idaho,Ryan Jezioro,1,2.7001,1.0,25,target
+401868095,Idaho,Tony Harste,1,4.0968,1.0,14,target
+401868098,Idaho,Damonte Bias,1,2.8238,1.0,6,target
+401868098,Idaho,Ryan Jezioro,1,6.2104,1.0,77,target
+401868099,Idaho,Ryan Jezioro,1,6.716,1.0,63,target
+401868099,UC Davis,Edward Khutsishvili,1,2.3417,1.0,5,target
+401868099,UC Davis,Mason Walsh,1,2.5448,1.0,2,target
+401868099,UC Davis,Samuel Gbatu Jr.,1,2.8142,1.0,30,target
+401868101,Idaho State,Julian Mason,1,2.74,1.0,9,target
+401868104,Idaho State,Julian Mason,1,2.1968,1.0,7,target
+401868104,Idaho State,Tommy Poe,1,4.486,1.0,34,target
+401868105,Idaho State,Julian Mason,1,2.5515,1.0,32,target
+401868105,Idaho State,Parker Graham,1,2.0798,1.0,18,target
+401868105,Weber State,Noah Kjar,1,2.6149,1.0,14,target
+401868108,Montana State,Rocky Lencioni,1,4.1951,1.0,20,target
+401868110,Montana,Lekeldrick Bridges,1,4.0953,1.0,53,target
+401868113,Montana,Landon Ransom-Goelz,1,2.0679,1.0,2,target
+401868113,UC Davis,Zach Jones,1,2.998,1.0,27,target
+401868114,Montana,Ian Finch,1,2.8073,1.0,24,target
+401868115,Montana,Landon Ransom-Goelz,1,5.9832,1.0,70,target
+401868115,Montana,Lekeldrick Bridges,1,3.1529,1.0,11,target
+401868115,Northern Arizona,Jeter Purdy,1,2.764,1.0,28,target
+401868119,Butler,Nick Munson,1,2.6246,1.0,3,target
+401868119,Montana State,Dane Steel,1,2.7883,1.0,29,target
+401868119,Montana State,Taco Dowler,1,2.6179,1.0,20,target
+401868120,Northern Arizona,Nassim Isaac,1,3.0823,1.0,32,target
+401868121,Montana State,Jordan Reed,1,2.8795,1.0,12,target
+401868121,Weber State,Ammon Munyer,1,1.2132,1.0,2,target
+401868121,Weber State,Robert Young,1,3.1066,1.0,11,target
+401868124,Utah Tech,Ace Chatman,1,2.6476,1.0,22,target
+401868126,Southern Utah,Jack Fairchild,1,2.5217,1.0,11,target
+401868127,Northern Arizona,Jeter Purdy,1,2.5918,1.0,18,target
+401868127,Weber State,Noah Kjar,1,2.0525,1.0,6,target
+401868127,Weber State,Tate Kjar,1,3.0042,1.0,25,target
+401868129,Weber State,Noah Kjar,1,4.3677,1.0,34,target
+401868132,Northern Colorado,Marcus Mozer,1,3.2095,1.0,23,target
+401868132,UC Davis,Edward Khutsishvili,1,2.0679,1.0,2,target
+401868134,Tarleton State,Marquis Willis,1,2.5918,1.0,18,target
+401868136,North Alabama,KJ Fields,1,2.7413,1.0,27,target
+401868138,Central Arkansas,Jalen Washington,1,4.1304,1.0,34,target
+401868138,Eastern Kentucky,Jakobie Hughes,1,2.6768,1.0,8,target
+401868139,Eastern Kentucky,Elijah Caldwell,1,2.5918,1.0,18,target
+401868139,Eastern Kentucky,Jarvis Hayes,1,2.5582,1.0,15,target
+401868139,Western Carolina,Josh Perry,2,5.4422,2.0,18,target
+401868140,Jacksonville State,Jamill Williams,2,6.8155,2.0,68,target
+401868145,Tennessee Tech,Tre' Holloway,1,3.015,1.0,36,target
+401868146,Eastern Kentucky,Elijah Caldwell,1,2.696,1.0,4,target
+401868146,West Florida,Luc Carroll,1,3.2404,1.0,15,target
+401868147,Eastern Kentucky,Jakobie Hughes,1,1.8838,1.0,5,target
+401868147,Tarleton State,B.J. Fleming,1,2.7001,1.0,25,target
+401868151,North Alabama,KJ Fields,1,2.6044,1.0,19,target
+401868151,North Alabama,Snap Reed,1,3.3193,1.0,31,target
+401868151,North Alabama,TJ Holmes,1,5.8556,1.0,72,target
+401868152,North Alabama,Snap Reed,1,5.0253,1.0,48,target
+401868153,Northern Colorado,Marcus Mozer,1,2.7925,1.0,27,target
+401868153,Southern Utah,Joshua Acord,1,2.5687,1.0,16,target
+401868153,Southern Utah,Mark Bails,1,2.5031,1.0,25,target
+401868155,Portland State,Terence Loville,1,5.3161,1.0,58,target
+401868155,Weber State,Marvin Session,2,11.6851,2.0,111,target
+401868155,Weber State,Noah Kjar,1,2.8142,1.0,30,target
+401868156,Portland State,Tanner Beaman,1,2.6246,1.0,3,target
+401868156,Portland State,Zui Shelton,1,5.5571,1.0,39,target
+401868157,Portland State,Terence Loville,1,2.4242,1.0,9,target
+401868158,Southern Utah,Joshua Acord,1,2.5687,1.0,16,target
+401868158,Weber State,Noah Kjar,2,5.2502,2.0,40,target
+401868159,Southern Utah,Mark Bails,1,2.5918,1.0,18,target
+401868159,St. Thomas (MN),Quentin Cobb-Butler,1,5.0505,1.0,63,target
+401868160,Utah Tech,Ace Chatman,1,2.4242,1.0,9,target
+401868161,Southern Utah,Joshua Acord,1,2.7858,1.0,1,target
+401868163,UC Davis,Samuel Gbatu Jr.,1,2.5138,1.0,10,target
+401868163,UC Davis,Tyler Hennessy,1,1.8838,1.0,5,target
+401868165,UC Davis,Zach Jones,1,2.3862,1.0,38,target
+401868166,UC Davis,Edward Khutsishvili,1,2.7896,1.0,7,target
+401868166,Utah Tech,Elijah Davis,1,2.7377,1.0,13,target
+401868168,Weber State,Marvin Session,1,2.5217,1.0,11,target
+401868169,Charleston Southern,Mekhi Campfield,1,2.8348,1.0,4,target
+401868170,Georgia Southern,Ashton Hollins,1,4.4653,1.0,57,target
+401868171,The Citadel,Michael Lorino,1,4.419,1.0,33,target
+401868173,Gardner-Webb,Brian Green Jr.,1,2.6874,1.0,9,target
+401868174,Charleston Southern,KD Dorsey,1,2.8004,1.0,18,target
+401868174,Tennessee State,Cam Bulluck,1,3.0101,1.0,9,target
+401868177,Southeast Missouri State,Anthony Westervelt,1,4.3702,1.0,56,target
+401868177,Southeast Missouri State,Khylen Harris-Norman,1,6.8429,1.0,71,target
+401868180,Gardner-Webb,Kory Jones,1,3.0514,1.0,37,target
+401868182,Southeast Missouri State,Jobe Bryant,1,2.2192,1.0,4,target
+401868184,Eastern Illinois,Jacarre Fleming-Page,1,6.0778,1.0,75,target
+401868184,Western Illinois,Israel Hiraldo,1,7.0238,1.0,76,target
+401868185,Eastern Illinois,Jeremy Reeves,1,5.0613,1.0,40,target
+401868185,Tennessee State,Brenton Paul,1,2.6768,1.0,8,target
+401868191,Gardner-Webb,Kory Jones,2,5.6357,2.0,32,target
+401868191,Lindenwood,Elijah Roy,1,3.7408,1.0,32,target
+401868192,Western Illinois,Israel Hiraldo,1,2.3196,1.0,8,target
+401868196,Florida A&M,Jaquan Lee,1,6.3861,1.0,80,target
+401868196,Florida A&M,Maliek Denmark,1,2.4924,1.0,5,target
+401868196,Tennessee State,Brenton Paul,1,3.5717,1.0,20,target
+401868197,Tennessee State,Cam Bulluck,1,3.8515,1.0,25,target
+401868198,Tennessee State,Cam Bulluck,2,9.9844,2.0,119,target
+401868199,Lindenwood,Jalen Smith,1,2.5301,1.0,12,target
+401868200,Tennessee State,Aaron Duncan II,1,2.2114,1.0,3,target
+401868200,Tennessee State,Brock Montgomery,1,2.5687,1.0,16,target
+401868204,Northwestern (IA),Caleb Moore,1,2.9668,1.0,19,target
+401868204,Northwestern (IA),Solomon Tea,1,3.3194,1.0,25,target
+401868205,Western Illinois,Ihson Jackson-Anderson,1,2.9726,1.0,35,target
+401868205,Western Illinois,Tanner Zolnosky,1,1.8838,1.0,5,target
+401868206,Western Illinois,David Hargro,1,2.74,1.0,9,target
+401868207,Southeast Missouri State,Clayton Leonard,1,3.8414,1.0,50,target
+401868211,Butler,Nick Munson,1,2.9726,1.0,35,target
+401868211,Valparaiso,Micah Mackay,1,2.9277,1.0,15,target
+401868215,Presbyterian,Eric Nelson,1,7.1249,1.0,66,target
+401868219,Davidson,AJ Adams,1,2.9828,1.0,4,target
+401868219,Davidson,Brodey Berg,1,2.9828,1.0,4,target
+401868219,Davidson,Caden Glenn,1,2.6246,1.0,3,target
+401868219,Davidson,Jacary Lightsey,1,2.4386,1.0,5,target
+401868219,Drake,Aidan Garcia,1,3.1161,1.0,24,target
+401868219,Drake,Willis Nofsinger,2,6.5942,2.0,52,target
+401868221,Davidson,AJ Adams,1,2.8419,1.0,31,target
+401868222,Morehead State,Anthony Ice,2,7.6844,2.0,55,target
+401868224,Davidson,Tanner Waring,1,3.4863,1.0,29,target
+401868227,Dayton,Gavin Lochow,1,2.3674,1.0,8,target
+401868228,Drake,Mitchell January,1,6.1925,1.0,51,target
+401868229,Dayton,Luke Hansen,1,2.3339,1.0,4,target
+401868230,San Diego,Elijah Taylor,1,3.1404,1.0,39,target
+401868231,Dayton,Michael Mussari,1,2.72,1.0,26,target
+401868231,Stetson,Landon Farco,1,6.0073,1.0,59,target
+401868232,Dayton,Donovan Weatherly,1,2.7413,1.0,27,target
+401868232,Dayton,LeRoy Lewis IV,1,2.7616,1.0,5,target
+401868232,Dayton,Michael Mussari,1,2.8238,1.0,6,target
+401868233,West Georgia,Brody Jones,1,2.9889,1.0,12,target
+401868235,Prairie View A&M,Jahbari Kuykendall,1,5.248,1.0,53,target
+401868235,Tarleton State,Marquis Willis,1,2.3206,1.0,30,target
+401868235,Tarleton State,Tanner Schmidt,1,3.0124,1.0,15,target
+401868236,McNeese,Curtis Deville,2,6.8345,2.0,54,target
+401868237,Merrimack,Cooper Lehman,1,2.841,1.0,22,target
+401868237,Tarleton State,Marquis Willis,1,3.1888,1.0,32,target
+401868240,Chattanooga,Ashton Schumann,1,6.3735,1.0,72,target
+401868240,Chattanooga,Boobie Leavell,1,3.028,1.0,20,target
+401868242,East Tennessee State,Vashawn Nalls,1,2.9461,1.0,8,target
+401868243,West Georgia,Justin Montgomery,1,2.6814,1.0,24,target
+401868245,UT Rio Grande Valley,Kyran Lee,1,2.5582,1.0,15,target
+401868245,UT Rio Grande Valley,Tavian Cord,1,2.7883,1.0,29,target
+401868246,Nicholls,Jackson Dufrene,2,6.1533,2.0,21,target
+401868246,UT Rio Grande Valley,Christian Sabsook,1,2.8846,1.0,7,target
+401868246,UT Rio Grande Valley,Jaydon Smith,1,6.7536,1.0,36,target
+401868246,UT Rio Grande Valley,Kyran Lee,1,2.9625,1.0,29,target
+401868247,McNeese,Curtis Deville,1,2.6483,1.0,39,target
+401868250,UT Rio Grande Valley,Corey Holmes,1,2.9199,1.0,17,target
+401868252,UT Rio Grande Valley,Kyran Lee,1,2.9726,1.0,35,target
+401868254,Drake,Lincoln DeLaere,1,2.8142,1.0,30,target
+401868254,Drake,Willis Nofsinger,1,6.3861,1.0,80,target
+401868254,South Dakota Mines,Blake Borchers,1,3.2792,1.0,36,target
+401868254,South Dakota Mines,Joshua Morales,1,3.4129,1.0,44,target
+401868255,Drake,Lincoln DeLaere,1,2.8238,1.0,6,target
+401868255,Drake,Mitchell January,1,4.5387,1.0,43,target
+401868255,Northern Iowa,Brady McCullough,1,3.3216,1.0,17,target
+401868256,Valparaiso,Daniel White,1,3.2323,1.0,27,target
+401868257,Drake,Hank Foley,1,2.6246,1.0,3,target
+401868258,Drake,Willis Nofsinger,1,2.0673,1.0,23,target
+401868258,Morehead State,Cannon Dinger,1,2.5435,1.0,15,target
+401868259,Drake,Hank Foley,1,3.6099,1.0,13,target
+401868259,San Diego,Cole Monach,1,6.103,1.0,66,target
+401868260,Drake,Hank Foley,1,3.3003,1.0,8,target
+401868260,Drake,Lincoln DeLaere,2,4.483,2.0,19,target
+401868260,St. Thomas (MN),Quentin Cobb-Butler,1,6.3861,1.0,80,target
+401868261,New Haven,Issac Glaudin,1,4.189,1.0,39,target
+401868261,New Haven,Nate Burleson II,1,4.9792,1.0,46,target
+401868262,Franklin Pierce,Raj Hillhouse,1,3.8666,1.0,28,target
+401868262,Marist,Marco Lainez III,1,2.8514,1.0,2,target
+401868263,Marist,Isaiah Simmons,1,2.4386,1.0,5,target
+401868264,Marist,Reece Beauchamp,1,2.7883,1.0,29,target
+401868264,Stetson,Shawne Jones,1,2.7151,1.0,10,target
+401868265,Columbia,Beckett Robinson,1,3.0946,1.0,38,target
+401868265,Columbia,Hutch Crow,1,2.6044,1.0,19,target
+401868265,Marist,Jayden Taylor,1,2.5582,1.0,15,target
+401868267,Marist,Jayden Taylor,1,5.5896,1.0,43,target
+401868267,San Diego,Cole Monach,1,2.696,1.0,4,target
+401868267,San Diego,Elijah Taylor,1,2.6874,1.0,9,target
+401868269,Morehead State,Anthony Ice,1,6.3735,1.0,72,target
+401868269,Morehead State,Cannon Dinger,2,6.422,2.0,35,target
+401868269,Morehead State,Cross Watson,1,6.6393,1.0,60,target
+401868271,Morehead State,Cannon Dinger,1,2.5217,1.0,11,target
+401868271,Stetson,Landon Farco,1,3.0514,1.0,37,target
+401868271,Stetson,Shawne Jones,1,1.2132,1.0,2,target
+401868273,Presbyterian,Jalen Patrick,1,2.5799,1.0,17,target
+401868273,UVA Wise,Thomas McCoy,1,3.3216,1.0,17,target
+401868273,UVA Wise,Tre'mell Washington,1,6.2312,1.0,56,target
+401868274,Mercer,Eric Rasheed,1,3.2894,1.0,32,target
+401868276,Presbyterian,Brice Johnson,2,9.7067,2.0,83,target
+401868276,Presbyterian,Deverious Abercrombie,1,2.0924,1.0,5,target
+401868276,St. Thomas (MN),Pierce McCrary,1,4.0953,1.0,53,target
+401868276,St. Thomas (MN),Quentin Cobb-Butler,1,2.9585,1.0,5,target
+401868277,Presbyterian,Jalen Patrick,1,1.9004,1.0,1,target
+401868277,Stetson,Landon Farco,2,4.8987,2.0,46,target
+401868277,Stetson,Shawne Jones,1,2.5175,1.0,13,target
+401868279,St. Thomas (MN),Pierce McCrary,1,3.6132,1.0,47,target
+401868281,San Diego,Elijah Taylor,1,2.8419,1.0,31,target
+401868281,St. Thomas (MN),Pierce McCrary,1,2.3339,1.0,4,target
+401868281,St. Thomas (MN),Stefano Giovannelli,1,6.0778,1.0,75,target
+401868282,St. Thomas (MN),Quentin Cobb-Butler,1,3.285,1.0,30,target
+401868282,St. Thomas (MN),Stefano Giovannelli,1,3.0946,1.0,38,target
+401868282,Stetson,Wyatt Rogers,1,2.6246,1.0,3,target
+401868285,Bethune-Cookman,Josh Evans,1,3.4765,1.0,45,target
+401868286,Stetson,Anthony Benzija,1,5.4291,1.0,67,target
+401868286,Stetson,Shawne Jones,1,3.189,1.0,40,target
+401868286,Stetson,Troy Flowers,1,3.4028,1.0,16,target
+401868286,Valparaiso,Kam Fouty-Koonce,1,2.6246,1.0,3,target
+401868295,Alabama A&M,Jaylan Bean,1,5.6928,1.0,70,target
+401868295,Alabama A&M,Jordan Chambers-Smith,1,5.5823,1.0,67,target
+401868295,Jackson State,Jabari Jones,1,2.8238,1.0,6,target
+401868295,Jackson State,Kobe Paul,1,2.5799,1.0,17,target
+401868299,Alabama A&M,Jaylan Bean,2,7.6861,2.0,77,target
+401868299,Florida A&M,Corey Petty,1,3.7524,1.0,21,target
+401868299,Florida A&M,Lawrence Wright IV,1,1.9004,1.0,1,target
+401868301,Alabama A&M,Jaylan Bean,2,11.5054,2.0,128,target
+401868303,Alabama A&M,Jordan Chambers-Smith,1,3.3264,1.0,13,target
+401868305,McNeese,Omiri Wiggins,1,2.8846,1.0,7,target
+401868305,Stephen F. Austin,Bugs Mortimer,1,4.3935,1.0,37,target
+401868305,Stephen F. Austin,Clayton Wayland,1,6.1234,1.0,35,target
+401868306,East Texas A&M,Andrez Lewis,1,2.6323,1.0,21,target
+401868308,Northeastern State,Deuce Roberson,1,2.813,1.0,11,target
+401868308,Stephen F. Austin,Aiden Meeks,1,4.0549,1.0,29,target
+401868309,Incarnate Word,Jacob Emmers,1,3.83,1.0,53,target
+401868309,Stephen F. Austin,Clayton Wayland,1,2.3196,1.0,8,target
+401868310,Stephen F. Austin,Kylon Harris,1,5.2763,1.0,34,target
+401868311,SE Louisiana,Blake Smith,1,6.5304,1.0,73,target
+401868311,Stephen F. Austin,Clayton Wayland,1,2.305,1.0,13,target
+401868312,Stephen F. Austin,Clayton Wayland,2,6.5159,2.0,81,target
+401868313,Lamar,Blake Thomas,1,6.7348,1.0,62,target
+401868313,Lamar,Davin Driskell,1,2.764,1.0,28,target
+401868313,Stephen F. Austin,Bugs Mortimer,1,5.7756,1.0,71,target
+401868315,Houston Christian,Jamaal Hall II,1,5.3368,1.0,66,target
+401868315,Houston Christian,Keith Wheeler,1,2.7788,1.0,12,target
+401868315,SE Louisiana,Lawson Dixon,1,2.8514,1.0,2,target
+401868316,SE Louisiana,Lonnie Shinn,2,5.0246,2.0,19,target
+401868317,UL Monroe,Parker Fulghum,1,3.3844,1.0,17,target
+401868319,Lamar,Blake Thomas,1,2.72,1.0,26,target
+401868321,Incarnate Word,Roy Alexander,1,4.0028,1.0,23,target
+401868322,SE Louisiana,Dkhai Joseph,1,4.1849,1.0,54,target
+401868325,Alabama State,TJ Ramsey,1,3.1056,1.0,20,target
+401868331,Alabama State,Israel Tate,1,2.9726,1.0,35,target
+401868331,Alabama State,Randall King,1,6.1456,1.0,76,target
+401868331,Texas Southern,Kordell Rodgers,1,2.8448,1.0,16,target
+401868331,Texas Southern,Roriyon Richardson,1,3.7369,1.0,26,target
+401868337,Wofford,Terrence Honeywood,1,6.0778,1.0,75,target
+401868338,The Citadel,Whit Hobgood,1,2.6246,1.0,3,target
+401868339,East Tennessee State,TJ Peyton,1,3.2513,1.0,20,target
+401868341,Western Carolina,Santana Carlos,1,3.0393,1.0,12,target
+401868342,Chattanooga,Taylor Crumedy,1,6.8834,1.0,66,target
+401868342,VMI,Zion Trump,1,2.6964,1.0,40,target
+401868343,Mercer,Brayden Smith,1,2.6246,1.0,3,target
+401868345,East Tennessee State,Charlie Browder,1,2.8419,1.0,31,target
+401868346,East Tennessee State,Charlie Browder,1,2.7788,1.0,12,target
+401868347,The Citadel,Isaiah Johnson,1,3.2079,1.0,15,target
+401868350,Samford,Domonique Thomas,1,2.6071,1.0,7,target
+401868350,Samford,Kevonte Corbin,1,3.2323,1.0,27,target
+401868358,Alcorn State,Elijah Griffin,1,2.5483,1.0,14,target
+401868358,Alcorn State,Fredrick Robertson,1,3.0734,1.0,27,target
+401868358,Texas Southern,Daveon Walker,1,3.0544,1.0,34,target
+401868358,Texas Southern,Fatu Mukuba,1,5.0134,1.0,37,target
+401868359,Alcorn State,Damien Jones,1,4.953,1.0,62,target
+401868359,Grambling,Nae'Saan Dickerson,1,3.1023,1.0,15,target
+401868359,Grambling,Tyson George,2,5.7591,2.0,19,target
+401868361,Alcorn State,Ernest Temple,1,2.5301,1.0,12,target
+401868361,Alcorn State,Fredrick Robertson,1,2.5687,1.0,16,target
+401868362,Alcorn State,Armon Wright,1,2.6476,1.0,22,target
+401868362,Alcorn State,Fredrick Robertson,1,7.0723,1.0,78,target
+401868363,Alcorn State,Malachi Augustus,2,8.129,2.0,73,target
+401868363,Florida A&M,Corey Petty,1,2.5687,1.0,16,target
+401868364,Alcorn State,Jarvis Rush,1,6.7313,1.0,88,target
+401868364,Alcorn State,Nolan Chambers,1,2.4881,1.0,18,target
+401868376,Furman,Luke Shields,1,3.0149,1.0,23,target
+401868376,Tennessee Tech,Tre' Holloway,1,2.7078,1.0,5,target
+401868377,Samford,Cayden Aukerman,1,3.3694,1.0,14,target
+401868381,Mercer,Jackson Kostmayer,1,2.8689,1.0,3,target
+401868382,Western Carolina,Marlin Cochran,1,2.6995,1.0,9,target
+401868385,Tennessee Tech,Gabe Nunez,1,2.4386,1.0,5,target
+401868389,Western Carolina,AJ Colombo,1,2.4386,1.0,5,target
+401868389,Western Carolina,Michael Rossin,1,2.2114,1.0,3,target
+401868390,Tennessee Tech,Eric Weatherly,1,4.0055,1.0,24,target
+401868390,Tennessee Tech,Ivan Hoyt,1,2.7992,1.0,10,target
+401868390,Wofford,Colby Alexander,1,5.4233,1.0,40,target
+401868391,Tennessee Tech,Gabe Nunez,1,2.5918,1.0,18,target
+401868393,Tennessee Tech,Eric Weatherly,1,2.7883,1.0,29,target
+401868393,Tennessee Tech,Lazaro Rodriguez,1,2.6323,1.0,21,target
+401868394,Wofford,Colby Alexander,1,2.454,1.0,1,target
+401868395,VMI,Traveion Slaughter,1,5.6928,1.0,70,target
+401868397,Davidson,Alani Ajigbotosho,1,6.7807,1.0,32,target
+401868934,Arkansas-Pine Bluff,Demetric Whitlock,3,12.7115,3.0,146,target
+401868935,Arkansas-Pine Bluff,Demetric Whitlock,1,3.0098,1.0,33,target
+401868935,Central State,Khamari Adams,1,2.9135,1.0,12,target
+401868935,Central State,Nicholas Smith,2,9.9055,2.0,75,target
+401868936,Southern,Daejawn Smith,1,3.3924,1.0,20,target
+401868937,Arkansas-Pine Bluff,Demetric Whitlock,1,2.9251,1.0,14,target
+401868938,Arkansas-Pine Bluff,Demetric Whitlock,1,2.8846,1.0,7,target
+401868939,Arkansas-Pine Bluff,Demetric Whitlock,1,6.4883,1.0,82,target
+401868943,Mississippi Valley State,Dayvian Bluitt,1,2.9726,1.0,35,target
+401868944,Bethune-Cookman,Josh Evans,1,2.6323,1.0,21,target
+401868944,Jackson State,Nate Rembert,1,4.5387,1.0,43,target
+401868946,Bethune-Cookman,Micheal Walker,1,2.7684,1.0,15,target
+401868946,Grambling,Lantavious Murphy,1,2.9461,1.0,8,target
+401868948,Florida A&M,Jaquan Lee,1,2.8514,1.0,2,target
+401868950,Florida A&M,Corey Petty,1,2.8609,1.0,14,target
+401868950,Florida A&M,Jayquan Reid,1,2.664,1.0,23,target
+401868950,Southern,Aiden Valdez,1,2.7992,1.0,10,target
+401868951,Florida A&M,Jamar Taylor,1,2.664,1.0,23,target
+401868952,Grambling,Byron Eaton Jr.,1,2.1968,1.0,7,target
+401868952,Grambling,Tyson George,1,2.5217,1.0,11,target
+401868953,Central State,Avantae Burt,1,2.7883,1.0,29,target
+401868954,Grambling,Nae'Saan Dickerson,1,5.6336,1.0,50,target
+401868954,Grambling,Tyson George,1,4.6639,1.0,47,target
+401868954,Prairie View A&M,Kheagian Heckaman,1,1.2132,1.0,2,target
+401868954,Prairie View A&M,Travon Jones,1,3.0514,1.0,37,target
+401868955,Grambling,Nae'Saan Dickerson,1,2.7078,1.0,5,target
+401868955,Grambling,Patrick Williams II,1,2.3768,1.0,9,target
+401868955,Grambling,Tyson George,1,2.7078,1.0,5,target
+401868956,Grambling,Lantavious Murphy,1,2.8238,1.0,6,target
+401868959,Jackson State,Sebastien Saint-Louis,1,2.5287,1.0,6,target
+401868960,Jackson State,Alex Valbuena,1,2.696,1.0,4,target
+401868960,Jackson State,Nate Rembert,1,5.6928,1.0,70,target
+401868962,Nicholls,Greg Donaldson,1,6.0068,1.0,74,target
+401868962,Nicholls,Jordan Smith,2,8.8951,2.0,80,target
+401868963,Mississippi Valley State,Dayvian Bluitt,1,7.0976,1.0,79,target
+401868963,Mississippi Valley State,Jaylen King,1,3.0101,1.0,9,target
+401868963,Mississippi Valley State,Nicholas Buggs,1,3.5425,1.0,30,target
+401868964,Delta State,Lawrence Armstrong,1,3.1756,1.0,26,target
+401868965,Mississippi Valley State,Caleb Brownlow,1,3.6645,1.0,35,target
+401868966,Mississippi Valley State,Jaylen King,1,2.6246,1.0,3,target
+401868968,Southern,Damien Henderson Jr.,2,11.9896,2.0,115,target
+401868969,East Texas A&M,Andrez Lewis,1,2.6814,1.0,24,target
+401868969,Prairie View A&M,Rodny Ojo,1,2.5287,1.0,6,target
+401868970,Kentucky State,Jaden Hale,1,2.5582,1.0,15,target
+401868970,Kentucky State,Tristan Thomas,1,6.8117,1.0,72,target
+401868970,Southern,Champ Davis,1,3.1524,1.0,25,target
+401868970,Southern,Isaiah Pina,1,2.3339,1.0,4,target
+401868971,Louisiana Christian,Leyton Faul,1,2.8142,1.0,30,target
+401868971,Southern,Daejawn Smith,1,2.8854,1.0,18,target
+401869127,Richmond,Quanye Veney,1,3.2949,1.0,42,target
+401869127,Richmond,Sean Clarke,1,3.3227,1.0,29,target
+401869128,Louisiana Christian,Darius Washington,1,3.2713,1.0,24,target
+401869128,Louisiana Christian,Omarius Davis,1,4.0081,1.0,52,target
+401869128,Northwestern State,Dylan Rhodes,1,2.7616,1.0,5,target
+401869128,Northwestern State,Jimmie Duncan,1,5.9182,1.0,59,target
+401869129,Louisiana Tech,Jalen Mickens,1,6.0778,1.0,75,target
+401869129,Louisiana Tech,Talyn Shettron,1,2.7855,1.0,16,target
+401869131,Lamar,Blake Thomas,1,2.5582,1.0,15,target
+401869132,Northwestern State,Camryn Davis,1,2.764,1.0,28,target
+401869133,Nicholls,Isaiah LeBlanc,1,2.8943,1.0,27,target
+401869133,Northwestern State,Jimmie Duncan,1,3.0785,1.0,10,target
+401869134,Incarnate Word,Jamir Roberts,1,2.5582,1.0,15,target
+401869135,Houston Christian,Keith Wheeler,1,2.8905,1.0,21,target
+401869135,Northwestern State,Dane Wallace,1,2.5389,1.0,13,target
+401869135,Northwestern State,Zay Davis,1,6.4327,1.0,58,target
+401869136,McNeese,Curtis Deville,1,3.0344,1.0,10,target
+401869136,McNeese,Solo Lewis,1,3.0503,1.0,22,target
+401869138,Incarnate Word,Dane Farley,1,2.7413,1.0,27,target
+401869138,Incarnate Word,Isaiah Champagne,1,3.0377,1.0,26,target
+401869139,McNeese,Hutch Swilley,1,2.8715,1.0,32,target
+401869143,Lamar,Cam Patterson,1,2.5217,1.0,11,target
+401869143,Lamar,Davin Driskell,1,4.4122,1.0,49,target
+401869143,Nicholls,Ellis Stewart,1,2.2114,1.0,3,target
+401869144,Incarnate Word,Tyrece Fairly-Diyem,1,2.4386,1.0,5,target
+401869145,Lamar,Davin Driskell,1,4.7712,1.0,41,target
+401869146,Lamar,Blake Thomas,2,5.9271,2.0,48,target
+401869146,Lamar,Kyndon Fuselier,1,2.6771,1.0,18,target
+401869147,Houston Christian,Ja'Ryan Wallace,1,6.9285,1.0,53,target
+401869147,Houston Christian,Trayjen Llanas-Wilcox,1,2.5373,1.0,7,target
+401869148,Incarnate Word,Isaiah Champagne,1,3.8394,1.0,36,target
+401869148,Incarnate Word,Jacob Emmers,1,2.9726,1.0,35,target
+401869148,Nicholls,Devin Scura,1,3.5907,1.0,28,target
+401869152,Houston Christian,Champ Dozier,1,2.0525,1.0,6,target
+401869152,Houston Christian,Mason Graham,1,2.8792,1.0,15,target
+401869153,East Texas A&M,Micah Simpson,1,5.3368,1.0,66,target
+401869153,Nicholls,Greg Donaldson,1,3.6914,1.0,37,target
+401869154,Duquesne,Ryan Petras,3,8.8315,3.0,53,target
+401869154,New Haven,LaSalle Rose Jr.,1,2.74,1.0,9,target
+401869155,Duquesne,Khiryn Boyd,1,5.2785,1.0,28,target
+401869155,Mercyhurst,Dylan Evans,1,2.3339,1.0,4,target
+401869156,Chicago State,Kymari Gray,1,2.7413,1.0,27,target
+401869842,Louisiana Tech,Dylone Brooks,1,6.0068,1.0,74,target
+401869845,App State,Chris Lofton,1,2.7616,1.0,5,target
+401869934,Southern Miss,Preston Kilgore,1,2.5687,1.0,16,target
+401869940,Coastal Carolina,Colton Hinton,1,3.1545,1.0,27,target
+401869942,Coastal Carolina,Goldie Lawrence,1,2.74,1.0,9,target
+401869942,Coastal Carolina,Karmello English,1,3.0605,1.0,29,target
+401869942,Georgia Southern,Alex Taylor,1,2.5483,1.0,14,target
+401869951,Georgia Southern,Alex Taylor,1,5.6928,1.0,70,target
+401869951,Georgia Southern,Andre Greene Jr.,1,0.938,1.0,1,target
+401869951,Georgia Southern,Jeremiah Ware,2,6.1405,2.0,68,target
+401869961,James Madison,Michael Scott,1,2.6179,1.0,20,target
+401869961,Old Dominion,Leon Haughton Jr.,1,2.664,1.0,23,target
+401869962,James Madison,Corey Scott,1,6.0065,1.0,53,target
+401869968,Louisiana,Shelton Sampson Jr.,1,2.998,1.0,27,target
+401870752,Western Kentucky,Jyziah Rockwell,1,2.6375,1.0,10,target
+401870763,Troy,TJ Lott,1,2.7544,1.0,18,target
+401870790,Mercyhurst,Camden Lewis,1,2.7099,1.0,14,target
+401870795,Liberty,Makai Jackson,1,2.5582,1.0,15,target
+401870840,Merrimack,Dennis Morgan,1,3.189,1.0,40,target
+401870840,Yale,Garon Kemp,1,4.3172,1.0,20,target
+401870840,Yale,Graham Smith,1,2.5448,1.0,2,target
+401870840,Yale,Jaxton Santiago,2,5.4569,2.0,19,target
+401870841,Pennsylvania,Dante Barone,1,2.6246,1.0,3,target
+401870841,Pennsylvania,Jack Donnelly,1,2.8514,1.0,2,target
+401870841,Yale,Lucius Anderson,2,6.5013,2.0,73,target
+401871049,New Mexico State,TK King,1,2.5582,1.0,15,target
+401871054,Kennesaw State,Dylan Gary,1,2.5138,1.0,10,target
+401871054,Missouri State,Isaiah Myers,1,2.8279,1.0,12,target
+401871058,Kennesaw State,Davis Bryson,1,2.664,1.0,23,target
+401871058,Kennesaw State,Dylan Gary,1,2.8419,1.0,31,target
+401871070,New Mexico State,AJ Williams III,2,4.6251,2.0,32,target
+401871070,Sam Houston,Tim Burns Jr.,1,6.4386,1.0,81,target
+401871073,Delaware,Bryson Graves,1,2.9199,1.0,17,target
+401871075,Sam Houston,Chris Reed,1,5.1472,1.0,64,target
+401871089,UL Monroe,Parker Fulghum,1,2.6071,1.0,7,target
+401871099,Louisiana Tech,Jay Wilkerson,1,3.7623,1.0,49,target
+401871473,Southeast Missouri State,John Anthony Jr.,2,5.2703,2.0,42,target
+401872618,Merrimack,Andrew Korkosz,1,2.8514,1.0,2,target
+401874035,Southern Illinois,Allen Middleton,1,2.9425,1.0,18,target
+401874035,Southern Illinois,Chandler Chapman,1,2.6768,1.0,8,target
+401874035,West Florida,Luc Carroll,1,3.2919,1.0,22,target
+401874042,East Texas A&M,Micah Simpson,1,5.832,1.0,48,target
+401896383,Morehead State,Anthony Ice,2,5.2539,2.0,19,target
+401896383,Morehead State,Cannon Dinger,1,2.9199,1.0,17,target
+401896383,Morehead State,Sam Harkness,1,2.5918,1.0,18,target
+401896383,Ohio Dominican,Conner Campbell,1,5.0656,1.0,27,target
+401896383,Ohio Dominican,Roderick Love,1,3.0347,1.0,14,target
+401896384,Davidson,Jacary Lightsey,1,2.7642,1.0,9,target
+401896384,Davidson,Jack Perozek,1,2.2114,1.0,3,target
+401896385,Miles,Glen Williams,1,5.4023,1.0,61,target
+401915931,Chicago State,Arshawn Powell,1,2.6071,1.0,7,target
+401915931,Chicago State,Kymari Gray,1,2.8715,1.0,32,target
+401917058,Western Carolina,Jai Boyd,2,6.6125,2.0,49,target
+401856634,Alabama,Keelon Russell,26,7.7663,10.0,215,pass
+401856634,East Carolina,Mitch Griffis,14,0.9233,6.0,157,pass
+401856658,Georgia,Gunner Stockton,1,2.9939,1.0,14,pass
+401856659,Kentucky,CJ Baxter,1,2.8514,1.0,2,pass
+401856661,Louisville,Lincoln Kienholz,2,10.81,2.0,116,pass
+401856661,Ole Miss,Trinidad Chambliss,3,14.0958,3.0,159,pass
+401856663,Missouri,A. Simmons,2,6.5858,2.0,82,pass
+401856667,Texas,A. Manning,2,5.0947,2.0,14,pass
+401856668,Texas A&M,Marcel Reed,1,2.5301,1.0,12,pass
+401856669,Austin Peay,C. Parson,1,2.6814,1.0,24,pass
+401856671,Auburn,Christian Neptune,1,3.0063,1.0,5,pass
+401856684,Vanderbilt,Jared Curtis,1,2.6044,1.0,19,pass
+401856695,Vanderbilt,Jared Curtis,1,4.2915,1.0,43,pass
+401856696,Alabama,Keelon Russell,1,3.5723,1.0,32,pass
+401856700,Georgia,Gunner Stockton,1,2.822,1.0,35,pass
+401856700,Oklahoma,John Mateer,1,3.0727,1.0,17,pass
+401856716,Missouri,Austin Simmons,1,3.6241,1.0,32,pass
+401856720,LSU,S. Leavitt,1,-3.7909,0.0,4,pass
+401856720,LSU,Sam Leavitt,1,3.0208,1.0,17,pass
+401856723,Alabama,K. Russell,1,-4.2677,0.0,-6,pass
+401856729,Vanderbilt,Jared Curtis,1,4.6461,1.0,34,pass
+401856730,Oklahoma,John Mateer,1,3.0108,1.0,36,pass
+401856740,Alabama,Keelon Russell,1,1.6882,1.0,4,pass
+401856776,Colorado,No Huddle-Shotgun Colorado,1,-0.3748,0.0,0,pass
+401856776,Georgia Tech,No Huddle-Shotgun Georgia Tech,1,-0.6351,0.0,0,pass
+401856781,Kansas State,Avery Johnson,1,2.8238,1.0,6,pass
+401856783,Oregon State,AJ Newberry,1,2.3339,1.0,4,pass
+401856783,Texas Tech,Will Hammond,1,3.2894,1.0,32,pass
+401856789,Grambling,Reginald Johnson,1,2.6071,1.0,7,pass
+401856790,UCF,Alonza Barnett III,1,4.1354,1.0,19,pass
+401856793,Arizona,Noah Fifita,4,12.5348,4.0,65,pass
+401856793,Northern Illinois,Taron Dickens,1,4.0081,1.0,52,pass
+401856800,Georgia State,Cameran Brown,1,2.5056,1.0,12,pass
+401856800,UCF,Keyone Jenkins,1,2.8142,1.0,30,pass
+401856802,Virginia,Beau Pribula,1,1.2132,1.0,2,pass
+401856803,Oklahoma State,Drew Mestemaker,1,2.0679,1.0,2,pass
+401856806,Georgia Southern,Max Johnson,1,2.9585,1.0,5,pass
+401856806,Houston,Conner Weigman,1,2.0679,1.0,2,pass
+401856810,BYU,B. Bachmeier,1,3.1524,1.0,25,pass
+401856811,Houston,Conner Weigman,1,3.0135,1.0,11,pass
+401856814,Kansas State,Av. Johnson,1,1.933,1.0,6,pass
+401856814,Kansas State,Avery Johnson,1,2.696,1.0,4,pass
+401856816,Utah,Devon Dampier,1,2.6023,1.0,13,pass
+401856829,Cincinnati,JC French IV,1,2.813,1.0,11,pass
+401856831,Oklahoma State,Drew Mestemaker,1,5.3368,1.0,66,pass
+401856839,Kansas State,Jacob Knuth,1,2.6071,1.0,7,pass
+401856840,Cincinnati,JC French IV,1,2.0679,1.0,2,pass
+401856845,Kansas,Cole Ballard,1,2.7883,1.0,29,pass
+401856846,Kansas State,Blake Barnett,1,2.9461,1.0,8,pass
+401856847,Iowa State,Jaylen Raynor,1,4.0522,1.0,43,pass
+401856850,UCF,Alonza Barnett III,1,2.0525,1.0,6,pass
+401856852,Arizona State,Cardae Mack,1,2.7858,1.0,1,pass
+401856852,Colorado,Isaac Wilson,1,2.1968,1.0,7,pass
+401856853,Iowa State,Jaylen Raynor,1,2.4242,1.0,9,pass
+401856855,Arizona,Noah Fifita,1,3.5428,1.0,15,pass
+401856856,Texas Tech,T. Castellanos,4,11.9648,4.0,98,pass
+401856856,West Virginia,Mi. Hawkins Jr.,1,6.5304,1.0,73,pass
+401856859,Cincinnati,M. Henry,1,2.5301,1.0,12,pass
+401856863,Oklahoma State,D. Mestemaker,1,2.8004,1.0,18,pass
+401856863,Texas Tech,T. Castellanos,4,15.7867,4.0,163,pass
+401856884,Kentucky,K. Minchey,1,2.4924,1.0,5,pass
+401856885,Texas,Arch Manning,1,2.3339,1.0,4,pass
+401858201,Stanford,Davis Warren,1,2.4467,1.0,6,pass
+401858202,Virginia,Beau Pribula,1,3.3887,1.0,45,pass
+401858206,Miami,Darian Mensah,3,6.7919,3.0,30,pass
+401858207,Miami (OH),D. McComb,1,6.0778,1.0,75,pass
+401858207,Pittsburgh,M. Heintschel,1,3.4765,1.0,45,pass
+401858207,Pittsburgh,Mason Heintschel,1,1.8838,1.0,5,pass
+401858212,Florida State,Ashton Daniels,26,6.387,8.0,103,pass
+401858212,SMU,Kevin Jennings,36,20.2731,22.0,435,pass
+401858220,Virginia,B. Pribula,2,6.0189,2.0,33,pass
+401858221,Old Dominion,Q. Henicle,1,-2.8151,0.0,-55,pass
+401858224,Purdue,Ryan Browne,1,3.4012,1.0,9,pass
+401858224,Wake Forest,Gio Lopez,1,3.0465,1.0,24,pass
+401858226,Miami,Darian Mensah,1,1.2132,1.0,2,pass
+401858226,Wake Forest,Gio Lopez,2,6.2125,2.0,40,pass
+401858227,Boston College,Mason McKenzie,1,2.8419,1.0,31,pass
+401858227,Maine,Eddie Buehler,2,5.6009,2.0,12,pass
+401858228,Georgia Tech,Alberto Mendoza,3,7.5375,3.0,71,pass
+401858229,Clemson,Tait Reynolds,1,3.1545,1.0,27,pass
+401858232,Maryland,Malik Washington,1,2.5892,1.0,12,pass
+401858233,California,Jaron-Keawe Sagapolutele,1,5.5899,1.0,65,pass
+401858238,Miami,Darian Mensah,1,1.9344,1.0,11,pass
+401858240,Stanford,Davis Warren,1,3.6998,1.0,49,pass
+401858241,SMU,Kevin Jennings,1,3.778,1.0,28,pass
+401858243,Wake Forest,G. Lopez,1,6.2104,1.0,77,pass
+401858247,California,Jackson Brousseau,1,2.5138,1.0,10,pass
+401858247,UNLV,Jackson Arnold,1,2.9894,1.0,10,pass
+401858250,Notre Dame,CJ Carr,1,2.0525,1.0,6,pass
+401858252,Syracuse,Amari Odom,2,9.8952,2.0,75,pass
+401858252,UConn,Kalieb Osborne,1,2.3196,1.0,8,pass
+401858259,California,Jackson Brousseau,1,2.6246,1.0,3,pass
+401858259,Virginia Tech,Ethan Grunkemeyer,1,2.8142,1.0,30,pass
+401858263,Miami,Darian Mensah,1,2.6246,1.0,3,pass
+401858264,Georgia Tech,Alberto Mendoza,1,2.0525,1.0,6,pass
+401858274,Pittsburgh,Holden Geriner,1,3.0108,1.0,36,pass
+401858278,SMU,Kevin Jennings,1,3.0419,1.0,14,pass
+401858278,Syracuse,Steve Angeli,1,2.0679,1.0,2,pass
+401858283,Louisville,L. Kienholz,1,2.9425,1.0,18,pass
+401858287,Georgia Tech,Alberto Mendoza,1,2.7992,1.0,10,pass
+401858287,Louisville,Lincoln Kienholz,1,2.6351,1.0,4,pass
+401858299,Virginia Tech,E. Grunkemeyer,1,-0.5481,0.0,2,pass
+401858424,Illinois,Katin Houser,1,5.3439,1.0,54,pass
+401858428,Michigan,Bryce Underwood,1,5.7237,1.0,47,pass
+401858429,Toledo,John Alan Richter,1,2.5287,1.0,6,pass
+401858432,Ohio State,Julian Sayin,2,4.7913,2.0,20,pass
+401858433,Boise State,Maddux Madsen,1,2.6743,1.0,13,pass
+401858433,Oregon,Dante Moore,1,2.7413,1.0,27,pass
+401858434,Penn State,Rocco Becht,1,2.9026,1.0,8,pass
+401858436,USC,J. Maiava,1,2.4242,1.0,9,pass
+401858440,Michigan State,Alessio Milivojevic,2,6.0591,2.0,56,pass
+401858449,Indiana,Josh Hoover,1,3.8331,1.0,26,pass
+401858454,Ohio State,Julian Sayin,1,3.7623,1.0,49,pass
+401858456,Penn State,Rocco Becht,2,8.3173,2.0,73,pass
+401858463,Iowa,Hank Brown,1,2.5687,1.0,16,pass
+401858465,Illinois,Katin Houser,1,2.7413,1.0,27,pass
+401858465,Ohio State,Julian Sayin,3,11.0309,3.0,105,pass
+401858469,Oregon,Dylan Raiola,1,2.2114,1.0,3,pass
+401858470,Minnesota,Drake Lindsey,1,2.4242,1.0,9,pass
+401858476,Penn State,Rocco Becht,1,2.8448,1.0,16,pass
+401858478,USC,Jayden Maiava,1,2.7521,1.0,10,pass
+401858480,Michigan State,Alessio Milivojevic,1,2.6814,1.0,24,pass
+401858482,Northwestern,Aidan Chiles,1,2.6044,1.0,19,pass
+401858483,Ohio State,Julian Sayin,2,9.3572,2.0,101,pass
+401858485,USC,J. Maiava,2,5.4609,2.0,30,pass
+401858487,Washington,Elijah Brown,1,1.4645,1.0,3,pass
+401858489,Rutgers,D. Lonergan,1,3.0101,1.0,9,pass
+401858508,UCLA,Ty Dieffenbach,1,2.7788,1.0,12,pass
+401858510,Illinois,Katin Houser,1,2.2114,1.0,3,pass
+401858512,UCLA,Ty Dieffenbach,1,6.0778,1.0,75,pass
+401858514,Ohio State,Luke Fahey,2,5.0971,2.0,28,pass
+401858514,Oregon,Dylan Raiola,1,2.813,1.0,11,pass
+401858515,Maryland,Malik Washington,1,5.064,1.0,44,pass
+401858521,Michigan State,Cam Fancher,1,2.8514,1.0,2,pass
+401858521,Washington,Demond Williams Jr.,2,9.1853,2.0,75,pass
+401858522,Northwestern,Nicco Marchiol,1,3.9581,1.0,17,pass
+401858522,Ohio State,Luke Fahey,2,5.9968,2.0,18,pass
+401858524,Penn State,Rocco Becht,1,2.454,1.0,1,pass
+401860880,Utah State,McCae Hillstead,1,2.9733,1.0,15,pass
+401860881,Boise State,Maddux Madsen,1,5.3236,1.0,37,pass
+401860881,Memphis,Marcus Stokes,1,7.3408,1.0,87,pass
+401860883,Fresno State,Jayden Mandal,2,8.8972,2.0,91,pass
+401860884,Texas State,Brad Jackson,1,2.7688,1.0,13,pass
+401860884,UTSA,O. McCown,1,2.7858,1.0,1,pass
+401860888,Fresno State,Jayden Mandal,1,3.1461,1.0,18,pass
+401860889,North Texas,Tayven Jackson,1,2.7936,1.0,13,pass
+401860896,UTSA,Owen McCown,2,9.1763,2.0,85,pass
+401860899,Colorado State,K'saan Farrar,1,2.2442,1.0,7,pass
+401860899,Oregon State,Braden Atkinson,2,4.6478,2.0,33,pass
+401860900,Texas State,Brad Jackson,1,3.189,1.0,40,pass
+401860901,Fresno State,Jayden Mandal,1,3.5428,1.0,15,pass
+401860905,San Diego State,Stone Saunders,1,2.9894,1.0,24,pass
+401860908,Boise State,Max Cutforth,1,2.9425,1.0,18,pass
+401860914,Boise State,Maddux Madsen,1,2.6268,1.0,9,pass
+401860916,Texas State,Brad Jackson,1,2.8142,1.0,30,pass
+401861966,UConn,Kalieb Osborne,2,6.8214,2.0,57,pass
+401862699,Florida International,JJ Kohl,1,2.9336,1.0,21,pass
+401862702,South Florida,Michael Van Buren Jr.,1,5.4192,1.0,38,pass
+401862703,Florida Atlantic,Caden Veltkamp,1,2.932,1.0,13,pass
+401862703,Navy,Jackson Gutierrez,2,7.824,2.0,72,pass
+401862705,North Texas,Chris Jimerson Jr.,1,3.1765,1.0,16,pass
+401862708,UAB,Ryder Burton,1,3.3524,1.0,43,pass
+401862710,East Carolina,Jason Dickerson,1,2.9229,1.0,25,pass
+401862777,Delaware State,Ui Ale,1,2.6179,1.0,20,pass
+401862784,Southern Miss,Landry Lyddy,1,3.1863,1.0,22,pass
+401862787,Memphis,Marcus Stokes,1,3.8768,1.0,28,pass
+401862790,Florida Atlantic,Caden Veltkamp,1,2.0946,1.0,19,pass
+401862792,Temple,Ajani Sheppard,1,2.6814,1.0,24,pass
+401862793,Samford,Gabarri Johnson,1,2.696,1.0,4,pass
+401862794,South Florida,Michael Van Buren Jr.,1,3.2949,1.0,42,pass
+401862795,Tulane,Kadin Semonza,1,4.5794,1.0,39,pass
+401862796,North Texas,Tayven Jackson,1,3.3553,1.0,20,pass
+401862799,Navy,Jackson Gutierrez,1,6.1672,1.0,58,pass
+401862800,East Carolina,Emory Williams,1,3.1027,1.0,16,pass
+401862800,UAB,Bam McReynolds,1,2.9199,1.0,17,pass
+401862800,UAB,Ryder Burton,1,2.8238,1.0,6,pass
+401862817,UTSA,Owen McCown,1,4.1968,1.0,45,pass
+401862824,Memphis,Marcus Stokes,1,6.8792,1.0,76,pass
+401862824,South Florida,Luke Kromenhoek,1,2.9163,1.0,3,pass
+401864443,Middle Tennessee,Roman Gagliano,1,3.0934,1.0,10,pass
+401864503,Northern Illinois,Taron Dickens,1,2.8514,1.0,2,pass
+401864506,Wyoming,Tyler Hughes,1,2.9277,1.0,15,pass
+401864525,Air Force,Evan Medders,1,2.4386,1.0,5,pass
+401864525,Wyoming,Tyler Hughes,1,2.3339,1.0,4,pass
+401864526,Hawai'i,Micah Alejado,1,2.5301,1.0,12,pass
+401864527,North Dakota State,Nathan Hayes,1,2.3339,1.0,4,pass
+401864534,San José State,Daniel Rolovich,1,2.7883,1.0,29,pass
+401864570,New Mexico State,Trey Hedden,1,3.5045,1.0,34,pass
+401866408,Eastern Michigan,N. Kim,1,-8.1117,1.0,29,pass
+401866412,Akron,Cibastian Broughton,2,7.1422,2.0,47,pass
+401866418,Jacksonville State,Caden Creel,1,6.4883,1.0,82,pass
+401866418,Ohio,Matt Vezza,1,2.9461,1.0,8,pass
+401866419,Toledo,John Alan Richter,1,6.621,1.0,85,pass
+401866421,Western Michigan,Broc Lowry,1,2.5389,1.0,13,pass
+401866423,Ohio,Levi Davis,1,3.517,1.0,21,pass
+401866426,Buffalo,J. Wright,1,-6.8726,0.0,0,pass
+401866431,Ball State,Keldric Luster,1,2.9031,1.0,33,pass
+401866431,Toledo,John Alan Richter,1,2.4944,1.0,11,pass
+401866441,Ball State,Keldric Luster,1,2.9927,1.0,20,pass
+401866443,Central Michigan,Angel Flores,1,3.0823,1.0,32,pass
+401866443,Western Michigan,Broc Lowry,1,2.9696,1.0,10,pass
+401866448,Bowling Green,Jay Kastantin,1,4.2597,1.0,40,pass
+401866449,Eastern Michigan,Brogan McCaughey,1,2.6814,1.0,24,pass
+401866449,Ohio,N. Poulos,1,6.7484,1.0,78,pass
+401866452,Bowling Green,J. Kastantin,1,-0.327,0.0,-9,pass
+401866454,Buffalo,Jason Wright,2,2.9014,2.0,6,pass
+401866532,Maine,Eddie Buehler,1,3.3394,1.0,16,pass
+401866614,Elon,Brady Stober,1,2.9163,1.0,3,pass
+401866616,New Hampshire,Brooks Bentley,2,6.1725,2.0,49,pass
+401866618,Morgan State,Cameron Edge,1,5.5193,1.0,68,pass
+401866620,Campbell,Kamden Sixkiller,1,2.8142,1.0,30,pass
+401866620,East Tennessee State,M. Mims,1,2.7206,1.0,6,pass
+401866620,East Tennessee State,Mason Mims,1,2.5918,1.0,18,pass
+401866624,Monmouth,Frankie Weaver,1,2.6071,1.0,7,pass
+401866624,Sacred Heart,Poochie Snyder,1,2.0525,1.0,6,pass
+401866628,Elon,TJ Crews IV,1,2.9726,1.0,35,pass
+401866628,Rhode Island,Tyler Budge,1,2.6071,1.0,7,pass
+401866629,Bryant,Brennan Myer,2,8.4206,2.0,73,pass
+401866631,New Hampshire,Brooks Bentley,1,2.7616,1.0,5,pass
+401866631,Stonehill,Jack O'Connell,4,11.3595,4.0,49,pass
+401866632,UAlbany,Aidan Semo,1,2.1968,1.0,7,pass
+401866632,UAlbany,Kai Colon,1,2.2114,1.0,3,pass
+401866633,North Carolina Central,N. Layne,1,4.7428,1.0,27,pass
+401866635,Monmouth,Frankie Weaver,1,4.7569,1.0,60,pass
+401866635,UAlbany,Kai Colon,1,3.063,1.0,21,pass
+401866638,Princeton,Wyatt Becker,1,3.3264,1.0,13,pass
+401866640,Morgan State,Cameron Edge,1,2.7206,1.0,6,pass
+401866640,Towson,Andrew Indorf,1,2.5448,1.0,2,pass
+401866641,Hampton,Tre'Von Taylor,1,3.8721,1.0,51,pass
+401866643,Elon,Elijah Guttman,1,4.4653,1.0,57,pass
+401866646,Princeton,Ty Ciongoli,1,2.7616,1.0,5,pass
+401866647,Monmouth,Frankie Weaver,2,5.2439,2.0,40,pass
+401866649,Delaware State,Ui Ale,1,2.939,1.0,17,pass
+401866649,Towson,Andrew Indorf,3,11.6251,3.0,81,pass
+401866651,Towson,Andrew Indorf,3,8.8489,3.0,21,pass
+401866652,Sacred Heart,Poochie Snyder,1,2.813,1.0,11,pass
+401866653,Bryant,Brennan Myer,1,3.0526,1.0,5,pass
+401866653,North Carolina A&T,Kevin White,1,2.7616,1.0,5,pass
+401866656,Hampton,Xavier Brookins,1,2.8715,1.0,32,pass
+401866657,Campbell,Kamden Sixkiller,1,2.74,1.0,9,pass
+401866657,North Carolina Central,Cobey Thompkins,1,2.3208,1.0,23,pass
+401866658,New Hampshire,Brooks Bentley,1,2.6323,1.0,21,pass
+401866658,North Carolina A&T,Kevin White,3,11.8794,3.0,60,pass
+401866659,Stony Brook,Quinn Boyd,1,3.3354,1.0,26,pass
+401866659,Towson,Jacob Davis,1,3.7407,1.0,19,pass
+401866660,Sacred Heart,Poochie Snyder,1,2.9828,1.0,4,pass
+401866660,Stonehill,Jack O'Connell,1,2.6323,1.0,21,pass
+401866661,Wofford,Kaeden Gilstrap,1,2.0525,1.0,6,pass
+401866663,Hampton,Tre'Von Taylor,2,7.6831,2.0,39,pass
+401866663,Sacred Heart,Poochie Snyder,1,2.7616,1.0,5,pass
+401866664,Bryant,Brennan Myer,1,2.8142,1.0,30,pass
+401866664,Maine,Caden Drezek,1,3.1529,1.0,11,pass
+401866667,Campbell,K. Sixkiller,1,-3.9827,1.0,9,pass
+401866668,Chicago State,Ashton Pannell,1,3.0101,1.0,9,pass
+401866668,North Carolina A&T,Kevin White,1,3.0042,1.0,25,pass
+401866669,Rhode Island,Alex McClelland,1,6.7034,1.0,79,pass
+401866669,Yale,Dante Reno,1,2.9828,1.0,4,pass
+401866672,Bryant,Brennan Myer,1,2.7992,1.0,10,pass
+401866673,Monmouth,Frankie Weaver,1,2.4386,1.0,5,pass
+401866675,Campbell,Kamden Sixkiller,1,4.0238,1.0,27,pass
+401866675,UAlbany,Kai Colon,1,2.5687,1.0,16,pass
+401866678,Bryant,Brennan Myer,1,2.4212,1.0,21,pass
+401866680,Towson,Jacob Davis,1,2.696,1.0,4,pass
+401866681,Monmouth,Frankie Weaver,1,5.6065,1.0,47,pass
+401866681,Monmouth,Tra Neal,1,2.696,1.0,4,pass
+401866682,Sacred Heart,P. Snyder,1,3.3573,1.0,24,pass
+401866682,Towson,J. Davis,1,2.6323,1.0,21,pass
+401866683,Bryant,Brennan Myer,1,5.1111,1.0,38,pass
+401866684,Campbell,Kamden Sixkiller,1,2.3339,1.0,4,pass
+401866685,Hampton,Xavier Brookins,1,3.1144,1.0,27,pass
+401866691,New Hampshire,Myles Thomason,1,2.3619,1.0,25,pass
+401866693,Merrimack,AJ Hairston Jr,2,8.9939,2.0,97,pass
+401866693,Monmouth,F. Weaver,2,5.8383,2.0,51,pass
+401867687,Norfolk State,Da'Jean Golmond,2,7.8491,2.0,77,pass
+401867688,Tarleton State,Kaden Anderson,2,4.6404,2.0,31,pass
+401867689,Lindenwood,Pops Battle,1,2.8142,1.0,30,pass
+401867690,Chicago State,Jacob Tiberi,1,2.5301,1.0,12,pass
+401867806,Harvard,Charlie Smith,1,2.9367,1.0,4,pass
+401867808,Brown,James Murphy,1,3.4012,1.0,9,pass
+401867810,Brown,James Murphy,1,6.5304,1.0,73,pass
+401867817,Columbia,Chase Goodwin,2,5.7714,2.0,40,pass
+401867817,Lafayette,Daniel Lipovski,2,5.8202,2.0,30,pass
+401867818,Columbia,Chase Goodwin,1,1.2132,1.0,2,pass
+401867818,Georgetown,Jack Johnson,1,2.72,1.0,26,pass
+401867821,Columbia,Chase Goodwin,1,2.4242,1.0,9,pass
+401867821,Pennsylvania,Karson Siqueiros-Lasky,1,2.6179,1.0,20,pass
+401867824,Harvard,Charlie Smith,1,3.3524,1.0,43,pass
+401867826,Colgate,Jake Stearney,1,6.724,1.0,85,pass
+401867827,Yale,Charles Hewitt,1,3.0526,1.0,5,pass
+401867829,Cornell,Garrett Bass-Sulpizio,1,2.9163,1.0,3,pass
+401867829,Harvard,Charlie Smith,1,3.0108,1.0,36,pass
+401867831,Princeton,Wyatt Becker,1,6.0065,1.0,53,pass
+401867832,Pennsylvania,No Huddle-Shotgun Penn,1,-0.7829,0.0,0,pass
+401867836,Dartmouth,Grayson Saunier,1,4.6449,1.0,30,pass
+401867836,Yale,Dante Reno,1,1.2132,1.0,2,pass
+401867838,Dartmouth,Grayson Saunier,1,2.8514,1.0,2,pass
+401867838,Harvard,Charlie Smith,2,5.6335,2.0,51,pass
+401867840,Harvard,Charlie Smith,1,4.0154,1.0,8,pass
+401867841,Harvard,Charlie Smith,1,5.4291,1.0,67,pass
+401867842,Harvard,C. Smith,1,2.7544,1.0,18,pass
+401867842,Harvard,Charlie Smith,1,2.72,1.0,26,pass
+401867842,Princeton,Wyatt Becker,1,2.6849,1.0,8,pass
+401867845,Illinois State,Beckham Pellant,1,3.7518,1.0,23,pass
+401867845,Illinois State,Gage Roy,1,4.1777,1.0,36,pass
+401867847,Illinois State,Gage Roy,1,2.5483,1.0,14,pass
+401867847,Northern Iowa,Jaxon Dailey,1,2.1968,1.0,7,pass
+401867849,Southern Illinois,DJ Williams,1,4.3108,1.0,29,pass
+401867851,Illinois State,Beckham Pellant,2,6.603,2.0,55,pass
+401867852,Illinois State,B. Pellant,2,5.863,2.0,36,pass
+401867852,North Dakota,J. Kaminski,2,3.5328,2.0,10,pass
+401867855,Indiana State,Elijah Owens,1,2.3339,1.0,4,pass
+401867857,Indiana State,Brady Allen,1,2.9962,1.0,16,pass
+401867857,Indiana State,Elijah Owens,1,3.1416,1.0,19,pass
+401867858,North Dakota,Jerry Kaminski,1,2.5287,1.0,6,pass
+401867860,Indiana State,Brady Allen,1,2.7001,1.0,25,pass
+401867860,Youngstown State,Beau Brungard,1,3.1027,1.0,16,pass
+401867861,Indiana State,Elijah Owens,1,3.9665,1.0,18,pass
+401867861,Northern Iowa,Jaxon Dailey,1,2.8795,1.0,12,pass
+401867862,Indiana State,Brock Riddle,1,2.7883,1.0,29,pass
+401867863,Murray State,C. Shannon,2,9.4968,2.0,111,pass
+401867863,Murray State,Collin Shannon,1,1.9345,1.0,5,pass
+401867865,Murray State,Collin Shannon,1,2.1968,1.0,7,pass
+401867868,Murray State,Jim Ogle,1,2.2114,1.0,3,pass
+401867868,Southern Illinois,DJ Williams,1,2.0525,1.0,6,pass
+401867869,North Dakota,Jerry Kaminski,2,4.7913,2.0,20,pass
+401867870,Murray State,Baxter Wright,1,3.0135,1.0,11,pass
+401867870,Murray State,Collin Shannon,1,5.2955,1.0,20,pass
+401867870,South Dakota,Austyn Modrzewski,1,2.696,1.0,4,pass
+401867872,Murray State,C. Shannon,1,2.5138,1.0,10,pass
+401867872,Youngstown State,B. Brungard,1,2.5138,1.0,10,pass
+401867872,Youngstown State,Beau Brungard,1,2.764,1.0,28,pass
+401867874,North Dakota,Jerry Kaminski,2,5.3123,2.0,42,pass
+401867875,North Dakota,Jerry Kaminski,3,6.4908,3.0,20,pass
+401867880,Youngstown State,Beau Brungard,1,2.9187,1.0,15,pass
+401867887,South Dakota,Austyn Modrzewski,1,4.4006,1.0,59,pass
+401867887,South Dakota State,Chase Mason,1,2.5217,1.0,11,pass
+401867892,Northern Iowa,Jaxon Dailey,2,5.9963,2.0,9,pass
+401867893,South Dakota State,Chase Mason,2,9.0975,2.0,93,pass
+401867893,Southern Illinois,DJ Williams,1,2.7001,1.0,25,pass
+401867895,Youngstown State,Beau Brungard,1,2.0525,1.0,6,pass
+401867896,Youngstown State,Beau Brungard,1,2.5217,1.0,11,pass
+401867898,Central Connecticut,Brett Griffis,1,3.5158,1.0,42,pass
+401867898,Montana State,Justin Lamson,1,2.8419,1.0,31,pass
+401867901,Central Connecticut,Brett Griffis,1,2.454,1.0,1,pass
+401867901,Mercyhurst,Alex Gevaudan,2,5.101,2.0,17,pass
+401867902,Central Connecticut,Brett Griffis,1,2.6071,1.0,7,pass
+401867902,New Haven,Jake Tripptree,1,2.5582,1.0,15,pass
+401867903,Robert Morris,Carson Haggard,1,2.8932,1.0,10,pass
+401867904,Central Connecticut,Brett Griffis,2,6.0557,2.0,48,pass
+401867905,Central Connecticut,B. Griffis,1,2.5373,1.0,7,pass
+401867905,Long Island University,L. Stanzani,1,2.6814,1.0,24,pass
+401867907,American International,Lukas Kasko,1,2.3339,1.0,4,pass
+401867907,Central Connecticut,Brett Griffis,1,3.2962,1.0,25,pass
+401867909,Florida International,JJ Kohl,1,3.9895,1.0,48,pass
+401867910,Mercyhurst,Alex Gevaudan,1,2.3196,1.0,8,pass
+401867911,Long Island University,L. Stanzani,1,2.6268,1.0,9,pass
+401867912,Wagner,Benjamin Newman,1,2.4737,1.0,9,pass
+401867913,Long Island University,Luca Stanzani,1,3.0799,1.0,6,pass
+401867913,Stonehill,Jack O'Connell,2,6.9797,2.0,50,pass
+401867916,Robert Morris,Carson Haggard,2,8.5624,2.0,79,pass
+401867917,Robert Morris,Carson Haggard,3,11.6386,3.0,107,pass
+401867917,West Virginia State,Joe Dailey,1,3.0877,1.0,8,pass
+401867918,Norfolk State,Brevin Caldwell,1,2.5287,1.0,6,pass
+401867918,Norfolk State,Da'Jean Golmond,2,5.1694,2.0,5,pass
+401867918,Robert Morris,C. Haggard,1,2.3294,1.0,15,pass
+401867918,Robert Morris,Carson Haggard,2,5.3246,2.0,32,pass
+401867919,Morgan State,Cameron Edge,1,4.9244,1.0,56,pass
+401867919,Robert Morris,Carson Haggard,1,3.0101,1.0,9,pass
+401867920,Robert Morris,Carson Haggard,1,6.527,1.0,55,pass
+401867921,Robert Morris,Carson Haggard,1,2.5687,1.0,16,pass
+401867925,Duquesne,Carson Camp,1,3.2513,1.0,20,pass
+401867926,Mercyhurst,A. Gevaudan,1,2.7487,1.0,8,pass
+401867931,Duquesne,Carson Camp,2,5.7761,2.0,29,pass
+401867931,Wagner,Benjamin Newman,1,4.419,1.0,33,pass
+401867932,Wagner,Jason Wiley,1,3.3455,1.0,19,pass
+401867933,Mercyhurst,Alex Gevaudan,1,5.4291,1.0,67,pass
+401867933,Wagner,Jason Wiley,1,3.0503,1.0,22,pass
+401867935,Alabama A&M,C. Brown IV,2,13.8609,2.0,40,pass
+401867935,Howard,J. Scroggins,1,6.1652,1.0,4,pass
+401867956,Delaware State,Marqui Adams,1,3.269,1.0,20,pass
+401867960,Pennsylvania,Karson Siqueiros-Lasky,1,2.5855,1.0,12,pass
+401867962,Morgan State,Cameron Edge,1,2.8609,1.0,14,pass
+401867963,North Carolina Central,Joshua Jones,1,6.8074,1.0,88,pass
+401867964,Howard,Isaiah Freeman,3,9.6207,3.0,88,pass
+401867964,South Carolina State,Keely Watson,1,3.4286,1.0,14,pass
+401867966,Morgan State,Cameron Edge,3,8.5564,3.0,38,pass
+401867967,Morgan State,Cameron Edge,2,8.2044,2.0,83,pass
+401867968,Tennessee State,Daylin Lee,2,5.0797,2.0,30,pass
+401867969,South Carolina State,Keely Watson,2,5.4171,2.0,30,pass
+401867972,Norfolk State,Deljay Bailey,1,2.6987,1.0,10,pass
+401867976,Norfolk State,D. Bailey,2,6.0926,2.0,45,pass
+401867976,North Carolina Central,J. Jones,1,2.5582,1.0,15,pass
+401867976,North Carolina Central,Joshua Jones,1,3.191,1.0,26,pass
+401867977,Texas Southern,Cam'Ron McCoy,1,4.0511,1.0,45,pass
+401867978,North Carolina Central,Nelson Layne,1,2.397,1.0,11,pass
+401867981,North Carolina Central,Joshua Jones,1,3.4286,1.0,14,pass
+401867981,South Carolina State,Keely Watson,1,2.8142,1.0,30,pass
+401867981,South Carolina State,Zaivan Offord,1,4.5617,1.0,58,pass
+401867982,South Carolina State,Keely Watson,1,2.9785,1.0,23,pass
+401867983,South Carolina State,Ronnie Robinson,2,5.8348,2.0,51,pass
+401867985,South Carolina State,Keely Watson,1,2.8854,1.0,18,pass
+401867986,South Carolina State,Keely Watson,1,3.2405,1.0,41,pass
+401867986,South Carolina State,No Huddle-Shotgun,1,0.424,1.0,10,pass
+401867986,The Citadel,No Huddle-Shotgun,1,1.8929,1.0,21,pass
+401867986,The Citadel,Quentin Hayes,2,9.3785,2.0,63,pass
+401867987,Charleston Southern,Jared Echols,2,5.402,2.0,28,pass
+401867988,Bucknell,Christopher Dietrich,1,3.6542,1.0,51,pass
+401867988,Richmond,Ashten Snelsire,1,2.3196,1.0,8,pass
+401867989,Villanova,Pat McQuaide,1,3.9449,1.0,26,pass
+401867990,Bucknell,Christopher Dietrich,1,2.5521,1.0,27,pass
+401867991,Pennsylvania,Miles Teodecki,1,3.0785,1.0,10,pass
+401867992,Bucknell,Emmett Dowling,1,2.2114,1.0,3,pass
+401867994,Holy Cross,David Lynch,1,2.3196,1.0,8,pass
+401867995,Bucknell,Sam Milligan,1,2.764,1.0,28,pass
+401867997,Bucknell,Emmett Dowling,1,2.8846,1.0,7,pass
+401867997,William & Mary,Carter Carroll,1,1.9625,1.0,8,pass
+401868000,Colgate,J. Stearney,1,4.5617,1.0,58,pass
+401868000,Colgate,Jake Stearney,3,10.9357,3.0,115,pass
+401868001,Colgate,Jake Stearney,2,5.318,2.0,17,pass
+401868001,Villanova,Pat McQuaide,2,5.62,2.0,42,pass
+401868004,Colgate,Jake Stearney,1,2.3196,1.0,8,pass
+401868006,Colgate,Jackson Kilburg,1,4.1342,1.0,37,pass
+401868007,Fordham,Gunnar Smith,1,3.6097,1.0,24,pass
+401868011,Fordham,Gunnar Smith,1,2.5138,1.0,10,pass
+401868012,Villanova,Pat McQuaide,1,0.938,1.0,1,pass
+401868014,Fordham,Gunnar Smith,1,2.5776,1.0,11,pass
+401868017,Lehigh,Hayden Johnson,1,2.8846,1.0,7,pass
+401868018,Georgetown,Jack Johnson,2,7.9627,2.0,73,pass
+401868019,Georgetown,Gavin Beard,1,3.5136,1.0,10,pass
+401868020,Holy Cross,Joseph Williams,1,2.5799,1.0,17,pass
+401868022,Lehigh,Hayden Johnson,1,3.0347,1.0,14,pass
+401868023,Holy Cross,David Lynch,2,8.9436,2.0,59,pass
+401868023,Holy Cross,J. Croce,1,2.74,1.0,9,pass
+401868023,Yale,Dante Reno,4,16.4283,4.0,141,pass
+401868024,Holy Cross,David Lynch,3,8.3897,3.0,66,pass
+401868024,Lafayette,Daniel Lipovski,2,5.2542,2.0,19,pass
+401868027,Holy Cross,D. Lynch,1,6.5046,1.0,65,pass
+401868027,Holy Cross,David Lynch,1,3.1824,1.0,24,pass
+401868028,Marist,Sonny Mannino,1,2.7616,1.0,5,pass
+401868029,Richmond,Ashten Snelsire,1,2.2114,1.0,3,pass
+401868034,Lehigh,Derek Morgan,1,3.5365,1.0,20,pass
+401868037,Richmond,Ashten Snelsire,1,2.9819,1.0,6,pass
+401868040,Villanova,Pat McQuaide,1,2.6768,1.0,8,pass
+401868040,William & Mary,Winston Watkins,1,4.5202,1.0,37,pass
+401868049,Abilene Christian,John David Black,2,5.2365,2.0,12,pass
+401868049,Lamar,Aiden McCown,1,2.4386,1.0,5,pass
+401868050,Abilene Christian,J. Black,1,2.0525,1.0,6,pass
+401868050,Stephen F. Austin,G. Rutherford,2,9.7307,2.0,82,pass
+401868051,Abilene Christian,Tucker Parks,1,2.8514,1.0,2,pass
+401868052,Mercer,JP Pickles,1,4.741,1.0,38,pass
+401868055,Abilene Christian,Tucker Parks,2,9.0171,2.0,108,pass
+401868057,Tarleton State,Kaden Anderson,1,6.0778,1.0,75,pass
+401868058,Abilene Christian,Tucker Parks,1,2.7883,1.0,29,pass
+401868058,Austin Peay,Chris Parson,1,6.0778,1.0,75,pass
+401868060,Austin Peay,Chris Parson,1,3.7623,1.0,49,pass
+401868060,Gardner-Webb,Cole Pennington,1,3.74,1.0,43,pass
+401868061,Austin Peay,Chris Parson,1,2.3491,1.0,31,pass
+401868061,Morehead State,David Parsons,1,2.3427,1.0,16,pass
+401868062,Austin Peay,Chris Parson,1,6.6885,1.0,61,pass
+401868064,Austin Peay,C. Parson,1,5.2427,1.0,65,pass
+401868065,Tarleton State,K. Anderson,1,2.9367,1.0,34,pass
+401868065,Tarleton State,Kaden Anderson,1,2.7616,1.0,5,pass
+401868068,Eastern Kentucky,Myles Burkett,1,2.9079,1.0,19,pass
+401868070,Central Arkansas,Donovyn Omolo,3,11.4579,3.0,78,pass
+401868071,Central Arkansas,Donovyn Omolo,1,3.5255,1.0,24,pass
+401868071,West Florida,Ty'ray Davis,2,5.6494,2.0,43,pass
+401868075,Cal Poly,Anthony Grigsby Jr.,1,2.5301,1.0,12,pass
+401868081,Montana State,Justin Lamson,1,2.0679,1.0,2,pass
+401868084,Eastern Washington,N. Bell,1,1.4645,1.0,3,pass
+401868085,Eastern Washington,Nate Bell,1,3.1844,1.0,15,pass
+401868086,Eastern Washington,Nate Bell,2,5.931,2.0,31,pass
+401868086,UC Davis,Treynor Cleeland,3,10.6622,3.0,116,pass
+401868087,Eastern Washington,Nate Bell,2,5.7926,2.0,17,pass
+401868089,Eastern Washington,Nate Bell,1,3.4358,1.0,29,pass
+401868089,Montana,Keali'i Ah Yat,2,9.6295,2.0,112,pass
+401868090,Eastern Washington,Nate Bell,1,3.4965,1.0,25,pass
+401868090,Idaho,Joshua Wood,1,2.7001,1.0,25,pass
+401868091,Eastern Washington,Nate Bell,1,2.813,1.0,11,pass
+401868094,Idaho,Joshua Wood,1,2.7001,1.0,25,pass
+401868095,Idaho,Joshua Wood,1,4.0968,1.0,14,pass
+401868098,Idaho,Joshua Wood,2,9.0341,2.0,83,pass
+401868099,Idaho,Joshua Wood,1,6.716,1.0,63,pass
+401868099,UC Davis,Treynor Cleeland,3,7.7008,3.0,37,pass
+401868101,Idaho State,Jordan Cooke,1,2.74,1.0,9,pass
+401868104,Idaho State,Jordan Cooke,2,6.6828,2.0,41,pass
+401868105,Idaho State,Davis Harsin,1,2.5515,1.0,32,pass
+401868105,Idaho State,Jordan Cooke,1,2.0798,1.0,18,pass
+401868105,Weber State,Nate Dahle,1,2.6149,1.0,14,pass
+401868108,Montana State,Justin Lamson,1,4.1951,1.0,20,pass
+401868110,Montana,Keali'i Ah Yat,1,4.0953,1.0,53,pass
+401868113,Montana,Keali'i Ah Yat,1,2.0679,1.0,2,pass
+401868113,UC Davis,Treynor Cleeland,1,2.998,1.0,27,pass
+401868114,Montana,Keali'i Ah Yat,1,2.8073,1.0,24,pass
+401868115,Montana,Keali'i Ah Yat,2,9.1361,2.0,81,pass
+401868115,Northern Arizona,Ty Pennington,1,2.764,1.0,28,pass
+401868119,Butler,Gabe Passini,1,2.6246,1.0,3,pass
+401868119,Montana State,Justin Lamson,2,5.4062,2.0,49,pass
+401868120,Northern Arizona,Ty Pennington,1,3.0823,1.0,32,pass
+401868121,Montana State,Justin Lamson,1,2.8795,1.0,12,pass
+401868121,Weber State,Nate Dahle,2,4.3199,2.0,13,pass
+401868124,Utah Tech,Bronson Barben,1,2.6476,1.0,22,pass
+401868126,Southern Utah,Will Burns,1,2.5217,1.0,11,pass
+401868127,Northern Arizona,Ty Pennington,1,2.5918,1.0,18,pass
+401868127,Weber State,Nate Dahle,2,5.0567,2.0,31,pass
+401868129,Weber State,Devin Brown,1,4.3677,1.0,34,pass
+401868132,Northern Colorado,Brayten Silbor,1,3.2095,1.0,23,pass
+401868132,UC Davis,Treynor Cleeland,1,2.0679,1.0,2,pass
+401868134,Tarleton State,Kaden Anderson,1,2.5918,1.0,18,pass
+401868136,North Alabama,Destin Wade,1,2.7413,1.0,27,pass
+401868138,Central Arkansas,Donovyn Omolo,1,4.1304,1.0,34,pass
+401868138,Eastern Kentucky,Myles Burkett,1,2.6768,1.0,8,pass
+401868139,Eastern Kentucky,Tyler Travers,2,5.15,2.0,33,pass
+401868139,Western Carolina,Lex Thomas,2,5.4422,2.0,18,pass
+401868140,Jacksonville State,Caden Creel,2,6.8155,2.0,68,pass
+401868144,Eastern Kentucky,J. Potts,1,2.8393,1.0,7,pass
+401868144,West Georgia,C. Fitzgerald,1,2.6351,1.0,4,pass
+401868145,Tennessee Tech,Jax Leatherwood,1,3.015,1.0,36,pass
+401868146,Eastern Kentucky,Blake Kendall Jr.,1,2.696,1.0,4,pass
+401868146,West Florida,Ty'ray Davis,1,3.2404,1.0,15,pass
+401868147,Eastern Kentucky,Myles Burkett,1,1.8838,1.0,5,pass
+401868147,Tarleton State,Kaden Anderson,1,2.7001,1.0,25,pass
+401868151,North Alabama,Destin Wade,3,11.7793,3.0,122,pass
+401868152,North Alabama,Destin Wade,1,5.0253,1.0,48,pass
+401868153,Northern Colorado,Brayten Silbor,1,2.7925,1.0,27,pass
+401868153,Southern Utah,Will Burns,2,5.0718,2.0,41,pass
+401868155,Portland State,John-Keawe Sagapolutele,1,5.3161,1.0,58,pass
+401868155,Weber State,Nate Dahle,3,14.4993,3.0,141,pass
+401868156,Portland State,Tyrese Smith,2,8.1817,2.0,42,pass
+401868157,Portland State,J. Sagapolutele,1,0.8043,1.0,8,pass
+401868157,Portland State,John-Keawe Sagapolutele,1,2.4242,1.0,9,pass
+401868158,Southern Utah,Will Burns,1,2.5687,1.0,16,pass
+401868158,Weber State,Nate Dahle,2,5.2502,2.0,40,pass
+401868159,Southern Utah,Will Burns,1,2.5918,1.0,18,pass
+401868159,St. Thomas (MN),Nick Peipert,1,5.0505,1.0,63,pass
+401868160,Utah Tech,Deacon Hill,1,2.4242,1.0,9,pass
+401868161,Southern Utah,Will Burns,1,2.7858,1.0,1,pass
+401868163,UC Davis,Treynor Cleeland,2,4.3976,2.0,15,pass
+401868165,UC Davis,Treynor Cleeland,1,2.3862,1.0,38,pass
+401868166,UC Davis,Treynor Cleeland,1,2.7896,1.0,7,pass
+401868166,Utah Tech,Bronson Barben,1,2.7377,1.0,13,pass
+401868168,Weber State,Nate Dahle,1,2.5217,1.0,11,pass
+401868169,Charleston Southern,Lek Powell,1,2.8348,1.0,4,pass
+401868170,Georgia Southern,Max Johnson,1,4.4653,1.0,57,pass
+401868171,The Citadel,Quentin Hayes,1,4.419,1.0,33,pass
+401868173,Gardner-Webb,Cole Pennington,1,2.6874,1.0,9,pass
+401868174,Charleston Southern,Jared Echols,1,2.8004,1.0,18,pass
+401868174,Tennessee State,Byron McNair,1,3.0101,1.0,9,pass
+401868175,Western Illinois,K. McGill,1,4.77,1.0,44,pass
+401868177,Southeast Missouri State,Chance Wilson,2,11.2131,2.0,127,pass
+401868180,Gardner-Webb,Lan Farmer,1,3.0514,1.0,37,pass
+401868182,Southeast Missouri State,Braylen Ragland,1,2.2192,1.0,4,pass
+401868184,Eastern Illinois,Cole LaCrue,1,6.0778,1.0,75,pass
+401868184,Western Illinois,Kennedy McGill,1,7.0238,1.0,76,pass
+401868185,Eastern Illinois,Cole LaCrue,1,5.0613,1.0,40,pass
+401868185,Tennessee State,Daylin Lee,1,2.6768,1.0,8,pass
+401868191,Gardner-Webb,Cole Pennington,2,5.6357,2.0,32,pass
+401868191,Lindenwood,Pops Battle,1,3.7408,1.0,32,pass
+401868192,Western Illinois,Kennedy McGill,1,2.3196,1.0,8,pass
+401868196,Florida A&M,Armond Parker,1,6.3861,1.0,80,pass
+401868196,Florida A&M,Dustin Fletcher,1,2.4924,1.0,5,pass
+401868196,Tennessee State,Daylin Lee,1,3.5717,1.0,20,pass
+401868197,Tennessee State,Daylin Lee,1,3.8515,1.0,25,pass
+401868198,Tennessee State,Daylin Lee,2,9.9844,2.0,119,pass
+401868199,Lindenwood,Pops Battle,1,2.5301,1.0,12,pass
+401868200,Tennessee State,Daylin Lee,2,4.7801,2.0,19,pass
+401868204,Northwestern (IA),Colby Duncan,2,6.2862,2.0,44,pass
+401868205,Western Illinois,Kennedy McGill,2,4.8564,2.0,40,pass
+401868206,Western Illinois,Kennedy McGill,1,2.74,1.0,9,pass
+401868207,Southeast Missouri State,Braylen Ragland,1,3.8414,1.0,50,pass
+401868211,Butler,Gabe Passini,1,2.9726,1.0,35,pass
+401868211,Valparaiso,Rowan Keefe,1,2.9277,1.0,15,pass
+401868215,Presbyterian,Noah Perrin,1,7.1249,1.0,66,pass
+401868219,Davidson,Casey Bullock,4,11.0287,4.0,16,pass
+401868219,Drake,Riley Warzynski,3,9.7103,3.0,76,pass
+401868221,Davidson,Casey Bullock,1,2.8419,1.0,31,pass
+401868221,Presbyterian,L. Sharpe,1,3.5374,1.0,13,pass
+401868222,Morehead State,Bryce Patterson,2,7.6844,2.0,55,pass
+401868224,Davidson,Casey Bullock,1,3.4863,1.0,29,pass
+401868225,Dayton,B. Schondelmyer,1,2.8419,1.0,31,pass
+401868227,Dayton,Bryce Schondelmyer,1,2.3674,1.0,8,pass
+401868228,Drake,R. Warzynski,1,-7.0425,1.0,8,pass
+401868228,Drake,Riley Warzynski,1,6.1925,1.0,51,pass
+401868229,Dayton,Bryce Schondelmyer,1,2.3339,1.0,4,pass
+401868230,San Diego,Dom Nankil,1,3.1404,1.0,39,pass
+401868231,Dayton,Bryce Schondelmyer,1,2.72,1.0,26,pass
+401868231,Stetson,Thomas Von Grote,1,6.0073,1.0,59,pass
+401868232,Dayton,Bryce Schondelmyer,3,8.3266,3.0,38,pass
+401868233,West Georgia,Colton Fitzgerald,1,2.9889,1.0,12,pass
+401868235,Prairie View A&M,Tevin Carter,1,5.248,1.0,53,pass
+401868235,Tarleton State,Kaden Anderson,2,5.333,2.0,45,pass
+401868236,McNeese,Devin Lippold,2,6.8345,2.0,54,pass
+401868237,Merrimack,AJ Hairston Jr,1,2.841,1.0,22,pass
+401868237,Tarleton State,Kaden Anderson,1,3.1888,1.0,32,pass
+401868240,Chattanooga,Battle Alberson,2,9.4015,2.0,92,pass
+401868242,East Tennessee State,Mason Mims,1,2.9461,1.0,8,pass
+401868243,West Georgia,Colton Fitzgerald,1,2.6814,1.0,24,pass
+401868245,UT Rio Grande Valley,Aidan Jakobsohn,1,2.5582,1.0,15,pass
+401868245,UT Rio Grande Valley,Garret Rangel,1,2.7883,1.0,29,pass
+401868246,Nicholls,Ean Rodrigue,2,6.1533,2.0,21,pass
+401868246,UT Rio Grande Valley,Aidan Jakobsohn,2,9.6382,2.0,43,pass
+401868246,UT Rio Grande Valley,Garret Rangel,1,2.9625,1.0,29,pass
+401868247,McNeese,Devin Lippold,1,2.6483,1.0,39,pass
+401868250,UT Rio Grande Valley,Aidan Jakobsohn,1,2.9199,1.0,17,pass
+401868252,UT Rio Grande Valley,Aidan Jakobsohn,1,2.9726,1.0,35,pass
+401868254,Drake,Riley Warzynski,2,9.2003,2.0,110,pass
+401868254,South Dakota Mines,Gage Baker,2,6.692,2.0,80,pass
+401868255,Drake,Riley Warzynski,2,7.3625,2.0,49,pass
+401868255,Northern Iowa,Jaxon Dailey,1,3.3216,1.0,17,pass
+401868256,Valparaiso,Rowan Keefe,1,3.2323,1.0,27,pass
+401868257,Drake,Riley Warzynski,1,2.6246,1.0,3,pass
+401868258,Drake,Braylon Wilson,1,2.0673,1.0,23,pass
+401868258,Morehead State,Bryce Patterson,1,2.5435,1.0,15,pass
+401868259,Drake,Riley Warzynski,1,3.6099,1.0,13,pass
+401868259,San Diego,CJ Ceron,1,6.103,1.0,66,pass
+401868260,Drake,Riley Warzynski,3,7.7833,3.0,27,pass
+401868260,St. Thomas (MN),Anthony Policare,1,6.3861,1.0,80,pass
+401868261,New Haven,AJ Duffy,2,9.1683,2.0,85,pass
+401868262,Franklin Pierce,K. Leal,1,2.4386,1.0,5,pass
+401868262,Franklin Pierce,Kevin Leal,1,3.8666,1.0,28,pass
+401868262,Marist,Sonny Mannino,1,2.8514,1.0,2,pass
+401868263,Marist,Sonny Mannino,1,2.4386,1.0,5,pass
+401868264,Marist,Sonny Mannino,1,2.7883,1.0,29,pass
+401868264,Stetson,Thomas Von Grote,1,2.7151,1.0,10,pass
+401868265,Columbia,Chase Goodwin,2,5.699,2.0,57,pass
+401868265,Marist,Sonny Mannino,1,2.5582,1.0,15,pass
+401868267,Marist,Sonny Mannino,1,5.5896,1.0,43,pass
+401868267,San Diego,Dom Nankil,2,5.3834,2.0,13,pass
+401868269,Morehead State,David Parsons,4,19.4348,4.0,167,pass
+401868271,Morehead State,Bryce Patterson,1,2.5217,1.0,11,pass
+401868271,Stetson,Thomas Von Grote,2,4.2646,2.0,39,pass
+401868273,Presbyterian,Landon Sharpe,1,2.5799,1.0,17,pass
+401868273,UVA Wise,McCalan Beason,2,9.5528,2.0,73,pass
+401868274,Mercer,Jaylen King,1,3.2894,1.0,32,pass
+401868276,Presbyterian,Landon Sharpe,3,11.7991,3.0,88,pass
+401868276,St. Thomas (MN),Anthony Policare,2,7.0538,2.0,58,pass
+401868277,Presbyterian,Landon Sharpe,1,1.9004,1.0,1,pass
+401868277,Stetson,Thomas Von Grote,3,7.4162,3.0,59,pass
+401868279,St. Thomas (MN),Anthony Policare,1,3.6132,1.0,47,pass
+401868281,San Diego,Dom Nankil,1,2.8419,1.0,31,pass
+401868281,St. Thomas (MN),Nick Peipert,2,8.4116,2.0,79,pass
+401868282,St. Thomas (MN),Nick Peipert,2,6.3796,2.0,68,pass
+401868282,Stetson,Thomas Von Grote,1,2.6246,1.0,3,pass
+401868285,Bethune-Cookman,Amari Jones,1,3.4765,1.0,45,pass
+401868286,Stetson,Chris Stephenson,3,12.0209,3.0,123,pass
+401868286,Valparaiso,Rowan Keefe,1,2.6246,1.0,3,pass
+401868295,Alabama A&M,Cornelious Brown IV,2,11.2751,2.0,137,pass
+401868295,Jackson State,Jared Lockhart,2,5.4037,2.0,23,pass
+401868299,Alabama A&M,Cornelious Brown IV,2,7.6861,2.0,77,pass
+401868299,Florida A&M,Armond Parker,2,5.6527,2.0,22,pass
+401868301,Alabama A&M,Cornelious Brown IV,2,11.5054,2.0,128,pass
+401868303,Alabama A&M,Cornelious Brown IV,1,3.3264,1.0,13,pass
+401868305,McNeese,Devin Lippold,1,2.8846,1.0,7,pass
+401868305,Stephen F. Austin,Gavin Rutherford,2,10.5169,2.0,72,pass
+401868306,East Texas A&M,Eric Rodriguez,1,2.6323,1.0,21,pass
+401868308,Northeastern State,Donnie Smith,1,2.813,1.0,11,pass
+401868308,Stephen F. Austin,Gavin Rutherford,1,4.0549,1.0,29,pass
+401868309,Incarnate Word,Emmett Brown,1,3.83,1.0,53,pass
+401868309,Stephen F. Austin,Gavin Rutherford,1,2.3196,1.0,8,pass
+401868310,Stephen F. Austin,Gavin Rutherford,1,5.2763,1.0,34,pass
+401868311,SE Louisiana,Kyle Lowe,1,6.5304,1.0,73,pass
+401868311,Stephen F. Austin,Gavin Rutherford,1,2.305,1.0,13,pass
+401868312,Stephen F. Austin,Gavin Rutherford,2,6.5159,2.0,81,pass
+401868313,Lamar,Aiden McCown,2,9.4988,2.0,90,pass
+401868313,Stephen F. Austin,JT Kitna,1,5.7756,1.0,71,pass
+401868315,Houston Christian,Cutter Stewart,2,8.1156,2.0,78,pass
+401868315,SE Louisiana,Kyle Lowe,1,2.8514,1.0,2,pass
+401868316,SE Louisiana,Kyle Lowe,2,5.0246,2.0,19,pass
+401868317,UL Monroe,Austin Carlisle,1,3.3844,1.0,17,pass
+401868319,Lamar,Aiden McCown,1,2.72,1.0,26,pass
+401868321,Incarnate Word,Emmett Brown,1,4.0028,1.0,23,pass
+401868322,SE Louisiana,Kyle Lowe,1,4.1849,1.0,54,pass
+401868325,Alabama State,Andrew Body,1,3.1056,1.0,20,pass
+401868331,Alabama State,Aaron Frye,2,9.1182,2.0,111,pass
+401868331,Texas Southern,Cam'Ron McCoy,2,6.5818,2.0,42,pass
+401868337,Wofford,Ethan Drumm,1,6.0778,1.0,75,pass
+401868338,The Citadel,Quentin Hayes,1,2.6246,1.0,3,pass
+401868339,East Tennessee State,Mason Mims,1,3.2513,1.0,20,pass
+401868341,Western Carolina,Lex Thomas,1,3.0393,1.0,12,pass
+401868342,Chattanooga,Battle Alberson,1,6.8834,1.0,66,pass
+401868342,VMI,JoJo Crump,1,2.6964,1.0,40,pass
+401868343,Mercer,JP Pickles,1,2.6246,1.0,3,pass
+401868345,East Tennessee State,Mason Mims,1,2.8419,1.0,31,pass
+401868346,East Tennessee State,Mason Mims,1,2.7788,1.0,12,pass
+401868347,The Citadel,Xavier Hill,1,3.2079,1.0,15,pass
+401868350,Samford,Gabarri Johnson,1,2.6071,1.0,7,pass
+401868350,Samford,Will Shields,1,3.2323,1.0,27,pass
+401868358,Alcorn State,Jaylon Tolbert,2,5.6217,2.0,41,pass
+401868358,Texas Southern,Cam'Ron McCoy,2,8.0679,2.0,71,pass
+401868359,Alcorn State,Jaylon Tolbert,1,4.953,1.0,62,pass
+401868359,Grambling,Ashton Frye,2,5.9153,2.0,26,pass
+401868359,Grambling,Jacobe Robinson,1,2.9461,1.0,8,pass
+401868361,Alcorn State,Jaylon Tolbert,2,5.0988,2.0,28,pass
+401868362,Alcorn State,Bryan Wilson,2,9.72,2.0,100,pass
+401868363,Alcorn State,Jaylon Tolbert,2,8.129,2.0,73,pass
+401868363,Florida A&M,Armond Parker,1,2.5687,1.0,16,pass
+401868364,Alcorn State,Jaylon Tolbert,2,9.2194,2.0,106,pass
+401868375,Furman,C. Ackerley,1,2.9425,1.0,18,pass
+401868375,Wofford,E. Drumm,1,5.7756,1.0,71,pass
+401868376,Furman,Connor Ackerley,1,3.0149,1.0,23,pass
+401868376,Tennessee Tech,Jax Leatherwood,1,2.7078,1.0,5,pass
+401868377,Samford,Gabarri Johnson,1,3.3694,1.0,14,pass
+401868381,Mercer,JP Pickles,1,2.8689,1.0,3,pass
+401868382,Western Carolina,Lex Thomas,1,2.6995,1.0,9,pass
+401868385,Tennessee Tech,Jax Leatherwood,1,2.4386,1.0,5,pass
+401868389,Western Carolina,Lex Thomas,2,4.65,2.0,8,pass
+401868390,Tennessee Tech,Jax Leatherwood,2,6.8048,2.0,34,pass
+401868390,Wofford,Ethan Drumm,1,5.4233,1.0,40,pass
+401868391,Tennessee Tech,Jax Leatherwood,1,2.5918,1.0,18,pass
+401868393,Tennessee Tech,Jax Leatherwood,2,5.4206,2.0,50,pass
+401868394,Wofford,J.T. Fayard,1,2.454,1.0,1,pass
+401868395,VMI,JoJo Crump,1,5.6928,1.0,70,pass
+401868397,Davidson,Casey Bullock,1,6.7807,1.0,32,pass
+401868934,Arkansas-Pine Bluff,Garrison Davis,2,9.571,2.0,107,pass
+401868934,Arkansas-Pine Bluff,Jack Schierholz,1,3.1404,1.0,39,pass
+401868935,Arkansas-Pine Bluff,Garrison Davis,1,3.0098,1.0,33,pass
+401868935,Central State,Jackson Wasik,3,12.819,3.0,87,pass
+401868936,Southern,Wyatt McCauley,1,3.3924,1.0,20,pass
+401868937,Arkansas-Pine Bluff,Jack Schierholz,1,2.9251,1.0,14,pass
+401868938,Arkansas-Pine Bluff,Jack Schierholz,1,2.8846,1.0,7,pass
+401868939,Arkansas-Pine Bluff,Jack Schierholz,1,6.4883,1.0,82,pass
+401868943,Mississippi Valley State,Josh Brown,1,2.9726,1.0,35,pass
+401868944,Bethune-Cookman,Tyler Jefferson,1,2.6323,1.0,21,pass
+401868944,Jackson State,Jared Lockhart,1,4.5387,1.0,43,pass
+401868946,Bethune-Cookman,Cordan Patterson,1,2.7684,1.0,15,pass
+401868946,Grambling,Jacobe Robinson,1,2.9461,1.0,8,pass
+401868948,Florida A&M,Isaiah Knowles,1,2.8514,1.0,2,pass
+401868950,Florida A&M,Armond Parker,2,5.5248,2.0,37,pass
+401868950,Southern,Christian Johnson,1,2.7992,1.0,10,pass
+401868951,Florida A&M,James Hayes,1,2.664,1.0,23,pass
+401868952,Grambling,Jacobe Robinson,1,2.1968,1.0,7,pass
+401868952,Grambling,Reginald Johnson,1,2.5217,1.0,11,pass
+401868953,Central State,Jackson Wasik,1,2.7883,1.0,29,pass
+401868954,Grambling,Ashton Frye,1,5.6336,1.0,50,pass
+401868954,Grambling,Jacobe Robinson,1,4.6639,1.0,47,pass
+401868954,Prairie View A&M,Tevin Carter,2,4.2646,2.0,39,pass
+401868955,Grambling,Jacobe Robinson,3,7.7925,3.0,19,pass
+401868956,Grambling,Ashton Frye,1,2.8238,1.0,6,pass
+401868959,Jackson State,Jared Lockhart,1,2.5287,1.0,6,pass
+401868960,Jackson State,Jared Lockhart,2,8.3888,2.0,74,pass
+401868961,Jackson State,Jar. Lockhart,1,3.0604,1.0,11,pass
+401868962,Nicholls,Ean Rodrigue,3,14.9018,3.0,154,pass
+401868963,Mississippi Valley State,Josh Brown,3,13.6502,3.0,118,pass
+401868964,Delta State,Emile Picarella,1,3.1756,1.0,26,pass
+401868965,Mississippi Valley State,Josh Brown,1,3.6645,1.0,35,pass
+401868966,Mississippi Valley State,Josh Brown,1,2.6246,1.0,3,pass
+401868968,Prairie View A&M,T. Carter,1,3.6862,1.0,48,pass
+401868968,Southern,Christian Johnson,2,11.9896,2.0,115,pass
+401868969,East Texas A&M,Reese Mooney,1,2.6814,1.0,24,pass
+401868969,Prairie View A&M,Tevin Carter,1,2.5287,1.0,6,pass
+401868970,Kentucky State,Juan Gainous,2,9.3699,2.0,87,pass
+401868970,Southern,Christian Johnson,2,5.4863,2.0,29,pass
+401868971,Louisiana Christian,Phillip Jones II,1,2.8142,1.0,30,pass
+401868971,Southern,Christian Johnson,1,2.8854,1.0,18,pass
+401869127,Richmond,A. Snelsire,1,2.5435,1.0,15,pass
+401869127,Richmond,Ashten Snelsire,2,6.6176,2.0,71,pass
+401869128,Louisiana Christian,Bryce Perkins,2,7.2794,2.0,76,pass
+401869128,Northwestern State,Abram Johnston,2,8.6797,2.0,64,pass
+401869129,Louisiana Tech,Blake Baker,1,6.0778,1.0,75,pass
+401869129,Louisiana Tech,Joshua Brantley,1,2.7855,1.0,16,pass
+401869131,Lamar,Aiden McCown,1,2.5582,1.0,15,pass
+401869132,Northwestern State,Zach Wilcke,1,2.764,1.0,28,pass
+401869133,Nicholls,Chase Richardson,1,2.8943,1.0,27,pass
+401869133,Northwestern State,Zach Wilcke,1,3.0785,1.0,10,pass
+401869134,Incarnate Word,Emmett Brown,1,2.5582,1.0,15,pass
+401869135,Houston Christian,Cutter Stewart,1,2.8905,1.0,21,pass
+401869135,Northwestern State,Zach Wilcke,2,8.9717,2.0,71,pass
+401869136,McNeese,Devin Lippold,2,6.0847,2.0,32,pass
+401869138,Incarnate Word,Emmett Brown,2,5.779,2.0,53,pass
+401869139,McNeese,Brady Barrier,1,2.8715,1.0,32,pass
+401869143,Lamar,Aiden McCown,2,6.9339,2.0,60,pass
+401869143,Nicholls,Ean Rodrigue,1,2.2114,1.0,3,pass
+401869144,Incarnate Word,Emmett Brown,1,2.4386,1.0,5,pass
+401869145,Lamar,Aiden McCown,1,4.7712,1.0,41,pass
+401869146,Lamar,Aiden McCown,3,8.6042,3.0,66,pass
+401869147,Houston Christian,Cutter Stewart,1,2.5373,1.0,7,pass
+401869147,Houston Christian,Maddox Kopp,1,6.9285,1.0,53,pass
+401869148,Incarnate Word,Emmett Brown,2,6.8119,2.0,71,pass
+401869148,Nicholls,Preston Welch,1,3.5907,1.0,28,pass
+401869152,Houston Christian,Cutter Stewart,2,4.9317,2.0,21,pass
+401869153,East Texas A&M,R. Mooney,1,0.89,1.0,12,pass
+401869153,East Texas A&M,Reese Mooney,1,5.3368,1.0,66,pass
+401869153,Nicholls,Chase Richardson,1,3.6914,1.0,37,pass
+401869154,Duquesne,Carson Camp,3,8.8315,3.0,53,pass
+401869154,New Haven,Jake Tripptree,1,2.74,1.0,9,pass
+401869155,Duquesne,Carson Camp,1,5.2785,1.0,28,pass
+401869155,Mercyhurst,Alex Gevaudan,1,2.3339,1.0,4,pass
+401869156,Chicago State,Ashton Pannell,1,2.7413,1.0,27,pass
+401869842,Louisiana Tech,Marcus Calwise Jr.,1,6.0068,1.0,74,pass
+401869845,App State,Henry Hasselbeck,1,2.7616,1.0,5,pass
+401869933,Arkansas State,T. Owens,3,7.1853,3.0,39,pass
+401869933,South Alabama,J. Hollins,1,2.9528,1.0,7,pass
+401869934,Southern Miss,Landry Lyddy,1,2.5687,1.0,16,pass
+401869940,Coastal Carolina,Deuce Bailey,1,3.1545,1.0,27,pass
+401869942,Coastal Carolina,Deuce Bailey,2,5.8005,2.0,38,pass
+401869942,Georgia Southern,M. Johnson,1,2.5687,1.0,16,pass
+401869942,Georgia Southern,Max Johnson,1,2.5483,1.0,14,pass
+401869951,Georgia Southern,Max Johnson,4,12.7713,4.0,139,pass
+401869961,James Madison,Camden Coleman,1,2.6179,1.0,20,pass
+401869961,Old Dominion,Ryan Huff,1,2.664,1.0,23,pass
+401869962,James Madison,Camden Coleman,1,6.0065,1.0,53,pass
+401869968,Louisiana,Lunch Winfield,1,2.998,1.0,27,pass
+401870752,Western Kentucky,Brock Glenn,1,2.6375,1.0,10,pass
+401870763,Troy,Goose Crowder,1,2.7544,1.0,18,pass
+401870790,Mercyhurst,Alex Gevaudan,1,2.7099,1.0,14,pass
+401870795,Liberty,Deshawn Purdie,1,2.5582,1.0,15,pass
+401870840,Merrimack,AJ Hairston Jr,1,3.189,1.0,40,pass
+401870840,Yale,Dante Reno,4,12.319,4.0,41,pass
+401870841,Pennsylvania,Miles Teodecki,2,5.4759,2.0,5,pass
+401870841,Yale,Dante Reno,2,6.5013,2.0,73,pass
+401871049,New Mexico State,Adam Damante,1,2.5582,1.0,15,pass
+401871054,Kennesaw State,Rickie Collins,1,2.5138,1.0,10,pass
+401871054,Missouri State,Henry Belin IV,1,2.8279,1.0,12,pass
+401871058,Kennesaw State,Rickie Collins,2,5.5059,2.0,54,pass
+401871070,New Mexico State,Adam Damante,2,4.6251,2.0,32,pass
+401871070,Sam Houston,Landyn Locke,1,6.4386,1.0,81,pass
+401871071,Delaware,N. Minicucci,1,-4.9115,1.0,11,pass
+401871073,Delaware,Nick Minicucci,1,2.9199,1.0,17,pass
+401871073,Kennesaw State,R. Collins,1,-6.6375,0.0,7,pass
+401871075,Sam Houston,Landyn Locke,1,5.1472,1.0,64,pass
+401871089,UL Monroe,Aidan Armenta,1,2.6071,1.0,7,pass
+401871099,Louisiana Tech,Marcus Calwise Jr.,1,3.7623,1.0,49,pass
+401871473,Southeast Missouri State,Braylen Ragland,2,5.2703,2.0,42,pass
+401872617,South Dakota State,C. Mason,1,2.6476,1.0,22,pass
+401872618,Merrimack,AJ Hairston Jr,1,2.8514,1.0,2,pass
+401874035,Southern Illinois,Jake Curry,2,5.6193,2.0,26,pass
+401874035,West Florida,Ty'ray Davis,1,3.2919,1.0,22,pass
+401874042,East Texas A&M,Eric Rodriguez,1,5.832,1.0,48,pass
+401896383,Morehead State,David Parsons,4,10.7656,4.0,54,pass
+401896383,Ohio Dominican,Carson Parker,2,8.1004,2.0,41,pass
+401896384,Davidson,Casey Bullock,2,4.9757,2.0,12,pass
+401896385,Miles,Brinley Vandiver,1,5.4023,1.0,61,pass
+401915931,Chicago State,Jacob Tiberi,2,5.4787,2.0,39,pass
+401917058,Western Carolina,Lex Thomas,2,6.6125,2.0,49,pass
