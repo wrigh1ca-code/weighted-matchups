@@ -44,7 +44,7 @@ METRICS = [
 def classify(plays: pd.DataFrame) -> pd.DataFrame:
     """Keep scrimmage plays and tag each as pass or rush."""
     p = plays.copy()
-    text = p["playText"].fillna("").str.lower()
+    text = p["playText"].fillna("").map(clean_text).str.lower()
     is_pass = p["playType"].isin(PASS_TYPES)
     is_rush = p["playType"].isin(RUSH_TYPES)
     fum = p["playType"].isin(FUMBLE_TYPES)
@@ -117,13 +117,43 @@ def unit_game_stats(plays: pd.DataFrame) -> pd.DataFrame:
 
 import re
 
-_NAME = r"([A-Z][\w'.\-]*(?:\s+(?:[A-Z][\w'.\-]*|de|la|le|van|von|St\.))*(?:\s+(?:Jr\.?|Sr\.?|II|III|IV))?)"
-RUSH_RES = [re.compile(r"^" + _NAME + r"\s+(?:run|rush|rushed|scramble[sd]?)\b"),
-            re.compile(r"^" + _NAME + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:Run|Rush|run|rush)")]
-TARGET_RES = [re.compile(r"pass (?:complete|completed|incomplete|caught|intended|thrown) (?:to|for) " + _NAME),
-              re.compile(r"^" + _NAME + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:pass|Pass) from")]
-PASSER_RES = [re.compile(r"^" + _NAME + r"\s+(?:pass|sacked|scramble)"),
-              re.compile(r"(?:pass|Pass) from " + _NAME)]
+_TIME = re.compile(r"^\(\s*\d{1,2}:\d{2}\s*\)\s*")
+_JERSEY = re.compile(r"#\d+\s+")
+_SUFFIX = re.compile(r"\s+(?:Jr\.?|Sr\.?|II|III|IV|V)$", re.I)
+_TOKEN = r"[A-Z][\w'\-]*\.?(?:[A-Z][\w'\-]*)?"            # 'LJ', 'C.Creel', "D'Andre", 'St.'
+_NAMEP = r"(" + _TOKEN + r"(?:\s+" + _TOKEN + r"){0,3})"
+RUSH_RES = [re.compile(r"^" + _NAMEP + r"\s+(?:rush|run|rushed|scrambles?|scrambled|kneels?)\b"),
+            re.compile(r"^" + _NAMEP + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:Run|Rush|run|rush)")]
+TARGET_RES = [re.compile(r"\bpass(?:es)?\s+(?:complete|completed|incomplete|caught)\b[^.]*?\b(?:to|for)\s+" + _NAMEP + r"(?=\s+for\b|\s+to\b|\s*,|\s*$|\s+\(|\s+at\b|\s+\d|\s+dropped|\s+broken|\s+thrown)"),
+              re.compile(r"^" + _NAMEP + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:pass|Pass) from")]
+PASSER_RES = [re.compile(r"^" + _NAMEP + r"\s+(?:pass|passes|sacked|scrambles?)\b"),
+              re.compile(r"(?:pass|Pass) from " + _NAMEP)]
+
+
+def clean_text(t: str) -> str:
+    t = _TIME.sub("", t or "")
+    k = t.find("#")
+    if k > 0 and re.match(r"#\d+\s", t[k:]):
+        t = t[k:]            # drop formation words before the first jersey number
+    return _JERSEY.sub("", t).strip()
+
+
+def name_key(name: str | None) -> str | None:
+    """Canonical player key across formats: 'LJ Martin', 'L.Martin', 'L. Martin' -> 'l.martin'."""
+    if not name:
+        return None
+    n = _SUFFIX.sub("", name.strip())
+    n = n.replace(". ", ".")
+    if "." in n and " " not in n:                     # C.Creel
+        first, last = n.split(".", 1)
+    else:
+        parts = n.split()
+        if len(parts) < 2:
+            return n.lower()
+        first, last = parts[0], parts[-1]
+    first = re.sub(r"[^A-Za-z]", "", first)[:1]
+    last = re.sub(r"[^A-Za-z'\-]", "", last.split()[-1] if " " in last else last)
+    return f"{first}.{last}".lower() if first and last else None
 
 
 def _first(res, text):
@@ -138,7 +168,7 @@ def player_game_stats(plays: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     """Per (game, offense, player, kind) totals: kind = 'rush' (ball carrier), 'target' (intended
     receiver) or 'pass' (passer/dropback). Same scrimmage + garbage-time filters as unit stats."""
     p = add_flags(drop_garbage_time(classify(plays)))
-    text = p["playText"].fillna("")
+    text = p["playText"].fillna("").map(clean_text)
     rusher = np.where(p["is_rush"], text.map(lambda t: _first(RUSH_RES, t)), None)
     target = np.where(p["is_pass"] & ~p["is_sack"], text.map(lambda t: _first(TARGET_RES, t)), None)
     passer = np.where(p["is_pass"], text.map(lambda t: _first(PASSER_RES, t)), None)
@@ -152,8 +182,11 @@ def player_game_stats(plays: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
         cov[kind] = float(d["player"].notna().mean()) if len(d) else 0.0
         misses[kind] = text.to_numpy()[mask][pd.isna(d["player"]).to_numpy()][:4].tolist()
         d = d.dropna(subset=["player"])
-        g = d.groupby(["gameId", "team", "player"]).agg(n=("epa", "size"), epa_sum=("epa", "sum"),
-                                                         succ_sum=("success", "sum"), yds=("yards", "sum")).reset_index()
+        d["key"] = d["player"].map(name_key)
+        d = d.dropna(subset=["key"])
+        g = d.groupby(["gameId", "team", "key"]).agg(player=("player", "first"), n=("epa", "size"),
+                                                      epa_sum=("epa", "sum"), succ_sum=("success", "sum"),
+                                                      yds=("yards", "sum")).reset_index()
         g["kind"] = kind
         rows.append(g)
     out = pd.concat(rows, ignore_index=True)
