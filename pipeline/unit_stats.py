@@ -111,3 +111,50 @@ def unit_game_stats(plays: pd.DataFrame) -> pd.DataFrame:
     dfn["side"] = "defense"
     cols = ["gameId", "team", "opponent", "side", "plays", "rushes", "dropbacks"] + METRICS
     return pd.concat([off[cols], dfn[cols]], ignore_index=True)
+
+
+# ---------------------------------------------------------------- player attribution
+
+import re
+
+_NAME = r"([A-Z][\w'.\-]*(?:\s+(?:[A-Z][\w'.\-]*|de|la|le|van|von|St\.))*(?:\s+(?:Jr\.?|Sr\.?|II|III|IV))?)"
+RUSH_RES = [re.compile(r"^" + _NAME + r"\s+(?:run|rush|rushed|scramble[sd]?)\b"),
+            re.compile(r"^" + _NAME + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:Run|Rush|run|rush)")]
+TARGET_RES = [re.compile(r"pass (?:complete|completed|incomplete|caught|intended|thrown) (?:to|for) " + _NAME),
+              re.compile(r"^" + _NAME + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:pass|Pass) from")]
+PASSER_RES = [re.compile(r"^" + _NAME + r"\s+(?:pass|sacked|scramble)"),
+              re.compile(r"(?:pass|Pass) from " + _NAME)]
+
+
+def _first(res, text):
+    for r in res:
+        m = r.search(text)
+        if m:
+            return m.group(1).strip()
+    return None
+
+
+def player_game_stats(plays: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+    """Per (game, offense, player, kind) totals: kind = 'rush' (ball carrier), 'target' (intended
+    receiver) or 'pass' (passer/dropback). Same scrimmage + garbage-time filters as unit stats."""
+    p = add_flags(drop_garbage_time(classify(plays)))
+    text = p["playText"].fillna("")
+    rusher = np.where(p["is_rush"], text.map(lambda t: _first(RUSH_RES, t)), None)
+    target = np.where(p["is_pass"] & ~p["is_sack"], text.map(lambda t: _first(TARGET_RES, t)), None)
+    passer = np.where(p["is_pass"], text.map(lambda t: _first(PASSER_RES, t)), None)
+    rows, cov, misses = [], {}, {}
+    for kind, who, mask in (("rush", rusher, p["is_rush"].to_numpy()),
+                            ("target", target, (p["is_pass"] & ~p["is_sack"]).to_numpy()),
+                            ("pass", passer, p["is_pass"].to_numpy())):
+        d = pd.DataFrame({"gameId": p["gameId"].to_numpy(), "team": p["offense"].to_numpy(),
+                          "player": who, "epa": p["ppa"].to_numpy(), "success": p["success"].to_numpy(),
+                          "yards": p["yardsGained"].to_numpy()})[mask]
+        cov[kind] = float(d["player"].notna().mean()) if len(d) else 0.0
+        misses[kind] = text.to_numpy()[mask][pd.isna(d["player"]).to_numpy()][:4].tolist()
+        d = d.dropna(subset=["player"])
+        g = d.groupby(["gameId", "team", "player"]).agg(n=("epa", "size"), epa_sum=("epa", "sum"),
+                                                         succ_sum=("success", "sum"), yds=("yards", "sum")).reset_index()
+        g["kind"] = kind
+        rows.append(g)
+    out = pd.concat(rows, ignore_index=True)
+    return out, {"coverage": cov, "unparsed_examples": misses}

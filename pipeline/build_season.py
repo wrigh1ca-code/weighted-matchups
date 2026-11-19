@@ -15,7 +15,7 @@ import pandas as pd
 
 from pipeline.cfbd_client import CFBDClient, CFBDError
 from pipeline.ingest import season_games, week_player_passing, week_plays
-from pipeline.unit_stats import unit_game_stats
+from pipeline.unit_stats import player_game_stats, unit_game_stats
 
 OUT = Path("data/derived")
 
@@ -81,7 +81,13 @@ def build(client: CFBDClient, year: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     for st, wk in weeks.itertuples(index=False):
         plays += week_plays(client, year, int(wk), st)
         qbs.append(week_player_passing(client, year, int(wk), st))
-    units = unit_game_stats(pd.DataFrame(plays))
+    plays_df = pd.DataFrame(plays)
+    units = unit_game_stats(plays_df)
+    players, info = player_game_stats(plays_df)
+    print(f"  player attribution coverage: { {k: round(v, 3) for k, v in info['coverage'].items()} }")
+    for k, ex in info["unparsed_examples"].items():
+        for t in ex[:2]:
+            print(f"    unparsed {k}: {str(t)[:70]}")
 
     g = sched[sched["completed"] == True]  # noqa: E712
     home = g.assign(team=g.homeTeam, opponent=g.awayTeam, pts=g.homePoints, opp_pts=g.awayPoints,
@@ -100,7 +106,7 @@ def build(client: CFBDClient, year: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     opp_qb = qb.rename(columns={"team": "opponent", "qb": "opp_qb", "qb_id": "opp_qb_id"})
     units = units.merge(opp_qb[["gameId", "opponent", "opp_qb", "opp_qb_id"]], on=["gameId", "opponent"], how="left")
     units = units.sort_values(["team", "side", "startDate"]).reset_index(drop=True)
-    return units, sched
+    return units, sched, players
 
 
 def main(argv: list[str]) -> int:
@@ -112,7 +118,8 @@ def main(argv: list[str]) -> int:
     print(f"CFBD tier: {info.get('tierName')} (limit {info.get('monthlyLimit')}, remaining {info.get('remainingCalls')})")
     OUT.mkdir(parents=True, exist_ok=True)
     for y in years:
-        units, sched = build(client, y)
+        units, sched, players = build(client, y)
+        players.round(4).to_csv(OUT / f"player_games_{y}.csv", index=False)
         units.round(4).to_csv(OUT / f"unit_games_{y}.csv", index=False)
         sched.to_csv(OUT / f"games_{y}.csv", index=False)
         wx = sched["temp"].notna().mean() if "temp" in sched else 0
