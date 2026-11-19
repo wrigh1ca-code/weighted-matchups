@@ -289,8 +289,58 @@
       if (name === 'OVERALL') y = CY - R - 62;
       s += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}" style="font:800 19px Inter,sans-serif;letter-spacing:.1em;fill:${ink}">${name}</text>`;
     });
+    // Invisible hover/tap targets, one wedge per metric
+    ORDER.forEach((m, i) => {
+      s += `<path class="hit" d="${sector(i - 0.5, i + 0.5, R + 48)}" data-m="${m}" data-off="${esc(offKey)}" data-def="${esc(defKey)}" tabindex="0" role="button" aria-label="${esc(LABELS[m])}: show percentiles"/>`;
+    });
     return s + '</svg>';
   }
+
+  // ---------- radar tooltips
+  const ord = n => { const v = Math.round(n), t = v % 100; return v + (t >= 11 && t <= 13 ? 'th' : ({ 1: 'st', 2: 'nd', 3: 'rd' }[v % 10] || 'th')); };
+  const RATE = new Set(['sr', 'late_sr', 'pass_sr', 'explosive', 'pass_expl', 'rush_expl', 'stuff', 'opportunity', 'havoc']);
+  const fmtRaw = (m, v) => v == null ? '–' : RATE.has(m) ? `${(v * 100).toFixed(1)}%` : (m === 'line_yards' || m === 'yds_db') ? v.toFixed(2) : (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(3);
+  function tipHTML(m, offKey, defKey) {
+    const P = state.lastP;
+    const line = (key) => {
+      const [t, side] = key.split('|'), p = P[key];
+      const w = pct(p.final[m], side, m), u = pct(p.season[m], side, m);
+      const c = t === HOME ? 'var(--home)' : 'var(--away)';
+      const parts = [];
+      if (state.view !== 'season') parts.push(`<span><b>${w == null ? '–' : ord(w)}</b> weighted <span class="raw">(${fmtRaw(m, p.final[m])})</span></span>`);
+      if (state.view !== 'weighted') parts.push(`<span><b>${u == null ? '–' : ord(u)}</b> unweighted <span class="raw">(${fmtRaw(m, p.season[m])})</span></span>`);
+      return `<div class="tline"><div class="tteam" style="color:${c}">${esc(t)} ${side}</div>${parts.join('')}</div>`;
+    };
+    const dir = HIB[`offense|${m}`] ? '' : ' (for offenses, lower raw is better)';
+    return `<div class="ttitle">${esc(LABELS[m])}</div>${line(offKey)}${line(defKey)}
+      <div class="tnote">Percentile among FBS units this season; higher = better for that unit${dir}.</div>`;
+  }
+  const tip = document.createElement('div');
+  tip.className = 'rtip'; tip.setAttribute('role', 'tooltip'); tip.hidden = true;
+  document.body.appendChild(tip);
+  let tipTarget = null;
+  function showTip(el, x, y) {
+    tipTarget = el;
+    tip.innerHTML = tipHTML(el.dataset.m, el.dataset.off, el.dataset.def);
+    tip.hidden = false;
+    const r = tip.getBoundingClientRect(), pad = 14;
+    let left = x + pad, top = y + pad;
+    if (left + r.width > window.innerWidth - 8) left = x - r.width - pad;
+    if (top + r.height > window.innerHeight - 8) top = y - r.height - pad;
+    tip.style.left = `${Math.max(8, left) + window.scrollX}px`;
+    tip.style.top = `${Math.max(8, top) + window.scrollY}px`;
+    document.querySelectorAll('#radars .hit.on').forEach(h => h.classList.remove('on'));
+    document.querySelectorAll(`#radars .hit[data-m="${el.dataset.m}"]`).forEach(h => h.classList.add('on'));
+  }
+  function hideTip() { tip.hidden = true; tipTarget = null; document.querySelectorAll('#radars .hit.on').forEach(h => h.classList.remove('on')); }
+  const radarsEl = $('radars');
+  radarsEl.addEventListener('mousemove', e => { const h = e.target.closest('.hit'); if (h) showTip(h, e.clientX, e.clientY); else hideTip(); });
+  radarsEl.addEventListener('mouseleave', hideTip);
+  radarsEl.addEventListener('click', e => { const h = e.target.closest('.hit'); if (h) { e.stopPropagation(); showTip(h, e.clientX, e.clientY); } });
+  radarsEl.addEventListener('focusin', e => { const h = e.target.closest('.hit'); if (h) { const b = h.getBoundingClientRect(); showTip(h, b.left + b.width / 2, b.top + b.height / 2); } });
+  radarsEl.addEventListener('focusout', hideTip);
+  document.addEventListener('click', e => { if (!e.target.closest('.hit')) hideTip(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hideTip(); });
 
   // ---------- per-unit games table
   const r0 = x => Math.round(x);
@@ -336,6 +386,7 @@
     document.querySelectorAll('#unitseg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.u === state.unit)));
 
     const pr = projection(state.a, true);
+    state.lastP = pr.P;
     const eq = projection({ a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 }, false);
     const noLu = projection(state.a, false);
     document.querySelectorAll('[data-eff]').forEach(el => {

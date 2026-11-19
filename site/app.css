@@ -136,3 +136,14 @@ footer { font-size: 12px; color: var(--muted); }
 .kprow { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line); padding-top: 8px; }
 .kpstats { font-size: 12px; color: var(--muted); line-height: 1.45; }
 .kpeffect { font-size: 12px; font-weight: 600; color: #1e3a8a; }
+
+/* Radar hover */
+.radar svg .hit { fill: transparent; cursor: pointer; outline: none; }
+.radar svg .hit:hover, .radar svg .hit.on, .radar svg .hit:focus-visible { fill: rgba(17, 24, 39, .07); }
+.radar svg .hit:focus-visible { stroke: #1e3a8a; stroke-width: 1.5; }
+.rtip { position: absolute; z-index: 50; max-width: 300px; background: #111827; color: #f9fafb; border-radius: 10px; padding: 10px 12px; font-size: 13px; line-height: 1.4; box-shadow: 0 8px 24px rgba(0,0,0,.25); pointer-events: none; }
+.rtip .ttitle { font-family: "Space Grotesk", Inter, sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+.rtip .tline { display: flex; flex-direction: column; gap: 1px; margin-bottom: 6px; }
+.rtip .tteam { font-weight: 700; filter: brightness(1.6); }
+.rtip .raw { color: #cbd5e1; }
+.rtip .tnote { font-size: 11px; color: #cbd5e1; border-top: 1px solid #374151; padding-top: 6px; }
