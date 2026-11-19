@@ -124,7 +124,7 @@ _TOKEN = r"[A-Z][\w'\-]*\.?(?:[A-Z][\w'\-]*)?"            # 'LJ', 'C.Creel', "D'
 _NAMEP = r"(" + _TOKEN + r"(?:\s+" + _TOKEN + r"){0,3})"
 RUSH_RES = [re.compile(r"^" + _NAMEP + r"\s+(?:rush|run|rushed|scrambles?|scrambled|kneels?)\b"),
             re.compile(r"^" + _NAMEP + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:Run|Rush|run|rush)")]
-TARGET_RES = [re.compile(r"\bpass(?:es)?\s+(?:complete|completed|incomplete|caught)\b[^.]*?\b(?:to|for)\s+" + _NAMEP + r"(?=\s+for\b|\s+to\b|\s*,|\s*$|\s+\(|\s+at\b|\s+\d|\s+dropped|\s+broken|\s+thrown)"),
+TARGET_RES = [re.compile(r"\bpass(?:es)?\s+(?:complete|completed|incomplete|caught)\b[^.]*?\b(?:to|for)\s+" + _NAMEP + r"(?=\s+for\b|\s+to\b|\s+caught\b|\s+out of\b|\s*,|\s*$|\s+\(|\s+at\b|\s+\d|\s+dropped|\s+broken|\s+thrown)"),
               re.compile(r"^" + _NAMEP + r"\s+\d+\s+(?:Yd|Yard|yd|yard)s?\s+(?:pass|Pass) from")]
 PASSER_RES = [re.compile(r"^" + _NAMEP + r"\s+(?:pass|passes|sacked|scrambles?)\b"),
               re.compile(r"(?:pass|Pass) from " + _NAMEP)]
