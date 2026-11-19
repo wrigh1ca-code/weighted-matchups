@@ -5905,6 +5905,23 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866466,Miami (OH),l.rogers,L.Rogers,5,0.9369,2.0,23,rush
 401866466,Miami (OH),r.nelson,R.Nelson,16,2.4444,11.0,90,rush
 401866466,Miami (OH),s.smith,S.Smith,1,2.2782,1.0,25,rush
+401866467,Akron,c.broughton,C.Broughton,9,1.9866,6.0,60,rush
+401866467,Akron,j.gant,J.Gant,21,2.9147,10.0,151,rush
+401866467,Akron,s.patrick,S.Patrick,4,-0.7633,2.0,13,rush
+401866467,Massachusetts,c.kimmons,C.Kimmons IV,9,-1.8197,4.0,25,rush
+401866467,Massachusetts,e.faulkner,E.Faulkner,13,5.1733,6.0,105,rush
+401866467,Massachusetts,j.williams-thomas,J.Williams-Thomas,10,1.0643,5.0,60,rush
+401866467,Massachusetts,k.dia-johnson,K.Dia-Johnson,3,1.1193,2.0,8,rush
+401866467,Massachusetts,l.inagawa,L.Inagawa,13,-1.6001,4.0,65,rush
+401866467,Massachusetts,t.harding,T.Harding,1,1.1547,1.0,7,rush
+401866469,Buffalo,j.wright,J.Wright,2,2.2278,1.0,2,rush
+401866469,Buffalo,m.burch,M.Burch,24,9.8166,13.0,200,rush
+401866469,Central Michigan,b.townsend,B.Townsend,4,-0.4914,1.0,13,rush
+401866469,Central Michigan,j.clerveaux,J.Clerveaux,15,2.2126,9.0,70,rush
+401866469,Central Michigan,j.glasser,J.Glasser,4,2.1597,2.0,12,rush
+401866469,Central Michigan,j.stapleton,J.Stapleton,7,2.1723,5.0,40,rush
+401866469,Central Michigan,n.woodford,N.Woodford,11,-5.5168,7.0,56,rush
+401866469,Central Michigan,v.blue,V.Blue,1,0.0945,1.0,5,rush
 401866476,Central Michigan,b.townsend,B.Townsend,1,-0.243,0.0,1,rush
 401866476,Central Michigan,j.clerveaux,J.Clerveaux,9,0.8725,4.0,32,rush
 401866476,Central Michigan,j.glasser,J.Glasser,3,0.0801,1.0,4,rush
@@ -23611,6 +23628,35 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866466,Miami (OH),m.huggins,M.Huggins,1,2.1886,1.0,18,target
 401866466,Miami (OH),r.nelson,R.Nelson,1,2.8782,1.0,47,target
 401866466,Miami (OH),s.smith,S.Smith,1,0.9563,1.0,11,target
+401866467,Akron,c.cravaack,C.Cravaack,2,-0.5185,1.0,12,target
+401866467,Akron,j.gant,J.Gant,2,2.4657,1.0,15,target
+401866467,Akron,k.mason,K.Mason,6,2.583,2.0,51,target
+401866467,Akron,m.burris,M.Burris,4,3.9846,3.0,59,target
+401866467,Akron,m.williams,M.Williams,1,3.3176,1.0,28,target
+401866467,Massachusetts,c.kimmons,C.Kimmons IV,1,-1.1496,0.0,0,target
+401866467,Massachusetts,e.faulkner,E.Faulkner,2,-0.5579,0.0,1,target
+401866467,Massachusetts,j.lewis,J.Lewis,4,0.9032,3.0,42,target
+401866467,Massachusetts,k.dia-johnson,K.Dia-Johnson,3,0.3694,1.0,18,target
+401866467,Massachusetts,m.dowling,M.Dowling,5,3.553,3.0,20,target
+401866467,Massachusetts,m.ogunniyi,M.Ogunniyi,1,2.6246,1.0,3,target
+401866467,Massachusetts,r.adkins,R.Adkins,1,-0.291,0.0,0,target
+401866467,Massachusetts,t.harding,T.Harding,3,1.8359,1.0,20,target
+401866469,Buffalo,c.morrow,C.Morrow,4,2.5028,1.0,17,target
+401866469,Buffalo,c.walker,C.Walker,2,4.3253,2.0,60,target
+401866469,Buffalo,cmu05,CMU05,1,-0.3542,0.0,0,target
+401866469,Buffalo,d.early,D.Early,1,1.5287,1.0,11,target
+401866469,Buffalo,j.andrews,J.Andrews,4,4.5626,2.0,64,target
+401866469,Central Michigan,b.naves,B.Naves,4,-0.81,2.0,49,target
+401866469,Central Michigan,b.townsend,B.Townsend,1,2.5448,1.0,2,target
+401866469,Central Michigan,c.payne,C.Payne,1,-0.2287,0.0,3,target
+401866469,Central Michigan,cmu26,CMU26,1,-0.2982,0.0,0,target
+401866469,Central Michigan,d.febres,D.Febres,3,1.8015,3.0,24,target
+401866469,Central Michigan,j.allen,J.Allen,3,1.211,1.0,9,target
+401866469,Central Michigan,j.clerveaux,J.Clerveaux,2,-1.0038,0.0,3,target
+401866469,Central Michigan,j.ruffin,J.Ruffin,2,1.102,1.0,21,target
+401866469,Central Michigan,m.peters,M.Peters,1,2.4386,1.0,5,target
+401866469,Central Michigan,n.williams,N.Williams,2,0.9746,1.0,12,target
+401866469,Central Michigan,r.vanwetzinga,R.VanWetzinga,1,-0.5612,0.0,0,target
 401866476,Central Michigan,b.naves,B.Naves,4,-0.403,1.0,21,target
 401866476,Central Michigan,j.allen,J.Allen,2,-1.9806,0.0,0,target
 401866476,Central Michigan,j.ruffin,J.Ruffin,7,-5.9016,1.0,11,target
@@ -38004,6 +38050,11 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866466,Kent State,d.deshields,D.DeShields,18,-0.3778,6.0,93,pass
 401866466,Kent State,n.good,N.Good,6,3.226,3.0,43,pass
 401866466,Miami (OH),d.bellisari,D.Bellisari,13,7.9887,6.0,117,pass
+401866467,Akron,c.broughton,C.Broughton,18,-1.6588,9.0,223,pass
+401866467,Massachusetts,l.inagawa,L.Inagawa,22,1.6799,9.0,103,pass
+401866469,Buffalo,j.wright,J.Wright,13,11.4222,6.0,152,pass
+401866469,Central Michigan,j.glasser,J.Glasser,19,-3.0053,7.0,101,pass
+401866469,Central Michigan,m.beamon,M.Beamon,4,1.5728,3.0,27,pass
 401866476,Central Michigan,j.glasser,J.Glasser,31,4.845,11.0,208,pass
 401866476,Miami (OH),c.heavner,C.Heavner,37,-7.4458,15.0,291,pass
 401866477,Bowling Green,j.kastantin,J.Kastantin,36,11.0669,19.0,264,pass
