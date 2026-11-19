@@ -132,3 +132,7 @@ footer { font-size: 12px; color: var(--muted); }
 .pblock.dashed { border-style: dashed; border-color: #64748b; background: transparent; }
 .pblock .lbl b { color: #fff; }
 .pblock .score .n { font-size: 48px; }
+
+.kprow { display: flex; flex-direction: column; gap: 4px; border-top: 1px solid var(--line); padding-top: 8px; }
+.kpstats { font-size: 12px; color: var(--muted); line-height: 1.45; }
+.kpeffect { font-size: 12px; font-weight: 600; color: #1e3a8a; }

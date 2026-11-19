@@ -72,10 +72,15 @@ class Params:
     k: float = 3.0              # confidence shrinkage constant
     qb_miss: float = 0.35       # roster base factor when a different QB started
     adj: float = 1.0            # opponent adjustment strength for EPA used in projections
-    skill_miss: float = 0.7     # roster base factor per key RB/WR whose status differs
+    skill_miss: float = 1.0     # (legacy) RB/WR game-weight penalty; superseded by the lineup adjustment
+    lineup: float = 1.0         # strength of the key-player lineup adjustment (0 = off)
+    k_rb: float = 100.0         # shrinkage (touches) for a key RB's edge over the rest of the pool
+    k_wr: float = 80.0          # shrinkage (targets) for a key WR's edge
 
     def equal(self) -> "Params":
-        return Params(0, 0, 0, 0, self.half_life, self.sim_bw, self.k, self.qb_miss, self.adj, self.skill_miss)
+        """Equal weight: every game counts the same and no lineup adjustment."""
+        return Params(0, 0, 0, 0, self.half_life, self.sim_bw, self.k, self.qb_miss, self.adj, self.skill_miss,
+                      0.0, self.k_rb, self.k_wr)
 
 
 # ---------------------------------------------------------------- data
@@ -322,7 +327,9 @@ def baseline_for(team: str, side: str, season: int, prof: pd.DataFrame) -> pd.Se
     return lg
 
 
-def unit_profile(rows: pd.DataFrame, p: Params, baseline: pd.Series) -> dict:
+def unit_profile(rows: pd.DataFrame, p: Params, baseline: pd.Series, raw: pd.DataFrame | None = None) -> dict:
+    """rows may be lineup-adjusted; `raw` (unadjusted) supplies the plain season average."""
+    raw = rows if raw is None else raw
     if rows.empty:
         return {"final": baseline.to_dict(), "weighted": baseline.to_dict(), "season": baseline.to_dict(),
                 "n_eff": 0.0, "lam": 0.0, "weights": np.array([]), "epa_proj": baseline["epa_play"]}
@@ -333,7 +340,9 @@ def unit_profile(rows: pd.DataFrame, p: Params, baseline: pd.Series) -> dict:
         x = rows[m].to_numpy(dtype=float)
         ok = ~np.isnan(x) & (n > 0)
         out_w[m] = float(np.sum(w[ok] * n[ok] * x[ok]) / np.sum(w[ok] * n[ok])) if ok.any() and np.sum(w[ok] * n[ok]) > 0 else np.nan
-        out_s[m] = float(np.sum(n[ok] * x[ok]) / np.sum(n[ok])) if ok.any() else np.nan
+        xr = raw[m].to_numpy(dtype=float)
+        okr = ~np.isnan(xr) & (n > 0)
+        out_s[m] = float(np.sum(n[okr] * xr[okr]) / np.sum(n[okr])) if okr.any() else np.nan
     n_eff = float(w.sum() ** 2 / np.sum(w ** 2)) if np.sum(w ** 2) > 0 else 0.0
     # Opponent-adjusted EPA/play (for projections): remove how good/bad each opponent unit was
     x_adj = rows["epa_play"].to_numpy(dtype=float) - p.adj * (rows["opp_level"].to_numpy(dtype=float) - rows["lg_epa"].to_numpy(dtype=float))
@@ -380,12 +389,14 @@ def matchup_units(m: Matchup) -> dict:
     for team, opp in ((m.home, m.away), (m.away, m.home)):
         qb = m.expected_qb.get(team) or last_qb(team, m.season, m.date)
         key = key_players(team, m.season, m.date)
+        km = key_player_models(team, m.season, m.date)
         for side in ("offense", "defense"):
             off = side == "offense"
             rows = unit_ingredients(team, side, m.season, m.date, opp, m.site(team), m.weather,
                                     qb if off else None, key if off else None)
             out[(team, side)] = {"rows": rows, "baseline": baseline_for(team, side, m.season, prof),
-                                 "expected_qb": qb if off else None, "key": key if off else None}
+                                 "expected_qb": qb if off else None, "key": key if off else None,
+                                 "km": km if off else {}}
     return out
 
 
@@ -394,7 +405,18 @@ def matchup_features(m: Matchup, units: dict, p: Params) -> dict:
     prof = profiles_asof(m.season, m.date.isoformat())
     lg = prof.attrs.get("lg_epa", 0.0) if not prof.empty else 0.0
     res = {"lg_epa": lg}
-    profs = {k: unit_profile(v["rows"], p, v["baseline"]) for k, v in units.items()}
+    def prof_for(v):
+        km = dict(v.get("km") or {})
+        if p.lineup and km:
+            km = {pos: {**mm, "d_epa": mm["d_epa_raw"] * mm["touches"] / (mm["touches"] + (p.k_rb if pos == "rb" else p.k_wr)),
+                        "d_sr": mm["d_sr_raw"] * mm["touches"] / (mm["touches"] + (p.k_rb if pos == "rb" else p.k_wr))}
+                  for pos, mm in km.items()}
+            status = {pos: mm["expected"] for pos, mm in km.items()}
+            status.update(v.get("status") or {})
+            adj = lineup_adjust(v["rows"], km, status, p.lineup)
+            return unit_profile(adj, p, v["baseline"], raw=v["rows"])
+        return unit_profile(v["rows"], p, v["baseline"])
+    profs = {k: prof_for(v) for k, v in units.items()}
     for team, opp in ((m.home, m.away), (m.away, m.home)):
         off, dfn = profs[(team, "offense")], profs[(opp, "defense")]
         e = off["epa_proj"] + dfn["epa_proj"] - lg
@@ -460,3 +482,111 @@ def to_pct(value: float, side: str, metric: str, refs: dict) -> float:
         return np.nan
     frac = np.searchsorted(arr, value, side="left") / len(arr)
     return float(100 * (frac if higher_is_better(side, metric) else 1 - frac))
+
+
+# ---------------------------------------------------------------- key players (lineup adjustment)
+#
+# For each offense, the top non-QB ball carrier (RB) and top target (WR) by volume. We measure each
+# player's own opponent-adjusted EPA and success per touch against the rest of the team's pool
+# (other non-QB carries / other targets), shrink that gap toward zero by sample size, and then
+# adjust every past game as if this week's expected lineup had played:
+#   extra touches for the player in game g = (expected share - actual share in g) x pool touches in g
+#   metric_g += extra touches x player edge / (rushes, dropbacks or plays in g)
+
+K_SHRINK = {"rb": 100.0, "wr": 80.0}
+
+
+@lru_cache(maxsize=1)
+def load_players() -> pd.DataFrame:
+    frames = [pd.read_csv(f) for f in sorted(DATA.glob("player_games_*.csv"))]
+    if not frames:
+        return pd.DataFrame(columns=["gameId", "team", "key", "player", "n", "epa_sum", "succ_sum", "yds", "kind"])
+    return pd.concat(frames, ignore_index=True)
+
+
+def _display_name(key: str, team_rows: pd.DataFrame, fallback: str) -> str:
+    """Prefer the box-score full name (e.g. 'LJ Martin') over play-text abbreviations ('L.Martin')."""
+    from pipeline.unit_stats import name_key
+    for col in ("rush_list", "rec_list"):
+        for s in team_rows.get(col, pd.Series(dtype=str)).dropna():
+            for n in parse_list(s):
+                if name_key(n) == key:
+                    return n
+    return fallback
+
+
+def key_player_models(team: str, season: int, date: pd.Timestamp, k: dict | None = None) -> dict:
+    """{'rb': {...}, 'wr': {...}} for a team's offense using games before `date`."""
+    k = k or K_SHRINK
+    u, _ = load()
+    games = u[(u.team == team) & (u.side == "offense") & (u.season == season) & (u.date < date)].sort_values("date")
+    if games.empty:
+        return {}
+    pl = load_players()
+    pl = pl[(pl.team == team) & pl.gameId.isin(games.gameId)]
+    if pl.empty:
+        return {}
+    prof = profiles_asof(season, date.isoformat())
+    lg = prof.attrs.get("lg_epa", 0.0)
+    lvl = prof[(prof.side == "defense") & (prof.games >= 2)].set_index("team")["epa_play"]
+    opp_delta = (games.set_index("gameId").opponent.map(lvl).fillna(lg) - lg)
+    qb_keys = set(pl[(pl.kind == "pass")].groupby("key").n.sum().loc[lambda s: s >= 10].index)
+    last_game = games.gameId.iloc[-1]
+    out = {}
+    for pos, kind, vol in (("rb", "rush", "n"), ("wr", "target", "yds")):
+        pool = pl[(pl.kind == kind) & ~pl.key.isin(qb_keys if pos == "rb" else set())].copy()
+        if pool.empty:
+            continue
+        key = pool.groupby("key")[vol].sum().idxmax()
+        pool["adj_epa"] = pool.epa_sum - pool.n * pool.gameId.map(opp_delta).fillna(0)
+        me, rest = pool[pool.key == key], pool[pool.key != key]
+        n_me, n_rest = me.n.sum(), rest.n.sum()
+        if n_me < 5 or n_rest < 5:
+            continue
+        e_me, e_rest = me.adj_epa.sum() / n_me, rest.adj_epa.sum() / n_rest
+        s_me, s_rest = me.succ_sum.sum() / n_me, rest.succ_sum.sum() / n_rest
+        shrink = n_me / (n_me + k[pos])
+        per_game = pool.groupby("gameId").n.sum().rename("pool").to_frame().join(me.set_index("gameId").n.rename("mine")).fillna(0)
+        per_game["share"] = per_game.mine / per_game.pool.where(per_game.pool > 0)
+        played = per_game[per_game.mine > 0]
+        if pos == "rb" and len(played) >= 2:          # healthy workload: his two biggest-share games
+            top = played.sort_values("share", ascending=False).head(2)
+        else:
+            top = played
+        s_star = float(top.mine.sum() / top.pool.sum()) if len(top) else 0.0
+        out[pos] = {
+            "key": key, "name": _display_name(key, games, me.player.iloc[0]),
+            "touches": int(n_me), "epa_me": float(e_me), "epa_rest": float(e_rest),
+            "sr_me": float(s_me), "sr_rest": float(s_rest), "shrink": float(shrink),
+            "d_epa": float((e_me - e_rest) * shrink), "d_sr": float((s_me - s_rest) * shrink),
+            "d_epa_raw": float(e_me - e_rest), "d_sr_raw": float(s_me - s_rest),
+            "s_star": s_star, "expected": bool(per_game.mine.get(last_game, 0) > 0),
+            "games_played": int((per_game.mine > 0).sum()), "games": int(len(games)),
+            "share": {int(g): float(r.share) if not pd.isna(r.share) else 0.0 for g, r in per_game.iterrows()},
+            "pool": {int(g): float(r.pool) for g, r in per_game.iterrows()},
+        }
+    return out
+
+
+def lineup_adjust(rows: pd.DataFrame, km: dict, status: dict, strength: float = 1.0) -> pd.DataFrame:
+    """Return offense rows with metrics adjusted to this week's expected lineup.
+    status: {'rb': bool expected to play, 'wr': bool}."""
+    if rows.empty or not km or strength == 0:
+        return rows
+    r = rows.copy()
+    for pos, base_col, den_col in (("rb", "rush", "rushes"), ("wr", "pass", "dropbacks")):
+        m = km.get(pos)
+        if not m:
+            continue
+        s_e = m["s_star"] if status.get(pos, m["expected"]) else 0.0
+        share = r.gameId.map(lambda g: m["share"].get(int(g), 0.0)).astype(float)
+        pool = r.gameId.map(lambda g: m["pool"].get(int(g), 0.0)).astype(float)
+        extra = (s_e - share) * pool * strength
+        de, ds = extra * m["d_epa"], extra * m["d_sr"]
+        den = r[den_col].where(r[den_col] > 0)
+        r[f"{base_col}_epa"] = r[f"{base_col}_epa"] + (de / den).fillna(0)
+        if pos == "wr":
+            r["pass_sr"] = r["pass_sr"] + (ds / den).fillna(0)
+        r["epa_play"] = r["epa_play"] + (de / r.plays).fillna(0)
+        r["sr"] = r["sr"] + (ds / r.plays).fillna(0)
+    return r

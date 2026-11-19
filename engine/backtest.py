@@ -21,14 +21,14 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from engine.model import (Matchup, Params, PointsModel, baseline_for, fbs_teams, key_players, last_qb, load,
-                          profiles_asof, unit_ingredients)
+from engine.model import (Matchup, Params, PointsModel, baseline_for, fbs_teams, key_player_models, key_players,
+                          last_qb, load, profiles_asof, unit_ingredients)
 
 OUT = Path(__file__).resolve().parents[1] / "data" / "backtest"
 SEASONS = (2024, 2025, 2026)
 TRAIN, TEST = (2024, 2025), (2026,)
 MIN_GAMES = 3
-SITE_DEFAULT_A = {"a_opp": 1.0, "a_rec": 1.0, "a_set": 1.0, "a_ros": 1.0}   # the site's starting sliders
+SITE_DEFAULT_A = {"a_opp": 1.0, "a_rec": 1.0, "a_set": 1.0, "a_ros": 1.0, "lineup": 1.0}   # the site's starting sliders
 
 
 def collect() -> list[dict]:
@@ -54,6 +54,7 @@ def collect() -> list[dict]:
             for team, opp in ((row.homeTeam, row.awayTeam), (row.awayTeam, row.homeTeam)):
                 qb = last_qb(team, season, date)
                 key = key_players(team, season, date)
+                km = key_player_models(team, season, date)
                 for side in ("offense", "defense"):
                     off = side == "offense"
                     r = unit_ingredients(team, side, season, date, opp, m.site(team), m.weather,
@@ -67,6 +68,11 @@ def collect() -> list[dict]:
                         "rb_match": r.rb_match.to_numpy(dtype=float), "wr_match": r.wr_match.to_numpy(dtype=float),
                         "plays": r.plays.to_numpy(dtype=float), "base_epa": float(base["epa_play"]),
                         "opp_level": r.opp_level.to_numpy(dtype=float), "lg": float(prof.attrs["lg_epa"]),
+                        "lineup": [] if not off else [
+                            {"d_epa_raw": mm["d_epa_raw"], "touches": mm["touches"], "pos": pos,
+                             "extra": np.array([(mm["s_star"] * mm["expected"] - mm["share"].get(int(g), 0.0)) * mm["pool"].get(int(g), 0.0)
+                                                for g in r.gameId], dtype=float)}
+                            for pos, mm in km.items()],
                     }
             recs.append(rec)
             if i % 100 == 0:
@@ -89,6 +95,10 @@ def unit_epa(d: dict, p: Params) -> tuple[float, float, float]:
     w = sim ** p.a_opp * rec ** p.a_rec * st ** p.a_set * ros ** p.a_ros
     n = d["plays"]
     x = d["epa"] - p.adj * (d["opp_level"] - d["lg"])
+    if p.lineup:
+        for L in d.get("lineup", []):
+            kk = p.k_rb if L["pos"] == "rb" else p.k_wr
+            x = x + p.lineup * L["extra"] * L["d_epa_raw"] * L["touches"] / (L["touches"] + kk) / d["plays"]
     weighted = float(np.sum(w * n * x) / np.sum(w * n))
     n_eff = float(w.sum() ** 2 / np.sum(w ** 2))
     lam = n_eff / (n_eff + p.k)
@@ -175,7 +185,9 @@ GRID = {
     "k": [1, 2, 3, 5, 8],
     "qb_miss": [0.2, 0.35, 0.5, 0.75],
     "adj": [0, 0.5, 0.75, 1.0, 1.25],
-    "skill_miss": [0.4, 0.55, 0.7, 0.85, 1.0],
+    "lineup": [0, 0.5, 1.0, 1.5, 2.0],
+    "k_rb": [25, 50, 100, 200, 400],
+    "k_wr": [25, 50, 80, 160, 320],
 }
 
 

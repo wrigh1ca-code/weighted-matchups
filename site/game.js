@@ -22,8 +22,8 @@
   };
 
   for (const t of [HOME, AWAY]) {
-    const k = G.units[`${t}|offense`].key || {};
-    state.plays[t] = { rb: k.rb_expected !== false, wr: k.wr_expected !== false };
+    const km = G.units[`${t}|offense`].km || {};
+    state.plays[t] = { rb: km.rb ? km.rb.expected !== false : true, wr: km.wr ? km.wr.expected !== false : true };
   }
 
   // ---------- math (mirror of engine/model.py)
@@ -37,25 +37,52 @@
     if (side === 'offense') {
       const key = G.units[`${team}|offense`].key || {};
       const qbm = state.qb[team] && g.qb === state.qb[team];
-      const rbm = !key.rb || g.rb_played === state.plays[team].rb;
-      const wrm = !key.wr || g.wr_played === state.plays[team].wr;
-      ros = (qbm ? 1 : TUNED.qb_miss) * (rbm ? 1 : TUNED.skill_miss) * (wrm ? 1 : TUNED.skill_miss);
+      ros = qbm ? 1 : TUNED.qb_miss;
     }
     return { sim, rec, set, ros };
   }
-  function unitProfile(key, a) {
+  // Lineup adjustment (mirror of model.lineup_adjust): each past game re-stated as if this week's
+  // expected key RB/WR had played their normal share.
+  function lineupEdge(team, pos) {
+    const m = (G.units[`${team}|offense`].km || {})[pos];
+    if (!m) return null;
+    const k = pos === 'rb' ? TUNED.k_rb : TUNED.k_wr, sh = m.touches / (m.touches + k);
+    return { ...m, d_epa: m.d_epa_raw * sh, d_sr: m.d_sr_raw * sh };
+  }
+  function adjustedGames(team, games, on) {
+    if (!on || !TUNED.lineup) return games;
+    const edges = { rb: lineupEdge(team, 'rb'), wr: lineupEdge(team, 'wr') };
+    return games.map(g => {
+      const m = { ...g.m };
+      for (const pos of ['rb', 'wr']) {
+        const e = edges[pos], lu = (g.lu || {})[pos];
+        if (!e || !lu) continue;
+        const sE = state.plays[team][pos] ? e.s_star : 0;
+        const extra = (sE - lu.share) * lu.pool * TUNED.lineup;
+        const de = extra * e.d_epa, ds = extra * e.d_sr;
+        if (pos === 'rb') { if (g.rushes > 0 && m.rush_epa != null) m.rush_epa += de / g.rushes; }
+        else if (g.dropbacks > 0) { if (m.pass_epa != null) m.pass_epa += de / g.dropbacks; if (m.pass_sr != null) m.pass_sr += ds / g.dropbacks; }
+        if (m.epa_play != null) m.epa_play += de / g.plays;
+        if (m.sr != null) m.sr += ds / g.plays;
+      }
+      return { ...g, m };
+    });
+  }
+  function unitProfile(key, a, lineupOn) {
     const [team, side] = key.split('|');
     const U = G.units[key];
-    const games = U.games;
+    const raw = U.games;
+    const games = side === 'offense' ? adjustedGames(team, raw, lineupOn) : raw;
     const f = games.map(g => factors(g, team, side));
     const w = f.map(x => Math.pow(x.sim, a.a_opp) * Math.pow(x.rec, a.a_rec) * Math.pow(x.set, a.a_set) * Math.pow(x.ros, a.a_ros));
     const weighted = {}, season = {}, final = {};
     for (const m of METRICS) {
       let sw = 0, swx = 0, sn = 0, snx = 0;
       games.forEach((g, i) => {
-        const x = g.m[m], n = g[COUNT[m]];
-        if (x == null || !(n > 0)) return;
-        sw += w[i] * n; swx += w[i] * n * x; sn += n; snx += n * x;
+        const x = g.m[m], xr = raw[i].m[m], n = g[COUNT[m]];
+        if (!(n > 0)) return;
+        if (x != null) { sw += w[i] * n; swx += w[i] * n * x; }
+        if (xr != null) { sn += n; snx += n * xr; }
       });
       weighted[m] = sw > 0 ? swx / sw : null;
       season[m] = sn > 0 ? snx / sn : null;
@@ -88,9 +115,9 @@
   const erf = x => { const s = Math.sign(x); x = Math.abs(x); const t = 1 / (1 + 0.3275911 * x);
     const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-x * x);
     return s * y; };
-  function projection(a) {
+  function projection(a, lineupOn) {
     const P = {};
-    for (const k of Object.keys(G.units)) P[k] = unitProfile(k, a);
+    for (const k of Object.keys(G.units)) P[k] = unitProfile(k, a, lineupOn);
     const loc = game.neutral ? 0 : 1;
     const pts = (team, opp, l) => {
       const e = P[`${team}|offense`].epa_proj + P[`${opp}|defense`].epa_proj - G.lg_epa;
@@ -137,12 +164,13 @@
         <tr><td>Market spread (same games)</td><td>${mk.test.games}</td><td>${r(mk.test.mae, 1)}</td><td>–</td><td>–</td></tr>
         <tr><td>Backtest-best (same games)</td><td>${mk.ours_same_games.games}</td><td>${r(mk.ours_same_games.mae, 1)}</td><td>${r(mk.ours_same_games.winner_acc * 100, 0)}%</td><td>${r(mk.ours_same_games.brier, 3)}</td></tr>
       </tbody></table>
-      <div style="font-size:13px;color:#e2e8f0"><b style="display:inline">What the backtest says:</b> once each game's EPA is opponent-adjusted, extra weight on similar opponents, recency or setting has not measurably improved margin predictions on past games; the key-player (roster) factor helped slightly. Backtest-best strengths: similar opponents ${BEST.a_opp}, recency ${BEST.a_rec}, setting ${BEST.a_set}, QB ${BEST.a_ros}. The sliders start at Normal so you can see the weighted view; use “Backtest-best” for the most accurate projection so far.</div>
+      <div style="font-size:13px;color:#e2e8f0"><b style="display:inline">What the backtest says:</b> once each game's EPA is opponent-adjusted, extra weight on similar opponents, recency or setting has not measurably improved margin predictions on past games; the starting-QB factor helped slightly, and the RB/WR lineup adjustment was neutral (it moved projections by only a few hundredths of a point on average, even in the games where a key player's availability changed most). Backtest-best strengths: similar opponents ${BEST.a_opp}, recency ${BEST.a_rec}, setting ${BEST.a_set}, QB ${BEST.a_ros}. The sliders start at Normal so you can see the weighted view; use “Backtest-best” for the most accurate projection so far.</div>
       <div style="font-size:12px;color:#cbd5e1">Tuned on ${bt.train_seasons.join(' and ')} only; ${bt.test_seasons.join(', ')} was never used for tuning. Avg miss = mean absolute error of the predicted margin. Brier = mean squared error of win probability (lower is better; 0.25 = coin flip).</div>`;
     }
     return `<h3>How the projection works</h3>
       <div class="grid">
-        <div><b>1. Weight every past game</b>Each of a unit's games this season gets a weight from four factors multiplied together: how similar the opponent unit was to this week's opponent unit (opponent-adjusted EPA, success rate, pass rate, explosiveness, rush and pass EPA), how recent it was (half-life ${TUNED.half_life} weeks), whether the setting matches (home/away/neutral and forecast weather), and whether the expected QB, top RB and top WR played (a different QB counts ×${TUNED.qb_miss}, each RB/WR mismatch ×${TUNED.skill_miss}, before the Roster slider). RB/WR status comes from box scores: a player with no carries or catches is treated as not playing.</div>
+        <div><b>1. Weight every past game</b>Each of a unit's games this season gets a weight from four factors multiplied together: how similar the opponent unit was to this week's opponent unit (opponent-adjusted EPA, success rate, pass rate, explosiveness, rush and pass EPA), how recent it was (half-life ${TUNED.half_life} weeks), whether the setting matches (home/away/neutral and forecast weather), and whether the expected starting QB played (a different QB counts ×${TUNED.qb_miss} before the Roster slider).</div>
+        <div><b>Key players (RB/WR)</b>For each offense's top non-QB ball carrier and top target, we measure their own EPA per touch against the rest of the team's (opponent-adjusted), shrink that edge toward zero by sample size (about ${TUNED.k_rb} carries / ${TUNED.k_wr} targets to count half), and re-state every past game as if this week's lineup had played: their normal share of touches when healthy (or none if marked Out). Applies to the weighted view.</div>
         <div><b>2. Unit-on-unit</b>A defense is judged mostly on games against offenses like the one it faces this week, and an offense on games against similar defenses.</div>
         <div><b>3. Weighted profiles</b>Per-play stats (EPA, success rate, explosiveness, havoc…) are averaged across games using weight × plays. Garbage time is removed.</div>
         <div><b>4. Confidence blend</b>Effective games = (Σw)² ÷ Σw². The profile = λ × weighted + (1 − λ) × prior-season average, with λ = n ÷ (n + ${TUNED.k}). Early in the season, or when weight piles onto a few games, the prior dominates.</div>
@@ -176,17 +204,29 @@
   $('best').addEventListener('click', () => { Object.assign(state.a, BEST); render(); });
   $('equal').addEventListener('click', () => { Object.assign(state.a, { a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 }); render(); });
 
+  const sign = x => (x >= 0 ? '+' : '−') + Math.abs(x).toFixed(2);
+  function kpRow(t, pos) {
+    const m = (G.units[`${t}|offense`].km || {})[pos];
+    if (!m) return '';
+    const unit = pos === 'rb' ? 'carry' : 'target', units = pos === 'rb' ? 'carries' : 'targets';
+    const others = pos === 'rb' ? 'other non-QB runners' : 'other targets';
+    const e = lineupEdge(t, pos);
+    return `<div class="kprow">
+      <div class="row2"><span><b>${pos.toUpperCase()}</b> ${esc(m.name)}</span>
+      <select data-team="${esc(t)}" data-pos="${pos}" aria-label="${esc(t)} ${pos.toUpperCase()} ${esc(m.name)} status">
+        <option value="1">Expected to play</option><option value="0">Out</option></select></div>
+      <div class="kpstats">${m.touches} ${units} in ${m.games_played} of ${m.games} games ·
+        <b>${sign(m.epa_me)}</b> EPA/${unit} vs ${sign(m.epa_rest)} for ${others} (opponent-adjusted) ·
+        edge used <b>${sign(e.d_epa)}</b> after sample-size shrink · normal workload ${Math.round(m.s_star * 100)}% of ${pos === 'rb' ? 'RB carries' : 'targets'}</div>
+</div>`;
+  }
   $('qbs').innerHTML = [AWAY, HOME].map(t => {
-    const U = G.units[`${t}|offense`], k = U.key || {};
+    const U = G.units[`${t}|offense`];
     const opts = U.qbs.map(q => `<option value="${esc(q)}">${esc(q)}${q === U.expected_qb ? ' (most recent starter)' : ''}</option>`).join('');
-    const status = (pos, name, detail) => !name ? '' : `<div class="row2"><span><b>${pos}</b> ${esc(name)} <span class="small">${detail}</span></span>
-      <select data-team="${esc(t)}" data-pos="${pos.toLowerCase()}" aria-label="${esc(t)} ${pos} ${esc(name)} status">
-        <option value="1">Expected to play</option><option value="0">Out</option></select></div>`;
     return `<div class="kp"><div style="font-weight:700;color:${t === HOME ? 'var(--home)' : 'var(--away)'}">${esc(t)}</div>
       <div class="row2"><label for="qb_${esc(t)}"><b>QB</b></label>
       <select id="qb_${esc(t)}" data-team="${esc(t)}" data-pos="qb">${opts}<option value="__other">Someone else</option></select></div>
-      ${status('RB', k.rb, k.rb_carries ? `(${k.rb_carries} carries)` : '')}
-      ${status('WR', k.wr, k.wr_yards ? `(${k.wr_yards} rec yds)` : '')}</div>`;
+      ${kpRow(t, 'rb')}${kpRow(t, 'wr')}<div class="kpeffect" data-eff="${esc(t)}"></div></div>`;
   }).join('');
   document.querySelectorAll('#qbs select').forEach(s => {
     const t = s.dataset.team, pos = s.dataset.pos;
@@ -270,8 +310,9 @@
       if (g.wx_d2 != null && g.wx_d2 > 1) tags.push(['Different weather', 'warn']);
       if (side === 'offense') {
         if (!(state.qb[t] && g.qb === state.qb[t])) tags.push(['Different QB', 'warn']);
-        if (k.rb && g.rb_played !== state.plays[t].rb) tags.push([g.rb_played ? `${k.rb} played` : `No ${k.rb}`, 'warn']);
-        if (k.wr && g.wr_played !== state.plays[t].wr) tags.push([g.wr_played ? `${k.wr} played` : `No ${k.wr}`, 'warn']);
+        const km = U.km || {};
+        if (km.rb && g.lu && g.lu.rb) { const sh = Math.round(g.lu.rb.share * 100);
+          tags.push([sh === 0 ? `No ${km.rb.name}` : `${km.rb.name} ${sh}% of carries`, sh < 40 ? 'warn' : '']); }
       }
       if (g.fcs) tags.push(['FCS opponent', 'warn']);
       const res = g.pts > g.opp_pts ? 'W' : (g.pts < g.opp_pts ? 'L' : 'T');
@@ -294,8 +335,15 @@
     document.querySelectorAll('#viewseg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === state.view)));
     document.querySelectorAll('#unitseg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.u === state.unit)));
 
-    const pr = projection(state.a);
-    const eq = projection({ a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 });
+    const pr = projection(state.a, true);
+    const eq = projection({ a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 }, false);
+    const noLu = projection(state.a, false);
+    document.querySelectorAll('[data-eff]').forEach(el => {
+      const t = el.dataset.eff, d = (t === HOME ? pr.home - noLu.home : pr.away - noLu.away);
+      const ro = pr.P[`${t}|offense`].final.rush_epa - noLu.P[`${t}|offense`].final.rush_epa;
+      const po = pr.P[`${t}|offense`].final.pass_epa - noLu.P[`${t}|offense`].final.pass_epa;
+      el.textContent = `Lineup adjustment for ${t}: ${d >= 0 ? '+' : '−'}${Math.abs(d).toFixed(1)} projected pts (rush EPA ${sign(ro)}, pass EPA ${sign(po)} per play)`;
+    });
     const block = (p, kind) => {
       const mg = p.home - p.away, rm = r0(mg);
       const lo = mg - 1.2816 * p.sd, hi = mg + 1.2816 * p.sd;
