@@ -4795,6 +4795,19 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862829,UAB,j.simpkins,J.Simpkins,9,2.9341,5.0,54,rush
 401862829,UAB,r.burton,R.Burton,1,0.0587,0.0,9,rush
 401862829,UAB,r.robinson,R.Robinson II,22,16.4376,13.0,202,rush
+401862830,Rice,c.leahey,C.Leahey,5,-0.4493,2.0,20,rush
+401862830,Rice,d.hardeman,D.Hardeman Jr.,17,9.7828,14.0,139,rush
+401862830,Rice,d.lane,D.Lane,2,1.8332,2.0,12,rush
+401862830,Rice,g.ochoa,G.Ochoa,5,-1.2033,1.0,17,rush
+401862830,Rice,j.brown,J.Brown,8,2.1669,5.0,38,rush
+401862830,Rice,j.clark,J.Clark,3,-0.219,0.0,13,rush
+401862830,Rice,m.mosey,M.Mosey,6,-5.1274,1.0,16,rush
+401862830,Rice,p.crayton,P.Crayton Jr.,1,-0.0792,0.0,4,rush
+401862830,Temple,c.chase,C.Chase,4,3.6956,2.0,60,rush
+401862830,Temple,d.young,D.Young,5,6.6375,2.0,85,rush
+401862830,Temple,h.smith,H.Smith,1,-8.6366,0.0,1,rush
+401862830,Temple,j.smolik,J.Smolik,9,4.3111,6.0,52,rush
+401862830,Temple,k.mason,K.Mason,14,-0.4311,3.0,67,rush
 401864424,Delaware,j.porter,J.Porter,1,0.5599,1.0,7,rush
 401864424,Delaware,j.silver,J.Silver,4,-1.7599,1.0,11,rush
 401864424,Delaware,k.roberts,K.Roberts,5,1.0338,3.0,13,rush
@@ -10761,6 +10774,15 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868313,Stephen F. Austin,j.jenkins,J.Jenkins,7,-0.967,3.0,22,rush
 401868313,Stephen F. Austin,j.kitna,J.Kitna,1,1.2132,1.0,2,rush
 401868313,Stephen F. Austin,p.alford,P.Alford,1,-0.5747,0.0,-2,rush
+401868314,Northwestern State,a.johnston,A.Johnston,1,1.2737,0.0,11,rush
+401868314,Northwestern State,m.hicks,M.Hicks,1,-0.4526,0.0,2,rush
+401868314,Northwestern State,s.ingram,S.Ingram,1,-0.8334,0.0,1,rush
+401868314,Northwestern State,z.davis,Z.Davis,3,0.9356,2.0,10,rush
+401868314,Northwestern State,z.wilcke,Z.Wilcke,1,0.2343,1.0,12,rush
+401868314,Stephen F. Austin,j.jenkins,J.Jenkins,12,1.2634,7.0,75,rush
+401868314,Stephen F. Austin,j.jones,J.Jones,4,4.2199,4.0,44,rush
+401868314,Stephen F. Austin,j.kitna,J.Kitna,1,-0.5578,0.0,0,rush
+401868314,Stephen F. Austin,p.alford,P.Alford,3,0.5631,1.0,14,rush
 401868315,Houston Christian,c.dozier,C.Dozier,13,0.5479,2.0,26,rush
 401868315,Houston Christian,c.landers,C.Landers,2,-0.9842,0.0,4,rush
 401868315,Houston Christian,c.stewart,C.Stewart,15,3.9148,8.0,95,rush
@@ -10835,6 +10857,14 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868322,SE Louisiana,d.jackson,D.Jackson,6,-2.4223,1.0,15,rush
 401868322,SE Louisiana,j.hunter,J.Hunter,1,3.4412,1.0,16,rush
 401868322,SE Louisiana,k.lowe,K.Lowe,9,0.453,4.0,57,rush
+401868323,Nicholls,c.babineaux,C.Babineaux,1,-0.1665,0.0,4,rush
+401868323,Nicholls,d.blackburn,D.Blackburn,9,-0.839,1.0,20,rush
+401868323,Nicholls,p.gales,P.Gales,5,0.6388,2.0,25,rush
+401868323,Nicholls,p.welch,P.Welch,8,-0.2229,3.0,24,rush
+401868323,SE Louisiana,c.elzy,C.Elzy,14,4.1615,5.0,112,rush
+401868323,SE Louisiana,c.smith,C.Smith Jr.,17,-3.333,4.0,78,rush
+401868323,SE Louisiana,d.jackson,D.Jackson,3,-1.1592,1.0,19,rush
+401868323,SE Louisiana,k.lowe,K.Lowe,12,3.1472,8.0,171,rush
 401868324,Alabama State,a.body,A.Body,7,0.4189,2.0,42,rush
 401868324,Alabama State,a.ramsey,A.Ramsey,3,2.527,2.0,21,rush
 401868324,Alabama State,j.hostzclaw,J.Hostzclaw,14,3.0491,3.0,47,rush
@@ -21731,6 +21761,18 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862829,UAB,r.robinson,R.Robinson II,1,-0.6195,0.0,2,target
 401862829,UAB,s.isacks,S.Isacks,3,5.4758,2.0,80,target
 401862829,UAB,t.mims,T.Mims,4,2.2102,2.0,18,target
+401862830,Rice,j.brown,J.Brown,4,3.4263,3.0,44,target
+401862830,Rice,j.clark,J.Clark,7,7.3887,5.0,49,target
+401862830,Rice,m.mosey,M.Mosey,7,0.5273,3.0,62,target
+401862830,Rice,m.sifford,M.Sifford,1,0.204,1.0,6,target
+401862830,Rice,p.matthews,P.Matthews,5,0.8012,1.0,33,target
+401862830,Rice,tem31,TEM31,1,-0.5578,0.0,0,target
+401862830,Temple,c.chase,C.Chase,5,3.8287,4.0,54,target
+401862830,Temple,j.bermudez,J.Bermudez,4,-3.0217,0.0,0,target
+401862830,Temple,j.freeman,J.Freeman,3,2.2822,2.0,31,target
+401862830,Temple,j.schlaffer,J.Schlaffer,1,2.0,1.0,7,target
+401862830,Temple,k.mason,K.Mason,2,0.1098,1.0,9,target
+401862830,Temple,r.stocksdale,R.Stocksdale,1,1.1712,1.0,9,target
 401864424,Delaware,b.graves,B.Graves,4,3.2073,3.0,59,target
 401864424,Delaware,d.lewis,D.Lewis,4,4.7034,3.0,46,target
 401864424,Delaware,d.lofton,D.Lofton,4,4.5723,3.0,64,target
@@ -32398,6 +32440,23 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868313,Stephen F. Austin,k.harris,K.Harris,3,-1.2526,0.0,5,target
 401868313,Stephen F. Austin,p.alford,P.Alford,2,-0.1959,1.0,21,target
 401868313,Stephen F. Austin,r.ellefson,R.Ellefson,1,0.342,1.0,6,target
+401868314,Northwestern State,b.webb,B.Webb,3,-0.623,1.0,6,target
+401868314,Northwestern State,d.wallace,D.Wallace,5,1.5798,3.0,31,target
+401868314,Northwestern State,j.duncan,J.Duncan,2,-1.4916,0.0,0,target
+401868314,Northwestern State,j.moreland,J.Moreland,3,-1.0999,1.0,5,target
+401868314,Northwestern State,j.peveto,J.Peveto,2,-0.6117,0.0,0,target
+401868314,Northwestern State,nsu05,NSU05,1,-0.0785,0.0,0,target
+401868314,Northwestern State,s.ingram,S.Ingram,1,0.0945,1.0,5,target
+401868314,Northwestern State,v.canzano,V.Canzano,1,-0.1857,0.0,0,target
+401868314,Northwestern State,z.davis,Z.Davis,2,-1.1137,0.0,1,target
+401868314,Stephen F. Austin,b.mortimer,B.Mortimer,4,9.3104,3.0,113,target
+401868314,Stephen F. Austin,c.kelley,C.Kelley,1,3.5833,1.0,26,target
+401868314,Stephen F. Austin,c.wayland,C.Wayland,4,0.5139,1.0,15,target
+401868314,Stephen F. Austin,d.bohler,D.Bohler,4,2.0717,2.0,46,target
+401868314,Stephen F. Austin,j.holly,J.Holly,1,-0.6243,0.0,-2,target
+401868314,Stephen F. Austin,j.jenkins,J.Jenkins,1,-0.6771,0.0,0,target
+401868314,Stephen F. Austin,k.harris,K.Harris,3,2.8485,3.0,45,target
+401868314,Stephen F. Austin,s.carter,S.Carter,1,0.22,1.0,10,target
 401868315,Houston Christian,b.turner,B.Turner,2,-0.3459,0.0,3,target
 401868315,Houston Christian,c.dozier,C.Dozier,2,0.1726,1.0,27,target
 401868315,Houston Christian,e.harris,E.Harris,1,2.4518,1.0,17,target
@@ -32530,6 +32589,21 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868322,SE Louisiana,l.ibieta,L.Ibieta,1,0.79,1.0,13,target
 401868322,SE Louisiana,l.shinn,L.Shinn Jr,3,-2.5856,0.0,0,target
 401868322,SE Louisiana,t.goodly,T.Goodly,2,-0.6635,0.0,0,target
+401868323,Nicholls,c.babineaux,C.Babineaux,1,-1.0112,0.0,0,target
+401868323,Nicholls,d.blackburn,D.Blackburn,2,-1.5318,0.0,0,target
+401868323,Nicholls,d.scura,D.Scura,4,-0.6784,1.0,9,target
+401868323,Nicholls,e.stewart,E.Stewart,1,-0.5706,0.0,0,target
+401868323,Nicholls,g.donaldson,G.Donaldson,2,-0.6084,1.0,5,target
+401868323,Nicholls,i.leblanc,I.LeBlanc,2,-0.059,1.0,13,target
+401868323,Nicholls,j.dufrene,J.Dufrene,2,4.0047,1.0,42,target
+401868323,Nicholls,j.godfrey,J.Godfrey,1,-0.6136,0.0,0,target
+401868323,Nicholls,k.johnson,K.Johnson,2,-1.6095,0.0,0,target
+401868323,Nicholls,p.gales,P.Gales,1,-0.2168,0.0,0,target
+401868323,Nicholls,p.lafont,P.Lafont,8,-3.5908,2.0,21,target
+401868323,SE Louisiana,d.jefferson,D.Jefferson,1,-0.8176,0.0,0,target
+401868323,SE Louisiana,d.joseph,D.Joseph,19,9.533,10.0,139,target
+401868323,SE Louisiana,l.dixon,L.Dixon,1,1.0632,1.0,13,target
+401868323,SE Louisiana,slu29,SLU29,1,-0.4522,0.0,0,target
 401868324,Alabama State,e.horn,E.Horn,2,-0.6849,1.0,13,target
 401868324,Alabama State,f.pierre,F.Pierre,2,-0.9721,0.0,0,target
 401868324,Alabama State,j.hostzclaw,J.Hostzclaw,1,0.1783,0.0,6,target
@@ -37722,6 +37796,10 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862828,Tulane,t.johnson,T.Johnson,37,7.2789,15.0,190,pass
 401862829,Temple,a.sheppard,A.Sheppard,24,-15.46,3.0,46,pass
 401862829,UAB,r.burton,R.Burton,22,-5.0191,8.0,129,pass
+401862830,Rice,g.ochoa,G.Ochoa,15,3.4344,8.0,88,pass
+401862830,Rice,j.brown,J.Brown,1,-0.5613,0.0,-8,pass
+401862830,Rice,p.crayton,P.Crayton Jr.,11,7.6892,5.0,105,pass
+401862830,Temple,j.smolik,J.Smolik,17,5.8281,9.0,107,pass
 401864424,Delaware,n.minicucci,N.Minicucci,29,17.6639,17.0,294,pass
 401864424,Merrimack,a.hairston,A.Hairston,22,0.8949,6.0,68,pass
 401864424,Merrimack,c.meehan,C.Meehan,2,-0.2067,0.0,0,pass
@@ -39499,6 +39577,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868313,Lamar,a.mccown,A.McCown,32,19.1882,15.0,293,pass
 401868313,Stephen F. Austin,g.rutherford,G.Rutherford,35,3.1744,18.0,358,pass
 401868313,Stephen F. Austin,j.kitna,JT Kitna,4,4.17,1.0,73,pass
+401868314,Northwestern State,z.wilcke,Z.Wilcke,21,-8.6635,6.0,48,pass
+401868314,Stephen F. Austin,j.kitna,J.Kitna,19,17.2463,11.0,253,pass
 401868315,Houston Christian,c.stewart,C.Stewart,18,10.8209,7.0,173,pass
 401868315,Houston Christian,t.llanas-wilcox,T.Llanas-Wilcox,1,0.74,1.0,27,pass
 401868315,SE Louisiana,k.lowe,K.Lowe,27,5.1445,13.0,137,pass
@@ -39521,6 +39601,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868322,McNeese,b.barrier,B.Barrier,11,-6.7499,2.0,-8,pass
 401868322,McNeese,j.strong,J.Strong,9,-6.5943,4.0,65,pass
 401868322,SE Louisiana,k.lowe,K.Lowe,23,-7.2845,8.0,142,pass
+401868323,Nicholls,p.welch,P.Welch,30,-13.4974,7.0,115,pass
+401868323,SE Louisiana,k.lowe,K.Lowe,24,7.0364,12.0,144,pass
 401868324,Alabama State,a.body,A.Body,22,4.1772,7.0,104,pass
 401868324,Southern,c.johnson,C.Johnson,28,1.0662,12.0,165,pass
 401868325,Alabama State,a.body,A.Body,14,-0.1926,8.0,113,pass
