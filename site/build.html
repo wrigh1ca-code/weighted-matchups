@@ -23,9 +23,9 @@
 
   <form class="card" id="form" style="display:flex;flex-direction:column;gap:18px" novalidate>
     <div class="builder">
-      <div class="pick"><label for="away" class="away">Team A</label><select id="away" required></select><div class="tinfo" id="awayInfo"></div></div>
+      <div class="pick"><label for="away" class="away">Team A</label><div id="awayPick" data-input-id="away"></div><div class="tinfo" id="awayInfo"></div></div>
       <button type="button" class="btn swap" id="swap" aria-label="Swap teams" title="Swap teams">⇄</button>
-      <div class="pick"><label for="home" class="home">Team B</label><select id="home" required></select><div class="tinfo" id="homeInfo"></div></div>
+      <div class="pick"><label for="home" class="home">Team B</label><div id="homePick" data-input-id="home"></div><div class="tinfo" id="homeInfo"></div></div>
     </div>
     <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
       <legend style="font-weight:700;font-size:14px;padding:0;margin-bottom:8px">Where is it played?</legend>
@@ -56,6 +56,7 @@
     Data: <a href="https://collegefootballdata.com">CollegeFootballData.com</a>. Not affiliated with any team or sportsbook.</footer>
 </main>
 <script src="custom.js"></script>
+<script src="teampicker.js"></script>
 <script>
 (async function () {
   const $ = s => document.getElementById(s);
@@ -66,12 +67,11 @@
   }
   $('asof').textContent = `${L.season} · profiles as of ${new Date(L.asof).toLocaleDateString([], { month: 'short', day: 'numeric' })}`;
 
-  // Team options grouped by conference
-  const byConf = {};
-  for (const t of L.teams) (byConf[t.conference || 'Other'] ||= []).push(t);
-  const opts = '<option value="">Choose a team…</option>' + Object.keys(byConf).sort().map(c =>
-    `<optgroup label="${esc(c)}">${byConf[c].sort((a, b) => a.team.localeCompare(b.team)).map(t => `<option value="${esc(t.team)}">${esc(t.team)}</option>`).join('')}</optgroup>`).join('');
-  $('away').innerHTML = opts; $('home').innerHTML = opts;
+  // Type-to-search team pickers that also open as a full list grouped by conference
+  const P = {
+    away: TeamPicker($('awayPick'), L.teams, { placeholder: 'Type a team, or pick from the list', onChange: () => update() }),
+    home: TeamPicker($('homePick'), L.teams, { placeholder: 'Type a team, or pick from the list', onChange: () => update() }),
+  };
   const info = name => { const t = L.teams.find(x => x.team === name); return t ? `${t.conference || ''}${t.conference ? ' · ' : ''}${t.games} game${t.games === 1 ? '' : 's'} this season` : ''; };
 
   $('weather').innerHTML = [['', 'Not modeled'], ...Object.entries(WM.WEATHER).map(([k, v]) => [k, v.label])]
@@ -79,12 +79,12 @@
   const qs = new URLSearchParams(location.search);
   if (WM.WEATHER[qs.get('wx')]) document.querySelector(`input[name=wx][value="${qs.get('wx')}"]`).checked = true;
   const valid = n => L.teams.some(t => t.team === n);
-  if (valid(qs.get('away'))) $('away').value = qs.get('away');
-  if (valid(qs.get('home'))) $('home').value = qs.get('home');
+  if (valid(qs.get('away'))) P.away.set(qs.get('away'));
+  if (valid(qs.get('home'))) P.home.set(qs.get('home'));
   if (qs.get('neutral') === '1') document.querySelector('input[value="neutral"]').checked = true;
 
   function update() {
-    const a = $('away').value, h = $('home').value;
+    const a = P.away.value, h = P.home.value;
     $('awayInfo').textContent = info(a); $('homeInfo').textContent = info(h);
     $('vHome').textContent = h ? `At ${h}` : 'At Team B';
     $('vAway').textContent = a ? `At ${a}` : 'At Team A';
@@ -92,16 +92,15 @@
     $('go').disabled = !a || !h || same;
     $('msg').textContent = same ? 'Pick two different teams.' : '';
   }
-  ['away', 'home'].forEach(id => $(id).addEventListener('change', update));
   $('swap').addEventListener('click', () => {
-    const a = $('away').value; $('away').value = $('home').value; $('home').value = a;
+    const a = P.away.value; P.away.set(P.home.value); P.home.set(a);
     const v = document.querySelector('input[name=venue]:checked').value;
     if (v !== 'neutral') document.querySelector(`input[value="${v === 'home' ? 'away' : 'home'}"]`).checked = true;
     update();
   });
   $('form').addEventListener('submit', e => {
     e.preventDefault();
-    const a = $('away').value, b = $('home').value, v = document.querySelector('input[name=venue]:checked').value;
+    const a = P.away.value, b = P.home.value, v = document.querySelector('input[name=venue]:checked').value;
     if (!a || !b || a === b) return;
     // The page's "home" is whoever hosts; on a neutral site Team B is listed second
     const m = v === 'away' ? { home: a, away: b, neutral: false } : { home: b, away: a, neutral: v === 'neutral' };

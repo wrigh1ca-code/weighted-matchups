@@ -172,3 +172,19 @@ footer { font-size: 12px; color: var(--muted); }
 #weatherLinks { align-items: center; }
 #weatherLinks:empty { display: none; }
 #chips:empty { display: none; }
+
+/* Team picker combobox */
+.combo { position: relative; }
+.combo input { font: 15px Inter, sans-serif; width: 100%; box-sizing: border-box; min-height: 44px; border: 1px solid #d1d5db; border-radius: 8px; padding: 0 44px 0 12px; background: #fff; color: var(--ink); }
+.combo input:focus { outline: 2px solid #111827; outline-offset: 1px; }
+.combo.picked input { font-weight: 600; }
+.combo-toggle { position: absolute; right: 4px; top: 4px; width: 36px; height: 36px; border: 0; border-radius: 6px; background: transparent; color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.combo-toggle:hover { background: var(--soft); color: var(--ink); }
+.combo-list { position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 4px); max-height: 320px; overflow-y: auto; margin: 0; padding: 4px; list-style: none; background: #fff; border: 1px solid #d1d5db; border-radius: 10px; box-shadow: 0 10px 28px rgba(17, 24, 39, .14); }
+.combo-list[hidden] { display: none; }
+.combo-list [role=option] { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+.combo-list [role=option] small { color: var(--muted); font-size: 12px; }
+.combo-list [role=option].active { background: #eef2ff; }
+.combo-list [role=option].sel { font-weight: 700; }
+.combo-group { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 10px 10px 4px; }
+.combo-empty { padding: 10px; color: var(--muted); font-size: 14px; }
