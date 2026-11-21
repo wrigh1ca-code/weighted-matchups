@@ -2,7 +2,8 @@
 
 Usage: python -m engine.export_site [season] [week]
   Defaults to the current season and the next week with unplayed games.
-Writes site/data/week.json and site/data/games/<gameId>.json
+Writes site/data/week.json and site/data/games/<gameId>.json, plus site/data/league.json and
+site/data/teams/<team>.json for the build-your-own matchup page.
 """
 from __future__ import annotations
 
@@ -15,8 +16,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from engine.model import (LABELS, METRICS, COUNT_COL, Matchup, Params, PointsModel, fbs_teams, higher_is_better,
-                          load, matchup_features, matchup_units, percentile_refs, profiles_asof, project)
+from engine.model import (LABELS, METRICS, COUNT_COL, Matchup, Params, PointsModel, baseline_for, fbs_teams,
+                          higher_is_better, load, matchup_features, matchup_units, percentile_refs, profiles_asof,
+                          project, unit_ingredients)
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_DATA = ROOT / "site" / "data"
@@ -140,6 +142,90 @@ def export_game(row, p: Params, pm: PointsModel) -> dict:
     })
 
 
+def _team_slug(team: str) -> str:
+    return "".join(c if c.isalnum() else "-" for c in team.lower()).strip("-")
+
+
+def export_teams(season: int, p: Params, pm: PointsModel) -> int:
+    """Data for user-built matchups: one file per FBS team plus league.json.
+
+    Everything in a unit's weighting ingredients is team-specific except the opponent similarity
+    (dist) and the site match, which depend on the matchup. Those are recomputed in the browser
+    (site/custom.js) from the scaled similarity vectors in league.json, mirroring
+    model.unit_ingredients. Profiles are as of now. Each past game carries its weather so the
+    browser can apply a weather scenario the user picks (model._wx_dist2).
+    """
+    from engine.model import SIM_FEATURES, SITE_MATCH, feature_scales, key_player_models, key_players, last_qb
+
+    asof = pd.Timestamp.now("UTC").floor("h")
+    prof = profiles_asof(season, asof.isoformat())
+    if prof.empty:
+        print("  no games yet this season; skipping team export")
+        return 0
+    _, g = load()
+    fbs = sorted(fbs_teams(season))
+    scales = feature_scales()
+    vec = {}
+    for r in prof.itertuples(index=False):
+        v = [getattr(r, c) / scales[c] for c, _ in SIM_FEATURES]
+        vec[f"{r.team}|{r.side}"] = None if any(pd.isna(x) for x in v) else v
+    s = g[g.season == season]
+    conf = {**dict(zip(s.awayTeam, s.awayConference)), **dict(zip(s.homeTeam, s.homeConference))}
+
+    out_dir = SITE_DATA / "teams"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    index = []
+    for team in fbs:
+        try:
+            qb = last_qb(team, season, asof)
+            key = key_players(team, season, asof)
+            km = key_player_models(team, season, asof)
+            units = {}
+            for side in ("offense", "defense"):
+                off = side == "offense"
+                # opponent/site are placeholders: dist and site_base are recomputed per matchup in the browser
+                rows = unit_ingredients(team, side, season, asof, team, "home", None,
+                                        qb if off else None, key if off else None)
+                info = {"rows": rows, "baseline": baseline_for(team, side, season, prof),
+                        "expected_qb": qb if off else None, "key": key if off else None, "km": km if off else {}}
+                up = unit_payload(info, set(), set()) if not rows.empty else {
+                    "expected_qb": info["expected_qb"], "qbs": [], "key": info["key"], "km": {},
+                    "baseline": info["baseline"].to_dict(), "games": []}
+                for gm, r in zip(up["games"], rows.itertuples(index=False)):
+                    for k in ("dist", "site_base", "common", "wx_d2"):
+                        gm.pop(k, None)
+                    # past-game conditions, so the browser can redo the weather match for a chosen scenario
+                    gm["wx"] = {"indoors": bool(r.indoors) if not pd.isna(r.indoors) else False,
+                                "temp": r.temp, "wind": r.wind, "precip": r.precip}
+                units[side] = up
+        except Exception as e:  # one bad team shouldn't block the rest
+            print(f"  skip team {team}: {e}")
+            continue
+        slug = _team_slug(team)
+        data = {"team": team, "slug": slug, "conference": conf.get(team), "asof": asof.isoformat(),
+                "form": recent_form(team, season, asof, n=5), "units": units}
+        (out_dir / f"{slug}.json").write_text(json.dumps(_clean(data), separators=(",", ":")))
+        index.append({"team": team, "slug": slug, "conference": conf.get(team),
+                      "games": len(units["offense"]["games"])})
+    keep = {f"{x['slug']}.json" for x in index}
+    for f in out_dir.glob("*.json"):
+        if f.name not in keep:
+            f.unlink()
+    refs = percentile_refs(season, asof)
+    league = {
+        "season": season, "asof": asof.isoformat(), "teams": index,
+        "vec": vec, "sim_weights": [w for _, w in SIM_FEATURES],
+        "site_match": {f"{a}|{b}": v for (a, b), v in SITE_MATCH.items()},
+        "fbs": fbs,
+        "refs": {f"{side}|{mt}": refs[(side, mt)].tolist() for side in ("offense", "defense") for mt in METRICS},
+        "lg_epa": prof.attrs.get("lg_epa", 0.0),
+        "params": asdict(p), "points_model": asdict(pm), "best_a": {k: v for k, v in (BEST_A or {}).items()},
+    }
+    (SITE_DATA / "league.json").write_text(json.dumps(_clean(league), separators=(",", ":")))
+    print(f"exported {len(index)} teams for custom matchups (as of {asof:%Y-%m-%d %H:%M} UTC)")
+    return len(index)
+
+
 def main(argv):
     u, g = load()
     season = int(argv[0]) if argv else int(g[g.completed == True].season.max())  # noqa: E712
@@ -178,6 +264,7 @@ def main(argv):
         if f.name not in keep:
             f.unlink()
     print(f"exported {len(index)} games for {season} {stype} week {week}")
+    export_teams(season, p, pm)
     return 0
 
 

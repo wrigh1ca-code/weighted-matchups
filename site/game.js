@@ -1,10 +1,22 @@
-/* Matchup page: reweights every unit live. Mirrors engine/model.py exactly. */
+/* Matchup page: reweights every unit live. Mirrors engine/model.py exactly.
+   ?id=<gameId> loads a scheduled game; ?home=&away=[&neutral=1] builds a hypothetical one (custom.js). */
 (async function () {
-  const id = new URLSearchParams(location.search).get('id');
-  const [G, W] = await Promise.all([
-    fetch(`data/games/${encodeURIComponent(id)}.json`, { cache: 'no-cache' }).then(r => r.json()),
-    fetch('data/week.json', { cache: 'no-cache' }).then(r => r.json()),
-  ]);
+  const qs = new URLSearchParams(location.search);
+  const id = qs.get('id');
+  const CUSTOM = !id && qs.get('home') && qs.get('away');
+  let G, W;
+  try {
+    [G, W] = await Promise.all([
+      CUSTOM ? WM.buildCustom(qs.get('home'), qs.get('away'), qs.get('neutral') === '1', qs.get('wx'))
+        : fetch(`data/games/${encodeURIComponent(id)}.json`, { cache: 'no-cache' }).then(r => r.json()),
+      fetch('data/week.json', { cache: 'no-cache' }).then(r => r.json()),
+    ]);
+  } catch (e) {
+    document.getElementById('app').innerHTML = `<div class="topbar"><a class="brand" href="./">Weighted <span>Matchups</span></a></div>
+      <div class="note">Couldn't load this matchup${CUSTOM ? ' (check the team names)' : ''}. <a href="build.html">Build a matchup</a> or go back to <a href="./">this week's games</a>.</div>`;
+    return;
+  }
+  if (CUSTOM) WM.remember({ ...G.game, wx: G.game.weather_key });
   const META = W.meta;
   const METRICS = META.metrics, LABELS = META.labels, COUNT = META.count_col, HIB = META.higher_is_better;
   const game = G.game, HOME = game.home, AWAY = game.away;
@@ -132,17 +144,34 @@
 
   // ---------- static header
   const kick = new Date(game.start);
-  $('eyebrow').textContent = `${game.season} · Week ${game.week} · ${kick.toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`;
+  $('eyebrow').textContent = game.custom
+    ? `Hypothetical matchup · ${game.season} profiles as of ${kick.toLocaleDateString([], { month: 'short', day: 'numeric' })}`
+    : `${game.season} · Week ${game.week} · ${kick.toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`;
   $('title').innerHTML = `<span class="away">${esc(AWAY)}</span> ${game.neutral ? 'vs' : 'at'} <span class="home">${esc(HOME)}</span>`;
   document.title = `${AWAY} ${game.neutral ? 'vs' : 'at'} ${HOME} · Weighted Matchups`;
   const chips = [];
-  chips.push(game.neutral ? 'Neutral site' : `${HOME} at home`);
+  if (!game.custom) chips.push(game.neutral ? 'Neutral site' : `${HOME} at home`);
   if (game.venue) chips.push(game.venue);
-  if (game.weather) chips.push(game.weather.indoors ? 'Indoors' : `Forecast: ${Math.round(game.weather.temp)}°F, wind ${Math.round(game.weather.wind || 0)} mph${game.weather.precip > 0 ? ', precip' : ''}`);
+  if (!game.custom && game.weather) chips.push(game.weather.indoors ? 'Indoors' : `Forecast: ${Math.round(game.weather.temp)}°F, wind ${Math.round(game.weather.wind || 0)} mph${game.weather.precip > 0 ? ', precip' : ''}`);
   $('chips').innerHTML = chips.map(c => `<span class="chip">${esc(c)}</span>`).join('') +
     (G.common_opponents.length ? `<span class="chip info">Common opponents: ${esc(G.common_opponents.join(', '))}</span>` : '');
+  // Venue switcher / builder links
+  const WXK = game.custom ? game.weather_key : null;
+  const mk = (h, a, n, wx = WXK) => WM.url({ home: h, away: a, neutral: n, wx });
+  const venues = [[`${AWAY} at ${HOME}`, mk(HOME, AWAY, false)], [`${HOME} at ${AWAY}`, mk(AWAY, HOME, false)], ['Neutral site', mk(HOME, AWAY, true)]];
+  const curV = game.neutral ? 2 : 0;
+  $('venueLinks').innerHTML = `<span class="small">${game.custom ? 'Venue:' : 'What if it were played'}</span> ` +
+    venues.map(([l, u], i) => i !== curV ? `<a class="chip link" href="${u}">${esc(l)}</a>`
+      : game.custom ? `<span class="chip on" aria-current="true">${esc(l)}</span>` : '').join('') +
+    ` <a class="small" href="build.html?home=${encodeURIComponent(HOME)}&away=${encodeURIComponent(AWAY)}${game.neutral ? '&neutral=1' : ''}${WXK ? `&wx=${WXK}` : ''}">${game.custom ? 'Change teams' : 'Build your own matchup'}</a>`;
+  if (game.custom) {
+    const wxs = [[null, 'Not modeled'], ...Object.entries(WM.WEATHER).map(([k, v]) => [k, v.label])];
+    $('weatherLinks').innerHTML = `<span class="small">Weather:</span> ` + wxs.map(([k, l]) => k === WXK
+      ? `<span class="chip on" aria-current="true">${esc(l)}</span>`
+      : `<a class="chip link" href="${mk(HOME, AWAY, game.neutral, k)}">${esc(l)}</a>`).join('');
+  }
   const sp = game.spread_home;
-  $('pMarket').textContent = sp == null ? 'n/a' : (Math.abs(sp) < 0.25 ? 'Pick ’em' : (sp < 0 ? `${HOME} ${sp}` : `${AWAY} −${sp}`));
+  $('pMarket').textContent = game.custom ? 'Not scheduled' : sp == null ? 'n/a' : (Math.abs(sp) < 0.25 ? 'Pick ’em' : (sp < 0 ? `${HOME} ${sp}` : `${AWAY} −${sp}`));
 
   function formChips(team, el, lbl) {
     $(lbl).textContent = `${team}: last ${G.form[team].length} games`;
