@@ -1711,6 +1711,16 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856864,Utah,d.bray,D.Bray,18,13.089,11.0,197,rush
 401856864,Utah,d.dampier,D.Dampier,12,5.316,9.0,113,rush
 401856864,Utah,w.parker,W.Parker,1,-0.6308,0.0,2,rush
+401856869,Iowa State,a.flora,A.Flora,19,4.018,10.0,158,rush
+401856869,Iowa State,c.pettaway,C.Pettaway,1,-0.1299,0.0,3,rush
+401856869,Iowa State,j.raynor,J.Raynor,5,0.3158,2.0,27,rush
+401856869,UCF,a.barnett,A.Barnett III,10,3.373,6.0,56,rush
+401856869,UCF,d.thomas,D.Thomas Jr.,2,0.7786,1.0,2,rush
+401856869,UCF,d.watson,D.Watson,16,6.8964,11.0,113,rush
+401856869,UCF,l.chambers,L.Chambers,1,-0.2426,0.0,2,rush
+401856869,UCF,r.marriott,R.Marriott,3,-1.7072,0.0,1,rush
+401856869,UCF,t.hornes,T.Hornes,1,-0.6718,0.0,1,rush
+401856869,UCF,t.swint,T.Swint,3,3.4996,3.0,36,rush
 401856881,Oklahoma State,a.adeyi,A.Adeyi,6,0.6277,3.0,44,rush
 401856881,Oklahoma State,c.hawkins,C.Hawkins,31,7.1232,18.0,180,rush
 401856881,Oklahoma State,d.mestemaker,D.Mestemaker,1,-1.1619,0.0,0,rush
@@ -2617,6 +2627,14 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858301,Wake Forest,g.lopez,G.Lopez,5,4.1209,4.0,37,rush
 401858301,Wake Forest,j.searcy,J.Searcy,3,6.3111,3.0,45,rush
 401858301,Wake Forest,t.clark,T.Clark,7,6.4925,4.0,66,rush
+401858303,Clemson,c.denson,C.Denson,16,2.8587,8.0,71,rush
+401858303,Clemson,c.johnson,C.Johnson Jr.,2,-5.9345,0.0,0,rush
+401858303,Clemson,g.davidson,G.Davidson,4,-0.1079,2.0,16,rush
+401858303,Clemson,j.green,J.Green,16,1.5415,6.0,84,rush
+401858303,Clemson,j.haynes,J.Haynes,4,-1.9401,1.0,6,rush
+401858303,Clemson,j.preston,J.Preston,2,-1.6568,1.0,-5,rush
+401858303,Clemson,t.pearman,T.Pearman,6,3.9186,4.0,51,rush
+401858303,Duke,n.sheppard,N.Sheppard,19,1.3,6.0,116,rush
 401858422,Eastern Illinois,c.kellom,C.Kellom,5,-0.9077,0.0,19,rush
 401858422,Eastern Illinois,c.lacrue,C.LaCrue,4,-0.4479,1.0,25,rush
 401858422,Eastern Illinois,d.whitlock,D.Whitlock,3,-1.6992,0.0,-1,rush
@@ -3548,6 +3566,17 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858526,UCLA,j.thomas,J.Thomas,4,-0.9393,1.0,17,rush
 401858526,UCLA,t.dieffenbach,T.Dieffenbach,3,3.6175,3.0,24,rush
 401858526,UCLA,w.knight,W.Knight,18,-6.6344,7.0,56,rush
+401858529,Michigan State,b.tullis,B.Tullis,7,-0.4317,2.0,23,rush
+401858529,Michigan State,b.williams,B.Williams,1,-0.1658,0.0,3,rush
+401858529,Michigan State,c.gulker,C.Gulker,1,0.075,1.0,5,rush
+401858529,Michigan State,j.patterson,J.Patterson,14,-0.5195,6.0,27,rush
+401858529,Michigan State,k.coffman,K.Coffman,2,-4.219,1.0,2,rush
+401858529,Oregon,b.smith,B.Smith,13,10.4215,9.0,119,rush
+401858529,Oregon,d.hill,D.Hill Jr,2,0.7658,1.0,17,rush
+401858529,Oregon,d.moore,D.Moore,1,0.1032,1.0,5,rush
+401858529,Oregon,d.riggs,D.Riggs,9,1.4058,6.0,42,rush
+401858529,Oregon,g.hurych,G.Hurych,1,2.8792,0.0,0,rush
+401858529,Oregon,s.price,S.Price,1,2.454,1.0,1,rush
 401859184,Notre Dame,a.williams,A.Williams,6,-0.046,2.0,21,rush
 401859184,Notre Dame,n.james,N.James Jr.,6,6.167,6.0,29,rush
 401859184,Rice,d.hardeman,D.Hardeman,2,-0.7273,0.0,6,rush
@@ -4808,6 +4837,19 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862830,Temple,h.smith,H.Smith,1,-8.6366,0.0,1,rush
 401862830,Temple,j.smolik,J.Smolik,9,4.3111,6.0,52,rush
 401862830,Temple,k.mason,K.Mason,14,-0.4311,3.0,67,rush
+401862831,Army,b.luter,B.Luter,4,-1.335,1.0,9,rush
+401862831,Army,c.hellums,C.Hellums,18,-0.8146,7.0,63,rush
+401862831,Army,d.jones,D.Jones,1,-3.5098,0.0,2,rush
+401862831,Army,d.stewart,D.Stewart,1,-0.6553,0.0,2,rush
+401862831,Army,g.nwawuihe,G.Nwawuihe,10,0.6005,4.0,44,rush
+401862831,Army,j.rendina,J.Rendina,1,0.0354,0.0,5,rush
+401862831,Army,s.bridges,S.Bridges,1,1.0425,1.0,11,rush
+401862831,Army,s.howard,S.Howard,5,0.9284,2.0,14,rush
+401862831,Army,z.mundell,Z.Mundell,4,2.5609,3.0,33,rush
+401862831,East Carolina,a.gray,A.Gray,7,-0.4939,3.0,46,rush
+401862831,East Carolina,e.williams,E.Williams,2,0.7368,1.0,23,rush
+401862831,East Carolina,r.joseph,R.Joseph Jr.,1,-0.1488,0.0,4,rush
+401862831,East Carolina,t.engleman,T.Engleman Jr.,22,4.6574,9.0,113,rush
 401864424,Delaware,j.porter,J.Porter,1,0.5599,1.0,7,rush
 401864424,Delaware,j.silver,J.Silver,4,-1.7599,1.0,11,rush
 401864424,Delaware,k.roberts,K.Roberts,5,1.0338,3.0,13,rush
@@ -5300,6 +5342,29 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401864540,Wyoming,l.sims,L.Sims,6,-2.3854,3.0,19,rush
 401864540,Wyoming,m.holman,M.Holman,13,-0.7887,5.0,41,rush
 401864540,Wyoming,s.harris,S.Harris,10,3.5094,4.0,66,rush
+401864542,New Mexico,b.george,B.George,1,-0.7446,0.0,-6,rush
+401864542,New Mexico,c.mathews,C.Mathews,4,-0.1898,1.0,15,rush
+401864542,New Mexico,d.buchanan,D.Buchanan,3,0.4377,0.0,21,rush
+401864542,New Mexico,g.glasgow,G.Glasgow,1,2.1969,1.0,17,rush
+401864542,New Mexico,k.sibley,K.Sibley,20,-2.7442,8.0,79,rush
+401864542,New Mexico,l.moga,L.Moga,4,3.7395,3.0,17,rush
+401864542,New Mexico,s.humphrey,S.Humphrey,2,1.7148,1.0,26,rush
+401864542,New Mexico,t.fa'avae,T.Fa'avae,2,-4.187,1.0,17,rush
+401864542,Wyoming,e.richardson,E.Richardson,1,-1.0671,0.0,-5,rush
+401864542,Wyoming,l.sims,L.Sims,5,1.6328,2.0,18,rush
+401864542,Wyoming,m.holman,M.Holman,9,-1.0488,2.0,25,rush
+401864542,Wyoming,s.harris,S.Harris,7,1.4878,4.0,36,rush
+401864545,Air Force,e.medders,E.Medders,6,0.0298,3.0,46,rush
+401864545,Air Force,g.ladue,G.LaDue,6,2.7646,4.0,36,rush
+401864545,Air Force,k.hodges,K.Hodges,4,1.0493,2.0,13,rush
+401864545,Air Force,k.sack,K.Sack,3,1.1831,2.0,27,rush
+401864545,Air Force,m.hayes,M.Hayes,1,-0.4297,0.0,3,rush
+401864545,Air Force,m.long,M.Long,3,2.5967,2.0,32,rush
+401864545,Air Force,o.allen,O.Allen,9,0.1945,4.0,26,rush
+401864545,Air Force,r.conti,R.Conti,4,2.7921,3.0,31,rush
+401864545,UTEP,d.singleton,D.Singleton,1,-0.5217,0.0,1,rush
+401864545,UTEP,e.mccoy,E.McCoy,3,-0.5938,1.0,0,rush
+401864545,UTEP,r.moore,R.Moore III,4,0.0474,2.0,13,rush
 401864570,Florida State,a.daniels,A.Daniels,7,4.9706,4.0,39,rush
 401864570,Florida State,m.danzy,M.Danzy,1,-0.4246,0.0,1,rush
 401864570,Florida State,o.kromah,O.Kromah,14,6.3951,9.0,115,rush
@@ -5927,6 +5992,16 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866467,Massachusetts,k.dia-johnson,K.Dia-Johnson,3,1.1193,2.0,8,rush
 401866467,Massachusetts,l.inagawa,L.Inagawa,13,-1.6001,4.0,65,rush
 401866467,Massachusetts,t.harding,T.Harding,1,1.1547,1.0,7,rush
+401866468,Bowling Green,a.novosad,A.Novosad,1,0.6005,1.0,7,rush
+401866468,Bowling Green,b.ridley,B.Ridley,2,-1.5131,0.0,2,rush
+401866468,Bowling Green,k.baldwin,K.Baldwin,2,-1.1861,0.0,0,rush
+401866468,Bowling Green,k.white,K.White,1,-4.6329,0.0,-5,rush
+401866468,Bowling Green,m.carey,M.Carey,1,-0.0334,0.0,1,rush
+401866468,Bowling Green,n.amachree,N.Amachree,19,-8.5882,4.0,47,rush
+401866468,Toledo,a.ison,A.Ison,3,-0.2098,2.0,14,rush
+401866468,Toledo,c.miller,C.Miller,14,-3.5295,5.0,35,rush
+401866468,Toledo,c.walendzak,C.Walendzak,17,-2.2722,6.0,66,rush
+401866468,Toledo,j.richter,J.Richter,2,2.6728,1.0,21,rush
 401866469,Buffalo,j.wright,J.Wright,2,2.2278,1.0,2,rush
 401866469,Buffalo,m.burch,M.Burch,24,9.8166,13.0,200,rush
 401866469,Central Michigan,b.townsend,B.Townsend,4,-0.4914,1.0,13,rush
@@ -6718,6 +6793,33 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866693,Monmouth,g.nelson,G.Nelson,1,-0.5101,0.0,2,rush
 401866693,Monmouth,k.smith,K.Smith Jr.,17,-1.8565,5.0,40,rush
 401866693,Monmouth,t.neal,T.Neal,2,1.1716,1.0,14,rush
+401866694,North Carolina A&T,j.williams,J.Williams,11,5.4417,7.0,54,rush
+401866694,North Carolina A&T,k.white,K.White,5,-2.56,3.0,16,rush
+401866694,North Carolina A&T,s.blizzard,S.Blizzard,13,-2.5277,4.0,37,rush
+401866694,UAlbany,a.semo,A.Semo,6,3.8078,4.0,19,rush
+401866694,UAlbany,b.davis,B.Davis,3,-1.6146,0.0,4,rush
+401866694,UAlbany,d.growney,D.Growney,1,0.6795,1.0,11,rush
+401866694,UAlbany,j.koch,J.Koch,14,-0.9672,6.0,67,rush
+401866694,UAlbany,j.rae,J.Rae,4,-1.3866,1.0,12,rush
+401866694,UAlbany,k.coln,K.Colón,2,-1.3325,0.0,-2,rush
+401866695,Hampton,d.shepard,D.Shepard,11,-3.2861,1.0,42,rush
+401866695,Hampton,m.madison,M.Madison,1,0.1943,0.0,10,rush
+401866695,Hampton,t.taylor,T.Taylor,7,-0.8165,1.0,27,rush
+401866695,Stony Brook,a.leffler,A.Leffler,6,-1.58,4.0,35,rush
+401866695,Stony Brook,b.poffenbarger,B.Poffenbarger,3,0.7753,2.0,13,rush
+401866695,Stony Brook,c.hester,C.Hester,16,3.4499,10.0,80,rush
+401866695,Stony Brook,j.reeder,J.Reeder,11,-3.5119,1.0,19,rush
+401866695,Stony Brook,q.boyd,Q.Boyd,3,3.846,2.0,16,rush
+401866695,Stony Brook,s.sweitzer,S.Sweitzer,1,-0.1838,0.0,2,rush
+401866700,Merrimack,a.hairston,A.Hairston,9,-4.2152,5.0,49,rush
+401866700,Merrimack,c.lehman,C.Lehman,1,-0.1543,0.0,4,rush
+401866700,Merrimack,d.mcelroy,D.McElroy,9,-5.2782,2.0,45,rush
+401866700,Merrimack,g.mulbah,G.Mulbah,5,0.3187,2.0,19,rush
+401866700,Merrimack,k.massey,K.Massey,1,2.4337,1.0,33,rush
+401866700,Merrimack,m.latham,M.Latham,2,-0.7724,0.0,5,rush
+401866700,Sacred Heart,c.webb,C.Webb,19,-0.6258,8.0,56,rush
+401866700,Sacred Heart,d.chukwuemeka,D.Chukwuemeka,5,2.0599,3.0,16,rush
+401866700,Sacred Heart,p.snyder,P.Snyder,5,6.2953,2.0,104,rush
 401867684,Chicago State,a.pannell,A.Pannell,3,-0.3708,0.0,8,rush
 401867684,Chicago State,c.edmonds,C.Edmonds,2,-1.4036,0.0,0,rush
 401867684,Chicago State,c.lee,C.Lee,1,0.0641,0.0,7,rush
@@ -7657,6 +7759,15 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401867905,Long Island University,n.gray,N.Gray,2,1.73,1.0,22,rush
 401867905,Long Island University,s.slade,S.Slade,7,0.5765,2.0,20,rush
 401867905,Long Island University,t.spencer,T.Spencer,1,-0.2366,0.0,3,rush
+401867906,Central Connecticut,b.griffis,B.Griffis,10,-0.0473,4.0,75,rush
+401867906,Central Connecticut,d.smith,D.Smith Jr,15,4.1642,6.0,92,rush
+401867906,Central Connecticut,g.wiggins,G.Wiggins,4,2.5489,3.0,26,rush
+401867906,Central Connecticut,i.stopke,I.Stopke,2,1.1258,2.0,13,rush
+401867906,Central Connecticut,j.manning,J.Manning,5,1.081,3.0,38,rush
+401867906,Central Connecticut,m.trovarelli,M.Trovarelli,1,0.1603,0.0,7,rush
+401867906,Duquesne,c.camp,C.Camp,3,1.1035,1.0,22,rush
+401867906,Duquesne,d.hopkins,D.Hopkins,3,2.1222,1.0,50,rush
+401867906,Duquesne,n.davis,N.Davis,15,-5.1639,4.0,33,rush
 401867907,American International,b.catherwood,B.Catherwood,12,-7.1417,1.0,15,rush
 401867907,American International,c.dietz,C.Dietz,2,-0.8807,1.0,7,rush
 401867907,Central Connecticut,b.griffis,B.Griffis,7,6.9934,4.0,54,rush
@@ -11261,6 +11372,16 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868379,The Citadel,m.lorino,M.Lorino,1,-0.1685,0.0,3,rush
 401868379,The Citadel,n.billoups,N.Billoups,21,9.1713,11.0,137,rush
 401868379,The Citadel,s.boyle,S.Boyle,7,-0.8432,4.0,14,rush
+401868380,Furman,b.croasdale,B.Croasdale,22,-1.9065,12.0,97,rush
+401868380,Furman,i.davis,I.Davis,2,-0.77,0.0,6,rush
+401868380,Furman,t.smith,T.Smith,6,3.9239,4.0,33,rush
+401868380,VMI,a.watters,A.Watters,1,0.325,1.0,13,rush
+401868380,VMI,d.parrott,D.Parrott,4,-5.058,1.0,17,rush
+401868380,VMI,j.ballard,J.Ballard,2,-0.0737,1.0,7,rush
+401868380,VMI,j.crump,J.Crump,6,-4.3802,2.0,27,rush
+401868380,VMI,l.boehling,L.Boehling,17,0.6582,5.0,73,rush
+401868380,VMI,t.simon,T.Simon,1,-0.4129,0.0,1,rush
+401868380,VMI,t.slaughter,T.Slaughter,3,6.3398,3.0,57,rush
 401868381,Mercer,d.caldwell,D.Caldwell,5,-1.3335,1.0,15,rush
 401868381,Mercer,e.rasheed,E.Rasheed,1,-0.6343,0.0,-1,rush
 401868381,Mercer,j.king,J.King,4,1.9223,2.0,23,rush
@@ -13049,6 +13170,17 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401872618,New Haven,j.tripptree,J.Tripptree,2,2.011,1.0,7,rush
 401872618,New Haven,s.jackson,S.Jackson,3,0.7698,1.0,16,rush
 401872618,New Haven,z.laney,Z.Laney,12,-5.1159,3.0,21,rush
+401872643,Mercyhurst,b.cardwell,B.Cardwell Jr.,8,-0.1044,5.0,44,rush
+401872643,Mercyhurst,d.evans,D.Evans,1,-0.3527,0.0,3,rush
+401872643,Mercyhurst,e.dyke,E.Van Dyke,1,0.2732,1.0,15,rush
+401872643,Mercyhurst,e.fincher,E.Fincher,8,2.6571,3.0,28,rush
+401872643,Mercyhurst,e.knox,E.Knox,12,6.4378,7.0,83,rush
+401872643,Mercyhurst,t.tusai,T.Tusai,5,0.73,2.0,18,rush
+401872643,New Haven,a.duffy,A.Duffy,1,-1.7667,0.0,-6,rush
+401872643,New Haven,f.daniley,F.Daniley,4,-2.1125,1.0,7,rush
+401872643,New Haven,s.jackson,S.Jackson,2,2.7037,1.0,42,rush
+401872643,New Haven,t.troy,T.Troy,1,0.4612,1.0,1,rush
+401872643,New Haven,z.laney,Z.Laney,16,-1.3325,7.0,75,rush
 401873620,Glenville State,a.simmons,A.Simmons,3,-3.1266,0.0,-2,rush
 401873620,Glenville State,g.holland,G.Holland,4,-0.7476,1.0,4,rush
 401873620,Glenville State,j.gonzalez,J.Gonzalez,1,-0.1053,0.0,4,rush
@@ -16284,6 +16416,18 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856864,Utah,c.whittemore,C.Whittemore,8,7.9957,4.0,92,target
 401856864,Utah,d.bray,D.Bray,3,0.8574,2.0,21,target
 401856864,Utah,r.johnson,R.Johnson,4,0.069,1.0,35,target
+401856869,Iowa State,a.flora,A.Flora,3,-5.9438,0.0,-3,target
+401856869,Iowa State,c.robbins,C.Robbins,1,1.0272,1.0,12,target
+401856869,Iowa State,j.polite,J.Polite,5,-7.6238,1.0,8,target
+401856869,Iowa State,o.hayes,O.Hayes,4,2.1277,1.0,29,target
+401856869,Iowa State,t.fortenberry,T.Fortenberry,2,0.0375,0.0,10,target
+401856869,UCF,c.piening,C.Piening,3,0.1841,1.0,17,target
+401856869,UCF,d.thomas,D.Thomas Jr.,1,-0.066,0.0,4,target
+401856869,UCF,d.wade,D.Wade,3,-0.6914,0.0,8,target
+401856869,UCF,g.brousseau,G.Brousseau,1,0.3334,1.0,6,target
+401856869,UCF,j.derry,J.Derry,6,13.9909,4.0,125,target
+401856869,UCF,t.hornes,T.Hornes,8,3.4823,5.0,80,target
+401856869,UCF,ucf50,UCF50,1,-1.1248,0.0,0,target
 401856881,Oklahoma State,a.adeyi,A.Adeyi,1,0.9767,1.0,8,target
 401856881,Oklahoma State,c.barnes,C.Barnes,3,3.4234,2.0,58,target
 401856881,Oklahoma State,c.hawkins,C.Hawkins,1,-0.4881,0.0,0,target
@@ -18058,6 +18202,24 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858301,Wake Forest,j.foley,J.Foley,2,-1.2087,0.0,0,target
 401858301,Wake Forest,k.shanks,K.Shanks,1,-1.0743,0.0,0,target
 401858301,Wake Forest,t.clark,T.Clark,1,1.3024,1.0,9,target
+401858303,Clemson,b.wesco,B.Wesco Jr.,3,-0.6546,1.0,12,target
+401858303,Clemson,c.bentancur,C.Bentancur,4,-0.3295,1.0,15,target
+401858303,Clemson,g.davidson,G.Davidson,2,-1.3615,0.0,1,target
+401858303,Clemson,g.sellars,G.Sellars III,3,2.1614,1.0,33,target
+401858303,Clemson,j.green,J.Green,3,2.3882,1.0,20,target
+401858303,Clemson,j.preston,J.Preston,5,0.2448,2.0,15,target
+401858303,Clemson,l.brooking,L.Brooking,1,-0.6509,0.0,0,target
+401858303,Clemson,o.patt-henry,O.Patt-Henry,1,-0.8244,0.0,0,target
+401858303,Clemson,t.moore,T.Moore,7,4.8598,3.0,68,target
+401858303,Duke,b.keefe,B.Keefe,1,-0.6779,0.0,0,target
+401858303,Duke,j.burton,J.Burton,7,-2.6038,1.0,9,target
+401858303,Duke,j.hasley,J.Hasley,11,-1.9601,4.0,55,target
+401858303,Duke,j.moore,J.Moore,1,-0.7543,0.0,-5,target
+401858303,Duke,j.nicholas,J.Nicholas,7,7.6213,5.0,87,target
+401858303,Duke,j.richardson,J.Richardson,2,-0.9779,0.0,0,target
+401858303,Duke,j.solomon,J.Solomon,3,-2.4495,0.0,0,target
+401858303,Duke,j.taylor,J.Taylor,1,-0.1159,0.0,0,target
+401858303,Duke,n.sheppard,N.Sheppard,3,-1.8659,1.0,3,target
 401858422,Eastern Illinois,c.kellom,C.Kellom,5,0.8017,1.0,7,target
 401858422,Eastern Illinois,d.whitlock,D.Whitlock,1,0.2501,0.0,6,target
 401858422,Eastern Illinois,j.reeves,J.Reeves,1,-0.2978,0.0,0,target
@@ -19723,6 +19885,22 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858526,UCLA,l.ellis,L.Ellis,2,-1.3217,0.0,0,target
 401858526,UCLA,s.morgan,S.Morgan,6,6.1381,4.0,56,target
 401858526,UCLA,w.knight,W.Knight,2,-1.2853,0.0,2,target
+401858529,Michigan State,b.williams,B.Williams,3,2.4448,1.0,25,target
+401858529,Michigan State,c.mccray,C.McCray,4,0.2026,1.0,21,target
+401858529,Michigan State,c.taplin,C.Taplin,1,0.4488,1.0,9,target
+401858529,Michigan State,f.moore,F.Moore,3,3.5313,2.0,31,target
+401858529,Michigan State,j.patterson,J.Patterson,1,1.0317,1.0,8,target
+401858529,Michigan State,k.rios,K.Rios,2,-0.5741,0.0,3,target
+401858529,Michigan State,k.williams,K.Williams,2,1.6106,1.0,9,target
+401858529,Michigan State,s.gash,S.Gash,1,-0.6175,0.0,0,target
+401858529,Oregon,b.smith,B.Smith,1,-0.1836,1.0,9,target
+401858529,Oregon,d.moore,D.Moore,3,-1.6992,1.0,6,target
+401858529,Oregon,d.riggs,D.Riggs,2,-0.3129,1.0,13,target
+401858529,Oregon,e.stewart,E.Stewart,3,-1.9918,0.0,0,target
+401858529,Oregon,j.johnson,J.Johnson,7,1.5806,3.0,39,target
+401858529,Oregon,j.lott,J.Lott,2,0.7025,1.0,19,target
+401858529,Oregon,j.mcclellan,J.McClellan,4,2.0306,2.0,27,target
+401858529,Oregon,msu20,MSU20,1,-0.9465,0.0,0,target
 401859184,Notre Dame,a.williams,A.Williams,1,-0.4764,0.0,0,target
 401859184,Notre Dame,j.faison,J.Faison,4,8.2253,4.0,54,target
 401859184,Notre Dame,j.greathouse,J.Greathouse,3,1.9579,3.0,48,target
@@ -21773,6 +21951,20 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862830,Temple,j.schlaffer,J.Schlaffer,1,2.0,1.0,7,target
 401862830,Temple,k.mason,K.Mason,2,0.1098,1.0,9,target
 401862830,Temple,r.stocksdale,R.Stocksdale,1,1.1712,1.0,9,target
+401862831,Army,a.self,A.Self,1,-0.1985,0.0,0,target
+401862831,Army,g.nwawuihe,G.Nwawuihe,1,-0.7157,0.0,0,target
+401862831,Army,p.poloskey,P.Poloskey,5,7.8319,4.0,58,target
+401862831,Army,s.bridges,S.Bridges,3,1.0706,2.0,20,target
+401862831,Army,t.brannan,T.Brannan,1,-1.3607,0.0,0,target
+401862831,Army,t.olawole,T.Olawole,2,-0.284,1.0,6,target
+401862831,Army,z.mundell,Z.Mundell,2,-2.0712,0.0,0,target
+401862831,East Carolina,d.quarterman,D.Quarterman,1,-0.6166,0.0,0,target
+401862831,East Carolina,j.dickerson,J.Dickerson,1,0.247,1.0,6,target
+401862831,East Carolina,k.hamlett,K.Hamlett,1,-0.6724,0.0,0,target
+401862831,East Carolina,l.sides,L.Sides,7,11.4765,6.0,74,target
+401862831,East Carolina,r.joseph,R.Joseph Jr.,3,-2.42,0.0,-3,target
+401862831,East Carolina,t.engleman,T.Engleman Jr.,4,-2.108,0.0,3,target
+401862831,East Carolina,t.johnson,T.Johnson,6,3.9196,5.0,57,target
 401864424,Delaware,b.graves,B.Graves,4,3.2073,3.0,59,target
 401864424,Delaware,d.lewis,D.Lewis,4,4.7034,3.0,46,target
 401864424,Delaware,d.lofton,D.Lofton,4,4.5723,3.0,64,target
@@ -22561,6 +22753,29 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401864540,Wyoming,l.pace,L.Pace,1,2.2114,1.0,3,target
 401864540,Wyoming,m.holman,M.Holman,3,0.4453,1.0,17,target
 401864540,Wyoming,s.harris,S.Harris,4,8.5191,4.0,82,target
+401864542,New Mexico,b.george,B.George,17,-1.3855,5.0,76,target
+401864542,New Mexico,c.keith,C.Keith,6,5.5471,4.0,42,target
+401864542,New Mexico,d.darling,D.Darling,8,3.8133,4.0,70,target
+401864542,New Mexico,j.olsen,J.Olsen,1,-0.4136,0.0,-1,target
+401864542,New Mexico,k.sibley,K.Sibley,4,4.3808,3.0,40,target
+401864542,New Mexico,m.williams,M.Williams,3,-0.0892,1.0,7,target
+401864542,New Mexico,t.walsh,T.Walsh,1,-0.4346,0.0,0,target
+401864542,Wyoming,c.coenen,C.Coenen,2,-1.1197,0.0,0,target
+401864542,Wyoming,e.richardson,E.Richardson,4,0.2791,2.0,20,target
+401864542,Wyoming,i.schoenfeld,I.Schoenfeld,1,-0.149,0.0,0,target
+401864542,Wyoming,j.holman,J.Holman,2,3.8365,2.0,42,target
+401864542,Wyoming,j.wilson,J.Wilson,1,-0.4769,0.0,0,target
+401864542,Wyoming,k.frendt,K.Frendt,5,6.6527,4.0,69,target
+401864542,Wyoming,k.washom,K.Washom,1,-0.8539,0.0,0,target
+401864542,Wyoming,m.holman,M.Holman,2,-0.2308,0.0,7,target
+401864542,Wyoming,s.harris,S.Harris,4,-1.0727,0.0,4,target
+401864542,Wyoming,unm38,UNM38,1,-0.8773,0.0,0,target
+401864545,Air Force,a.hrynciw,A.Hrynciw,1,3.6712,1.0,31,target
+401864545,Air Force,j.dawson,J.Dawson,1,-0.8458,0.0,0,target
+401864545,Air Force,s.kibbee,S.Kibbee,1,1.2227,1.0,14,target
+401864545,UTEP,c.cheeks,C.Cheeks,4,0.8363,2.0,25,target
+401864545,UTEP,j.nash,J.Nash,1,0.1202,1.0,6,target
+401864545,UTEP,j.smith,J.Smith,7,-0.0403,2.0,27,target
 401864570,Florida State,d.robinson,D.Robinson,6,4.2828,3.0,50,target
 401864570,Florida State,j.boggs,J.Boggs,4,0.8152,1.0,25,target
 401864570,Florida State,l.thomas,L.Thomas,2,0.409,1.0,11,target
@@ -23683,6 +23898,24 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866467,Massachusetts,m.ogunniyi,M.Ogunniyi,1,2.6246,1.0,3,target
 401866467,Massachusetts,r.adkins,R.Adkins,1,-0.291,0.0,0,target
 401866467,Massachusetts,t.harding,T.Harding,3,1.8359,1.0,20,target
+401866468,Bowling Green,b.cleaver,B.Cleaver,2,-0.4442,0.0,5,target
+401866468,Bowling Green,b.ridley,B.Ridley,3,0.8496,1.0,20,target
+401866468,Bowling Green,bgsu39,BGSU39,1,-0.2242,0.0,0,target
+401866468,Bowling Green,e.jacon-duffy,E.Jacon-Duffy,4,-0.0295,1.0,28,target
+401866468,Bowling Green,j.saffold,J.Saffold,4,5.1844,2.0,60,target
+401866468,Bowling Green,j.scoby,J.Scoby,2,1.9636,1.0,25,target
+401866468,Bowling Green,k.white,K.White,1,-1.0412,0.0,0,target
+401866468,Bowling Green,n.sowell,N.Sowell,2,-0.2977,1.0,6,target
+401866468,Bowling Green,p.sadler,P.Sadler,1,-1.0412,0.0,0,target
+401866468,Bowling Green,toledo30,TOLEDO30,1,-1.0251,0.0,0,target
+401866468,Toledo,a.dabbs,A.Dabbs,5,1.2602,1.0,37,target
+401866468,Toledo,b.hammer,B.Hammer,3,0.8877,1.0,15,target
+401866468,Toledo,bgsu19,BGSU19,1,-0.7006,0.0,0,target
+401866468,Toledo,c.miller,C.Miller,3,0.5289,1.0,30,target
+401866468,Toledo,c.walendzak,C.Walendzak,5,4.312,3.0,44,target
+401866468,Toledo,d.barnett,D.Barnett Jr.,1,0.2568,0.0,11,target
+401866468,Toledo,r.bond,R.Bond,1,-0.205,0.0,0,target
+401866468,Toledo,t.crosby,T.Crosby Jr.,2,-0.9128,1.0,6,target
 401866469,Buffalo,c.morrow,C.Morrow,4,2.5028,1.0,17,target
 401866469,Buffalo,c.walker,C.Walker,2,4.3253,2.0,60,target
 401866469,Buffalo,cmu05,CMU05,1,-0.3542,0.0,0,target
@@ -25144,6 +25377,51 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866693,Monmouth,m.middleton,M.Middleton,6,3.5372,3.0,25,target
 401866693,Monmouth,mon31,MON31,1,-0.646,0.0,0,target
 401866693,Monmouth,t.neal,T.Neal,13,11.525,9.0,125,target
+401866694,North Carolina A&T,a.bell,A.Bell,2,-0.7492,1.0,5,target
+401866694,North Carolina A&T,a.jones,A.Jones,2,1.5779,1.0,19,target
+401866694,North Carolina A&T,alb45,ALB45,1,-1.0146,0.0,0,target
+401866694,North Carolina A&T,e.kennedy,E.Kennedy,1,-0.2835,0.0,3,target
+401866694,North Carolina A&T,j.dillard,J.Dillard,6,6.0581,3.0,73,target
+401866694,North Carolina A&T,j.smith,J.Smith,3,-0.9466,0.0,7,target
+401866694,North Carolina A&T,j.white,J.White,1,0.1079,1.0,5,target
+401866694,North Carolina A&T,m.carlock-williams,M.Carlock-Williams,3,-1.9577,0.0,1,target
+401866694,North Carolina A&T,r.jones-amen-hetep,R.Jones-Amen-Hetep,1,-0.7257,0.0,0,target
+401866694,North Carolina A&T,s.blizzard,S.Blizzard,1,-1.159,0.0,0,target
+401866694,UAlbany,a.angelo,A.Angelo,1,0.0497,0.0,9,target
+401866694,UAlbany,d.growney,D.Growney,2,-0.8369,0.0,0,target
+401866694,UAlbany,j.koch,J.Koch,1,-0.4971,0.0,0,target
+401866694,UAlbany,j.rae,J.Rae,7,-1.7295,2.0,17,target
+401866694,UAlbany,l.mcauliffe,L.McAuliffe,3,-0.0518,1.0,4,target
+401866694,UAlbany,m.iuvara,M.Iuvara,4,1.3788,1.0,24,target
+401866694,UAlbany,n.petrillo,N.Petrillo,6,3.0382,3.0,68,target
+401866694,UAlbany,t.groves,T.Groves,6,9.3931,6.0,88,target
+401866695,Hampton,c.portis,C.Portis,5,-0.2501,2.0,30,target
+401866695,Hampton,d.borden,D.Borden,1,-1.1302,0.0,0,target
+401866695,Hampton,d.shepard,D.Shepard,2,1.7203,1.0,17,target
+401866695,Hampton,i.smith,I.Smith,6,-0.816,1.0,21,target
+401866695,Hampton,m.ferguson,M.Ferguson Jr.,6,4.6991,3.0,34,target
+401866695,Hampton,m.madison,M.Madison,2,-0.2986,1.0,7,target
+401866695,Hampton,s.jackson,S.Jackson,5,2.0687,2.0,44,target
+401866695,Stony Brook,a.riggs,A.Riggs,7,3.2434,4.0,45,target
+401866695,Stony Brook,c.hester,C.Hester,2,-1.2333,0.0,3,target
+401866695,Stony Brook,d.linkins,D.Linkins,4,0.0287,1.0,14,target
+401866695,Stony Brook,hamp30,HAMP30,1,-0.8773,0.0,0,target
+401866695,Stony Brook,j.dely,J.Dely,4,5.8124,2.0,68,target
+401866695,Stony Brook,j.reeder,J.Reeder,1,0.6382,1.0,7,target
+401866695,Stony Brook,s.sweitzer,S.Sweitzer,8,1.0683,2.0,54,target
+401866700,Merrimack,a.palmer,A.Palmer,11,1.5494,4.0,56,target
+401866700,Merrimack,c.lehman,C.Lehman,3,1.7114,2.0,36,target
+401866700,Merrimack,d.mcelroy,D.McElroy,3,1.9789,1.0,21,target
+401866700,Merrimack,g.mulbah,G.Mulbah,2,-2.3278,0.0,-2,target
+401866700,Merrimack,k.massey,K.Massey,2,2.6765,1.0,21,target
+401866700,Merrimack,k.wyatt,K.Wyatt,1,0.0108,0.0,5,target
+401866700,Merrimack,s.patrick,S.Patrick,3,3.6474,2.0,31,target
+401866700,Sacred Heart,c.leggett,C.Leggett,2,0.0277,1.0,7,target
+401866700,Sacred Heart,c.webb,C.Webb,1,0.1996,1.0,5,target
+401866700,Sacred Heart,d.chukwuemeka,D.Chukwuemeka,1,0.7695,1.0,16,target
+401866700,Sacred Heart,d.hangey,D.Hangey,1,1.9004,1.0,1,target
+401866700,Sacred Heart,j.palmieri,J.Palmieri,4,0.753,2.0,18,target
+401866700,Sacred Heart,n.gentilella,N.Gentilella,4,9.9077,4.0,91,target
 401867684,Chicago State,a.powell,A.Powell,3,0.6317,1.0,19,target
 401867684,Chicago State,c.edmonds,C.Edmonds,1,0.7987,1.0,8,target
 401867684,Chicago State,c.lee,C.Lee,4,-0.9238,0.0,7,target
@@ -26775,6 +27053,19 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401867905,Long Island University,n.gray,N.Gray,1,2.8979,1.0,12,target
 401867905,Long Island University,s.slade,S.Slade,1,-0.5661,0.0,2,target
 401867905,Long Island University,s.young,S.Young,2,-0.5346,1.0,6,target
+401867906,Central Connecticut,a.howe,A.Howe,1,-0.7807,0.0,0,target
+401867906,Central Connecticut,d.pardo,D.Pardo,2,-0.2959,1.0,10,target
+401867906,Central Connecticut,d.williams,D.Williams,3,-2.7492,1.0,15,target
+401867906,Central Connecticut,e.daniels,E.Daniels,1,2.7775,1.0,15,target
+401867906,Central Connecticut,g.wiggins,G.Wiggins,7,0.8222,3.0,35,target
+401867906,Central Connecticut,i.stopke,I.Stopke,2,0.1441,1.0,13,target
+401867906,Central Connecticut,j.manning,J.Manning,1,-1.0937,0.0,0,target
+401867906,Central Connecticut,m.trovarelli,M.Trovarelli,3,0.919,1.0,30,target
+401867906,Duquesne,a.thomas,A.Thomas,2,-1.5963,0.0,0,target
+401867906,Duquesne,k.boyd,K.Boyd,8,6.0053,4.0,99,target
+401867906,Duquesne,m.walker,M.Walker,2,-1.0527,0.0,0,target
+401867906,Duquesne,n.canty,N.Canty,5,0.2935,4.0,22,target
+401867906,Duquesne,s.solomon,S.Solomon,1,-1.0751,0.0,-1,target
 401867907,American International,b.catherwood,B.Catherwood,1,0.0079,0.0,5,target
 401867907,American International,c.washington,C.Washington,5,-2.6691,1.0,5,target
 401867907,American International,ccsu45,CCSU45,1,-1.1104,0.0,0,target
@@ -33250,6 +33541,18 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868379,The Citadel,i.benjamin,I.Benjamin,1,-0.137,1.0,6,target
 401868379,The Citadel,i.johnson,I.Johnson,1,-0.321,0.0,0,target
 401868379,The Citadel,i.zamor,I.Zamor,5,0.8511,2.0,33,target
+401868380,Furman,c.james,C.James,1,4.0341,1.0,24,target
+401868380,Furman,d.haughton,D.Haughton,8,4.7526,5.0,62,target
+401868380,Furman,e.harris,E.Harris,1,1.6303,1.0,13,target
+401868380,Furman,g.smithson,G.Smithson,2,-6.0101,0.0,0,target
+401868380,Furman,i.davis,I.Davis,1,2.8919,1.0,31,target
+401868380,Furman,j.holbrook,J.Holbrook,4,1.1788,1.0,43,target
+401868380,Furman,l.shields,L.Shields,5,4.781,3.0,57,target
+401868380,Furman,n.segarra,N.Segarra,1,0.4834,1.0,8,target
+401868380,VMI,b.martin,B.Martin,1,-0.703,0.0,0,target
+401868380,VMI,c.cox,C.Cox,1,-0.1395,0.0,0,target
+401868380,VMI,j.ballard,J.Ballard,1,0.4519,0.0,7,target
+401868380,VMI,l.boehling,L.Boehling,2,-1.5823,0.0,0,target
 401868381,Mercer,a.gregg,A.Gregg,3,-0.4202,1.0,12,target
 401868381,Mercer,b.smith,B.Smith,3,4.6178,2.0,58,target
 401868381,Mercer,d.caldwell,D.Caldwell,1,1.3585,0.0,12,target
@@ -36266,6 +36569,24 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401872618,New Haven,s.jackson,S.Jackson,4,-2.4013,0.0,2,target
 401872618,New Haven,t.troy,T.Troy,3,0.5813,1.0,20,target
 401872618,New Haven,z.laney,Z.Laney,1,-0.2835,0.0,3,target
+401872643,Mercyhurst,a.lattimore,A.Lattimore,6,2.377,3.0,36,target
+401872643,Mercyhurst,a.wilson,A.Wilson,1,-0.3126,0.0,0,target
+401872643,Mercyhurst,d.evans,D.Evans,5,-1.744,1.0,8,target
+401872643,Mercyhurst,e.dyke,E.Van Dyke,4,4.6589,2.0,66,target
+401872643,Mercyhurst,e.fincher,E.Fincher,1,-0.0581,0.0,4,target
+401872643,Mercyhurst,e.holbrook,E.Holbrook,1,0.3884,1.0,20,target
+401872643,Mercyhurst,j.woods,J.Woods,2,0.3557,1.0,7,target
+401872643,Mercyhurst,s.ferguson,S.Ferguson,2,0.9867,1.0,13,target
+401872643,Mercyhurst,s.hampton,S.Hampton,6,-4.9087,1.0,19,target
+401872643,New Haven,d.grguric,D.Grguric,6,-2.2017,2.0,39,target
+401872643,New Haven,d.reed,D.Reed,2,-0.006,0.0,6,target
+401872643,New Haven,i.glaudin,I.Glaudin,1,-0.8465,0.0,0,target
+401872643,New Haven,j.lawson,J.Lawson,1,-1.1098,0.0,-6,target
+401872643,New Haven,l.rose,L.Rose Jr.,2,-1.5999,0.0,2,target
+401872643,New Haven,m.chandler,M.Chandler,5,-5.5163,0.0,3,target
+401872643,New Haven,n.burleson,N.Burleson II,2,0.6647,1.0,11,target
+401872643,New Haven,t.troy,T.Troy,2,1.9898,1.0,27,target
+401872643,New Haven,z.laney,Z.Laney,1,-0.1253,0.0,0,target
 401873620,Glenville State,c.harris,C.Harris,19,-4.4761,6.0,87,target
 401873620,Glenville State,g.holland,G.Holland,2,0.8977,1.0,17,target
 401873620,Glenville State,j.gonzalez,J.Gonzalez,5,4.8775,3.0,41,target
@@ -36916,6 +37237,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856863,Texas Tech,t.castellanos,T.Castellanos,25,13.2376,9.0,256,pass
 401856864,Arizona,n.fifita,N.Fifita,46,13.3364,22.0,310,pass
 401856864,Utah,d.dampier,D.Dampier,27,2.2724,10.0,198,pass
+401856869,Iowa State,j.raynor,J.Raynor,17,-11.2257,3.0,47,pass
+401856869,UCF,a.barnett,A.Barnett III,26,14.8465,12.0,243,pass
 401856881,Oklahoma State,d.mestemaker,D.Mestemaker,27,22.8215,19.0,392,pass
 401856881,West Virginia,m.hawkins,M.Hawkins Jr.,25,-17.9023,8.0,126,pass
 401856882,Arkansas,k.jackson,K.Jackson,25,13.5304,12.0,187,pass
@@ -37191,6 +37514,10 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858300,Syracuse,s.angeli,S.Angeli,43,12.9008,19.0,264,pass
 401858301,SMU,k.jennings,K.Jennings,14,-10.8257,2.0,12,pass
 401858301,Wake Forest,g.lopez,G.Lopez,17,3.9954,7.0,106,pass
+401858303,Clemson,b.wesco,B.Wesco Jr.,1,-3.3364,0.0,-5,pass
+401858303,Clemson,c.denson,C.Denson,2,-2.0704,0.0,0,pass
+401858303,Clemson,t.pearman,T.Pearman,27,7.9036,9.0,164,pass
+401858303,Duke,w.eget,W.Eget,40,-9.0591,11.0,134,pass
 401858422,Eastern Illinois,c.lacrue,C.LaCrue,12,5.9457,3.0,48,pass
 401858422,Minnesota,d.lindsey,D.Lindsey,17,13.3673,10.0,180,pass
 401858423,Massachusetts,w.watson,W.Watson III,23,14.8721,12.0,197,pass
@@ -37455,6 +37782,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858526,Illinois,k.houser,K.Houser,34,-4.8731,12.0,210,pass
 401858526,UCLA,m.iamaleava,M.Iamaleava,8,-3.1456,2.0,13,pass
 401858526,UCLA,t.dieffenbach,T.Dieffenbach,20,10.3922,9.0,233,pass
+401858529,Michigan State,k.coffman,K.Coffman,17,8.0781,7.0,106,pass
+401858529,Oregon,d.raiola,D.Raiola,26,-2.9437,9.0,100,pass
 401859184,Notre Dame,c.carr,C.Carr,16,9.8568,11.0,151,pass
 401859184,Rice,j.brown,J.Brown,6,-3.0499,0.0,-12,pass
 401859185,Navy,b.woodson,B.Woodson,2,2.2817,1.0,8,pass
@@ -37800,6 +38129,11 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862830,Rice,j.brown,J.Brown,1,-0.5613,0.0,-8,pass
 401862830,Rice,p.crayton,P.Crayton Jr.,11,7.6892,5.0,105,pass
 401862830,Temple,j.smolik,J.Smolik,17,5.8281,9.0,107,pass
+401862831,Army,b.luter,B.Luter,2,1.5522,1.0,17,pass
+401862831,Army,c.hellums,C.Hellums,17,-3.0723,6.0,69,pass
+401862831,Army,s.howard,S.Howard,1,-0.663,0.0,0,pass
+401862831,East Carolina,e.williams,E.Williams,23,3.3227,11.0,135,pass
+401862831,East Carolina,j.dickerson,J.Dickerson,1,2.8846,1.0,7,pass
 401864424,Delaware,n.minicucci,N.Minicucci,29,17.6639,17.0,294,pass
 401864424,Merrimack,a.hairston,A.Hairston,22,0.8949,6.0,68,pass
 401864424,Merrimack,c.meehan,C.Meehan,2,-0.2067,0.0,0,pass
@@ -37942,6 +38276,10 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401864540,UTEP,r.moore,R.Moore III,21,-10.1933,7.0,63,pass
 401864540,Wyoming,l.sims,L.Sims,26,5.0062,12.0,261,pass
 401864540,Wyoming,m.holman,M.Holman,1,2.2114,1.0,3,pass
+401864542,New Mexico,l.moga,L.Moga,41,11.0007,17.0,232,pass
+401864542,Wyoming,l.sims,L.Sims,26,2.0469,8.0,116,pass
+401864545,Air Force,e.medders,E.Medders,3,4.0482,2.0,45,pass
+401864545,UTEP,r.moore,R.Moore III,15,-4.1249,5.0,49,pass
 401864570,Florida State,a.daniels,A.Daniels,28,5.5163,10.0,197,pass
 401864570,New Mexico State,t.hedden,T.Hedden,44,10.4752,17.0,260,pass
 401864570,New Mexico State,t.washington,T.Washington Jr.,1,-0.3507,0.0,0,pass
@@ -38130,6 +38468,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866466,Miami (OH),d.bellisari,D.Bellisari,13,7.9887,6.0,117,pass
 401866467,Akron,c.broughton,C.Broughton,18,-1.6588,9.0,223,pass
 401866467,Massachusetts,l.inagawa,L.Inagawa,22,1.6799,9.0,103,pass
+401866468,Bowling Green,a.novosad,A.Novosad,25,-3.4639,6.0,127,pass
+401866468,Toledo,j.richter,J.Richter,27,-0.203,7.0,112,pass
 401866469,Buffalo,j.wright,J.Wright,13,11.4222,6.0,152,pass
 401866469,Central Michigan,j.glasser,J.Glasser,19,-3.0053,7.0,101,pass
 401866469,Central Michigan,m.beamon,M.Beamon,4,1.5728,3.0,27,pass
@@ -38375,6 +38715,16 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866692,Elon,b.stober,B.Stober,27,17.9517,12.0,255,pass
 401866693,Merrimack,a.hairston,A.Hairston,24,22.9559,12.0,316,pass
 401866693,Monmouth,f.weaver,F.Weaver,49,17.0092,24.0,348,pass
+401866694,North Carolina A&T,c.long,C.Long,2,-2.9346,0.0,4,pass
+401866694,North Carolina A&T,k.white,K.White,25,-8.4745,6.0,81,pass
+401866694,UAlbany,a.semo,A.Semo,1,-0.7312,0.0,-1,pass
+401866694,UAlbany,k.coln,K.Colón,32,9.6415,13.0,209,pass
+401866695,Hampton,t.taylor,T.Taylor,41,-5.6452,11.0,194,pass
+401866695,Stony Brook,a.leffler,A.Leffler,8,-7.5985,1.0,11,pass
+401866695,Stony Brook,b.poffenbarger,B.Poffenbarger,6,3.0308,2.0,50,pass
+401866695,Stony Brook,q.boyd,Q.Boyd,20,-0.8409,8.0,139,pass
+401866700,Merrimack,a.hairston,A.Hairston,27,4.4253,10.0,165,pass
+401866700,Sacred Heart,p.snyder,P.Snyder,17,9.4436,10.0,121,pass
 401867684,Chicago State,a.pannell,A.Pannell,34,4.8923,10.0,150,pass
 401867684,UT Martin,j.calvez,J.Calvez,3,3.2468,1.0,39,pass
 401867684,UT Martin,t.surber,T.Surber,20,5.6678,10.0,181,pass
@@ -38638,6 +38988,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401867905,Central Connecticut,b.griffis,B.Griffis,21,5.5932,10.0,204,pass
 401867905,Long Island University,e.greenwood,E.Greenwood,14,0.2218,5.0,60,pass
 401867905,Long Island University,l.stanzani,L.Stanzani,12,3.0225,6.0,87,pass
+401867906,Central Connecticut,b.griffis,B.Griffis,24,-10.4891,8.0,96,pass
+401867906,Duquesne,c.camp,C.Camp,21,2.288,9.0,123,pass
 401867907,American International,c.dietz,C.Dietz,1,2.6618,1.0,24,pass
 401867907,American International,l.kasko,L.Kasko,33,-5.4558,10.0,143,pass
 401867907,Central Connecticut,b.griffis,B.Griffis,21,4.166,11.0,203,pass
@@ -39717,6 +40069,9 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868378,Western Carolina,l.thomas,L.Thomas,40,-1.109,14.0,178,pass
 401868379,Furman,j.garcia,J.Garcia,24,5.9125,8.0,127,pass
 401868379,The Citadel,n.billoups,N.Billoups,21,0.6796,9.0,116,pass
+401868380,Furman,j.garcia,J.Garcia,13,5.6924,7.0,136,pass
+401868380,Furman,t.smith,T.Smith,10,8.0496,6.0,102,pass
+401868380,VMI,j.crump,J.Crump,8,-3.9718,0.0,-7,pass
 401868381,Mercer,j.king,J.King,20,0.3335,7.0,133,pass
 401868381,Mercer,j.pickles,JP Pickles,4,3.5722,3.0,34,pass
 401868381,VMI,i.reynolds,I.Reynolds,11,0.1824,3.0,29,pass
@@ -40248,6 +40603,9 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401872618,Merrimack,a.hairston,A.Hairston,8,8.9809,5.0,85,pass
 401872618,New Haven,a.duffy,A.Duffy,10,-8.9793,0.0,9,pass
 401872618,New Haven,j.tripptree,J.Tripptree,19,-2.7507,5.0,106,pass
+401872643,Mercyhurst,a.gevaudan,A.Gevaudan,7,-2.5253,0.0,4,pass
+401872643,Mercyhurst,t.tusai,T.Tusai,22,6.7973,11.0,175,pass
+401872643,New Haven,a.duffy,A.Duffy,24,-6.4427,5.0,94,pass
 401873620,Glenville State,j.sherrod,J.Sherrod,19,0.9168,6.0,98,pass
 401873620,Glenville State,m.bowers,M.Bowers,32,-1.7814,11.0,188,pass
 401873620,Mercyhurst,a.gevaudan,A.Gevaudan,24,0.4765,7.0,161,pass
