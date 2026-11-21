@@ -11,6 +11,14 @@ where each team's profile is **weighted toward the games that look most like the
 Weighted profiles are blended back toward the season average by confidence
 (effective sample size), then turned into a score projection and win probability.
 
+## Build a matchup
+
+`site/build.html` lets visitors pick any two FBS teams, a venue (either team's stadium or a neutral site) and a
+weather scenario (sunny and warm, cold and dry, warm with rain, cold with rain or snow, dome, or not modeled).
+The daily export writes `site/data/teams/<team>.json` and `site/data/league.json`; `site/custom.js` rebuilds the
+matchup-specific inputs (opponent similarity, site match, weather match) in the browser, mirroring
+`engine/model.py`, and the regular matchup page renders it (`game.html?home=…&away=…[&neutral=1][&wx=…]`).
+
 ## Layout
 
 - `pipeline/`: data download and processing (Python)
