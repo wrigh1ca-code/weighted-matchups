@@ -225,6 +225,52 @@ def opp_ratings(season: int, date_iso: str, lam: float | None = None, lam_conf: 
             "lg": lg, "hfa": float(beta[k - 1])}
 
 
+# Results rating: what actually happened on the scoreboard, adjusted for schedule the same way.
+RES_CAP = 28.0          # margins beyond this count as this (no credit for running up the score)
+RES_RIDGE = 1.0         # shrinkage of each team toward its conference (in games)
+RES_RIDGE_CONF = 0.5    # shrinkage of each conference toward the league (in games)
+
+
+@lru_cache(maxsize=512)
+def results_ratings(season: int, date_iso: str, cap: float | None = None, lam: float | None = None,
+                    lam_conf: float | None = None) -> dict:
+    """{'rating': Series team -> points better than an average FBS team on a neutral field, 'hfa': float}
+    from final scores of every game (FBS and FCS) before `date`: capped margin = home rating -
+    away rating + home edge, solved for all teams and conferences at once (ridge)."""
+    cap = RES_CAP if cap is None else cap
+    lam = RES_RIDGE if lam is None else lam
+    lam_conf = RES_RIDGE_CONF if lam_conf is None else lam_conf
+    _, g = load()
+    d = pd.Timestamp(date_iso)
+    if d.tzinfo is None:
+        d = d.tz_localize("UTC")
+    c = g[(g.season == season) & (g.date < d) & (g.completed == True) & g.homePoints.notna() & g.awayPoints.notna()]  # noqa: E712
+    if c.empty:
+        return {"rating": pd.Series(dtype=float), "hfa": 0.0, "games": pd.Series(dtype=float)}
+    fbs = fbs_teams(season)
+    teams = sorted(set(c.homeTeam) | set(c.awayTeam))
+    ix = {t: i for i, t in enumerate(teams)}
+    conf = team_conferences(season)
+    cname = lambda t: conf.get(t, "FCS" if t not in fbs else "FBS Independents")
+    confs = sorted({cname(t) for t in teams})
+    cx = {cf: i for i, cf in enumerate(confs)}
+    tc = np.array([cx[cname(t)] for t in teams])
+    n, m = len(teams), len(confs)
+    hi = np.array([ix[t] for t in c.homeTeam]); ai = np.array([ix[t] for t in c.awayTeam])
+    X = np.zeros((len(c), n + m + 1))
+    r = np.arange(len(c))
+    X[r, hi] += 1.0; X[r, ai] -= 1.0
+    np.add.at(X, (r, n + tc[hi]), 1.0); np.add.at(X, (r, n + tc[ai]), -1.0)
+    X[:, n + m] = np.where(c.neutralSite.fillna(False).astype(bool).to_numpy(), 0.0, 1.0)
+    y = np.clip((c.homePoints - c.awayPoints).to_numpy(float), -cap, cap)
+    reg = np.concatenate([np.full(n, lam), np.full(m, lam_conf), [1e-6]])
+    beta = np.linalg.solve(X.T @ X + np.diag(reg), X.T @ y)
+    rating = pd.Series(beta[:n] + beta[n:n + m][tc], index=teams)
+    rating -= rating[[t for t in teams if t in fbs]].mean()          # 0 = average FBS team
+    games = pd.Series(np.bincount(np.concatenate([hi, ai]), minlength=n), index=teams)
+    return {"rating": rating, "hfa": float(beta[n + m]), "games": games}
+
+
 @lru_cache(maxsize=8)
 def team_conferences(season: int) -> dict:
     """Team -> conference for the season (FBS conferences; FCS teams are left out)."""
@@ -532,13 +578,39 @@ class PointsModel:
         return 0.5 * (1 + math.erf(z / math.sqrt(2))), sd
 
 
-def project(m: Matchup, feats: dict, pm: PointsModel) -> dict:
+@dataclass
+class Blend:
+    """Final margin = a * play-by-play margin + b * (results rating gap) + h * home (0/1).
+    Total points stay the play-by-play total; only the split changes. Fit on past seasons."""
+    a: float = 1.0
+    b: float = 0.0
+    h: float = 0.0
+    sd0: float = 15.4
+    sd_k: float = 0.4
+
+    def apply(self, ph: float, pa: float, loc: int, rdiff: float, n_eff: float) -> tuple[float, float, float, float]:
+        margin = self.a * (ph - pa) + self.b * rdiff + self.h * loc
+        total = ph + pa
+        sd = self.sd0 * math.sqrt(1 + self.sd_k / max(n_eff, 0.5))
+        wp = 0.5 * (1 + math.erf(margin / sd / math.sqrt(2)))
+        return (total + margin) / 2, (total - margin) / 2, wp, sd
+
+
+def project(m: Matchup, feats: dict, pm: PointsModel, bl: Blend | None = None) -> dict:
     loc_h = 0 if m.neutral else 1
     ph = pm.points(feats[m.home]["e"], feats[m.home]["plays"], loc_h)
     pa = pm.points(feats[m.away]["e"], feats[m.away]["plays"], -loc_h)
     n = min(feats[m.home]["n_eff"], feats[m.away]["n_eff"])
-    wp, sd = pm.win_prob(ph - pa, n)
-    return {"home_pts": ph, "away_pts": pa, "home_wp": wp, "margin_sd": sd, "n_eff": n}
+    out = {"pbp_home_pts": ph, "pbp_away_pts": pa}
+    if bl is not None:
+        rr = results_ratings(m.season, m.date.isoformat())["rating"]
+        r_h, r_a = float(rr.get(m.home, 0.0)), float(rr.get(m.away, 0.0))
+        ph, pa, wp, sd = bl.apply(ph, pa, loc_h, r_h - r_a, n)
+        out.update({"results_home": r_h, "results_away": r_a})
+    else:
+        wp, sd = pm.win_prob(ph - pa, n)
+    out.update({"home_pts": ph, "away_pts": pa, "home_wp": wp, "margin_sd": sd, "n_eff": n})
+    return out
 
 
 # ---------------------------------------------------------------- percentiles

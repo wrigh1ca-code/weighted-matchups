@@ -20,6 +20,15 @@ nonconference game, so Group of 5 schedules are valued on dozens of games. Last 
 the same schedule-adjusted rating. Backtest (2026 test games): margin MAE 13.16 → 12.92 at the site's
 settings, 12.93 → 12.66 at the tuned settings (market 11.95).
 
+## Results blend
+
+Each team also has a results rating (`model.results_ratings`): schedule-adjusted scoring margin from every
+game this season (FBS and FCS), margins capped at 28, solved for all teams and conferences at once with a
+home edge. Projections blend it with the play-by-play model (`model.Blend`): final margin = 0.70 x
+play-by-play margin + b x results gap + h x home, with b and h fit on 2024-25 (`backtest.fit_blend`); the
+0.70 gives the two about equal say and was as accurate as the free fit. Total points stay play-by-play.
+Backtest (2026 test games, site settings): MAE 12.92 -> 12.74, winners 65% -> 68%.
+
 ## Power rankings
 
 `engine/rankings.py` projects every FBS team against every other (neutral site, good weather) with the

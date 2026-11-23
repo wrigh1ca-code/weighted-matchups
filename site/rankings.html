@@ -18,7 +18,8 @@
     <div class="eyebrow" id="asof">Power rankings</div>
     <h1 class="title">Power rankings</h1>
     <p class="small" style="max-width:780px">Every FBS team played against every other, on a neutral field in good weather (75°F, dry, light wind), using the same weighted advanced-stat model as the matchup pages.
-      <b>Rating</b> is a team's average projected margin over all of those games: how many points better it is than an average FBS team on a neutral field.</p>
+      <b>Rating</b> is a team's average projected margin over all of those games: how many points better it is than an average FBS team on a neutral field.
+      Each projection blends <b>play-by-play</b> analytics with <b>results</b> (schedule-adjusted scoring margins from real games), about half each.</p>
   </div>
 
   <div class="rk-tools">
@@ -32,6 +33,8 @@
         <th scope="col" class="num">#</th>
         <th scope="col">Team</th>
         <th scope="col" class="num">Rating</th>
+        <th scope="col" class="num hide-s" title="Play-by-play analytics only">Play-by-play</th>
+        <th scope="col" class="num hide-s" title="Schedule-adjusted scoring margin from real games">Results</th>
         <th scope="col" class="num hide-s">Avg score vs avg team</th>
         <th scope="col" class="num hide-s">Beats avg team</th>
         <th scope="col" class="num hide-m">Favored in</th>
@@ -46,6 +49,7 @@
     <div class="small" style="margin-top:10px;max-width:780px;display:flex;flex-direction:column;gap:8px">
       <p style="margin:0">For each pair of FBS teams the model projects a neutral-site game in good weather, exactly as the Build a matchup page would. Each team's profile is weighted toward its past games against opponents most like the one it would face, recent weeks, similar settings and its current QB, then blended with last season's numbers when the sample is small.</p>
       <p style="margin:0">That's about 9,400 projected games. Rating is the average projected margin; the score shows average points scored and allowed; "Beats avg team" is the average win probability; "Favored in" counts the projected wins.</p>
+      <p style="margin:0"><b>Play-by-play and results.</b> Every projected margin blends the play-by-play model with each team's <b>results rating</b>: its scoring margin in real games this season (FBS and FCS), adjusted for schedule and home field, with margins capped at 28 points so running up the score doesn't count. The blend was fit on past seasons so the two have about equal say, and it predicted games better than either alone. The Play-by-play and Results columns show each view on its own (points vs an average team, with that view's rank) so you can see where they disagree. The blended rating is usually larger than either: when both views agree a team is strong, the evidence adds up, and in past seasons each view on its own was too cautious about lopsided games.</p>
       <p style="margin:0"><b>Strength of schedule.</b> Every game's EPA is adjusted for the opponent, and opponent strength is solved for every offense, defense and conference at once (FBS and FCS games), so a defense that looked great against weak offenses doesn't make its opponents look better than they are. Conference strength pools all of a conference's nonconference games, and last season's starting point is schedule-adjusted the same way. In backtests on 2024–26 games this made the site's predictions more accurate.</p>
       <p style="margin:0">The rankings measure how teams have played per snap, not their records or who they've beaten, so a team with close losses can rank above teams with better records.</p>
     </div>
@@ -63,7 +67,7 @@
   try {
     [R, C] = await Promise.all([fetch('data/rankings.json', { cache: 'no-cache' }).then(r => { if (!r.ok) throw 0; return r.json(); }), TeamColors.load()]);
   } catch (e) {
-    $('rows').innerHTML = '<tr><td colspan="7" class="small" style="padding:16px">Rankings will appear after the next daily update.</td></tr>'; return;
+    $('rows').innerHTML = '<tr><td colspan="9" class="small" style="padding:16px">Rankings will appear after the next daily update.</td></tr>'; return;
   }
   $('asof').textContent = `${R.season} · as of ${new Date(R.asof).toLocaleDateString([], { month: 'short', day: 'numeric' })}`;
   const top = R.teams[0];
@@ -72,6 +76,11 @@
   const qs = new URLSearchParams(location.search);
   let n = qs.get('show') === 'all' ? R.teams.length : qs.get('show') === '25' ? 25 : 15;
   const maxAbs = Math.max(...R.teams.map(t => Math.abs(t.rating)));
+  // rank within each component, to show where the two views disagree
+  [['pbp_rating', 'pbp_rank'], ['results_rating', 'res_rank']].forEach(([k, rk]) => {
+    if (R.teams[0][k] == null) return;
+    [...R.teams].sort((a, b) => b[k] - a[k]).forEach((t, i) => { t[rk] = i + 1; });
+  });
 
   function draw() {
     $('rows').innerHTML = R.teams.slice(0, n).map(t => {
@@ -83,6 +92,8 @@
           <div><a class="tn" href="build.html?away=${encodeURIComponent(t.team)}&neutral=1&wx=warm" title="Build a matchup with ${esc(t.team)}">${esc(t.team)}</a>
           <div class="small">${esc(SHORT[t.conference] || t.conference || '')}${t.record ? ` · ${t.record[0]}–${t.record[1]}` : ''}</div></div></div></td>
         <td class="num"><div class="rt"><b>${sign(t.rating)}</b><span class="bar"><i style="${t.rating >= 0 ? 'left:50%' : `left:${50 - w}%`};width:${w}%;background:${col}"></i></span></div></td>
+        <td class="num hide-s comp">${t.pbp_rating == null ? '–' : sign(t.pbp_rating)}<span class="rk2">${t.pbp_rank ? '#' + t.pbp_rank : ''}</span></td>
+        <td class="num hide-s comp">${t.results_rating == null ? '–' : sign(t.results_rating)}<span class="rk2">${t.res_rank ? '#' + t.res_rank : ''}</span></td>
         <td class="num hide-s">${Math.round(t.pts_for)}–${Math.round(t.pts_against)}</td>
         <td class="num hide-s">${Math.round(t.win_pct * 100)}%</td>
         <td class="num hide-m">${t.favored} of ${t.opponents}</td>

@@ -22,6 +22,7 @@
   const METRICS = META.metrics, LABELS = META.labels, COUNT = META.count_col, HIB = META.higher_is_better;
   const game = G.game, HOME = game.home, AWAY = game.away;
   TeamColors.apply(HOME, AWAY, await COLORS);   // official team colors (colors.js); defaults if unavailable
+  const BL = G.blend || null;
   const TUNED = G.params, PM = G.points_model, BEST = G.best_a || { a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 };
   const $ = s => document.getElementById(s);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -137,11 +138,17 @@
       const e = P[`${team}|offense`].epa_proj + P[`${opp}|defense`].epa_proj - G.lg_epa;
       return PM.a + PM.b * e + PM.c * (G.plays[team] - 65) + PM.hfa * l;
     };
-    const h = pts(HOME, AWAY, loc), aw = pts(AWAY, HOME, -loc);
+    let h = pts(HOME, AWAY, loc), aw = pts(AWAY, HOME, -loc);
     const n = Math.min(...Object.values(P).map(p => p.n_eff));
-    const sd = PM.sd0 * Math.sqrt(1 + PM.sd_k / Math.max(n, 0.5));
+    const pbp = { home: h, away: aw };
+    let sd;
+    if (BL && G.results) {   // blend with the results rating (mirror of model.Blend.apply); total unchanged
+      const margin = BL.a * (h - aw) + BL.b * (G.results[HOME] - G.results[AWAY]) + BL.h * loc, total = h + aw;
+      h = (total + margin) / 2; aw = (total - margin) / 2;
+      sd = BL.sd0 * Math.sqrt(1 + BL.sd_k / Math.max(n, 0.5));
+    } else sd = PM.sd0 * Math.sqrt(1 + PM.sd_k / Math.max(n, 0.5));
     const wp = 0.5 * (1 + erf((h - aw) / sd / Math.SQRT2));
-    return { P, home: h, away: aw, wp, sd, n };
+    return { P, home: h, away: aw, wp, sd, n, pbp };
   }
 
   // ---------- static header
@@ -189,8 +196,9 @@
       const r = (x, d = 2) => x == null ? '–' : x.toFixed(d);
       const tw = bt.weighted.test, te = bt.equal_weight.test, mk = bt.market;
       table = `<table><thead><tr><th>Held-out ${bt.test_seasons.join(', ')} games</th><th>Games</th><th>Avg miss (pts)</th><th>Winner right</th><th>Brier</th></tr></thead><tbody>
-        <tr><td>Backtest-best weights</td><td>${tw.games}</td><td>${r(tw.mae, 1)}</td><td>${r(tw.winner_acc * 100, 0)}%</td><td>${r(tw.brier, 3)}</td></tr>
-        ${bt.site_default ? `<tr><td>Site default sliders (all Normal)</td><td>${bt.site_default.test.games}</td><td>${r(bt.site_default.test.mae, 1)}</td><td>${r(bt.site_default.test.winner_acc * 100, 0)}%</td><td>${r(bt.site_default.test.brier, 3)}</td></tr>` : ''}
+        <tr><td>Backtest-best weights, play-by-play only</td><td>${tw.games}</td><td>${r(tw.mae, 1)}</td><td>${r(tw.winner_acc * 100, 0)}%</td><td>${r(tw.brier, 3)}</td></tr>
+        ${bt.blend ? `<tr><td><b>Site projection: default sliders + results blend</b></td><td>${bt.blend.test.games}</td><td>${r(bt.blend.test.mae, 1)}</td><td>${r(bt.blend.test.winner_acc * 100, 0)}%</td><td>${r(bt.blend.test.brier, 3)}</td></tr>` : ''}
+        ${bt.site_default ? `<tr><td>Default sliders, play-by-play only</td><td>${bt.site_default.test.games}</td><td>${r(bt.site_default.test.mae, 1)}</td><td>${r(bt.site_default.test.winner_acc * 100, 0)}%</td><td>${r(bt.site_default.test.brier, 3)}</td></tr>` : ''}
         <tr><td>Equal-weight model</td><td>${te.games}</td><td>${r(te.mae, 1)}</td><td>${r(te.winner_acc * 100, 0)}%</td><td>${r(te.brier, 3)}</td></tr>
         <tr><td>Market spread (same games)</td><td>${mk.test.games}</td><td>${r(mk.test.mae, 1)}</td><td>–</td><td>–</td></tr>
         <tr><td>Backtest-best (same games)</td><td>${mk.ours_same_games.games}</td><td>${r(mk.ours_same_games.mae, 1)}</td><td>${r(mk.ours_same_games.winner_acc * 100, 0)}%</td><td>${r(mk.ours_same_games.brier, 3)}</td></tr>
@@ -206,7 +214,9 @@
         <div><b>3. Weighted profiles</b>Per-play stats (EPA, success rate, explosiveness, havoc…) are averaged across games using weight × plays. Garbage time is removed.</div>
         <div><b>4. Confidence blend</b>Effective games = (Σw)² ÷ Σw². The profile = λ × weighted + (1 − λ) × prior-season average, with λ = n ÷ (n + ${TUNED.k}). Early in the season, or when weight piles onto a few games, the prior dominates.</div>
         <div><b>5. Points</b>For the projection, each game's EPA/play is first adjusted for the opponent (minus how far that opponent's unit sits from the FBS average, at strength ${TUNED.adj}). Opponent strengths are solved for all teams and conferences together, so an opponent's rating already accounts for its own schedule; last season's baseline is schedule-adjusted the same way. Expected EPA/play = offense EPA + opposing defense EPA allowed − FBS average. Points = ${PM.a.toFixed(1)} + ${PM.b.toFixed(1)} × expected EPA + ${PM.c.toFixed(2)} × (projected plays − 65) ± ${PM.hfa.toFixed(2)} home field, fit by regression on past seasons.</div>
-        <div><b>6. Win probability</b>The margin is treated as a normal distribution around the projection with SD ${PM.sd0.toFixed(1)} × √(1 + ${PM.sd_k.toFixed(2)} ÷ effective games), fit on past results.</div>
+        ${BL ? `<div><b>6. Blend with real results</b>Each team also has a results rating: schedule-adjusted scoring margin from every game this season (FBS and FCS), with margins capped at 28 so running up the score doesn't count, solved for all teams and conferences at once. Final margin = ${BL.a.toFixed(2)} × play-by-play margin + ${BL.b.toFixed(2)} × results-rating gap${BL.h ? ` + ${BL.h.toFixed(1)} home field` : ''}, which gives the two about equal say; the projected total points come from play-by-play. In backtests on past seasons this predicted margins better than either alone.</div>
+        <div><b>7. Win probability</b>The margin is treated as a normal distribution around the projection with SD ${BL.sd0.toFixed(1)} × √(1 + ${BL.sd_k.toFixed(2)} ÷ effective games), fit on past results.</div>`
+        : `<div><b>6. Win probability</b>The margin is treated as a normal distribution around the projection with SD ${PM.sd0.toFixed(1)} × √(1 + ${PM.sd_k.toFixed(2)} ÷ effective games), fit on past results.</div>`}
       </div>
       ${table}
       <div style="font-size:12px;color:#cbd5e1">Factor strengths, half-life, similarity bandwidth and the confidence constant were chosen by backtest. Sliders change the strengths live. Data: CollegeFootballData.com play-by-play (EPA = CFBD PPA), schedules, weather and consensus lines.</div>`;
@@ -443,7 +453,13 @@
         <div style="font-size:14px;color:#e2e8f0">${rm === 0 ? 'Pick ’em' : (rm > 0 ? `${esc(HOME)} by ${rm}` : `${esc(AWAY)} by ${-rm}`)} · 80% range: ${esc(side(lo))} to ${esc(side(hi))}</div>
         <div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span style="color:#9db8ee">${esc(AWAY)} ${wa}%</span><span style="color:#fdba8c">${esc(HOME)} ${100 - wa}%</span></div>
         <div class="wpbar" role="img" aria-label="${kind === 'w' ? 'Weighted' : 'Unweighted'} win probability: ${esc(AWAY)} ${wa} percent, ${esc(HOME)} ${100 - wa} percent"><div class="a" style="width:${wa}%"></div><div class="h"></div></div>
-        <div style="font-size:12px;color:#cbd5e1">Win probability · ${note}</div></div>`;
+        <div style="font-size:12px;color:#cbd5e1">Win probability · ${note}</div>
+        ${BL && G.results && kind === 'w' ? (() => {
+          const say = v => { const x = r0(v); return x === 0 ? 'even' : (x > 0 ? `${esc(HOME)} by ${x}` : `${esc(AWAY)} by ${-x}`); };
+          const rg = G.results[HOME] - G.results[AWAY];
+          const pm = p.pbp.home - p.pbp.away, agree = Math.sign(pm) === Math.sign(rg) && Math.abs(rg) >= 1;
+          return `<div class="blendnote">Blends <b>play-by-play</b> (${say(pm)}) with <b>results</b>, schedule-adjusted scoring margins (${say(rg)} on a neutral field), about half each: ${BL.a.toFixed(2)} × play-by-play + ${BL.b.toFixed(2)} × results${BL.h && !game.neutral ? ` + ${BL.h.toFixed(1)} home` : ''}.${agree ? ' When both point the same way the projection can go beyond either one: on their own, each was too cautious about lopsided games in past seasons.' : ''}</div>`;
+        })() : ''}</div>`;
     };
     $('projBlocks').innerHTML = (state.view !== 'season' ? block(pr, 'w') : '') + (state.view !== 'weighted' ? block(eq, 'u') : '');
     $('pPlays').textContent = `${AWAY} ${r0(G.plays[AWAY])} · ${HOME} ${r0(G.plays[HOME])}`;

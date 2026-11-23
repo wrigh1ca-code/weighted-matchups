@@ -16,9 +16,9 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from engine.model import (LABELS, METRICS, COUNT_COL, Matchup, Params, PointsModel, baseline_for, fbs_teams,
+from engine.model import (LABELS, METRICS, COUNT_COL, Blend, Matchup, Params, PointsModel, baseline_for, fbs_teams,
                           higher_is_better, load, matchup_features, matchup_units, percentile_refs, profiles_asof,
-                          project, unit_ingredients)
+                          project, results_ratings, unit_ingredients)
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_DATA = ROOT / "site" / "data"
@@ -52,6 +52,15 @@ def load_tuned() -> tuple[Params, PointsModel, dict | None]:
         a = r.get("site_default", {}).get("a", {})
         return Params(**{**r["params"], **a}), PointsModel(**r["points_model"]), r
     return Params(), PointsModel(), None
+
+
+def load_blend() -> Blend | None:
+    """Blend of the play-by-play margin with the results rating (engine/backtest.fit_blend)."""
+    if RESULTS.exists():
+        b = json.loads(RESULTS.read_text()).get("blend")
+        if b:
+            return Blend(**b["coef"])
+    return None
 
 
 def pick_week(season: int) -> tuple[str, int]:
@@ -111,8 +120,10 @@ def export_game(row, p: Params, pm: PointsModel) -> dict:
     m = Matchup(season, row.date, row.homeTeam, row.awayTeam, bool(row.neutralSite), weather)
     units = matchup_units(m)
     feats = matchup_features(m, units, p)
-    proj = project(m, feats, pm)
-    eq = project(m, matchup_features(m, units, p.equal()), pm)
+    bl = load_blend()
+    proj = project(m, feats, pm, bl)
+    eq = project(m, matchup_features(m, units, p.equal()), pm, bl)
+    rr = results_ratings(season, m.date.isoformat())["rating"]
     refs = percentile_refs(season, m.date)
     prof = profiles_asof(season, m.date.isoformat())
 
@@ -138,6 +149,8 @@ def export_game(row, p: Params, pm: PointsModel) -> dict:
                   m.away: (plays_avg(m.away, "offense") + plays_avg(m.home, "defense")) / 2},
         "params": asdict(p), "points_model": asdict(pm),
         "best_a": {k: v for k, v in (BEST_A or {}).items()},
+        "results": {m.home: float(rr.get(m.home, 0.0)), m.away: float(rr.get(m.away, 0.0))},
+        "blend": asdict(bl) if bl else None,
         "projection": proj, "projection_equal": eq,
     })
 
@@ -220,6 +233,8 @@ def export_teams(season: int, p: Params, pm: PointsModel) -> int:
         "refs": {f"{side}|{mt}": refs[(side, mt)].tolist() for side in ("offense", "defense") for mt in METRICS},
         "lg_epa": prof.attrs.get("lg_epa", 0.0),
         "params": asdict(p), "points_model": asdict(pm), "best_a": {k: v for k, v in (BEST_A or {}).items()},
+        "results": {t: float(v) for t, v in results_ratings(season, asof.isoformat())["rating"].items()},
+        "blend": asdict(load_blend()) if load_blend() else None,
     }
     (SITE_DATA / "league.json").write_text(json.dumps(_clean(league), separators=(",", ":")))
     print(f"exported {len(index)} teams for custom matchups (as of {asof:%Y-%m-%d %H:%M} UTC)")
@@ -246,7 +261,7 @@ def export_rankings(season: int, p: Params, pm: PointsModel) -> None:
     asof = pd.Timestamp.now("UTC").floor("h")
     if profiles_asof(season, asof.isoformat()).empty:
         return
-    df, _, _ = power_ratings(season, asof, p, pm)
+    df, _, _ = power_ratings(season, asof, p, pm, load_blend())
     _, g = load()
     s = g[(g.season == season) & (g.completed == True)]  # noqa: E712
     conf = {**dict(zip(s.awayTeam, s.awayConference)), **dict(zip(s.homeTeam, s.homeConference))}
@@ -255,9 +270,12 @@ def export_rankings(season: int, p: Params, pm: PointsModel) -> None:
         w = int((h.homePoints > h.awayPoints).sum() + (a.awayPoints > a.homePoints).sum())
         return [w, len(h) + len(a) - w]
     teams = [{"rank": int(r.rank), "team": r.team, "conference": conf.get(r.team), "record": record(r.team),
-              "rating": r.rating, "pts_for": r.pts_for, "pts_against": r.pts_against, "win_pct": r.win_pct,
+              "rating": r.rating, "pbp_rating": r.pbp_rating, "results_rating": r.results_rating,
+              "pts_for": r.pts_for, "pts_against": r.pts_against, "win_pct": r.win_pct,
               "favored": int(r.favored), "opponents": int(r.opponents)} for r in df.itertuples(index=False)]
-    out = {"season": season, "asof": asof.isoformat(), "weather": GOOD_WEATHER, "teams": teams}
+    bl = load_blend()
+    out = {"season": season, "asof": asof.isoformat(), "weather": GOOD_WEATHER, "teams": teams,
+           "blend": asdict(bl) if bl else None}
     (SITE_DATA / "rankings.json").write_text(json.dumps(_clean(out), separators=(",", ":")))
     print(f"ranked {len(teams)} teams; #1 {teams[0]['team']} ({teams[0]['rating']:+.1f})")
 

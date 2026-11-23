@@ -4,6 +4,9 @@ Each pairing is projected with the same weighted model and site settings as the 
 (engine/model.py, export_site.load_tuned). A team's rating is its average projected margin
 against all other FBS teams: "points better than the average FBS team on a neutral field".
 
+With a Blend, each projected margin is blended with the results-rating gap exactly as model.project
+does (totals unchanged), and the play-by-play-only and results-only ratings are reported alongside.
+
 A full round robin is ~9,400 games, too slow through model.project one at a time (~0.5 s each).
 On a neutral field in fixed weather every weighting factor of a unit is the same whatever the
 opponent except opponent similarity, so each unit's fixed part is built once and the similarity
@@ -18,7 +21,7 @@ import sys
 import numpy as np
 import pandas as pd
 
-from engine.model import (SIM_FEATURES, Matchup, Params, PointsModel, baseline_for, fbs_teams, feature_scales,
+from engine.model import (SIM_FEATURES, Blend, Matchup, Params, PointsModel, results_ratings, baseline_for, fbs_teams, feature_scales,
                           key_player_models, key_players, last_qb, lineup_adjust, load, matchup_features,
                           matchup_units, profiles_asof, project, unit_ingredients)
 
@@ -63,7 +66,8 @@ def _epa_vs_all(ua: dict | None, baseline: pd.Series, targets: np.ndarray, p: Pa
     return epa, n_eff
 
 
-def power_ratings(season: int, asof: pd.Timestamp, p: Params, pm: PointsModel) -> tuple[pd.DataFrame, np.ndarray, list]:
+def power_ratings(season: int, asof: pd.Timestamp, p: Params, pm: PointsModel,
+                  bl: Blend | None = None) -> tuple[pd.DataFrame, np.ndarray, list]:
     teams = sorted(fbs_teams(season))
     prof = profiles_asof(season, asof.isoformat())
     lg = prof.attrs.get("lg_epa", 0.0) if not prof.empty else 0.0
@@ -106,13 +110,24 @@ def power_ratings(season: int, asof: pd.Timestamp, p: Params, pm: PointsModel) -
     neff = np.minimum(N_off, N_def.T)
     margin = pts - pts.T
     n_game = np.minimum(neff, neff.T)
-    sd = pm.sd0 * np.sqrt(1 + pm.sd_k / np.maximum(n_game, 0.5))
-    wp = 0.5 * (1 + np.vectorize(math.erf)(margin / sd / math.sqrt(2)))
     off_mask = ~np.eye(n, dtype=bool)
     k = off_mask.sum(1)
+    pbp_rating = (margin * off_mask).sum(1) / k
+    R = results_ratings(season, asof.isoformat())["rating"].reindex(teams).fillna(0.0).to_numpy()
+    rgap = R[:, None] - R[None, :]
+    if bl is not None:        # blend with the results rating (neutral site: no home term); totals unchanged
+        total = pts + pts.T
+        margin = bl.a * margin + bl.b * rgap
+        pts = (total + margin) / 2
+        sd = bl.sd0 * np.sqrt(1 + bl.sd_k / np.maximum(n_game, 0.5))
+    else:
+        sd = pm.sd0 * np.sqrt(1 + pm.sd_k / np.maximum(n_game, 0.5))
+    wp = 0.5 * (1 + np.vectorize(math.erf)(margin / sd / math.sqrt(2)))
     df = pd.DataFrame({
         "team": teams,
         "rating": (margin * off_mask).sum(1) / k,
+        "pbp_rating": pbp_rating,                              # play-by-play only, points vs avg FBS team
+        "results_rating": (rgap * off_mask).sum(1) / k,         # results only, same scale
         "pts_for": (pts * off_mask).sum(1) / k,
         "pts_against": (pts.T * off_mask).sum(1) / k,
         "win_pct": (wp * off_mask).sum(1) / k,
@@ -130,12 +145,14 @@ def check(season: int = 2026, pairs=(("BYU", "Utah"), ("Ohio State", "Indiana"),
     from engine.export_site import load_tuned
     p, pm, _ = load_tuned()
     asof = pd.Timestamp.now("UTC").floor("h")
-    _, pts, teams = power_ratings(season, asof, p, pm)
+    from engine.export_site import load_blend
+    bl = load_blend()
+    _, pts, teams = power_ratings(season, asof, p, pm, bl)
     ix = {t: i for i, t in enumerate(teams)}
     worst = 0.0
     for h, a in pairs:
         m = Matchup(season, asof, h, a, True, GOOD_WEATHER)
-        r = project(m, matchup_features(m, matchup_units(m), p), pm)
+        r = project(m, matchup_features(m, matchup_units(m), p), pm, bl)
         fast_h, fast_a = pts[ix[h], ix[a]], pts[ix[a], ix[h]]
         print(f"{a} vs {h}: model {r['away_pts']:.3f}-{r['home_pts']:.3f}  fast {fast_a:.3f}-{fast_h:.3f}")
         worst = max(worst, abs(fast_h - r["home_pts"]), abs(fast_a - r["away_pts"]))

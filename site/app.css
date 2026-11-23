@@ -225,3 +225,7 @@ table.rk .rkn { font-family: "Space Grotesk", Inter, sans-serif; font-weight: 70
 .rt .bar::after { content: ""; position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1px; background: #9ca3af; }
 @media (max-width: 860px) { .hide-m { display: none; } }
 @media (max-width: 620px) { .hide-s { display: none; } table.rk td, table.rk th { padding: 9px 8px; } .rt .bar { width: 56px; } }
+.blendnote { font-size: 12px; color: #cbd5e1; border-top: 1px solid rgba(255,255,255,.15); padding-top: 8px; }
+.blendnote b { color: #e2e8f0; }
+table.rk td.comp { color: var(--ink-2); }
+table.rk .rk2 { display: block; font-size: 11px; color: var(--muted); }
