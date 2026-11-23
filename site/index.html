@@ -20,7 +20,14 @@
     <p class="small" style="max-width:760px">Every team's advanced-stat profile is weighted toward the games that look most like this one: similar opponents, recent weeks, the same setting and the expected starting QB. Projections come from those weighted profiles.</p>
   </div>
   <div class="buildcta"><span><b>Build your own matchup.</b> Pick any two FBS teams and a venue, scheduled or not.</span><a class="btn" href="build.html">Build a matchup</a></div>
-  <div class="search"><label class="small" for="q">Find a team</label><input id="q" type="search" placeholder="e.g. BYU"></div>
+  <div class="filters">
+    <div class="search"><label class="small" for="q">Find a team</label><input id="q" type="search" placeholder="e.g. BYU"></div>
+    <div role="group" aria-labelledby="conflbl" style="display:flex;flex-direction:column;gap:6px">
+      <span class="small" id="conflbl">Conferences <span id="confnote"></span></span>
+      <div class="confs" id="confs"></div>
+    </div>
+  </div>
+  <div class="small" id="count" role="status"></div>
   <div class="gamelist" id="list"></div>
   <footer>Data: <a href="https://collegefootballdata.com">CollegeFootballData.com</a>. EPA is CFBD's PPA. Not affiliated with any team or sportsbook.</footer>
 </main>
