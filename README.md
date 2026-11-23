@@ -11,6 +11,20 @@ where each team's profile is **weighted toward the games that look most like the
 Weighted profiles are blended back toward the season average by confidence
 (effective sample size), then turned into a score projection and win probability.
 
+## Strength of schedule
+
+Each game's EPA/play is adjusted for the opponent's strength (`model.opp_ratings`): a weighted ridge
+regression over every game (FBS and FCS) solves all offenses, defenses and conferences at once
+(EPA = league + offense + defense + conference terms + home edge). Conference terms pool every
+nonconference game, so Group of 5 schedules are valued on dozens of games. Last season's baseline is
+the same schedule-adjusted rating. Backtest (2026 test games): margin MAE 13.16 → 12.92 at the site's
+settings, 12.93 → 12.66 at the tuned settings (market 11.95).
+
+## Power rankings
+
+`engine/rankings.py` projects every FBS team against every other (neutral site, good weather) with the
+site's model and ranks by average projected margin; `site/rankings.html` shows it.
+
 ## Build a matchup
 
 `site/build.html` lets visitors pick any two FBS teams, a venue (either team's stadium or a neutral site) and a

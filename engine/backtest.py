@@ -66,8 +66,9 @@ def collect() -> list[dict]:
                         "wx_d2": np.array([np.nan if v is None else v for v in r.wx_d2], dtype=float),
                         "qb_match": r.qb_match.to_numpy(dtype=float), "epa": r.epa_play.to_numpy(dtype=float),
                         "rb_match": r.rb_match.to_numpy(dtype=float), "wr_match": r.wr_match.to_numpy(dtype=float),
-                        "plays": r.plays.to_numpy(dtype=float), "base_epa": float(base["epa_play"]),
+                        "plays": r.plays.to_numpy(dtype=float), "base_epa": float(base.get("epa_base", base["epa_play"])),
                         "opp_level": r.opp_level.to_numpy(dtype=float), "lg": float(prof.attrs["lg_epa"]),
+                        "opps": r.opponent.tolist(), "team": team, "side": side,
                         "lineup": [] if not off else [
                             {"d_epa_raw": mm["d_epa_raw"], "touches": mm["touches"], "pos": pos,
                              "extra": np.array([(mm["s_star"] * mm["expected"] - mm["share"].get(int(g), 0.0)) * mm["pool"].get(int(g), 0.0)

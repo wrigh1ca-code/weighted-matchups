@@ -112,7 +112,7 @@
     // Opponent-adjusted EPA/play for the projection (mirror of model.unit_profile epa_proj)
     let an = 0, ad = 0;
     games.forEach((g, i) => { const x = g.m.epa_play - TUNED.adj * (g.opp_level - G.lg_epa); an += w[i] * g.plays * x; ad += w[i] * g.plays; });
-    const adjW = ad > 0 ? an / ad : null, bE = U.baseline.epa_play;
+    const adjW = ad > 0 ? an / ad : null, bE = U.baseline.epa_base ?? U.baseline.epa_play;   // schedule-adjusted prior-season level
     const epa_proj = adjW == null ? bE : (bE == null ? adjW : lam * adjW + (1 - lam) * bE);
     const tot = w.reduce((s, v, i) => s + v * games[i].plays, 0);
     const share = w.map((v, i) => tot > 0 ? v * games[i].plays / tot : 0);
@@ -205,7 +205,7 @@
         <div><b>2. Unit-on-unit</b>A defense is judged mostly on games against offenses like the one it faces this week, and an offense on games against similar defenses.</div>
         <div><b>3. Weighted profiles</b>Per-play stats (EPA, success rate, explosiveness, havoc…) are averaged across games using weight × plays. Garbage time is removed.</div>
         <div><b>4. Confidence blend</b>Effective games = (Σw)² ÷ Σw². The profile = λ × weighted + (1 − λ) × prior-season average, with λ = n ÷ (n + ${TUNED.k}). Early in the season, or when weight piles onto a few games, the prior dominates.</div>
-        <div><b>5. Points</b>For the projection, each game's EPA/play is first opponent-adjusted (minus how far that opponent's unit sits from the FBS average, at strength ${TUNED.adj}). Expected EPA/play = offense EPA + opposing defense EPA allowed − FBS average. Points = ${PM.a.toFixed(1)} + ${PM.b.toFixed(1)} × expected EPA + ${PM.c.toFixed(2)} × (projected plays − 65) ± ${PM.hfa.toFixed(2)} home field, fit by regression on past seasons.</div>
+        <div><b>5. Points</b>For the projection, each game's EPA/play is first adjusted for the opponent (minus how far that opponent's unit sits from the FBS average, at strength ${TUNED.adj}). Opponent strengths are solved for all teams and conferences together, so an opponent's rating already accounts for its own schedule; last season's baseline is schedule-adjusted the same way. Expected EPA/play = offense EPA + opposing defense EPA allowed − FBS average. Points = ${PM.a.toFixed(1)} + ${PM.b.toFixed(1)} × expected EPA + ${PM.c.toFixed(2)} × (projected plays − 65) ± ${PM.hfa.toFixed(2)} home field, fit by regression on past seasons.</div>
         <div><b>6. Win probability</b>The margin is treated as a normal distribution around the projection with SD ${PM.sd0.toFixed(1)} × √(1 + ${PM.sd_k.toFixed(2)} ÷ effective games), fit on past results.</div>
       </div>
       ${table}

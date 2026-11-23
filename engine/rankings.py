@@ -46,7 +46,7 @@ def _unit_arrays(rows: pd.DataFrame, p: Params, vecs: dict, other: str) -> dict 
 def _epa_vs_all(ua: dict | None, baseline: pd.Series, targets: np.ndarray, p: Params) -> tuple[np.ndarray, np.ndarray]:
     """epa_proj and n_eff of one unit against each target opponent vector (rows of `targets`)."""
     T = len(targets)
-    b = baseline["epa_play"]
+    b = baseline.get("epa_base", baseline["epa_play"])
     if ua is None:
         return np.full(T, b), np.zeros(T)
     wts = np.array([w for _, w in SIM_FEATURES])
