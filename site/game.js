@@ -1,6 +1,7 @@
 /* Matchup page: reweights every unit live. Mirrors engine/model.py exactly.
    ?id=<gameId> loads a scheduled game; ?home=&away=[&neutral=1] builds a hypothetical one (custom.js). */
 (async function () {
+  const COLORS = TeamColors.load();
   const qs = new URLSearchParams(location.search);
   const id = qs.get('id');
   const CUSTOM = !id && qs.get('home') && qs.get('away');
@@ -20,6 +21,7 @@
   const META = W.meta;
   const METRICS = META.metrics, LABELS = META.labels, COUNT = META.count_col, HIB = META.higher_is_better;
   const game = G.game, HOME = game.home, AWAY = game.away;
+  TeamColors.apply(HOME, AWAY, await COLORS);   // official team colors (colors.js); defaults if unavailable
   const TUNED = G.params, PM = G.points_model, BEST = G.best_a || { a_opp: 0, a_rec: 0, a_set: 0, a_ros: 0 };
   const $ = s => document.getElementById(s);
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

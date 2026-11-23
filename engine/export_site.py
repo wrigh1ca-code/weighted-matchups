@@ -226,6 +226,20 @@ def export_teams(season: int, p: Params, pm: PointsModel) -> int:
     return len(index)
 
 
+def export_colors(season: int) -> None:
+    """site/data/colors.json: {team: [primary, alternate]} from data/derived/team_colors_<season>.csv.
+    The matchup page picks readable, distinct shades from these (site/colors.js)."""
+    path = ROOT / "data" / "derived" / f"team_colors_{season}.csv"
+    if not path.exists():
+        print(f"  no {path.name}; matchup pages keep the default colors")
+        return
+    df = pd.read_csv(path).fillna("")
+    norm = lambda c: ("#" + c.lstrip("#").lower()) if len(c.lstrip("#")) == 6 else None
+    out = {r.team: [norm(str(r.color)), norm(str(r.alt_color))] for r in df.itertuples(index=False)}
+    (SITE_DATA / "colors.json").write_text(json.dumps(out, separators=(",", ":"), sort_keys=True))
+    print(f"exported colors for {len(out)} teams")
+
+
 def main(argv):
     u, g = load()
     season = int(argv[0]) if argv else int(g[g.completed == True].season.max())  # noqa: E712
@@ -265,6 +279,7 @@ def main(argv):
             f.unlink()
     print(f"exported {len(index)} games for {season} {stype} week {week}")
     export_teams(season, p, pm)
+    export_colors(season)
     return 0
 
 
