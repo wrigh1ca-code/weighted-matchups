@@ -240,6 +240,28 @@ def export_colors(season: int) -> None:
     print(f"exported colors for {len(out)} teams")
 
 
+def export_rankings(season: int, p: Params, pm: PointsModel) -> None:
+    """site/data/rankings.json: every FBS team vs every other, neutral site, good weather (engine/rankings.py)."""
+    from engine.rankings import GOOD_WEATHER, power_ratings
+    asof = pd.Timestamp.now("UTC").floor("h")
+    if profiles_asof(season, asof.isoformat()).empty:
+        return
+    df, _, _ = power_ratings(season, asof, p, pm)
+    _, g = load()
+    s = g[(g.season == season) & (g.completed == True)]  # noqa: E712
+    conf = {**dict(zip(s.awayTeam, s.awayConference)), **dict(zip(s.homeTeam, s.homeConference))}
+    def record(t):
+        h, a = s[s.homeTeam == t], s[s.awayTeam == t]
+        w = int((h.homePoints > h.awayPoints).sum() + (a.awayPoints > a.homePoints).sum())
+        return [w, len(h) + len(a) - w]
+    teams = [{"rank": int(r.rank), "team": r.team, "conference": conf.get(r.team), "record": record(r.team),
+              "rating": r.rating, "pts_for": r.pts_for, "pts_against": r.pts_against, "win_pct": r.win_pct,
+              "favored": int(r.favored), "opponents": int(r.opponents)} for r in df.itertuples(index=False)]
+    out = {"season": season, "asof": asof.isoformat(), "weather": GOOD_WEATHER, "teams": teams}
+    (SITE_DATA / "rankings.json").write_text(json.dumps(_clean(out), separators=(",", ":")))
+    print(f"ranked {len(teams)} teams; #1 {teams[0]['team']} ({teams[0]['rating']:+.1f})")
+
+
 def main(argv):
     u, g = load()
     season = int(argv[0]) if argv else int(g[g.completed == True].season.max())  # noqa: E712
@@ -280,6 +302,7 @@ def main(argv):
     print(f"exported {len(index)} games for {season} {stype} week {week}")
     export_teams(season, p, pm)
     export_colors(season)
+    export_rankings(season, p, pm)
     return 0
 
 

@@ -76,5 +76,14 @@
   async function load() {
     try { const r = await fetch('data/colors.json', { cache: 'no-cache' }); return r.ok ? await r.json() : null; } catch (e) { return null; }
   }
-  window.TeamColors = { load, pick, apply };
+  // One team's readable color on its own (e.g. a swatch in a list)
+  function single(map, team) {
+    const [p, a] = (map && map[team]) || [];
+    const ok = h => h && /^#[0-9a-f]{6}$/i.test(h) && !weak(h);
+    let h = ok(p) ? p : ok(a) ? a : null;
+    if (ok(p) && ok(a) && (contrastOnWhite(hex2rgb(p)) < 2 && contrastOnWhite(hex2rgb(a)) >= 3
+        || chroma(hex2rgb(p)) < 10 && chroma(hex2rgb(a)) > 30 && contrastOnWhite(hex2rgb(a)) >= 3)) h = a;
+    return h ? rgb2hex(readable(h)) : '#9ca3af';
+  }
+  window.TeamColors = { load, pick, apply, single };
 })();
