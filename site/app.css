@@ -1,17 +1,17 @@
 :root {
   --ink: #111827; --ink-2: #374151; --muted: #4b5563; --line: #e5e7eb; --soft: #f3f4f6;
-  --ground: #f4f5f7; --card: #fff; --away: #2952a3; --home: #c2410c;
+  --ground: #f4f5f7; --card: #fff; --away: #2952a3; --home: #c2410c; --link: #2952a3; --brand: #c2410c;
   --away-fill: rgba(41, 82, 163, .22); --home-fill: rgba(194, 65, 12, .20);
   --navy: #111827; --radius: 14px;
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--ground); color: var(--ink); font: 15px/1.5 Inter, system-ui, sans-serif; }
-a { color: var(--away); } a:hover { color: #1b3a78; }
+a { color: var(--link); } a:hover { color: #1b3a78; }
 h1, h2, h3 { font-family: "Space Grotesk", Inter, sans-serif; margin: 0; }
 .wrap { max-width: 1280px; margin: 0 auto; padding: 24px 20px 56px; display: flex; flex-direction: column; gap: 20px; }
 .topbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .brand { font-family: "Space Grotesk", Inter, sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; color: var(--ink); }
-.brand span { color: var(--home); }
+.brand span { color: var(--brand); }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
 .row { display: flex; flex-wrap: wrap; gap: 20px; }
 .grow { flex: 999 1 560px; min-width: 0; }
@@ -63,7 +63,7 @@ h1, h2, h3 { font-family: "Space Grotesk", Inter, sans-serif; margin: 0; }
 .slider .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
 .slider label { font-size: 14px; font-weight: 600; }
 .pill { font-size: 12px; font-weight: 600; color: #1e3a8a; background: #eef2ff; border-radius: 6px; padding: 2px 8px; }
-input[type=range] { accent-color: var(--away); width: 100%; height: 28px; margin: 0; }
+input[type=range] { accent-color: #374151; width: 100%; height: 28px; margin: 0; }
 select { font: 14px Inter, sans-serif; min-height: 40px; border: 1px solid #d1d5db; border-radius: 8px; padding: 0 10px; background: #fff; width: 100%; }
 .conf .big { font-family: "Space Grotesk", Inter, sans-serif; font-size: 34px; font-weight: 700; }
 .bar { height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
