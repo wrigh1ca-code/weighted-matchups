@@ -27,17 +27,48 @@
     <span class="small" id="rkcount"></span>
   </div>
 
+  <section class="card rk-help" id="rkhelp" aria-labelledby="rkhelpTitle">
+    <div class="rk-help-head">
+      <h2 id="rkhelpTitle"><span class="ib" aria-hidden="true">i</span>How to read this table</h2>
+      <button type="button" class="btn" id="rkhelpToggle" aria-expanded="true" aria-controls="rkhelpBody">Hide</button>
+    </div>
+    <div id="rkhelpBody">
+      <p class="small" style="margin:0 0 12px;max-width:820px">Every number comes from one big simulation: each FBS team projected against every other FBS team (about 9,400 games) on a neutral field in good weather (75°F, dry, light wind), using the same model as the matchup pages. "Average team" means an average FBS team.</p>
+      <dl class="rk-defs">
+        <div id="def-rating"><dt>Rating</dt>
+          <dd><b>What it means:</b> how many points better this team is than an average FBS team on a neutral field. <span class="ex" data-ex="rating"></span></dd>
+          <dd><b>How it's estimated:</b> the team's average projected margin across all ~137 simulated games. Each projection blends the two columns to the right, play-by-play and results, about half each (0.70 × play-by-play margin + <span data-bl="b">0.55</span> × results gap). When both agree a team is strong, the blend goes beyond either one: in past seasons each was too cautious about lopsided games on its own.</dd></div>
+        <div id="def-pbp"><dt>Play-by-play</dt>
+          <dd><b>What it means:</b> the team's rating from the advanced stats alone, in points vs an average team, with its rank on that measure.</dd>
+          <dd><b>How it's estimated:</b> expected points added (EPA) per play for each offense and defense, weighted toward the most relevant past games, adjusted for opponent strength (every offense, defense and conference solved together, so schedules count), blended with last season's schedule-adjusted numbers early in the year, and converted to points.</dd></div>
+        <div id="def-results"><dt>Results</dt>
+          <dd><b>What it means:</b> the team's rating from what actually happened in its games, in points vs an average team, with its rank on that measure.</dd>
+          <dd><b>How it's estimated:</b> <b>game control</b>. A win-probability model tracks each team's chance of winning snap by snap (score, time left, possession, field position; no pregame expectations) and averages it over the 60 minutes. Leading all day scores high even in a 10-point win; a game tied late that ends in a blowout counts for much less than the score suggests. Then it's adjusted for opponents and home field and put on a points scale.</dd></div>
+        <div id="def-score"><dt>Avg score vs avg team</dt>
+          <dd><b>What it means:</b> the typical final score of this team's simulated games. <span class="ex" data-ex="score"></span></dd>
+          <dd><b>How it's estimated:</b> average projected points scored and allowed across all the simulated games. Total points come from the play-by-play model; the split between the teams follows the blended margin.</dd></div>
+        <div id="def-beats"><dt>Beats avg team</dt>
+          <dd><b>What it means:</b> the chance this team beats an average FBS team on a neutral field.</dd>
+          <dd><b>How it's estimated:</b> average win probability across the simulated games. Each game's chance comes from the projected margin and how much it typically misses by (about 15–16 points), fit on past seasons.</dd></div>
+        <div id="def-favored"><dt>Favored in</dt>
+          <dd><b>What it means:</b> how many of the other FBS teams this team would be favored to beat on a neutral field. <span class="ex" data-ex="favored"></span></dd>
+          <dd><b>How it's estimated:</b> a count of the simulated games where its projected margin is above zero.</dd></div>
+      </dl>
+      <p class="small" style="margin:12px 0 0">Updated every morning with the latest games. Records are shown for context but don't enter the ratings directly. Ratings measure how teams played, so a team with close losses can rank above teams with better records.</p>
+    </div>
+  </section>
+
   <div class="card rk-card">
     <table class="rk" id="rk">
       <thead><tr>
         <th scope="col" class="num">#</th>
         <th scope="col">Team</th>
-        <th scope="col" class="num">Rating</th>
-        <th scope="col" class="num hide-s" title="Play-by-play analytics only">Play-by-play</th>
-        <th scope="col" class="num hide-s" title="Game control in real games, adjusted for schedule">Results</th>
-        <th scope="col" class="num hide-s">Avg score vs avg team</th>
-        <th scope="col" class="num hide-s">Beats avg team</th>
-        <th scope="col" class="num hide-m">Favored in</th>
+        <th scope="col" class="num">Rating<button type="button" class="ib ibtn" data-def="def-rating" aria-label="What is Rating?">i</button></th>
+        <th scope="col" class="num hide-s">Play-by-play<button type="button" class="ib ibtn" data-def="def-pbp" aria-label="What is Play-by-play?">i</button></th>
+        <th scope="col" class="num hide-s">Results<button type="button" class="ib ibtn" data-def="def-results" aria-label="What is Results?">i</button></th>
+        <th scope="col" class="num hide-s">Avg score vs avg team<button type="button" class="ib ibtn" data-def="def-score" aria-label="What is Avg score vs avg team?">i</button></th>
+        <th scope="col" class="num hide-s">Beats avg team<button type="button" class="ib ibtn" data-def="def-beats" aria-label="What is Beats avg team?">i</button></th>
+        <th scope="col" class="num hide-m">Favored in<button type="button" class="ib ibtn" data-def="def-favored" aria-label="What is Favored in?">i</button></th>
         <th scope="col" class="hide-s"><span class="sr-only">Matchup</span></th>
       </tr></thead>
       <tbody id="rows"></tbody>
@@ -111,6 +142,31 @@
     }));
   }
   draw();
+
+  // ---------- "How to read this table" panel
+  const help = $('rkhelp'), body = $('rkhelpBody'), tog = $('rkhelpToggle');
+  const setOpen = open => { body.hidden = !open; tog.textContent = open ? 'Hide' : 'Show'; tog.setAttribute('aria-expanded', open);
+    help.classList.toggle('closed', !open); try { localStorage.setItem('wm.rkhelp', open ? '1' : '0'); } catch (e) {} };
+  let saved = null; try { saved = localStorage.getItem('wm.rkhelp'); } catch (e) {}
+  setOpen(saved !== '0');
+  tog.addEventListener('click', () => setOpen(body.hidden));
+  document.querySelectorAll('.ibtn').forEach(b => b.addEventListener('click', () => {
+    setOpen(true);
+    const d = $(b.dataset.def);
+    document.querySelectorAll('.rk-defs > div').forEach(x => x.classList.remove('hl'));
+    d.classList.add('hl');
+    d.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setTimeout(() => d.classList.remove('hl'), 2600);
+  }));
+  // live examples from the current #1 team
+  const t1 = R.teams[0];
+  const ex = {
+    rating: `Example: ${esc(t1.team)} at ${sign(t1.rating)} would be favored by about ${Math.round(t1.rating)} over an average FBS team.`,
+    score: `Example: ${esc(t1.team)} ${Math.round(t1.pts_for)}–${Math.round(t1.pts_against)}.`,
+    favored: `Example: ${esc(t1.team)} is favored over ${t1.favored} of ${t1.opponents}.`,
+  };
+  document.querySelectorAll('[data-ex]').forEach(e => { e.innerHTML = ex[e.dataset.ex] || ''; });
+  if (R.blend) document.querySelectorAll('[data-bl]').forEach(e => { e.textContent = (+R.blend[e.dataset.bl]).toFixed(2); });
 })();
 </script>
 </body>
