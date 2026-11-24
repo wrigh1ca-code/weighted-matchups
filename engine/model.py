@@ -98,6 +98,12 @@ def load() -> tuple[pd.DataFrame, pd.DataFrame]:
     g["date"] = pd.to_datetime(g["startDate"], utc=True)
     u["pass_rate"] = u["dropbacks"] / u["plays"].where(u["plays"] > 0)
     u = u[u["plays"] >= 10].reset_index(drop=True)
+    # Game flow (pipeline/game_flow.py): home average lead and game control, where available
+    flows = [pd.read_csv(f, usecols=["gameId", "avg_lead", "control"]) for f in sorted(DATA.glob("game_flow_*.csv"))]
+    if flows:
+        g = g.merge(pd.concat(flows, ignore_index=True).drop_duplicates("gameId"), on="gameId", how="left")
+    else:
+        g["avg_lead"], g["control"] = np.nan, np.nan
     return u, g
 
 
@@ -227,17 +233,39 @@ def opp_ratings(season: int, date_iso: str, lam: float | None = None, lam_conf: 
 
 # Results rating: what actually happened on the scoreboard, adjusted for schedule the same way.
 RES_CAP = 28.0          # margins beyond this count as this (no credit for running up the score)
+# Which game outcome the results rating is built on (backtest picks it):
+#   "margin"  final score margin          "lead"    average lead over regulation
+#   "control" game control (average in-game win probability), on a points scale
+#   "flow"    average of lead and control
+RES_METRIC = "margin"
 RES_RIDGE = 1.0         # shrinkage of each team toward its conference (in games)
 RES_RIDGE_CONF = 0.5    # shrinkage of each conference toward the league (in games)
 
 
+def game_outcome(c: pd.DataFrame, metric: str, cap: float) -> np.ndarray:
+    """Home-team outcome of each game on a points scale, by `metric` (see RES_METRIC).
+    Games without game-flow data fall back to the final margin."""
+    final = np.clip((c.homePoints - c.awayPoints).to_numpy(float), -cap, cap)
+    if metric == "margin":
+        return final
+    lead = np.clip(c["avg_lead"].to_numpy(float), -cap, cap)
+    # control (0-1) to points: scale so its spread matches the final margins' (fixed per season)
+    ctl = c["control"].to_numpy(float) - 0.5
+    ok = ~np.isnan(ctl)
+    k = (np.std(final[ok]) / np.std(ctl[ok])) if ok.sum() > 20 and np.std(ctl[ok]) > 0 else 60.0
+    ctl_pts = np.clip(ctl * k, -cap, cap)
+    y = {"lead": lead, "control": ctl_pts, "flow": (lead + ctl_pts) / 2}[metric]
+    return np.where(np.isnan(y), final, y)
+
+
 @lru_cache(maxsize=512)
 def results_ratings(season: int, date_iso: str, cap: float | None = None, lam: float | None = None,
-                    lam_conf: float | None = None) -> dict:
+                    lam_conf: float | None = None, metric: str | None = None) -> dict:
     """{'rating': Series team -> points better than an average FBS team on a neutral field, 'hfa': float}
     from final scores of every game (FBS and FCS) before `date`: capped margin = home rating -
     away rating + home edge, solved for all teams and conferences at once (ridge)."""
     cap = RES_CAP if cap is None else cap
+    metric = RES_METRIC if metric is None else metric
     lam = RES_RIDGE if lam is None else lam
     lam_conf = RES_RIDGE_CONF if lam_conf is None else lam_conf
     _, g = load()
@@ -262,7 +290,7 @@ def results_ratings(season: int, date_iso: str, cap: float | None = None, lam: f
     X[r, hi] += 1.0; X[r, ai] -= 1.0
     np.add.at(X, (r, n + tc[hi]), 1.0); np.add.at(X, (r, n + tc[ai]), -1.0)
     X[:, n + m] = np.where(c.neutralSite.fillna(False).astype(bool).to_numpy(), 0.0, 1.0)
-    y = np.clip((c.homePoints - c.awayPoints).to_numpy(float), -cap, cap)
+    y = game_outcome(c, metric, cap)
     reg = np.concatenate([np.full(n, lam), np.full(m, lam_conf), [1e-6]])
     beta = np.linalg.solve(X.T @ X + np.diag(reg), X.T @ y)
     rating = pd.Series(beta[:n] + beta[n:n + m][tc], index=teams)

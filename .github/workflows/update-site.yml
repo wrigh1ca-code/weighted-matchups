@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["site/**.html", "site/**.js", "site/**.css"]
+    paths: ["site/**.html", "site/**.js", "site/**.css", "engine/**.py", "pipeline/**.py", ".github/workflows/update-site.yml"]
 
 permissions:
   contents: write
@@ -31,6 +31,10 @@ jobs:
         env:
           CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
         run: python -m pipeline.build_season
+      - name: Game flow (average lead, game control) for any season missing it
+        env:
+          CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
+        run: python -m pipeline.game_flow --backfill
       - name: Team colors (one API call per season, skipped once saved)
         env:
           CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}

@@ -83,6 +83,9 @@ def build(client: CFBDClient, year: int) -> tuple[pd.DataFrame, pd.DataFrame]:
         qbs.append(week_player_passing(client, year, int(wk), st))
     plays_df = pd.DataFrame(plays)
     units = unit_game_stats(plays_df)
+    from pipeline.game_flow import game_flow
+    flow, wp_beta = game_flow(plays_df, games)
+    print(f"  game flow for {len(flow)} games; WP coefficients {np.round(wp_beta, 4).tolist()}")
     players, info = player_game_stats(plays_df)
     print(f"  player attribution coverage: { {k: round(v, 3) for k, v in info['coverage'].items()} }")
     for k, ex in info["unparsed_examples"].items():
@@ -106,7 +109,7 @@ def build(client: CFBDClient, year: int) -> tuple[pd.DataFrame, pd.DataFrame]:
     opp_qb = qb.rename(columns={"team": "opponent", "qb": "opp_qb", "qb_id": "opp_qb_id"})
     units = units.merge(opp_qb[["gameId", "opponent", "opp_qb", "opp_qb_id"]], on=["gameId", "opponent"], how="left")
     units = units.sort_values(["team", "side", "startDate"]).reset_index(drop=True)
-    return units, sched, players
+    return units, sched, players, flow
 
 
 def main(argv: list[str]) -> int:
@@ -118,7 +121,8 @@ def main(argv: list[str]) -> int:
     print(f"CFBD tier: {info.get('tierName')} (limit {info.get('monthlyLimit')}, remaining {info.get('remainingCalls')})")
     OUT.mkdir(parents=True, exist_ok=True)
     for y in years:
-        units, sched, players = build(client, y)
+        units, sched, players, flow = build(client, y)
+        flow.to_csv(OUT / f"game_flow_{y}.csv", index=False)
         players.round(4).to_csv(OUT / f"player_games_{y}.csv", index=False)
         units.round(4).to_csv(OUT / f"unit_games_{y}.csv", index=False)
         sched.to_csv(OUT / f"games_{y}.csv", index=False)

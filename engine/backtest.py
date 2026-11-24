@@ -8,6 +8,7 @@ training seasons, and score the held-out season.
 Usage:
   python -m engine.backtest collect      # builds data/backtest/ingredients.pkl
   python -m engine.backtest tune         # coordinate search, writes data/backtest/results.json
+  python -m engine.backtest results      # compare game-outcome measures for the results rating
 """
 from __future__ import annotations
 
@@ -217,6 +218,24 @@ def fit_blend(df: pd.DataFrame, rd: np.ndarray, pm: PointsModel, a: float = BLEN
     return bl, sc(tr), sc(~tr)
 
 
+def compare_results(recs: list[dict]) -> int:
+    """Backtest each game-outcome measure for the results rating (model.RES_METRIC) in the blend."""
+    r = json.loads((OUT / "results.json").read_text())
+    p = Params(**{**r["params"], **r["site_default"]["a"]})
+    pm = PointsModel(**r["points_model"])
+    df = features(recs, p)
+    have = model.load()[1]
+    cov = have[have.season.isin(SEASONS)].groupby("season")["control"].apply(lambda x: x.notna().mean())
+    print("game-flow coverage by season:", {int(k): round(float(v), 2) for k, v in cov.items()})
+    for metric in ("margin", "lead", "control", "flow"):
+        model.results_ratings.cache_clear()
+        model.RES_METRIC = metric
+        bl, tr, te = fit_blend(df, results_gap(recs), pm)
+        print(f"{metric:8s} b={bl.b:.2f} h={bl.h:.2f} | train MAE {tr['mae']:.3f} RMSE {tr['rmse']:.3f} brier {tr['brier']:.4f} | "
+              f"test MAE {te['mae']:.3f} RMSE {te['rmse']:.3f} win {te['winner_acc']:.3f} brier {te['brier']:.4f}", flush=True)
+    return 0
+
+
 GRID = {
     "a_opp": [0, 0.5, 1, 1.5, 2, 3],
     "a_rec": [0, 0.5, 1, 1.5, 2],
@@ -263,6 +282,8 @@ def main(argv):
         return 0
     with open(OUT / "ingredients.pkl", "rb") as f:
         recs = pickle.load(f)
+    if cmd == "results":
+        return compare_results(recs)
     tuned = Params(**tune(recs))
     res_w = evaluate(recs, tuned)
     res_e = evaluate(recs, tuned.equal())
