@@ -167,6 +167,123 @@ def profiles_asof(season: int, date_iso: str) -> pd.DataFrame:
     return prof
 
 
+# Opponent strength used to adjust each game's EPA. "ridge" solves every offense and defense
+# together (EPA/play = league + offense + defense + home edge, weighted by plays, shrunk toward
+# average by OPP_RIDGE plays), so an opponent's level already accounts for its own schedule.
+# "raw" is the original one-pass method: the opponent's unadjusted season EPA/play.
+OPP_METHOD = "ridge"
+OPP_RIDGE = 400.0        # shrinkage of each team's offense/defense toward its conference (plays)
+OPP_RIDGE_CONF = 50.0    # shrinkage of each conference's offense/defense toward the league (plays)
+
+
+@lru_cache(maxsize=512)
+def opp_ratings(season: int, date_iso: str, lam: float | None = None, lam_conf: float | None = None) -> dict:
+    """{'offense': Series, 'defense': Series}: schedule-adjusted EPA/play level of every unit
+    (league average + conference strength + its own strength) from all games (FBS and FCS) before
+    `date`. Conference terms pool every nonconference game a conference plays, so a conference's
+    level rests on dozens of games rather than each team's three or four."""
+    lam = OPP_RIDGE if lam is None else lam
+    lam_conf = OPP_RIDGE_CONF if lam_conf is None else lam_conf
+    u, _ = load()
+    d = pd.Timestamp(date_iso)
+    if d.tzinfo is None:
+        d = d.tz_localize("UTC")
+    c = u[(u.season == season) & (u.date < d) & (u.side == "offense") & u.epa_play.notna() & (u.plays > 0)]
+    if c.empty:
+        return {"offense": pd.Series(dtype=float), "defense": pd.Series(dtype=float), "lg": 0.0, "hfa": 0.0}
+    fbs = fbs_teams(season)
+    teams = sorted(set(c.team) | set(c.opponent))
+    ix = {t: i for i, t in enumerate(teams)}
+    n = len(teams)
+    w = c.plays.to_numpy(float)
+    y = c.epa_play.to_numpy(float)
+    lg = float(np.average(y[c.team.isin(fbs).to_numpy()], weights=w[c.team.isin(fbs).to_numpy()]))
+    conf = team_conferences(season)
+    confs = sorted({conf.get(t, "FCS" if t not in fbs else "FBS Independents") for t in teams})
+    cx = {cf: i for i, cf in enumerate(confs)}
+    tc = [cx[conf.get(t, "FCS" if t not in fbs else "FBS Independents")] for t in teams]
+    m = len(confs)
+    # columns: team offense (n), team defense (n), conference offense (m), conference defense (m), home edge
+    k = 2 * n + 2 * m + 1
+    X = np.zeros((len(c), k))
+    rows = np.arange(len(c))
+    ti = np.array([ix[t] for t in c.team]); oi = np.array([ix[o] for o in c.opponent])
+    X[rows, ti] = 1.0
+    X[rows, n + oi] = 1.0
+    X[rows, 2 * n + np.array(tc)[ti]] = 1.0
+    X[rows, 2 * n + m + np.array(tc)[oi]] = 1.0
+    X[:, k - 1] = np.where(c.site.to_numpy() == "home", 0.5, np.where(c.site.to_numpy() == "away", -0.5, 0.0))
+    XtW = X.T * w
+    A = XtW @ X
+    reg = np.concatenate([np.full(2 * n, lam), np.full(2 * m, lam_conf), [1e-6]])   # home edge not shrunk
+    beta = np.linalg.solve(A + np.diag(reg), XtW @ (y - lg))
+    off = beta[:n] + beta[2 * n:2 * n + m][tc]
+    dfn = beta[n:2 * n] + beta[2 * n + m:2 * n + 2 * m][tc]
+    return {"offense": pd.Series(lg + off, index=teams), "defense": pd.Series(lg + dfn, index=teams),
+            "conf_offense": pd.Series(beta[2 * n:2 * n + m], index=confs),
+            "conf_defense": pd.Series(beta[2 * n + m:2 * n + 2 * m], index=confs),
+            "lg": lg, "hfa": float(beta[k - 1])}
+
+
+# Results rating: what actually happened on the scoreboard, adjusted for schedule the same way.
+RES_CAP = 28.0          # margins beyond this count as this (no credit for running up the score)
+RES_RIDGE = 1.0         # shrinkage of each team toward its conference (in games)
+RES_RIDGE_CONF = 0.5    # shrinkage of each conference toward the league (in games)
+
+
+@lru_cache(maxsize=512)
+def results_ratings(season: int, date_iso: str, cap: float | None = None, lam: float | None = None,
+                    lam_conf: float | None = None) -> dict:
+    """{'rating': Series team -> points better than an average FBS team on a neutral field, 'hfa': float}
+    from final scores of every game (FBS and FCS) before `date`: capped margin = home rating -
+    away rating + home edge, solved for all teams and conferences at once (ridge)."""
+    cap = RES_CAP if cap is None else cap
+    lam = RES_RIDGE if lam is None else lam
+    lam_conf = RES_RIDGE_CONF if lam_conf is None else lam_conf
+    _, g = load()
+    d = pd.Timestamp(date_iso)
+    if d.tzinfo is None:
+        d = d.tz_localize("UTC")
+    c = g[(g.season == season) & (g.date < d) & (g.completed == True) & g.homePoints.notna() & g.awayPoints.notna()]  # noqa: E712
+    if c.empty:
+        return {"rating": pd.Series(dtype=float), "hfa": 0.0, "games": pd.Series(dtype=float)}
+    fbs = fbs_teams(season)
+    teams = sorted(set(c.homeTeam) | set(c.awayTeam))
+    ix = {t: i for i, t in enumerate(teams)}
+    conf = team_conferences(season)
+    cname = lambda t: conf.get(t, "FCS" if t not in fbs else "FBS Independents")
+    confs = sorted({cname(t) for t in teams})
+    cx = {cf: i for i, cf in enumerate(confs)}
+    tc = np.array([cx[cname(t)] for t in teams])
+    n, m = len(teams), len(confs)
+    hi = np.array([ix[t] for t in c.homeTeam]); ai = np.array([ix[t] for t in c.awayTeam])
+    X = np.zeros((len(c), n + m + 1))
+    r = np.arange(len(c))
+    X[r, hi] += 1.0; X[r, ai] -= 1.0
+    np.add.at(X, (r, n + tc[hi]), 1.0); np.add.at(X, (r, n + tc[ai]), -1.0)
+    X[:, n + m] = np.where(c.neutralSite.fillna(False).astype(bool).to_numpy(), 0.0, 1.0)
+    y = np.clip((c.homePoints - c.awayPoints).to_numpy(float), -cap, cap)
+    reg = np.concatenate([np.full(n, lam), np.full(m, lam_conf), [1e-6]])
+    beta = np.linalg.solve(X.T @ X + np.diag(reg), X.T @ y)
+    rating = pd.Series(beta[:n] + beta[n:n + m][tc], index=teams)
+    rating -= rating[[t for t in teams if t in fbs]].mean()          # 0 = average FBS team
+    games = pd.Series(np.bincount(np.concatenate([hi, ai]), minlength=n), index=teams)
+    return {"rating": rating, "hfa": float(beta[n + m]), "games": games}
+
+
+@lru_cache(maxsize=8)
+def team_conferences(season: int) -> dict:
+    """Team -> conference for the season (FBS conferences; FCS teams are left out)."""
+    _, g = load()
+    s = g[g.season == season]
+    out = {}
+    for t, cf in list(zip(s.awayTeam, s.awayConference)) + list(zip(s.homeTeam, s.homeConference)):
+        if isinstance(cf, str) and cf:
+            out[t] = cf
+    fbs = fbs_teams(season)
+    return {t: cf for t, cf in out.items() if t in fbs}
+
+
 @lru_cache(maxsize=64)
 def season_final(season: int) -> pd.DataFrame:
     """Full-season plain averages (used as next season's baseline)."""
@@ -296,7 +413,12 @@ def unit_ingredients(team: str, side: str, season: int, date: pd.Timestamp, oppo
     rows["opp_fbs"] = rows.opponent.isin(fbs_teams(season))
     # Opponent strength as of now: the opposite unit's season-to-date EPA/play (league avg if thin)
     lg = prof.attrs.get("lg_epa", 0.0)
-    lvl = prof[(prof.side == other) & (prof.games >= 2)].set_index("team")["epa_play"]
+    if OPP_METHOD == "ridge":
+        r = opp_ratings(season, date.isoformat())
+        # shift to this module's league average so (opp_level - lg) is the opponent's strength
+        lvl = r[other] - r["lg"] + lg
+    else:
+        lvl = prof[(prof.side == other) & (prof.games >= 2)].set_index("team")["epa_play"]
     rows["opp_level"] = rows.opponent.map(lvl).fillna(lg)
     rows["lg_epa"] = lg
     return rows
@@ -320,11 +442,20 @@ def game_weights(rows: pd.DataFrame, p: Params) -> np.ndarray:
 
 
 def baseline_for(team: str, side: str, season: int, prof: pd.DataFrame) -> pd.Series:
+    """Last season's numbers (blended in while this season's sample is small). The display metrics
+    are last season's plain averages; `epa_base`, used for projections, is last season's
+    schedule-adjusted EPA/play level (opp_ratings) on this season's league scale."""
     prev = season_final(season - 1)
     if not prev.empty and (team, side) in prev.index:
-        return prev.loc[(team, side), METRICS]
-    lg = prof[prof.is_fbs & (prof.side == side)][METRICS].mean() if not prof.empty else pd.Series(np.nan, index=METRICS)
-    return lg
+        b = prev.loc[(team, side), METRICS].copy()
+    else:
+        b = prof[prof.is_fbs & (prof.side == side)][METRICS].mean() if not prof.empty else pd.Series(np.nan, index=METRICS)
+    b["epa_base"] = b["epa_play"]
+    if OPP_METHOD == "ridge" and not prof.empty:
+        r = opp_ratings(season - 1, f"{season}-03-01T00:00:00+00:00")
+        if team in r[side].index:
+            b["epa_base"] = float(r[side][team] - r["lg"] + prof.attrs.get("lg_epa", r["lg"]))
+    return b
 
 
 def unit_profile(rows: pd.DataFrame, p: Params, baseline: pd.Series, raw: pd.DataFrame | None = None) -> dict:
@@ -332,7 +463,7 @@ def unit_profile(rows: pd.DataFrame, p: Params, baseline: pd.Series, raw: pd.Dat
     raw = rows if raw is None else raw
     if rows.empty:
         return {"final": baseline.to_dict(), "weighted": baseline.to_dict(), "season": baseline.to_dict(),
-                "n_eff": 0.0, "lam": 0.0, "weights": np.array([]), "epa_proj": baseline["epa_play"]}
+                "n_eff": 0.0, "lam": 0.0, "weights": np.array([]), "epa_proj": baseline.get("epa_base", baseline["epa_play"])}
     w = game_weights(rows, p)
     out_w, out_s = {}, {}
     for m in METRICS:
@@ -351,7 +482,7 @@ def unit_profile(rows: pd.DataFrame, p: Params, baseline: pd.Series, raw: pd.Dat
     lam = n_eff / (n_eff + p.k)
     final = {m: (lam * out_w[m] + (1 - lam) * baseline[m]) if not (np.isnan(out_w[m]) or pd.isna(baseline[m]))
              else (out_w[m] if not np.isnan(out_w[m]) else baseline[m]) for m in METRICS}
-    b_epa = baseline["epa_play"]
+    b_epa = baseline.get("epa_base", baseline["epa_play"])
     epa_proj = lam * adj_w + (1 - lam) * b_epa if not pd.isna(b_epa) else adj_w
     return {"final": final, "weighted": out_w, "season": out_s, "n_eff": n_eff, "lam": lam, "weights": w,
             "epa_proj": epa_proj}
@@ -447,13 +578,39 @@ class PointsModel:
         return 0.5 * (1 + math.erf(z / math.sqrt(2))), sd
 
 
-def project(m: Matchup, feats: dict, pm: PointsModel) -> dict:
+@dataclass
+class Blend:
+    """Final margin = a * play-by-play margin + b * (results rating gap) + h * home (0/1).
+    Total points stay the play-by-play total; only the split changes. Fit on past seasons."""
+    a: float = 1.0
+    b: float = 0.0
+    h: float = 0.0
+    sd0: float = 15.4
+    sd_k: float = 0.4
+
+    def apply(self, ph: float, pa: float, loc: int, rdiff: float, n_eff: float) -> tuple[float, float, float, float]:
+        margin = self.a * (ph - pa) + self.b * rdiff + self.h * loc
+        total = ph + pa
+        sd = self.sd0 * math.sqrt(1 + self.sd_k / max(n_eff, 0.5))
+        wp = 0.5 * (1 + math.erf(margin / sd / math.sqrt(2)))
+        return (total + margin) / 2, (total - margin) / 2, wp, sd
+
+
+def project(m: Matchup, feats: dict, pm: PointsModel, bl: Blend | None = None) -> dict:
     loc_h = 0 if m.neutral else 1
     ph = pm.points(feats[m.home]["e"], feats[m.home]["plays"], loc_h)
     pa = pm.points(feats[m.away]["e"], feats[m.away]["plays"], -loc_h)
     n = min(feats[m.home]["n_eff"], feats[m.away]["n_eff"])
-    wp, sd = pm.win_prob(ph - pa, n)
-    return {"home_pts": ph, "away_pts": pa, "home_wp": wp, "margin_sd": sd, "n_eff": n}
+    out = {"pbp_home_pts": ph, "pbp_away_pts": pa}
+    if bl is not None:
+        rr = results_ratings(m.season, m.date.isoformat())["rating"]
+        r_h, r_a = float(rr.get(m.home, 0.0)), float(rr.get(m.away, 0.0))
+        ph, pa, wp, sd = bl.apply(ph, pa, loc_h, r_h - r_a, n)
+        out.update({"results_home": r_h, "results_away": r_a})
+    else:
+        wp, sd = pm.win_prob(ph - pa, n)
+    out.update({"home_pts": ph, "away_pts": pa, "home_wp": wp, "margin_sd": sd, "n_eff": n})
+    return out
 
 
 # ---------------------------------------------------------------- percentiles
@@ -528,7 +685,11 @@ def key_player_models(team: str, season: int, date: pd.Timestamp, k: dict | None
         return {}
     prof = profiles_asof(season, date.isoformat())
     lg = prof.attrs.get("lg_epa", 0.0)
-    lvl = prof[(prof.side == "defense") & (prof.games >= 2)].set_index("team")["epa_play"]
+    if OPP_METHOD == "ridge":
+        r = opp_ratings(season, date.isoformat())
+        lvl = r["defense"] - r["lg"] + lg
+    else:
+        lvl = prof[(prof.side == "defense") & (prof.games >= 2)].set_index("team")["epa_play"]
     opp_delta = (games.set_index("gameId").opponent.map(lvl).fillna(lg) - lg)
     qb_keys = set(pl[(pl.kind == "pass")].groupby("key").n.sum().loc[lambda s: s >= 10].index)
     last_game = games.gameId.iloc[-1]

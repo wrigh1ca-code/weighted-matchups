@@ -21,7 +21,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from engine.model import (Matchup, Params, PointsModel, baseline_for, fbs_teams, key_player_models, key_players,
+from engine import model
+from engine.model import (Blend, Matchup, Params, PointsModel, baseline_for, results_ratings, fbs_teams, key_player_models, key_players,
                           last_qb, load, profiles_asof, unit_ingredients)
 
 OUT = Path(__file__).resolve().parents[1] / "data" / "backtest"
@@ -66,8 +67,9 @@ def collect() -> list[dict]:
                         "wx_d2": np.array([np.nan if v is None else v for v in r.wx_d2], dtype=float),
                         "qb_match": r.qb_match.to_numpy(dtype=float), "epa": r.epa_play.to_numpy(dtype=float),
                         "rb_match": r.rb_match.to_numpy(dtype=float), "wr_match": r.wr_match.to_numpy(dtype=float),
-                        "plays": r.plays.to_numpy(dtype=float), "base_epa": float(base["epa_play"]),
+                        "plays": r.plays.to_numpy(dtype=float), "base_epa": float(base.get("epa_base", base["epa_play"])),
                         "opp_level": r.opp_level.to_numpy(dtype=float), "lg": float(prof.attrs["lg_epa"]),
+                        "opps": r.opponent.tolist(), "team": team, "side": side,
                         "lineup": [] if not off else [
                             {"d_epa_raw": mm["d_epa_raw"], "touches": mm["touches"], "pos": pos,
                              "extra": np.array([(mm["s_star"] * mm["expected"] - mm["share"].get(int(g), 0.0)) * mm["pool"].get(int(g), 0.0)
@@ -175,6 +177,46 @@ def evaluate(recs: list[dict], p: Params) -> dict:
     return {"train": score(tr, pm), "test": score(te, pm), "pm": asdict(pm), "df_test": te}
 
 
+def results_gap(recs: list[dict]) -> np.ndarray:
+    """Results-rating gap (home - away) before each game, from final scores only (no leakage)."""
+    out = []
+    for r in recs:
+        rr = results_ratings(r["season"], pd.Timestamp(r["date"]).isoformat())["rating"]
+        out.append(float(rr.get(r["home"], 0.0)) - float(rr.get(r["away"], 0.0)))
+    return np.array(out)
+
+
+BLEND_A = 0.70   # weight on the play-by-play margin; ~50/50 share with results (accuracy is flat from 0.5 to 0.8)
+
+
+def fit_blend(df: pd.DataFrame, rd: np.ndarray, pm: PointsModel, a: float = BLEND_A) -> tuple[Blend, dict, dict]:
+    """margin = a * play-by-play margin + b * results gap + h * home; a fixed so the advanced stats keep
+    about half the say, b and h fit on TRAIN; SD refit likewise."""
+    pred = predict(df, pm)
+    loc = np.where(df.neutral, 0, 1)
+    tr = df.season.isin(TRAIN).to_numpy()
+    X = np.column_stack([rd, loc])
+    c, *_ = np.linalg.lstsq(X[tr], (df.margin.to_numpy() - a * pred)[tr], rcond=None)
+    coef = [a, c[0], c[1]]
+    fit = a * pred + X @ c
+    resid = df.margin.to_numpy() - fit
+    A = np.column_stack([np.ones(tr.sum()), 1 / df.n_eff.clip(lower=0.5).to_numpy()[tr]])
+    sv, *_ = np.linalg.lstsq(A, resid[tr] ** 2, rcond=None)
+    sd0sq = max(sv[0], 1.0)
+    bl = Blend(a=float(coef[0]), b=float(coef[1]), h=float(coef[2]), sd0=float(math.sqrt(sd0sq)), sd_k=float(max(sv[1] / sd0sq, 0.0)))
+    def sc(mask):
+        d = df[mask]; f = fit[mask]
+        sd = bl.sd0 * np.sqrt(1 + bl.sd_k / d.n_eff.clip(lower=0.5))
+        from math import erf
+        wp = np.array([0.5 * (1 + erf(z / math.sqrt(2))) for z in f / sd])
+        tie = d.margin.to_numpy() == 0
+        return {"games": int(mask.sum()), "mae": float(np.mean(np.abs(d.margin - f))),
+                "rmse": float(np.sqrt(np.mean((d.margin - f) ** 2))),
+                "winner_acc": float(np.mean((np.sign(f) == np.sign(d.margin))[~tie])),
+                "brier": float(np.mean((wp - (d.margin > 0).astype(float).to_numpy())[~tie] ** 2))}
+    return bl, sc(tr), sc(~tr)
+
+
 GRID = {
     "a_opp": [0, 0.5, 1, 1.5, 2, 3],
     "a_rec": [0, 0.5, 1, 1.5, 2],
@@ -232,6 +274,10 @@ def main(argv):
               "rmse": float(np.sqrt(np.mean((mk.margin + mk.spread_home) ** 2)))}
     pm = PointsModel(**res_w["pm"])
     ours_on_mk = score(mk, pm)
+    # Blend with the results rating, fit on the site's default view (what visitors see)
+    rd = results_gap(recs)
+    df_site = features(recs, site_default)
+    bl, bl_train, bl_test = fit_blend(df_site, rd, PointsModel(**res_w["pm"]))
     out = {
         "train_seasons": list(TRAIN), "test_seasons": list(TEST),
         "params": asdict(tuned), "points_model": res_w["pm"],
@@ -239,6 +285,8 @@ def main(argv):
         "equal_weight": {"train": res_e["train"], "test": res_e["test"], "points_model": res_e["pm"]},
         "site_default": {"a": SITE_DEFAULT_A, "train": res_d["train"], "test": res_d["test"]},
         "market": {"test": market, "ours_same_games": ours_on_mk},
+        "blend": {"coef": asdict(bl), "train": bl_train, "test": bl_test,
+                  "results_rating": {"cap": model.RES_CAP, "ridge": model.RES_RIDGE, "ridge_conf": model.RES_RIDGE_CONF}},
     }
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "results.json").write_text(json.dumps(out, indent=2))

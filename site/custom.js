@@ -102,6 +102,7 @@
       form: { [home]: TH.form, [away]: TA.form },
       units, refs: L.refs, lg_epa: L.lg_epa, plays,
       params: L.params, points_model: L.points_model, best_a: L.best_a,
+      results: { [home]: (L.results || {})[home] ?? 0, [away]: (L.results || {})[away] ?? 0 }, blend: L.blend || null,
     };
   }
 

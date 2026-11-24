@@ -18,6 +18,7 @@
     [x, y, z] = [f(x), f(y), f(z)];
     return [116 * y - 16, 500 * (x - y), 200 * (y - z)];
   }
+  const chroma = c => { const [, a, b] = lab(c); return Math.hypot(a, b); };
   const deltaE = (a, b) => { const p = lab(a), q = lab(b); return Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]); };
   // Darken toward black until it has 3:1 contrast on white (a line/graphic minimum)
   function readable(h) {
@@ -33,7 +34,8 @@
   function alike(x, y) {
     const p = lab(x), q = lab(y);
     if (Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]) < 40) return true;
-    if (p[0] < 28 && q[0] < 28) return true;
+    const cp0 = Math.hypot(p[1], p[2]), cq0 = Math.hypot(q[1], q[2]);
+    if (p[0] < 28 && q[0] < 28 && (cp0 < 20 || cq0 < 20)) return true;   // black vs a very dark color
     const cp = Math.hypot(p[1], p[2]), cq = Math.hypot(q[1], q[2]);
     if (cp > 20 && cq > 20) {
       let dh = Math.abs(Math.atan2(p[2], p[1]) - Math.atan2(q[2], q[1])) * 180 / Math.PI;
@@ -48,6 +50,9 @@
     const opts = t => { let [p, a] = (map && map[t]) || [];
       // A very light primary (Iowa's gold) would need heavy darkening; use a strong alternate instead
       if (ok(p) && ok(a) && contrastOnWhite(hex2rgb(p)) < 2 && contrastOnWhite(hex2rgb(a)) >= 3) [p, a] = [a, p];
+      // CFBD lists black as some teams' primary (Cincinnati: black, alt red). If the alternate is a
+      // strong color that reads on white as-is, use it; black-and-light-gold teams (Iowa) stay black.
+      else if (ok(p) && ok(a) && chroma(hex2rgb(p)) < 10 && chroma(hex2rgb(a)) > 30 && contrastOnWhite(hex2rgb(a)) >= 3) [p, a] = [a, p];
       return [p, a].filter(ok).map(readable); };
     const H = opts(home), A = opts(away);
     let h = H[0] || hex2rgb(DEF.home), a = A[0] || hex2rgb(DEF.away);
@@ -71,5 +76,14 @@
   async function load() {
     try { const r = await fetch('data/colors.json', { cache: 'no-cache' }); return r.ok ? await r.json() : null; } catch (e) { return null; }
   }
-  window.TeamColors = { load, pick, apply };
+  // One team's readable color on its own (e.g. a swatch in a list)
+  function single(map, team) {
+    const [p, a] = (map && map[team]) || [];
+    const ok = h => h && /^#[0-9a-f]{6}$/i.test(h) && !weak(h);
+    let h = ok(p) ? p : ok(a) ? a : null;
+    if (ok(p) && ok(a) && (contrastOnWhite(hex2rgb(p)) < 2 && contrastOnWhite(hex2rgb(a)) >= 3
+        || chroma(hex2rgb(p)) < 10 && chroma(hex2rgb(a)) > 30 && contrastOnWhite(hex2rgb(a)) >= 3)) h = a;
+    return h ? rgb2hex(readable(h)) : '#9ca3af';
+  }
+  window.TeamColors = { load, pick, apply, single };
 })();
