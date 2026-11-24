@@ -237,7 +237,8 @@ RES_CAP = 28.0          # margins beyond this count as this (no credit for runni
 #   "margin"  final score margin          "lead"    average lead over regulation
 #   "control" game control (average in-game win probability), on a points scale
 #   "flow"    average of lead and control
-RES_METRIC = "margin"
+#   "all"     average of final margin, lead and control
+RES_METRIC = "control"
 RES_RIDGE = 1.0         # shrinkage of each team toward its conference (in games)
 RES_RIDGE_CONF = 0.5    # shrinkage of each conference toward the league (in games)
 
@@ -254,7 +255,7 @@ def game_outcome(c: pd.DataFrame, metric: str, cap: float) -> np.ndarray:
     ok = ~np.isnan(ctl)
     k = (np.std(final[ok]) / np.std(ctl[ok])) if ok.sum() > 20 and np.std(ctl[ok]) > 0 else 60.0
     ctl_pts = np.clip(ctl * k, -cap, cap)
-    y = {"lead": lead, "control": ctl_pts, "flow": (lead + ctl_pts) / 2}[metric]
+    y = {"lead": lead, "control": ctl_pts, "flow": (lead + ctl_pts) / 2, "all": (final + lead + ctl_pts) / 3}[metric]
     return np.where(np.isnan(y), final, y)
 
 

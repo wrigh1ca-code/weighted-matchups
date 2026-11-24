@@ -22,9 +22,13 @@ settings, 12.93 → 12.66 at the tuned settings (market 11.95).
 
 ## Results blend
 
-Each team also has a results rating (`model.results_ratings`): schedule-adjusted scoring margin from every
-game this season (FBS and FCS), margins capped at 28, solved for all teams and conferences at once with a
-home edge. Projections blend it with the play-by-play model (`model.Blend`): final margin = 0.70 x
+Each team also has a results rating (`model.results_ratings`), built on **game control** (`RES_METRIC`):
+for every game, `pipeline/game_flow.py` averages each team's in-game win probability over regulation (WP
+model: score, time left, possession, field position; no pregame information). Control is put on a points
+scale and solved for all teams and conferences at once with a home edge (games without play-by-play, e.g.
+Division II/III, fall back to final margin). Average lead, final margin and a three-way average are also
+available; backtest them with `python -m engine.backtest results`. Game control was chosen for what it
+measures (who controlled the game); final margin was about 0.05 pts more accurate, within noise. Projections blend it with the play-by-play model (`model.Blend`): final margin = 0.70 x
 play-by-play margin + b x results gap + h x home, with b and h fit on 2024-25 (`backtest.fit_blend`); the
 0.70 gives the two about equal say and was as accurate as the free fit. Total points stay play-by-play.
 Backtest (2026 test games, site settings): MAE 12.92 -> 12.74, winners 65% -> 68%.
