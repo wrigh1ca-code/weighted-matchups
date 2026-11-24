@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["site/**.html", "site/**.js", "site/**.css"]
+    paths: ["site/**.html", "site/**.js", "site/**.css", "engine/**.py", "pipeline/**.py", ".github/workflows/update-site.yml"]
 
 permissions:
   contents: write
