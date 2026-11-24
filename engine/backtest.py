@@ -227,7 +227,7 @@ def compare_results(recs: list[dict]) -> int:
     have = model.load()[1]
     cov = have[have.season.isin(SEASONS)].groupby("season")["control"].apply(lambda x: x.notna().mean())
     print("game-flow coverage by season:", {int(k): round(float(v), 2) for k, v in cov.items()})
-    for metric in ("margin", "lead", "control", "flow"):
+    for metric in ("margin", "lead", "control", "flow", "all"):
         model.results_ratings.cache_clear()
         model.RES_METRIC = metric
         bl, tr, te = fit_blend(df, results_gap(recs), pm)

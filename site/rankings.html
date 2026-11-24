@@ -19,7 +19,7 @@
     <h1 class="title">Power rankings</h1>
     <p class="small" style="max-width:780px">Every FBS team played against every other, on a neutral field in good weather (75°F, dry, light wind), using the same weighted advanced-stat model as the matchup pages.
       <b>Rating</b> is a team's average projected margin over all of those games: how many points better it is than an average FBS team on a neutral field.
-      Each projection blends <b>play-by-play</b> analytics with <b>results</b> (schedule-adjusted scoring margins from real games), about half each.</p>
+      Each projection blends <b>play-by-play</b> analytics with <b>results</b> (game control: how much of each real game a team was in control of, adjusted for schedule), about half each.</p>
   </div>
 
   <div class="rk-tools">
@@ -34,7 +34,7 @@
         <th scope="col">Team</th>
         <th scope="col" class="num">Rating</th>
         <th scope="col" class="num hide-s" title="Play-by-play analytics only">Play-by-play</th>
-        <th scope="col" class="num hide-s" title="Schedule-adjusted scoring margin from real games">Results</th>
+        <th scope="col" class="num hide-s" title="Game control in real games, adjusted for schedule">Results</th>
         <th scope="col" class="num hide-s">Avg score vs avg team</th>
         <th scope="col" class="num hide-s">Beats avg team</th>
         <th scope="col" class="num hide-m">Favored in</th>
@@ -49,7 +49,7 @@
     <div class="small" style="margin-top:10px;max-width:780px;display:flex;flex-direction:column;gap:8px">
       <p style="margin:0">For each pair of FBS teams the model projects a neutral-site game in good weather, exactly as the Build a matchup page would. Each team's profile is weighted toward its past games against opponents most like the one it would face, recent weeks, similar settings and its current QB, then blended with last season's numbers when the sample is small.</p>
       <p style="margin:0">That's about 9,400 projected games. Rating is the average projected margin; the score shows average points scored and allowed; "Beats avg team" is the average win probability; "Favored in" counts the projected wins.</p>
-      <p style="margin:0"><b>Play-by-play and results.</b> Every projected margin blends the play-by-play model with each team's <b>results rating</b>: its scoring margin in real games this season (FBS and FCS), adjusted for schedule and home field, with margins capped at 28 points so running up the score doesn't count. The blend was fit on past seasons so the two have about equal say, and it predicted games better than either alone. The Play-by-play and Results columns show each view on its own (points vs an average team, with that view's rank) so you can see where they disagree. The blended rating is usually larger than either: when both views agree a team is strong, the evidence adds up, and in past seasons each view on its own was too cautious about lopsided games.</p>
+      <p style="margin:0"><b>Play-by-play and results.</b> Every projected margin blends the play-by-play model with each team's <b>results rating</b>, built on <b>game control</b>: in every real game this season, a win-probability model tracks each team's chance of winning snap by snap (from score, time left, possession and field position, with no pregame expectations), and game control is that chance averaged over the 60 minutes. A team that led all day scores high even if it won by 10; a game that was tied late and ended in a blowout counts for much less than the final score suggests. Game control is then adjusted for schedule and home field, solving for all teams and conferences at once, and put on a points scale. The blend was fit on past seasons so the two have about equal say, and it predicted games better than play-by-play alone. The Play-by-play and Results columns show each view on its own (points vs an average team, with that view's rank) so you can see where they disagree. The blended rating is usually larger than either: when both views agree a team is strong, the evidence adds up, and in past seasons each view on its own was too cautious about lopsided games.</p>
       <p style="margin:0"><b>Strength of schedule.</b> Every game's EPA is adjusted for the opponent, and opponent strength is solved for every offense, defense and conference at once (FBS and FCS games), so a defense that looked great against weak offenses doesn't make its opponents look better than they are. Conference strength pools all of a conference's nonconference games, and last season's starting point is schedule-adjusted the same way. In backtests on 2024–26 games this made the site's predictions more accurate.</p>
       <p style="margin:0">The rankings measure how teams have played per snap, not their records or who they've beaten, so a team with close losses can rank above teams with better records.</p>
     </div>
