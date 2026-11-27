@@ -910,6 +910,13 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856755,Texas,m.terry,M.Terry III,5,2.3432,4.0,28,rush
 401856755,Texas,r.brown,R.Brown,4,-2.4673,0.0,5,rush
 401856755,Texas,r.wingo,R.Wingo,1,0.0771,1.0,5,rush
+401856762,Mississippi State,a.evans,A.Evans III,1,-0.2978,0.0,0,rush
+401856762,Mississippi State,f.bothwell,F.Bothwell,18,6.6656,10.0,129,rush
+401856762,Mississippi State,p.puckett,P.Puckett,3,-0.2101,0.0,12,rush
+401856762,Mississippi State,x.gayten,X.Gayten,1,-0.1549,0.0,4,rush
+401856762,Ole Miss,d.alexander,D.Alexander,2,0.8156,2.0,15,rush
+401856762,Ole Miss,j.dye,J.Dye,19,4.4501,11.0,90,rush
+401856762,Ole Miss,t.chambliss,T.Chambliss,6,0.4371,3.0,24,rush
 401856766,North Carolina,b.edwards,B.Edwards Jr.,4,-0.4994,3.0,14,rush
 401856766,North Carolina,b.hall,B.Hall,11,-7.6921,3.0,36,rush
 401856766,North Carolina,d.june,D.June,6,-0.7915,2.0,25,rush
@@ -1876,6 +1883,15 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856872,Utah,d.dampier,D.Dampier,15,7.2021,10.0,83,rush
 401856872,Utah,h.andrews,H.Andrews,2,1.6153,1.0,4,rush
 401856872,Utah,w.parker,W.Parker,1,-0.1364,0.0,1,rush
+401856879,TCU,a.schobel,A.Schobel,9,-4.5685,2.0,31,rush
+401856879,TCU,j.payne,J.Payne,10,-6.3337,2.0,32,rush
+401856879,TCU,l.walker,L.Walker,4,-1.1334,1.0,12,rush
+401856879,TCU,m.everhart,M.Everhart,2,0.3716,1.0,14,rush
+401856879,Texas Tech,c.dickey,C.Dickey,2,-0.6236,1.0,5,rush
+401856879,Texas Tech,j.williams,J.Williams,5,-2.3777,2.0,12,rush
+401856879,Texas Tech,l.tshibangu,L.Tshibangu,2,-0.7652,0.0,4,rush
+401856879,Texas Tech,m.simmons,M.Simmons,1,-0.5875,0.0,1,rush
+401856879,Texas Tech,t.castellanos,T.Castellanos,5,0.0883,2.0,20,rush
 401856881,Oklahoma State,a.adeyi,A.Adeyi,6,0.6277,3.0,44,rush
 401856881,Oklahoma State,c.hawkins,C.Hawkins,31,7.1232,18.0,180,rush
 401856881,Oklahoma State,d.mestemaker,D.Mestemaker,1,-1.1619,0.0,0,rush
@@ -3868,6 +3884,15 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858535,Washington,b.bonner,B.Bonner,4,0.0453,2.0,24,rush
 401858535,Washington,d.williams,D.Williams Jr.,7,8.9807,2.0,114,rush
 401858535,Washington,j.limar,J.Limar,17,4.3733,9.0,77,rush
+401858536,Iowa,b.jackson,B.Jackson,4,-1.2121,0.0,9,rush
+401858536,Iowa,h.brown,H.Brown,8,4.8943,6.0,45,rush
+401858536,Iowa,l.phillips,L.Phillips Jr.,14,2.3336,6.0,76,rush
+401858536,Iowa,x.williams,X.Williams,8,-1.1874,2.0,25,rush
+401858536,Nebraska,a.colandrea,A.Colandrea,4,-7.4241,1.0,14,rush
+401858536,Nebraska,i.mozee,I.Mozee,4,-2.5464,1.0,6,rush
+401858536,Nebraska,j.barney,J.Barney Jr.,2,-0.5303,0.0,4,rush
+401858536,Nebraska,j.rule,J.Rule,15,4.9486,9.0,84,rush
+401858536,Nebraska,m.nelson,M.Nelson,1,-0.0558,0.0,4,rush
 401859184,Notre Dame,a.williams,A.Williams,6,-0.046,2.0,21,rush
 401859184,Notre Dame,n.james,N.James Jr.,6,6.167,6.0,29,rush
 401859184,Rice,d.hardeman,D.Hardeman,2,-0.7273,0.0,6,rush
@@ -5230,6 +5255,16 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862836,UTSA,o.mccown,O.McCown,2,-0.8906,0.0,4,rush
 401862836,UTSA,utsa,UTSA,2,-2.0313,0.0,-2,rush
 401862836,UTSA,w.henderson,W.Henderson III,22,-0.6458,9.0,91,rush
+401862840,Tulsa,b.hayes,B.Hayes,4,2.9837,2.0,20,rush
+401862840,Tulsa,d.alston,D.Alston,9,-1.5784,4.0,43,rush
+401862840,Tulsa,d.mckinney,D.McKinney,1,-0.2653,0.0,2,rush
+401862840,Tulsa,o.singleton,O.Singleton,1,2.08,1.0,12,rush
+401862840,Tulsa,t.jones,T.Jones,7,-3.899,1.0,6,rush
+401862840,UTSA,b.high,B.High Jr.,11,-2.099,3.0,23,rush
+401862840,UTSA,m.anderson,M.Anderson,1,1.1425,1.0,19,rush
+401862840,UTSA,m.wiepert,M.Wiepert,3,-1.1006,1.0,1,rush
+401862840,UTSA,o.mccown,O.McCown,4,-0.1678,1.0,17,rush
+401862840,UTSA,w.henderson,W.Henderson III,16,2.1668,5.0,105,rush
 401864424,Delaware,j.porter,J.Porter,1,0.5599,1.0,7,rush
 401864424,Delaware,j.silver,J.Silver,4,-1.7599,1.0,11,rush
 401864424,Delaware,k.roberts,K.Roberts,5,1.0338,3.0,13,rush
@@ -6433,6 +6468,21 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866471,Western Michigan,b.lowry,B.Lowry,19,3.8892,13.0,107,rush
 401866471,Western Michigan,c.cabana,C.Cabana,9,1.3117,4.0,68,rush
 401866471,Western Michigan,j.buckley,J.Buckley,19,10.7506,10.0,126,rush
+401866472,Akron,c.broughton,C.Broughton,8,-2.68,1.0,16,rush
+401866472,Akron,j.gant,J.Gant,20,1.622,7.0,72,rush
+401866472,Akron,k.mason,K.Mason,1,0.2927,1.0,8,rush
+401866472,Akron,s.patrick,S.Patrick,3,1.275,2.0,23,rush
+401866472,Buffalo,j.wright,J.Wright,5,5.2944,3.0,22,rush
+401866472,Buffalo,m.burch,M.Burch,24,1.9686,12.0,130,rush
+401866473,Ohio,d.brune,D.Brune,8,-1.1031,2.0,20,rush
+401866473,Ohio,l.davis,L.Davis,14,9.0415,8.0,100,rush
+401866473,Ohio,n.poulos,N.Poulos,3,-3.8051,0.0,27,rush
+401866473,Ohio,v.rosa,V.Rosa,8,-0.9038,3.0,20,rush
+401866473,Toledo,a.ison,A.Ison,3,1.9264,1.0,27,rush
+401866473,Toledo,c.miller,C.Miller,15,2.0662,10.0,98,rush
+401866473,Toledo,c.walendzak,C.Walendzak,12,4.351,8.0,80,rush
+401866473,Toledo,j.richter,J.Richter,3,1.402,1.0,22,rush
+401866473,Toledo,k.robinson,K.Robinson,1,-0.8066,0.0,-5,rush
 401866476,Central Michigan,b.townsend,B.Townsend,1,-0.243,0.0,1,rush
 401866476,Central Michigan,j.clerveaux,J.Clerveaux,9,0.8725,4.0,32,rush
 401866476,Central Michigan,j.glasser,J.Glasser,3,0.0801,1.0,4,rush
@@ -12055,6 +12105,14 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868353,Prairie View A&M,k.harris,K.Harris,5,1.2175,1.0,47,rush
 401868353,Prairie View A&M,k.smith,K.Smith,3,-1.323,1.0,0,rush
 401868353,Prairie View A&M,t.carter,T.Carter,6,11.8142,5.0,29,rush
+401868354,Alabama State,a.frye,A.Frye,4,3.3587,1.0,36,rush
+401868354,Alabama State,j.hostzclaw,J.Hostzclaw,8,1.9211,5.0,50,rush
+401868354,Alabama State,j.howard,J.Howard,4,1.9099,2.0,11,rush
+401868354,Alabama State,t.ramsey,T.Ramsey,3,-1.1998,0.0,5,rush
+401868354,Tuskegee,a.yelding,A.Yelding,5,0.0282,2.0,24,rush
+401868354,Tuskegee,h.pullen,H.Pullen,2,2.8915,1.0,36,rush
+401868354,Tuskegee,j.rowser,J.Rowser,11,-9.708,1.0,18,rush
+401868354,Tuskegee,r.spivey,R.Spivey Jr.,2,-0.3248,0.0,8,rush
 401868355,Alcorn State,a.wright,A.Wright,1,0.9352,1.0,12,rush
 401868355,Alcorn State,e.temple,E.Temple,27,4.778,15.0,140,rush
 401868355,Alcorn State,f.robertson,F.Robertson,8,-0.5618,3.0,19,rush
@@ -15974,6 +16032,22 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856755,Texas,j.bishop,J.Bishop Jr.,2,1.0161,2.0,24,target
 401856755,Texas,r.brown,R.Brown,3,3.4962,3.0,52,target
 401856755,Texas,r.wingo,R.Wingo,6,3.0219,3.0,67,target
+401856762,Mississippi State,a.evans,A.Evans III,6,-0.6915,2.0,16,target
+401856762,Mississippi State,c.capehart,C.Capehart,1,-1.7797,0.0,-3,target
+401856762,Mississippi State,f.bothwell,F.Bothwell,3,4.5567,2.0,20,target
+401856762,Mississippi State,j.shumpert-perkins,J.Shumpert-Perkins,1,-0.4204,0.0,2,target
+401856762,Mississippi State,m.johnson,M.Johnson,6,5.7386,5.0,96,target
+401856762,Mississippi State,s.magee,S.Magee,3,1.3553,1.0,18,target
+401856762,Mississippi State,s.west,S.West,1,0.6272,1.0,11,target
+401856762,Mississippi State,z.ragins,Z.Ragins,2,0.1625,1.0,7,target
+401856762,Ole Miss,c.cunningham,C.Cunningham,4,1.8141,2.0,18,target
+401856762,Ole Miss,c.odom,C.Odom,6,1.0177,2.0,41,target
+401856762,Ole Miss,d.alexander,D.Alexander,10,0.907,3.0,39,target
+401856762,Ole Miss,h.fields,H.Fields,5,6.9002,4.0,63,target
+401856762,Ole Miss,j.dye,J.Dye,3,1.2874,1.0,11,target
+401856762,Ole Miss,m.smith,M.Smith,4,3.6972,3.0,43,target
+401856762,Ole Miss,s.reed,S.Reed,2,1.9071,1.0,22,target
+401856762,Ole Miss,t.ray,T.Ray,2,-1.6266,0.0,0,target
 401856766,North Carolina,b.hall,B.Hall,1,-0.4287,0.0,2,target
 401856766,North Carolina,c.sadler,C.Sadler,2,0.0536,1.0,7,target
 401856766,North Carolina,d.june,D.June,1,-0.5505,0.0,0,target
@@ -17724,6 +17798,24 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856872,Utah,m.clark,M.Clark,1,-0.6938,0.0,0,target
 401856872,Utah,n.bennee,N.Bennee,4,1.9108,2.0,38,target
 401856872,Utah,r.johnson,R.Johnson,1,-0.4788,0.0,0,target
+401856879,TCU,a.martin,A.Martin,1,-0.1143,0.0,4,target
+401856879,TCU,e.small,E.Small,9,3.9105,4.0,43,target
+401856879,TCU,j.dwyer,J.Dwyer,5,0.2529,2.0,22,target
+401856879,TCU,j.hayes,J.Hayes,2,3.3812,2.0,29,target
+401856879,TCU,j.payne,J.Payne,1,2.3137,1.0,8,target
+401856879,TCU,j.scott,J.Scott,3,-0.5438,2.0,9,target
+401856879,TCU,k.pimpton,K.Pimpton,1,-1.1417,0.0,0,target
+401856879,TCU,l.walker,L.Walker,1,4.1602,1.0,42,target
+401856879,TCU,m.everhart,M.Everhart,1,1.5889,1.0,5,target
+401856879,TCU,m.peterson,M.Peterson,1,-0.6919,0.0,0,target
+401856879,Texas Tech,c.dickey,C.Dickey,1,0.7403,1.0,6,target
+401856879,Texas Tech,c.eakin,C.Eakin,2,-0.5676,1.0,11,target
+401856879,Texas Tech,j.williams,J.Williams,4,7.8928,3.0,94,target
+401856879,Texas Tech,k.johnson,K.Johnson,4,5.3057,3.0,44,target
+401856879,Texas Tech,m.hudson,M.Hudson,4,3.0047,2.0,47,target
+401856879,Texas Tech,m.simmons,M.Simmons,4,9.5143,4.0,110,target
+401856879,Texas Tech,t.carter,T.Carter Jr.,3,0.2835,2.0,12,target
+401856879,Texas Tech,t.castellanos,T.Castellanos,1,-1.0676,0.0,-6,target
 401856881,Oklahoma State,a.adeyi,A.Adeyi,1,0.9767,1.0,8,target
 401856881,Oklahoma State,c.barnes,C.Barnes,3,3.4234,2.0,58,target
 401856881,Oklahoma State,c.hawkins,C.Hawkins,1,-0.4881,0.0,0,target
@@ -21464,6 +21556,21 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858535,Washington,m.james,M.James,1,-1.008,0.0,0,target
 401858535,Washington,r.williams,R.Williams,6,-0.1731,3.0,27,target
 401858535,Washington,wash42,WASH42,1,-0.8626,0.0,0,target
+401858536,Iowa,b.jackson,B.Jackson,3,2.314,1.0,27,target
+401858536,Iowa,d.howard,D.Howard,1,0.2251,1.0,15,target
+401858536,Iowa,d.vonnahme,D.Vonnahme,5,5.2231,3.0,61,target
+401858536,Iowa,l.phillips,L.Phillips Jr.,1,1.0427,1.0,9,target
+401858536,Iowa,r.zee,R.Vander Zee,3,-0.0552,1.0,10,target
+401858536,Iowa,t.diaz,T.Diaz,4,2.5019,3.0,48,target
+401858536,Iowa,z.ortwerth,Z.Ortwerth,1,-0.1007,0.0,3,target
+401858536,Nebraska,c.nelson,C.Nelson,2,1.9608,1.0,27,target
+401858536,Nebraska,i.mozee,I.Mozee,2,-0.4727,0.0,7,target
+401858536,Nebraska,j.barney,J.Barney Jr.,3,1.9171,2.0,17,target
+401858536,Nebraska,j.rule,J.Rule,1,0.4024,1.0,6,target
+401858536,Nebraska,k.gilmer,K.Gilmer,4,-2.2718,0.0,4,target
+401858536,Nebraska,l.lindenmeyer,L.Lindenmeyer,7,-0.3996,5.0,63,target
+401858536,Nebraska,n.hunter,N.Hunter,4,-1.0276,1.0,9,target
+401858536,Nebraska,q.clark,Q.Clark,2,3.076,2.0,18,target
 401859184,Notre Dame,a.williams,A.Williams,1,-0.4764,0.0,0,target
 401859184,Notre Dame,j.faison,J.Faison,4,8.2253,4.0,54,target
 401859184,Notre Dame,j.greathouse,J.Greathouse,3,1.9579,3.0,48,target
@@ -23690,6 +23797,21 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862836,UTSA,m.anderson,M.Anderson,1,-0.3435,0.0,0,target
 401862836,UTSA,t.rupe,T.Rupe,1,3.2725,1.0,27,target
 401862836,UTSA,w.henderson,W.Henderson III,3,-1.7463,0.0,5,target
+401862840,Tulsa,d.alston,D.Alston,1,-0.8709,0.0,1,target
+401862840,Tulsa,g.mcatee,G.McAtee,1,2.5287,1.0,6,target
+401862840,Tulsa,j.calloway,J.Calloway,4,6.8996,3.0,84,target
+401862840,Tulsa,j.ross,J.Ross,6,2.1263,3.0,68,target
+401862840,Tulsa,o.singleton,O.Singleton,13,1.6823,5.0,59,target
+401862840,Tulsa,t.jones,T.Jones,1,-0.3465,0.0,-1,target
+401862840,UTSA,a.wilson,A.Wilson,6,9.5146,2.0,146,target
+401862840,UTSA,b.young,B.Young Jr.,2,1.3804,1.0,18,target
+401862840,UTSA,d.amador,D.Amador II,9,3.5023,3.0,51,target
+401862840,UTSA,j.hardy,J.Hardy,1,-0.6513,0.0,2,target
+401862840,UTSA,m.anderson,M.Anderson,3,2.6828,2.0,58,target
+401862840,UTSA,m.campbell,M.Campbell,3,2.6382,2.0,25,target
+401862840,UTSA,t.laughlin,T.Laughlin,1,0.172,0.0,9,target
+401862840,UTSA,t.west,T.West,2,3.2711,1.0,17,target
+401862840,UTSA,w.henderson,W.Henderson III,4,3.0045,2.0,31,target
 401864424,Delaware,b.graves,B.Graves,4,3.2073,3.0,59,target
 401864424,Delaware,d.lewis,D.Lewis,4,4.7034,3.0,46,target
 401864424,Delaware,d.lofton,D.Lofton,4,4.5723,3.0,64,target
@@ -25744,6 +25866,33 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866471,Western Michigan,e.nelson,E.Nelson,7,-2.9211,2.0,8,target
 401866471,Western Michigan,j.buckley,J.Buckley,1,-0.1977,0.0,0,target
 401866471,Western Michigan,n.levicki,N.Levicki,2,2.0559,2.0,36,target
+401866472,Akron,c.cravaack,C.Cravaack,3,-0.544,1.0,10,target
+401866472,Akron,e.alexander,E.Alexander,4,0.15,1.0,17,target
+401866472,Akron,j.gant,J.Gant,3,-1.9619,1.0,18,target
+401866472,Akron,k.mason,K.Mason,6,7.8094,4.0,95,target
+401866472,Akron,m.burris,M.Burris,6,2.1933,2.0,52,target
+401866472,Akron,m.williams,M.Williams,2,-1.7743,0.0,0,target
+401866472,Buffalo,c.morrow,C.Morrow,8,-0.0087,4.0,36,target
+401866472,Buffalo,d.early,D.Early,3,-1.8461,0.0,3,target
+401866472,Buffalo,j.andrews,J.Andrews,3,1.0827,1.0,15,target
+401866472,Buffalo,p.clacks,P.Clacks III,2,1.7867,1.0,13,target
+401866472,Buffalo,t.shelton,T.Shelton,1,2.6323,1.0,21,target
+401866472,Buffalo,w.clark,W.Clark,1,-0.1587,0.0,0,target
+401866473,Ohio,a.miller,A.Miller,3,0.8335,2.0,24,target
+401866473,Ohio,d.dorwart,D.Dorwart,12,3.7435,6.0,120,target
+401866473,Ohio,e.pugh,E.Pugh,1,-0.2494,0.0,0,target
+401866473,Ohio,j.furtney,J.Furtney,1,0.2964,1.0,6,target
+401866473,Ohio,p.bowman,P.Bowman,12,11.4986,7.0,150,target
+401866473,Ohio,r.neer,R.Neer,3,4.7564,2.0,28,target
+401866473,Ohio,tol20,TOL20,1,-0.7441,0.0,0,target
+401866473,Toledo,a.dabbs,A.Dabbs,6,3.6929,4.0,53,target
+401866473,Toledo,a.ison,A.Ison,1,-0.6469,0.0,0,target
+401866473,Toledo,b.hammer,B.Hammer,6,3.3408,3.0,60,target
+401866473,Toledo,c.miller,C.Miller,2,0.7611,1.0,14,target
+401866473,Toledo,c.walendzak,C.Walendzak,2,-1.8116,0.0,1,target
+401866473,Toledo,d.barnett,D.Barnett Jr.,12,3.11,5.0,65,target
+401866473,Toledo,s.lee,S.Lee,1,-0.5578,0.0,0,target
+401866473,Toledo,t.crosby,T.Crosby Jr.,1,2.4854,1.0,18,target
 401866476,Central Michigan,b.naves,B.Naves,4,-0.403,1.0,21,target
 401866476,Central Michigan,j.allen,J.Allen,2,-1.9806,0.0,0,target
 401866476,Central Michigan,j.ruffin,J.Ruffin,7,-5.9016,1.0,11,target
@@ -35790,6 +35939,23 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868353,Prairie View A&M,c.fitzgerald,C.Fitzgerald,1,1.0745,1.0,6,target
 401868353,Prairie View A&M,d.mcdaniel,D.McDaniel,8,3.2151,2.0,55,target
 401868353,Prairie View A&M,t.jones,T.Jones,3,-1.1929,1.0,19,target
+401868354,Alabama State,d.hicks,D.Hicks,4,0.0832,2.0,21,target
+401868354,Alabama State,d.vickerson,D.Vickerson,1,-0.3882,0.0,0,target
+401868354,Alabama State,f.pierre,F.Pierre,3,-1.7564,1.0,13,target
+401868354,Alabama State,i.tate,I.Tate,3,4.7779,2.0,65,target
+401868354,Alabama State,j.brown,J.Brown,1,0.3403,1.0,14,target
+401868354,Alabama State,j.clarke,J.Clarke,1,-0.6402,0.0,0,target
+401868354,Alabama State,j.howard,J.Howard,1,-0.68,0.0,2,target
+401868354,Alabama State,k.keye,K.Keye,7,5.0326,4.0,57,target
+401868354,Alabama State,t.ramsey,T.Ramsey,3,-0.3352,1.0,16,target
+401868354,Tuskegee,d.cooper,D.Cooper,1,-0.6824,0.0,0,target
+401868354,Tuskegee,e.hall,E.Hall,6,1.3804,3.0,36,target
+401868354,Tuskegee,e.nation,E.Nation,1,-3.9221,0.0,0,target
+401868354,Tuskegee,j.johnson,J.Johnson,1,0.7665,0.0,8,target
+401868354,Tuskegee,j.rowser,J.Rowser,1,-1.0657,0.0,0,target
+401868354,Tuskegee,n.powell,N.Powell,1,-0.5856,0.0,0,target
+401868354,Tuskegee,p.parker,P.Parker,5,-2.1334,0.0,2,target
+401868354,Tuskegee,r.wilson,R.Wilson Jr.,2,-1.2143,0.0,0,target
 401868355,Alcorn State,a.wright,A.Wright,7,3.4386,3.0,60,target
 401868355,Alcorn State,alc41,ALC41,1,-0.2579,0.0,0,target
 401868355,Alcorn State,c.mcdonald,C.McDonald Jr.,1,1.6022,1.0,27,target
@@ -39846,6 +40012,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856754,Tennessee,g.macintyre,G.MacIntyre,22,-4.5057,10.0,67,pass
 401856755,Arkansas,k.jackson,K.Jackson,18,-4.4526,9.0,169,pass
 401856755,Texas,a.manning,A.Manning,23,19.0909,15.0,284,pass
+401856762,Mississippi State,p.puckett,P.Puckett,31,-9.122,13.0,185,pass
+401856762,Ole Miss,t.chambliss,T.Chambliss,38,13.1826,16.0,221,pass
 401856766,North Carolina,b.edwards,B.Edwards Jr.,31,2.6298,15.0,214,pass
 401856766,TCU,j.craig,J.Craig,35,-1.7418,11.0,154,pass
 401856767,Bethune-Cookman,a.jones,A.Jones,3,-0.8532,0.0,12,pass
@@ -40112,6 +40280,9 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401856872,TCU,e.small,E.Small,1,-0.5709,0.0,0,pass
 401856872,Utah,b.ficklin,B.Ficklin,1,-1.088,0.0,0,pass
 401856872,Utah,d.dampier,D.Dampier,32,10.7397,12.0,255,pass
+401856879,TCU,a.schobel,A.Schobel,27,6.8125,13.0,160,pass
+401856879,Texas Tech,j.williams,J.Williams,1,-1.0676,0.0,-6,pass
+401856879,Texas Tech,t.castellanos,T.Castellanos,23,25.0489,16.0,324,pass
 401856881,Oklahoma State,d.mestemaker,D.Mestemaker,27,22.8215,19.0,392,pass
 401856881,West Virginia,m.hawkins,M.Hawkins Jr.,25,-17.9023,8.0,126,pass
 401856882,Arkansas,k.jackson,K.Jackson,25,13.5304,12.0,187,pass
@@ -40701,6 +40872,8 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401858535,Indiana,j.hoover,J.Hoover,14,5.6683,6.0,117,pass
 401858535,Washington,d.roebuck,D.Roebuck,1,0.9953,1.0,27,pass
 401858535,Washington,d.williams,D.Williams Jr.,44,-3.1229,17.0,201,pass
+401858536,Iowa,h.brown,H.Brown,21,6.3829,10.0,152,pass
+401858536,Nebraska,a.colandrea,A.Colandrea,30,-6.4027,13.0,142,pass
 401859184,Notre Dame,c.carr,C.Carr,16,9.8568,11.0,151,pass
 401859184,Rice,j.brown,J.Brown,6,-3.0499,0.0,-12,pass
 401859185,Navy,b.woodson,B.Woodson,2,2.2817,1.0,8,pass
@@ -41079,6 +41252,9 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401862836,UAB,r.burton,R.Burton,25,2.9849,7.0,95,pass
 401862836,UTSA,m.wiepert,M.Wiepert,1,3.2725,1.0,27,pass
 401862836,UTSA,o.mccown,O.McCown,20,-2.8595,9.0,136,pass
+401862840,Tulsa,b.hayes,B.Hayes,29,8.1901,12.0,203,pass
+401862840,UTSA,j.rogers,J.Rogers,1,3.0397,1.0,11,pass
+401862840,UTSA,o.mccown,O.McCown,33,18.1617,13.0,353,pass
 401864424,Delaware,n.minicucci,N.Minicucci,29,17.6639,17.0,294,pass
 401864424,Merrimack,a.hairston,A.Hairston,22,0.8949,6.0,68,pass
 401864424,Merrimack,c.meehan,C.Meehan,2,-0.2067,0.0,0,pass
@@ -41432,6 +41608,11 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401866471,Miami (OH),d.bellisari,D.Bellisari,27,7.6099,9.0,208,pass
 401866471,Western Michigan,b.lowry,B.Lowry,23,-4.3056,7.0,109,pass
 401866471,Western Michigan,e.nelson,E.Nelson,1,-0.34,0.0,0,pass
+401866472,Akron,c.broughton,C.Broughton,26,5.0125,9.0,191,pass
+401866472,Buffalo,j.wright,J.Wright,19,3.1884,7.0,81,pass
+401866473,Ohio,l.davis,L.Davis,29,10.6534,15.0,297,pass
+401866473,Ohio,n.poulos,N.Poulos,8,1.9361,4.0,40,pass
+401866473,Toledo,j.richter,J.Richter,32,8.6206,14.0,205,pass
 401866476,Central Michigan,j.glasser,J.Glasser,31,4.845,11.0,208,pass
 401866476,Miami (OH),c.heavner,C.Heavner,37,-7.4458,15.0,291,pass
 401866477,Bowling Green,j.kastantin,J.Kastantin,36,11.0669,19.0,264,pass
@@ -43120,6 +43301,9 @@ gameId,team,key,player,n,epa_sum,succ_sum,yds,kind
 401868353,Alabama State,a.frye,A.Frye,25,-1.1605,9.0,122,pass
 401868353,Prairie View A&M,k.smith,K.Smith,5,5.0161,3.0,46,pass
 401868353,Prairie View A&M,t.carter,T.Carter,15,-1.8229,5.0,61,pass
+401868354,Alabama State,a.frye,A.Frye,25,0.853,11.0,188,pass
+401868354,Tuskegee,a.yelding,A.Yelding,16,-10.3433,2.0,40,pass
+401868354,Tuskegee,b.mcgrew,B.McGrew,6,3.0356,2.0,40,pass
 401868355,Alcorn State,j.tolbert,J.Tolbert,44,18.9961,26.0,613,pass
 401868355,Arkansas-Pine Bluff,g.davis,G.Davis,27,10.2455,9.0,168,pass
 401868356,Alcorn State,j.tolbert,J.Tolbert,16,-2.0575,5.0,106,pass
